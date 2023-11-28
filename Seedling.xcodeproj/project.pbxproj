@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D3385B432B164C330055234B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B422B164C330055234B /* Color.swift */; };
+		D3385B5C2B165E9D0055234B /* Handjet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B582B165E9D0055234B /* Handjet-Regular.ttf */; };
+		D3385B5D2B165E9D0055234B /* Handjet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B592B165E9D0055234B /* Handjet-Bold.ttf */; };
+		D3385B5E2B165E9D0055234B /* Handjet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B5A2B165E9D0055234B /* Handjet-Medium.ttf */; };
+		D3385B5F2B165E9D0055234B /* Handjet-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B5B2B165E9D0055234B /* Handjet-ExtraBold.ttf */; };
 		D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58252B156DD100E541E4 /* SeedlingApp.swift */; };
 		D36D58282B156DD100E541E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58272B156DD100E541E4 /* ContentView.swift */; };
 		D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D58292B156DD200E541E4 /* Assets.xcassets */; };
@@ -16,6 +20,11 @@
 
 /* Begin PBXFileReference section */
 		D3385B422B164C330055234B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D3385B582B165E9D0055234B /* Handjet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Regular.ttf"; sourceTree = "<group>"; };
+		D3385B592B165E9D0055234B /* Handjet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Bold.ttf"; sourceTree = "<group>"; };
+		D3385B5A2B165E9D0055234B /* Handjet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Medium.ttf"; sourceTree = "<group>"; };
+		D3385B5B2B165E9D0055234B /* Handjet-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D3385B612B165ECE0055234B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D36D58222B156DD100E541E4 /* Seedling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seedling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36D58252B156DD100E541E4 /* SeedlingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedlingApp.swift; sourceTree = "<group>"; };
 		D36D58272B156DD100E541E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -42,6 +51,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D3385B602B165EA20055234B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D3385B582B165E9D0055234B /* Handjet-Regular.ttf */,
+				D3385B5A2B165E9D0055234B /* Handjet-Medium.ttf */,
+				D3385B592B165E9D0055234B /* Handjet-Bold.ttf */,
+				D3385B5B2B165E9D0055234B /* Handjet-ExtraBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		D36D58192B156DD100E541E4 = {
 			isa = PBXGroup;
 			children = (
@@ -64,7 +84,9 @@
 				D36D58252B156DD100E541E4 /* SeedlingApp.swift */,
 				D3385B442B164C3D0055234B /* Extensions */,
 				D36D58272B156DD100E541E4 /* ContentView.swift */,
+				D3385B602B165EA20055234B /* Fonts */,
 				D36D58292B156DD200E541E4 /* Assets.xcassets */,
+				D3385B612B165ECE0055234B /* Info.plist */,
 				D36D582B2B156DD200E541E4 /* Preview Content */,
 			);
 			path = Seedling;
@@ -136,6 +158,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3385B5E2B165E9D0055234B /* Handjet-Medium.ttf in Resources */,
+				D3385B5D2B165E9D0055234B /* Handjet-Bold.ttf in Resources */,
+				D3385B5C2B165E9D0055234B /* Handjet-Regular.ttf in Resources */,
+				D3385B5F2B165E9D0055234B /* Handjet-ExtraBold.ttf in Resources */,
 				D36D582D2B156DD200E541E4 /* Preview Assets.xcassets in Resources */,
 				D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */,
 			);
@@ -287,6 +313,7 @@
 				DEVELOPMENT_TEAM = 7YPJCXPNAH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Seedling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -316,6 +343,7 @@
 				DEVELOPMENT_TEAM = 7YPJCXPNAH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Seedling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
