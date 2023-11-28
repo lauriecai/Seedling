@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D3385B432B164C330055234B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B422B164C330055234B /* Color.swift */; };
 		D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58252B156DD100E541E4 /* SeedlingApp.swift */; };
 		D36D58282B156DD100E541E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58272B156DD100E541E4 /* ContentView.swift */; };
 		D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D58292B156DD200E541E4 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D3385B422B164C330055234B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D36D58222B156DD100E541E4 /* Seedling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seedling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36D58252B156DD100E541E4 /* SeedlingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedlingApp.swift; sourceTree = "<group>"; };
 		D36D58272B156DD100E541E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3385B442B164C3D0055234B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D3385B422B164C330055234B /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D36D58192B156DD100E541E4 = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				D36D58252B156DD100E541E4 /* SeedlingApp.swift */,
+				D3385B442B164C3D0055234B /* Extensions */,
 				D36D58272B156DD100E541E4 /* ContentView.swift */,
 				D36D58292B156DD200E541E4 /* Assets.xcassets */,
 				D36D582B2B156DD200E541E4 /* Preview Content */,
@@ -139,6 +150,7 @@
 			files = (
 				D36D58282B156DD100E541E4 /* ContentView.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
+				D3385B432B164C330055234B /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
