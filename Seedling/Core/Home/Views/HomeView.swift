@@ -18,14 +18,34 @@ struct HomeView: View {
 			VStack(alignment: .leading, spacing: 15) {
 				weatherRow
 				dateHeader
-				
-				PlantRowView()
-				PlantRowView()
-				PlantRowView()
-				PlantRowView()
-				PlantRowView()
+				ScrollView(.vertical, showsIndicators: false) {
+					PlantRowView()
+					PlantRowView()
+					PlantRowView()
+					PlantRowView()
+					PlantRowView()
+					PlantRowView()
+					PlantRowView()
+					PlantRowView()
+				}
 			}
 			.padding(.horizontal)
+			
+			// navigation
+			HStack {
+				NavigationMenuItem(name: "Garden")
+				Spacer()
+				NavigationMenuItem(name: "Add Plant")
+				Spacer()
+				NavigationMenuItem(name: "To-do List")
+			}
+			.padding()
+			.padding(.horizontal, 30)
+			.padding(.bottom, 5)
+			.background(Color.theme.backgroundDark)
+			.frame(maxHeight: .infinity, alignment: .bottom)
+			.ignoresSafeArea()
+			
 		}
     }
 }
@@ -71,5 +91,23 @@ extension HomeView {
 		.padding(.horizontal, 10)
 		.background(Color.theme.backgroundLight)
 		.cornerRadius(8)
+	}
+}
+
+struct NavigationMenuItem: View {
+	
+	let name: String
+	
+	var body: some View {
+		VStack {
+			Rectangle()
+				.fill(Color.gray)
+				.frame(width: 26, height: 26)
+				.cornerRadius(8)
+			
+			Text(name)
+				.font(.handjet(.bold, size: 16))
+				.foregroundStyle(Color.theme.textLight)
+		}
 	}
 }

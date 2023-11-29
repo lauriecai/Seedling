@@ -10,7 +10,7 @@ import SwiftUI
 
 extension Font {
 	
-	enum Handjet {
+	enum HandjetFont {
 		case regular, medium, bold, extraBold
 		
 		var value: String {
@@ -27,7 +27,7 @@ extension Font {
 		}
 	}
 	
-	static func handjet(_ type: Handjet, size: CGFloat) -> Font {
+	static func handjet(_ type: HandjetFont, size: CGFloat) -> Font {
 		return .custom(type.value, size: size)
 	}
 }
