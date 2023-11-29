@@ -17,12 +17,12 @@ extension Color {
 struct ColorTheme {
 	
 	let backgroundPrimary = Color("ColorBackgroundPrimary")
-	let backgroundDark = Color("ColorBackgroundAlt")
-	let backgroundLight = Color("ColorBackgroundAlt2")
+	let backgroundDark = Color("ColorBackgroundDark")
+	let backgroundLight = Color("ColorBackgroundLight")
 	let backgroundAccent = Color("ColorBackgroundAccent")
 	
 	let textPrimary = Color("ColorTextPrimary")
 	let textSecondary = Color("ColorTextSecondary")
-	let textLight = Color("ColorTextAlt")
+	let textLight = Color("ColorTextLight")
 	
 }

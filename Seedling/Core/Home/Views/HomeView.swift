@@ -10,13 +10,20 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
 		ZStack {
+			// background
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
+			// content
 			VStack(alignment: .leading, spacing: 15) {
 				weatherRow
 				dateHeader
 				
+				PlantRowView()
+				PlantRowView()
+				PlantRowView()
+				PlantRowView()
+				PlantRowView()
 			}
 			.padding(.horizontal)
 		}
@@ -42,7 +49,6 @@ extension HomeView {
 			weatherCard
 			weatherCard
 		}
-		.frame(maxWidth: .infinity)
 	}
 	
 	private var weatherCard: some View {
@@ -63,7 +69,7 @@ extension HomeView {
 		}
 		.padding(.vertical, 5)
 		.padding(.horizontal, 10)
-		.background(Color.white)
+		.background(Color.theme.backgroundLight)
 		.cornerRadius(8)
 	}
 }
