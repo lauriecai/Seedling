@@ -13,9 +13,12 @@ struct HomeView: View {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
-			VStack {
+			VStack(alignment: .leading, spacing: 15) {
 				weatherRow
+				dateHeader
+				
 			}
+			.padding(.horizontal)
 		}
     }
 }
@@ -25,6 +28,11 @@ struct HomeView: View {
 }
 
 extension HomeView {
+	
+	private var dateHeader: some View {
+		Text("Wednesday, November 15")
+			.font(.handjet(.extraBold, size: 32))
+	}
 	
 	private var weatherRow: some View {
 		HStack(spacing: 10) {
