@@ -13,8 +13,8 @@
 		D3385B5E2B165E9D0055234B /* Handjet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B5A2B165E9D0055234B /* Handjet-Medium.ttf */; };
 		D3385B5F2B165E9D0055234B /* Handjet-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B5B2B165E9D0055234B /* Handjet-ExtraBold.ttf */; };
 		D3385B6B2B16DEC80055234B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B6A2B16DEC80055234B /* Font.swift */; };
+		D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B6C2B16EB1F0055234B /* HomeView.swift */; };
 		D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58252B156DD100E541E4 /* SeedlingApp.swift */; };
-		D36D58282B156DD100E541E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58272B156DD100E541E4 /* ContentView.swift */; };
 		D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D58292B156DD200E541E4 /* Assets.xcassets */; };
 		D36D582D2B156DD200E541E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -27,9 +27,9 @@
 		D3385B5B2B165E9D0055234B /* Handjet-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-ExtraBold.ttf"; sourceTree = "<group>"; };
 		D3385B612B165ECE0055234B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3385B6A2B16DEC80055234B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D3385B6C2B16EB1F0055234B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D36D58222B156DD100E541E4 /* Seedling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seedling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36D58252B156DD100E541E4 /* SeedlingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedlingApp.swift; sourceTree = "<group>"; };
-		D36D58272B156DD100E541E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D36D58292B156DD200E541E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +65,38 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		D3385B6E2B16EB260055234B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D3385B6F2B16EB2B0055234B /* Home */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D3385B6F2B16EB2B0055234B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D3385B702B16EB300055234B /* ViewModels */,
+				D3385B712B16EB380055234B /* Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D3385B702B16EB300055234B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D3385B712B16EB380055234B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3385B6C2B16EB1F0055234B /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D36D58192B156DD100E541E4 = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +118,7 @@
 			children = (
 				D36D58252B156DD100E541E4 /* SeedlingApp.swift */,
 				D3385B442B164C3D0055234B /* Extensions */,
-				D36D58272B156DD100E541E4 /* ContentView.swift */,
+				D3385B6E2B16EB260055234B /* Core */,
 				D3385B602B165EA20055234B /* Fonts */,
 				D36D58292B156DD200E541E4 /* Assets.xcassets */,
 				D3385B612B165ECE0055234B /* Info.plist */,
@@ -178,7 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
-				D36D58282B156DD100E541E4 /* ContentView.swift in Sources */,
+				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 			);
