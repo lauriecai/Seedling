@@ -19,10 +19,6 @@
 		D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D58292B156DD200E541E4 /* Assets.xcassets */; };
 		D36D582D2B156DD200E541E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */; };
 		D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */; };
-		D3BBD8A42B6840440061FE92 /* Plant+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8A02B6840440061FE92 /* Plant+CoreDataClass.swift */; };
-		D3BBD8A52B6840440061FE92 /* Plant+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8A12B6840440061FE92 /* Plant+CoreDataProperties.swift */; };
-		D3BBD8A62B6840440061FE92 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8A22B6840440061FE92 /* Note+CoreDataClass.swift */; };
-		D3BBD8A72B6840440061FE92 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8A32B6840440061FE92 /* Note+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,10 +36,6 @@
 		D36D58292B156DD200E541E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3BBD89D2B68362C0061FE92 /* Seedling.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Seedling.xcdatamodel; sourceTree = "<group>"; };
-		D3BBD8A02B6840440061FE92 /* Plant+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataClass.swift"; path = "Seedling/Plant+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D3BBD8A12B6840440061FE92 /* Plant+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Plant+CoreDataProperties.swift"; path = "Seedling/Plant+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D3BBD8A22B6840440061FE92 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataClass.swift"; path = "Seedling/Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		D3BBD8A32B6840440061FE92 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Note+CoreDataProperties.swift"; path = "Seedling/Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +105,6 @@
 		D36D58192B156DD100E541E4 = {
 			isa = PBXGroup;
 			children = (
-				D3BBD8A02B6840440061FE92 /* Plant+CoreDataClass.swift */,
-				D3BBD8A12B6840440061FE92 /* Plant+CoreDataProperties.swift */,
-				D3BBD8A22B6840440061FE92 /* Note+CoreDataClass.swift */,
-				D3BBD8A32B6840440061FE92 /* Note+CoreDataProperties.swift */,
 				D36D58242B156DD100E541E4 /* Seedling */,
 				D36D58232B156DD100E541E4 /* Products */,
 			);
@@ -237,14 +225,10 @@
 			files = (
 				D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */,
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
-				D3BBD8A42B6840440061FE92 /* Plant+CoreDataClass.swift in Sources */,
-				D3BBD8A52B6840440061FE92 /* Plant+CoreDataProperties.swift in Sources */,
 				D3385B732B16F0420055234B /* PlantRowView.swift in Sources */,
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
-				D3BBD8A62B6840440061FE92 /* Note+CoreDataClass.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
-				D3BBD8A72B6840440061FE92 /* Note+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
