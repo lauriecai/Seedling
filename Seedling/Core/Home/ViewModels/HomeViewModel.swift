@@ -27,18 +27,24 @@ class HomeViewModel: ObservableObject {
 		}
 	}
 	
-	private func addPlant(type: String, name: String, variety: String?) {
+	private func addPlant(type: String, name: String, variety: String?, stage: String) {
 		let newPlant = Plant(context: manager.context)
 		newPlant.id = UUID()
 		newPlant.type = type
 		newPlant.name = name
 		newPlant.variety = variety
+		newPlant.stage = stage
 		
-		savePlant()
+		save()
 	}
 	
-	private func savePlant() {
-		manager.saveData()
+	private func save() {
+		manager.save()
 		fetchPlants() // refreshes plants array with most recently saved data
+	}
+	
+	func deletePlant(offsets: IndexSet) {
+		offsets.map { plants[$0] }.forEach(manager.context.delete)
+		save()
 	}
 }

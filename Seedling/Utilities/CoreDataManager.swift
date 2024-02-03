@@ -27,7 +27,7 @@ class CoreDataManager {
 		context = container.viewContext
 	}
 	
-	func saveData() {
+	func save() {
 		do {
 			try context.save()
 			print("Successfully saved Core Data.")

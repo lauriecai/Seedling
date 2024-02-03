@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
 	
+	@EnvironmentObject private var viewModel: HomeViewModel
+	
     var body: some View {
 		ZStack {
 			// background
@@ -19,10 +21,10 @@ struct HomeView: View {
 			VStack(alignment: .leading, spacing: 15) {
 				weatherRow
 				dateHeader
-				ScrollView(.vertical, showsIndicators: false) {
-					PlantRowView()
-					PlantRowView()
-					PlantRowView()
+				List {
+					ForEach(viewModel.plants) { plant in
+						PlantRowView(plant: plant)
+					}
 				}
 			}
 			.padding(.horizontal)
@@ -48,6 +50,7 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+		.environmentObject(HomeViewModel())
 }
 
 extension HomeView {
