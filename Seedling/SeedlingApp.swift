@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct SeedlingApp: App {
+	
+	@StateObject private var viewModel = HomeViewModel()
+	
     var body: some Scene {
         WindowGroup {
             HomeView()
+				.environmentObject(viewModel)
         }
     }
 }
