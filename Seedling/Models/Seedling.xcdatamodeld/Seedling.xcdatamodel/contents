@@ -10,6 +10,6 @@
         <attribute name="stage" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <attribute name="variety" optional="YES" attributeType="String"/>
-        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="plant" inverseEntity="Note"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="plant" inverseEntity="Note"/>
     </entity>
 </model>
