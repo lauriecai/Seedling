@@ -19,11 +19,20 @@ class CoreDataManager {
 		container = NSPersistentContainer(name: "Seedling")
 		container.loadPersistentStores { description, error in
 			if let error = error {
-				print("Error loading Core Data.")
+				print("Error loading Core Data. \(error)")
 			} else {
 				print("Successfully loaded Core Data.")
 			}
 		}
 		context = container.viewContext
+	}
+	
+	func saveData() {
+		do {
+			try context.save()
+			print("Successfully saved Core Data.")
+		} catch let error {
+			print("Error saving to Core Data. \(error)")
+		}
 	}
 }

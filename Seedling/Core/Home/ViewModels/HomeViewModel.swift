@@ -12,4 +12,5 @@ class HomeViewModel: ObservableObject {
 	let manager = CoreDataManager.shared
 	
 	
+	
 }
