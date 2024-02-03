@@ -8,28 +8,22 @@
 import SwiftUI
 
 struct PlantRowView: View {
+	
+	let plant: Plant
+	
     var body: some View {
 		VStack(alignment: .leading) {
 			// plant name
-			Text("Jalapeno")
+			Text("\(plant.name ?? ""): \(plant.variety ?? "")")
 				.font(.handjet(.bold, size: 24))
 			
 			// plant properties
 			HStack {
-				// form
-				Text("Seed")
+				// stage
+				Text(plant.stage ?? "")
 					.font(.handjet(.regular, size: 18))
 				
 				Spacer()
-				
-				// stage, duration
-				HStack(spacing: 4) {
-					Text("Acquired")
-						.font(.handjet(.regular, size: 18))
-					Text("(2 days)")
-						.font(.handjet(.regular, size: 18))
-						.foregroundStyle(Color.theme.textSecondary)
-				}
 			}
 		}
 		.frame(maxWidth: .infinity)
@@ -40,5 +34,5 @@ struct PlantRowView: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-    PlantRowView()
+	PlantRowView(plant: <#T##Plant#>)
 }
