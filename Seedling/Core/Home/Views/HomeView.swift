@@ -22,11 +22,6 @@ struct HomeView: View {
 					PlantRowView()
 					PlantRowView()
 					PlantRowView()
-					PlantRowView()
-					PlantRowView()
-					PlantRowView()
-					PlantRowView()
-					PlantRowView()
 				}
 			}
 			.padding(.horizontal)

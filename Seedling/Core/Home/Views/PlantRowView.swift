@@ -33,6 +33,6 @@ struct PlantRowView: View {
     }
 }
 
-#Preview(traits: .sizeThatFitsLayout) {
-	PlantRowView(plant: <#T##Plant#>)
-}
+//#Preview(traits: .sizeThatFitsLayout) {
+//	PlantRowView(plant: <#T##Plant#>)
+//}
