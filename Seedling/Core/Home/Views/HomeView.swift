@@ -26,19 +26,7 @@ struct HomeView: View {
 			.padding(.horizontal)
 			
 			// navigation
-			HStack {
-				NavigationMenuItem(name: "Garden")
-				Spacer()
-				NavigationMenuItem(name: "Add Plant")
-				Spacer()
-				NavigationMenuItem(name: "To-do List")
-			}
-			.padding()
-			.padding(.horizontal, 30)
-			.padding(.bottom, 5)
-			.background(Color.theme.backgroundDark)
-			.frame(maxHeight: .infinity, alignment: .bottom)
-			.ignoresSafeArea()
+			NavigationMenu()
 			
 		}
     }
