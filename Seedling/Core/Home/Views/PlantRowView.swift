@@ -14,25 +14,27 @@ struct PlantRowView: View {
     var body: some View {
 		VStack(alignment: .leading) {
 			// plant name
-			Text("\(plant.name ?? ""): \(plant.variety ?? "")")
-				.font(.handjet(.bold, size: 24))
+			if let hasVariety = plant.variety {
+				Text("\(plant.name ?? ""): \(plant.variety ?? "")")
+					.font(.handjet(.bold, size: 24))
+			} else {
+				Text("\(plant.name ?? "")")
+					.font(.handjet(.bold, size: 24))
+			}
 			
 			// plant properties
 			HStack {
 				// stage
-				Text(plant.stage ?? "")
+				Text("Seedling")
 					.font(.handjet(.regular, size: 18))
 				
 				Spacer()
 			}
 		}
 		.frame(maxWidth: .infinity)
-		.padding()
-		.background(Color.theme.backgroundLight)
-		.cornerRadius(8)
     }
 }
 
 //#Preview(traits: .sizeThatFitsLayout) {
-//	PlantRowView(plant: <#T##Plant#>)
+//	PlantRowView()
 //}

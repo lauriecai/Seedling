@@ -25,7 +25,16 @@ struct HomeView: View {
 					ForEach(viewModel.plants) { plant in
 						PlantRowView(plant: plant)
 					}
+					.listRowInsets(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
+					.listRowSeparator(.hidden)
+					.listRowBackground(
+						RoundedRectangle(cornerRadius: 8)
+							.fill(Color.theme.backgroundLight)
+							.padding(.vertical, 5)
+					)
 				}
+				.listStyle(.plain)
+				.scrollIndicators(.hidden)
 			}
 			.padding(.horizontal)
 			
