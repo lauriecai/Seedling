@@ -21,20 +21,7 @@ struct HomeView: View {
 			VStack(alignment: .leading, spacing: 15) {
 				weatherRow
 				dateHeader
-				List {
-					ForEach(viewModel.plants) { plant in
-						PlantRowView(plant: plant)
-					}
-					.listRowInsets(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
-					.listRowSeparator(.hidden)
-					.listRowBackground(
-						RoundedRectangle(cornerRadius: 8)
-							.fill(Color.theme.backgroundLight)
-							.padding(.vertical, 5)
-					)
-				}
-				.listStyle(.plain)
-				.scrollIndicators(.hidden)
+				plantsList
 			}
 			.padding(.horizontal)
 			
@@ -64,6 +51,7 @@ struct HomeView: View {
 
 extension HomeView {
 	
+//	MARK: - Weather Row
 	private var dateHeader: some View {
 		Text("Wednesday, November 15")
 			.font(.handjet(.extraBold, size: 32))
@@ -100,22 +88,22 @@ extension HomeView {
 		.background(Color.theme.backgroundLight)
 		.cornerRadius(8)
 	}
-}
-
-struct NavigationMenuItem: View {
 	
-	let name: String
-	
-	var body: some View {
-		VStack {
-			Rectangle()
-				.fill(Color.gray)
-				.frame(width: 26, height: 26)
-				.cornerRadius(8)
-			
-			Text(name)
-				.font(.handjet(.bold, size: 16))
-				.foregroundStyle(Color.theme.textLight)
+//	MARK: - Plants List
+	private var plantsList: some View {
+		List {
+			ForEach(viewModel.plants) { plant in
+				PlantRowView(plant: plant)
+			}
+			.listRowInsets(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
+			.listRowSeparator(.hidden)
+			.listRowBackground(
+				RoundedRectangle(cornerRadius: 8)
+					.fill(Color.theme.backgroundLight)
+					.padding(.vertical, 5)
+			)
 		}
+		.listStyle(.plain)
+		.scrollIndicators(.hidden)
 	}
 }
