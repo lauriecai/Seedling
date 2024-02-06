@@ -95,6 +95,7 @@ extension HomeView {
 			ForEach(viewModel.plants) { plant in
 				PlantRowView(plant: plant)
 			}
+			.onDelete(perform: viewModel.deletePlant)
 			.listRowInsets(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
 			.listRowSeparator(.hidden)
 			.listRowBackground(
