@@ -41,7 +41,7 @@ extension HomeView {
 	
 //	MARK: - Weather Row
 	private var dateHeader: some View {
-		Text("Wednesday, November 15")
+		Text("\(Date().withDayAndDate())")
 			.font(.handjet(.extraBold, size: 32))
 	}
 	
