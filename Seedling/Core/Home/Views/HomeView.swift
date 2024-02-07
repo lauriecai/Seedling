@@ -79,20 +79,10 @@ extension HomeView {
 	
 //	MARK: - Plants List
 	private var plantsList: some View {
-		List {
+		ScrollView {
 			ForEach(viewModel.plants) { plant in
 				PlantRowView(plant: plant)
 			}
-			.onDelete(perform: viewModel.deletePlant)
-			.listRowInsets(EdgeInsets(top: 15, leading: 20, bottom: 15, trailing: 20))
-			.listRowSeparator(.hidden)
-			.listRowBackground(
-				RoundedRectangle(cornerRadius: 8)
-					.fill(Color.theme.backgroundLight)
-					.padding(.vertical, 5)
-			)
 		}
-		.listStyle(.plain)
-		.scrollIndicators(.hidden)
 	}
 }
