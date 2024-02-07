@@ -31,7 +31,9 @@ struct PlantRowView: View {
 				Spacer()
 			}
 		}
-		.frame(maxWidth: .infinity)
+		.padding()
+		.background(Color.theme.backgroundAccent)
+		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
