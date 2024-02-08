@@ -13,10 +13,6 @@ struct HomeView: View {
 	
 	@GestureState private var dragDistance = CGSize.zero
 	
-	init() {
-		
-	}
-	
     var body: some View {
 		ZStack {
 			// background
@@ -35,6 +31,21 @@ struct HomeView: View {
 			NavigationMenu()
 			
 		}
+		.gesture(
+			TapGesture().onEnded({ _ in
+				withAnimation(Animation.spring(Spring(duration: 0.2))) {
+					viewModel.resetOffsets()
+				}
+			})
+		)
+		.gesture(
+			DragGesture().onChanged({ _ in
+				withAnimation(Animation.spring(Spring(duration: 0.2))) {
+					viewModel.resetOffsets()
+				}
+			})
+		)
+		
     }
 }
 
@@ -125,7 +136,11 @@ extension HomeView {
 	private func onDragChange(plant: Plant, value: DragGesture.Value) {
 		if value.translation.width < 0 {
 			DispatchQueue.main.async {
-				plant.offset = Float(value.translation.width)
+				withAnimation(Animation.spring(Spring(duration: 0.2))) {
+					viewModel.resetOffsets()
+					plant.offset = Float(value.translation.width)
+				}
+				
 				viewModel.save()
 			}
 		}

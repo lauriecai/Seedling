@@ -30,7 +30,6 @@ class CoreDataManager {
 	func save() {
 		do {
 			try context.save()
-			print("Successfully saved Core Data.")
 		} catch let error {
 			print("Error saving to Core Data. \(error)")
 		}

@@ -48,4 +48,11 @@ class HomeViewModel: ObservableObject {
 		offsets.map { plants[$0] }.forEach(manager.context.delete)
 		save()
 	}
+	
+	func resetOffsets() {
+		for plant in plants {
+			plant.offset = 0
+		}
+		save()
+	}
 }
