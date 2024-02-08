@@ -102,6 +102,12 @@ extension HomeView {
 				ZStack {
 					Color.theme.accentRed
 						.clipShape(RoundedRectangle(cornerRadius: 8))
+						.onTapGesture {
+							withAnimation(Animation.easeInOut(duration: 0.4)) {
+								viewModel.deletePlant(plant: plant)
+							}
+						}
+						
 					
 					HStack {
 						Spacer()

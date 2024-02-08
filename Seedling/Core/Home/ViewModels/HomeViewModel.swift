@@ -44,9 +44,11 @@ class HomeViewModel: ObservableObject {
 		fetchPlants() // refreshes plants array with most recently saved data
 	}
 	
-	func deletePlant(offsets: IndexSet) {
-		offsets.map { plants[$0] }.forEach(manager.context.delete)
-		save()
+	func deletePlant(plant: Plant) {
+		if let savedPlant = plants.first(where: { $0.id == plant.id }) {
+			manager.context.delete(savedPlant)
+			save()
+		}
 	}
 	
 	func resetOffsets() {
