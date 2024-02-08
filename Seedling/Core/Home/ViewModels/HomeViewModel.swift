@@ -39,17 +39,6 @@ class HomeViewModel: ObservableObject {
 		save()
 	}
 	
-//	func addTestPlant() {
-//		let newPlant = Plant(context: manager.context)
-//		newPlant.id = UUID()
-//		newPlant.type = "Fruit"
-//		newPlant.name = "Strawberry"
-//		newPlant.stage = "Seedling"
-//		newPlant.offset = 0
-//		
-//		save()
-//	}
-	
 	func save() {
 		manager.save()
 		fetchPlants() // refreshes plants array with most recently saved data

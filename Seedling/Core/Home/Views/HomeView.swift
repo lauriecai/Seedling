@@ -13,6 +13,10 @@ struct HomeView: View {
 	
 	@GestureState private var dragDistance = CGSize.zero
 	
+	init() {
+		
+	}
+	
     var body: some View {
 		ZStack {
 			// background
@@ -88,6 +92,14 @@ extension HomeView {
 					Color.theme.accentRed
 						.clipShape(RoundedRectangle(cornerRadius: 8))
 					
+					HStack {
+						Spacer()
+						Text("Delete")
+							.font(.handjet(.bold, size: 18))
+							.foregroundStyle(Color.theme.textLight)
+							.padding()
+					}
+					
 					PlantRowView(plant: plant)
 						.offset(x: CGFloat(plant.offset))
 						.gesture(
@@ -120,8 +132,13 @@ extension HomeView {
 	}
 	
 	private func onDragEnd(plant: Plant, value: DragGesture.Value) {
-		if value.translation.width < 0 {
+		if -value.translation.width >= 70 {
 			withAnimation(Animation.spring) {
+				plant.offset = -70
+				viewModel.save()
+			}
+		} else {
+			withAnimation(Animation.spring(Spring(duration: 0.2))) {
 				plant.offset = 0
 				viewModel.save()
 			}
