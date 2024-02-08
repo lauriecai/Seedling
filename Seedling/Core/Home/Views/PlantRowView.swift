@@ -25,7 +25,7 @@ struct PlantRowView: View {
 			// plant properties
 			HStack {
 				// stage
-				Text("Seedling")
+				Text("\(plant.stage ?? "")")
 					.font(.handjet(.regular, size: 18))
 				
 				Spacer()

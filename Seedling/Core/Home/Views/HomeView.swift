@@ -11,6 +11,8 @@ struct HomeView: View {
 	
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
+	@GestureState private var dragDistance = CGSize.zero
+	
     var body: some View {
 		ZStack {
 			// background
@@ -37,9 +39,10 @@ struct HomeView: View {
 		.environmentObject(HomeViewModel())
 }
 
+// MARK: - Condensed UI
 extension HomeView {
 	
-//	MARK: - Weather Row
+//	weather
 	private var dateHeader: some View {
 		Text("\(Date().withDayAndDate())")
 			.font(.handjet(.extraBold, size: 32))
@@ -77,11 +80,50 @@ extension HomeView {
 		.cornerRadius(8)
 	}
 	
-//	MARK: - Plants List
+//	plants list
 	private var plantsList: some View {
 		ScrollView {
 			ForEach(viewModel.plants) { plant in
-				PlantRowView(plant: plant)
+				ZStack {
+					Color.theme.accentRed
+						.clipShape(RoundedRectangle(cornerRadius: 8))
+					
+					PlantRowView(plant: plant)
+						.offset(x: CGFloat(plant.offset))
+						.gesture(
+							DragGesture()
+								.updating($dragDistance, body: { value, state, _ in
+									state = value.translation
+									onDragChange(plant: plant, value: value)
+								})
+								.onEnded({ value in
+									onDragEnd(plant: plant, value: value)
+								})
+						)
+				}
+			}
+		}
+	}
+}
+
+// MARK: - UI Functions
+extension HomeView {
+	
+//	card drag behavior
+	private func onDragChange(plant: Plant, value: DragGesture.Value) {
+		if value.translation.width < 0 {
+			DispatchQueue.main.async {
+				plant.offset = Float(value.translation.width)
+				viewModel.save()
+			}
+		}
+	}
+	
+	private func onDragEnd(plant: Plant, value: DragGesture.Value) {
+		if value.translation.width < 0 {
+			withAnimation(Animation.spring) {
+				plant.offset = 0
+				viewModel.save()
 			}
 		}
 	}
