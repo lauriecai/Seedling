@@ -17,9 +17,11 @@ struct PlantRowView: View {
 			if let hasVariety = plant.variety {
 				Text("\(plant.name ?? ""): \(plant.variety ?? "")")
 					.font(.handjet(.bold, size: 24))
+					.foregroundStyle(Color.theme.textPrimary)
 			} else {
 				Text("\(plant.name ?? "")")
 					.font(.handjet(.bold, size: 24))
+					.foregroundStyle(Color.theme.textPrimary)
 			}
 			
 			// plant properties
@@ -27,6 +29,7 @@ struct PlantRowView: View {
 				// stage
 				Text("\(plant.stage ?? "")")
 					.font(.handjet(.regular, size: 18))
+					.foregroundStyle(Color.theme.textPrimary)
 				
 				Spacer()
 			}

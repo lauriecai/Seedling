@@ -61,6 +61,7 @@ extension HomeView {
 	private var dateHeader: some View {
 		Text("\(Date().withDayAndDate())")
 			.font(.handjet(.extraBold, size: 32))
+			.foregroundStyle(Color.theme.textPrimary)
 	}
 	
 	private var weatherRow: some View {
@@ -77,6 +78,7 @@ extension HomeView {
 		VStack(spacing: 5) {
 			Text("Fri")
 				.font(.handjet(.regular, size: 18))
+				.foregroundStyle(Color.theme.textPrimary)
 			
 			Rectangle()
 				.fill(Color.yellow)
@@ -85,8 +87,10 @@ extension HomeView {
 			HStack {
 				Text("77")
 					.font(.handjet(.bold, size: 18))
+					.foregroundStyle(Color.theme.textPrimary)
 				Text("56")
 					.font(.handjet(.regular, size: 18))
+					.foregroundStyle(Color.theme.textPrimary)
 			}
 		}
 		.padding(.vertical, 5)
