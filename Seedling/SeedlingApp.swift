@@ -20,9 +20,10 @@ struct SeedlingApp: App {
 					HomeView()
 						.tag("Garden")
 					
-					Text("Add Plant")
+					Text("Add Plant") // add plant view goes here
 						.tag("Add Plant")
 				}
+				.environmentObject(viewModel)
 				
 				NavigationBar(selectedTab: $currentTab)
 			}

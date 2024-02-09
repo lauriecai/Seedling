@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
 	
 	@EnvironmentObject private var viewModel: HomeViewModel
-	
 	@GestureState private var dragDistance = CGSize.zero
 	
     var body: some View {
@@ -26,10 +25,6 @@ struct HomeView: View {
 				plantsList
 			}
 			.padding(.horizontal)
-			
-			// navigation
-//			NavigationBar()
-			
 		}
 		.gesture(
 			TapGesture().onEnded({ _ in
