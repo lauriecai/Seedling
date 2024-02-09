@@ -27,7 +27,7 @@ class HomeViewModel: ObservableObject {
 		}
 	}
 	
-	func addPlant(type: String, name: String, variety: String?, stage: String) {
+	func addPlant(type: String, name: String, variety: String, stage: String) {
 		let newPlant = Plant(context: manager.context)
 		newPlant.id = UUID()
 		newPlant.type = type

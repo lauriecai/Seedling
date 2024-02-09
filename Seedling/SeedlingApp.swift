@@ -20,7 +20,7 @@ struct SeedlingApp: App {
 					HomeView()
 						.tag("Garden")
 					
-					Text("Add Plant") // add plant view goes here
+					AddPlantView()
 						.tag("Add Plant")
 				}
 				.environmentObject(viewModel)

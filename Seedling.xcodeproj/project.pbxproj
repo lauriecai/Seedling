@@ -24,6 +24,7 @@
 		D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */; };
 		D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */; };
 		D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */; };
+		D3EFDE092B76B70C00A6D22C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D3BBD89D2B68362C0061FE92 /* Seedling.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Seedling.xcdatamodel; sourceTree = "<group>"; };
 		D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				D3385B6C2B16EB1F0055234B /* HomeView.swift */,
+				D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */,
 				D3385B722B16F0420055234B /* PlantRowView.swift */,
 			);
 			path = Views;
@@ -254,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3EFDE092B76B70C00A6D22C /* AddPlantView.swift in Sources */,
 				D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */,
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
 				D3385B732B16F0420055234B /* PlantRowView.swift in Sources */,
