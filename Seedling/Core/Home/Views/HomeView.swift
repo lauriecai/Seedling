@@ -28,7 +28,7 @@ struct HomeView: View {
 			.padding(.horizontal)
 			
 			// navigation
-			NavigationMenu()
+//			NavigationBar()
 			
 		}
 		.gesture(

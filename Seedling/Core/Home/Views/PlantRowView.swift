@@ -14,8 +14,8 @@ struct PlantRowView: View {
     var body: some View {
 		VStack(alignment: .leading) {
 			// plant name
-			if let hasVariety = plant.variety {
-				Text("\(plant.name ?? ""): \(plant.variety ?? "")")
+			if let variety = plant.variety {
+				Text("\(plant.name ?? ""): \(variety)")
 					.font(.handjet(.bold, size: 24))
 					.foregroundStyle(Color.theme.textPrimary)
 			} else {
