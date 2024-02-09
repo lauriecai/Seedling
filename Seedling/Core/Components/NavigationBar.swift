@@ -9,32 +9,17 @@ import SwiftUI
 
 struct NavigationBar: View {
 	
-	@State private var currentTab = "Garden"
+	@Binding var selectedTab: String
 	
     var body: some View {
-		ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
-			TabView(selection: $currentTab) {
-				Text("Garden")
-					.tag("Garden")
-				
-				Text("Add Plant")
-					.tag("Add Plant")
-			}
-			
-			HStack {
-				Spacer()
-				NavigationTab(tabName: "Garden", selectedTab: $currentTab)
-				Spacer()
-				NavigationTab(tabName: "Add Plant", selectedTab: $currentTab)
-				Spacer()
-			}
-			.padding(.vertical, 10)
-			.background(Color.theme.backgroundDark)
+		HStack {
+			Spacer()
+			NavigationTab(tabName: "Garden", selectedTab: $selectedTab)
+			Spacer()
+			NavigationTab(tabName: "Add Plant", selectedTab: $selectedTab)
+			Spacer()
 		}
-		.ignoresSafeArea()
+		.padding(.vertical, 10)
+		.background(Color.theme.backgroundDark)
     }
-}
-
-#Preview {
-    NavigationBar()
 }
