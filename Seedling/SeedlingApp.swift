@@ -11,11 +11,22 @@ import SwiftUI
 struct SeedlingApp: App {
 	
 	@StateObject private var viewModel = HomeViewModel()
+	@State var currentTab = "Garden"
 	
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-				.environmentObject(viewModel)
-        }
+		WindowGroup {
+			ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
+				TabView(selection: $currentTab) {
+					HomeView()
+						.tag("Garden")
+					
+					Text("Add Plant")
+						.tag("Add Plant")
+				}
+				
+				NavigationBar(selectedTab: $currentTab)
+			}
+			.ignoresSafeArea()
+		}
     }
 }
