@@ -26,5 +26,6 @@ struct ColorTheme {
 	let textLight = Color("ColorTextLight")
 	
 	let accentRed = Color("ColorAccentRed")
+	let accentGreen = Color("ColorAccentGreen")
 	
 }

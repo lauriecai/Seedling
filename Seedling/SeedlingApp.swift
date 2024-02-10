@@ -24,8 +24,6 @@ struct SeedlingApp: App {
 						.tag("Add Plant")
 				}
 				.environmentObject(viewModel)
-				
-				NavigationBar(selectedTab: $currentTab)
 			}
 			.ignoresSafeArea()
 		}
