@@ -11,18 +11,13 @@ struct ButtonCircle: View {
 	
 	let icon: String
 	
-    var body: some View {
-		Button {
-			print("button pressed")
-		} label: {
-			Image(icon)
-				.foregroundStyle(Color.black)
-				.frame(width: 65, height: 65)
-				.background(Color.theme.accentGreen)
-				.clipShape(Circle())
-				
-		}
-    }
+	var body: some View {
+		Image(icon)
+			.foregroundStyle(Color.black)
+			.frame(width: 65, height: 65)
+			.background(Color.theme.accentGreen)
+			.clipShape(Circle())
+	}
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
