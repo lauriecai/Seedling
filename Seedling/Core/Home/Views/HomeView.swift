@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
 	
 	@EnvironmentObject private var viewModel: HomeViewModel
+	
 	@GestureState private var dragDistance = CGSize.zero
 	
     var body: some View {
@@ -112,7 +113,7 @@ extension HomeView {
 						Spacer()
 						Text("Delete")
 							.font(.handjet(.bold, size: 18))
-							.foregroundStyle(Color.theme.textLight)
+							.foregroundStyle(Color.white)
 							.padding()
 					}
 					

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddPlantView: View {
-	
+	@Environment(\.dismiss) var dismiss
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
 	@State private var name = ""
