@@ -26,6 +26,11 @@ struct HomeView: View {
 				plantsList
 			}
 			.padding(.horizontal)
+			
+			// cta
+			ButtonCircle(icon: "PlusIcon")
+				.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+				.padding(.horizontal, 20)
 		}
 		.gesture(
 			TapGesture().onEnded({ _ in
