@@ -23,7 +23,6 @@ struct HomeView: View {
 			
 			// content
 			VStack(alignment: .leading, spacing: 15) {
-//				weatherRow
 				dateHeader
 				plantsList
 			}
