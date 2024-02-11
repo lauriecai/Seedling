@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AddPlantView: View {
-	@Environment(\.dismiss) var dismiss
 	@EnvironmentObject private var viewModel: HomeViewModel
+	
+	@Environment(\.dismiss) var dismiss
 	
 	@State private var name = ""
 	@State private var variety = ""
@@ -39,10 +40,14 @@ struct AddPlantView: View {
 					}
 				}
 				
-				Section {
-					Button("Save") {
-						viewModel.addPlant(type: type, name: name, variety: variety, stage: stage)
-					}
+				Button("Save") {
+					viewModel.addPlant(
+						type: type,
+						name: name,
+						variety: variety,
+						stage: stage
+					)
+					dismiss()
 				}
 			}
 		}

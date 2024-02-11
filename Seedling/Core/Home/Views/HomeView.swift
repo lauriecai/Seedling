@@ -13,6 +13,8 @@ struct HomeView: View {
 	
 	@GestureState private var dragDistance = CGSize.zero
 	
+	@State private var showAddPlant = false
+	
     var body: some View {
 		ZStack {
 			// background
@@ -29,6 +31,9 @@ struct HomeView: View {
 			
 			// cta
 			addPlantButton
+				.onTapGesture {
+					showAddPlant.toggle()
+				}
 		}
 		.gesture(
 			TapGesture().onEnded({ _ in
@@ -44,6 +49,9 @@ struct HomeView: View {
 				}
 			})
 		)
+		.sheet(isPresented: $showAddPlant) {
+			AddPlantView()
+		}
 		
     }
 }
