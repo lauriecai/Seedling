@@ -14,8 +14,10 @@ struct SeedlingApp: App {
 	
     var body: some Scene {
 		WindowGroup {
-			HomeView()
-				.environmentObject(viewModel)
+			NavigationView {
+				HomeView()
+					.environmentObject(viewModel)
+			}
 		}
     }
 }

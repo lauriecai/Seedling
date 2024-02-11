@@ -28,9 +28,7 @@ struct HomeView: View {
 			.padding(.horizontal)
 			
 			// cta
-			ButtonCircle(icon: "PlusIcon")
-				.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-				.padding(.horizontal, 20)
+			addPlantButton
 		}
 		.gesture(
 			TapGesture().onEnded({ _ in
@@ -136,6 +134,15 @@ extension HomeView {
 						)
 				}
 			}
+		}
+	}
+	
+//	actions
+	private var addPlantButton: some View {
+		NavigationLink(destination: AddPlantView()) {
+			ButtonCircle(icon: "PlusIcon")
+				.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+				.padding(.horizontal, 20)
 		}
 	}
 }
