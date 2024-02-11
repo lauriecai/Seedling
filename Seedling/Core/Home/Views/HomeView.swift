@@ -16,14 +16,14 @@ struct HomeView: View {
 	@State private var showAddPlant = false
 	
     var body: some View {
-		ZStack {
+		ZStack(alignment: .bottomTrailing) {
 			// background
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
 			// content
 			VStack(alignment: .leading, spacing: 15) {
-				weatherRow
+//				weatherRow
 				dateHeader
 				plantsList
 			}
@@ -31,9 +31,8 @@ struct HomeView: View {
 			
 			// cta
 			addPlantButton
-				.onTapGesture {
-					showAddPlant.toggle()
-				}
+				.onTapGesture { showAddPlant.toggle() }
+				.padding(.trailing, 20)
 		}
 		.gesture(
 			TapGesture().onEnded({ _ in
@@ -52,7 +51,6 @@ struct HomeView: View {
 		.sheet(isPresented: $showAddPlant) {
 			AddPlantView()
 		}
-		
     }
 }
 
@@ -69,6 +67,7 @@ extension HomeView {
 		Text("\(Date().withDayAndDate())")
 			.font(.handjet(.extraBold, size: 32))
 			.foregroundStyle(Color.theme.textPrimary)
+			.frame(maxWidth: .infinity, alignment: .leading)
 	}
 	
 	private var weatherRow: some View {
@@ -149,8 +148,7 @@ extension HomeView {
 	private var addPlantButton: some View {
 		NavigationLink(destination: AddPlantView()) {
 			ButtonCircle(icon: "PlusIcon")
-				.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-				.padding(.horizontal, 20)
+				.frame(width: 65, height: 65)
 		}
 	}
 }
