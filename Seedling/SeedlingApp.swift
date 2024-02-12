@@ -11,11 +11,22 @@ import SwiftUI
 struct SeedlingApp: App {
 	
 	@StateObject private var viewModel = HomeViewModel()
+	@State private var showLaunchView: Bool = true
 	
     var body: some Scene {
 		WindowGroup {
-			HomeView()
-				.environmentObject(viewModel)
+			ZStack {
+				HomeView()
+					.environmentObject(viewModel)
+				
+				ZStack {
+					if showLaunchView {
+						LaunchView(showLaunchView: $showLaunchView)
+							.transition(.move(edge: .leading))
+					}
+				}
+				.zIndex(2.0)
+			}
 		}
     }
 }
