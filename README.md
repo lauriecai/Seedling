@@ -13,16 +13,13 @@
 
 # Seedling
 
-
 ### Summary
 ---
 Seedling is a journaling platform that enables users to capture significant moments of their gardening journey. Many gardening products revolve around the tactical aspects of gardening such as tracking specific plant needs with reminders to complete certain tasks. Seedling was created to capture the history of your garden in story form through a timeline of thoughts, photos, and events.
 
-
 ### About the developer
 ---
 Seedling was created by Laurie Cai, a product designer transitioning into software engineering.
-
 
 ### Technologies
 ---
@@ -30,6 +27,6 @@ Seedling was created by Laurie Cai, a product designer transitioning into softwa
 * CoreData
 * MVVM architecture
 
-
 ### Features
 ---
+![Home View List of Plants](images/ui/home-view.png)
