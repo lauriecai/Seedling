@@ -30,6 +30,7 @@
 		D3EFDE142B79387B00A6D22C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE132B79387B00A6D22C /* DetailViewModel.swift */; };
 		D3EFDE1A2B7A90ED00A6D22C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3EFDE192B7A90ED00A6D22C /* LaunchScreen.storyboard */; };
 		D3EFDE362B7D34F600A6D22C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D3EFDE352B7D34F600A6D22C /* README.md */; };
+		D3EFDE382B7D7B7500A6D22C /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE372B7D7B7500A6D22C /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		D3EFDE132B79387B00A6D22C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		D3EFDE192B7A90ED00A6D22C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3EFDE352B7D34F600A6D22C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D3EFDE372B7D7B7500A6D22C /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EFDE112B79387100A6D22C /* DetailView.swift */,
+				D3EFDE372B7D7B7500A6D22C /* NoteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
 				D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */,
+				D3EFDE382B7D7B7500A6D22C /* NoteView.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D338A1E42B71D83300E3676E /* Date.swift in Sources */,
 				D338A1E22B71D61C00E3676E /* NavigationBar.swift in Sources */,
