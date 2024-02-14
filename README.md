@@ -9,7 +9,7 @@
     </objects>
 </document>
 
-![Seedling Cover](images/seedling-cover.png)
+<img src="images/seedling-cover.png" width="50%">
 
 # Seedling
 
@@ -25,4 +25,4 @@ Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a p
 * MVVM architecture
 
 ## Features
-![Home View List of Plants](images/ui/home-view.png)
+<img src="images/ui/home-view.png" width="50%">
