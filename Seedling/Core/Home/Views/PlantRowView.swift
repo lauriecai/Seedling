@@ -16,11 +16,11 @@ struct PlantRowView: View {
 			// plant name
 			if let variety = plant.variety,
 			   !variety.isEmpty {
-				Text("\(plant.name ?? ""): \(variety)")
+				Text("\(plant.wrappedName): \(variety)")
 					.font(.handjet(.bold, size: 24))
 					.foregroundStyle(Color.theme.textPrimary)
 			} else {
-				Text("\(plant.name ?? "")")
+				Text(plant.wrappedName)
 					.font(.handjet(.bold, size: 24))
 					.foregroundStyle(Color.theme.textPrimary)
 			}
@@ -28,7 +28,7 @@ struct PlantRowView: View {
 			// plant properties
 			HStack {
 				// stage
-				Text("\(plant.stage ?? "")")
+				Text(plant.wrappedStage)
 					.font(.handjet(.regular, size: 18))
 					.foregroundStyle(Color.theme.textPrimary)
 				
@@ -40,7 +40,3 @@ struct PlantRowView: View {
 		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
-
-//#Preview(traits: .sizeThatFitsLayout) {
-//	PlantRowView()
-//}
