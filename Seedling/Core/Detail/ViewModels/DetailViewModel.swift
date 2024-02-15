@@ -12,5 +12,9 @@ class DetailViewModel: ObservableObject {
 	
 	let manager = CoreDataManager.shared
 	
-	@Published var notes: [Note] = []
+	@Published var plant: Plant
+	
+	init(plant: Plant) {
+		self.plant = plant
+	}
 }

@@ -9,15 +9,13 @@ import SwiftUI
 
 struct DetailView: View {
 	
+	@StateObject private var viewModel: DetailViewModel
+	
+	init(plant: Plant) {
+		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
+	}
+	
     var body: some View {
-		ScrollView {
-			ForEach(0..<20, id: \.self) { _ in
-				NoteView()
-			}
-		}
+		PlantRowView(plant: viewModel.plant)
     }
-}
-
-#Preview {
-    DetailView()
 }

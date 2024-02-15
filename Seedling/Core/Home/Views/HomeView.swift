@@ -127,7 +127,7 @@ extension HomeView {
 					}
 					
 					NavigationLink {
-						DetailView()
+						DetailView(plant: plant)
 					} label: {
 						PlantRowView(plant: plant)
 							.offset(x: CGFloat(plant.offset))
