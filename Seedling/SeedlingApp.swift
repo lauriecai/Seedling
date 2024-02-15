@@ -15,9 +15,11 @@ struct SeedlingApp: App {
 	
     var body: some Scene {
 		WindowGroup {
-			ZStack {
-				HomeView()
-					.environmentObject(viewModel)
+			NavigationStack {
+				ZStack {
+					HomeView()
+						.environmentObject(viewModel)
+				}
 			}
 		}
     }

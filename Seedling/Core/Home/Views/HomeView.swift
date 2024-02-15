@@ -126,18 +126,22 @@ extension HomeView {
 							.padding()
 					}
 					
-					PlantRowView(plant: plant)
-						.offset(x: CGFloat(plant.offset))
-						.gesture(
-							DragGesture()
-								.updating($dragDistance, body: { value, state, _ in
-									state = value.translation
-									onDragChange(plant: plant, value: value)
-								})
-								.onEnded({ value in
-									onDragEnd(plant: plant, value: value)
-								})
-						)
+					NavigationLink {
+						DetailView()
+					} label: {
+						PlantRowView(plant: plant)
+							.offset(x: CGFloat(plant.offset))
+							.gesture(
+								DragGesture()
+									.updating($dragDistance, body: { value, state, _ in
+										state = value.translation
+										onDragChange(plant: plant, value: value)
+									})
+									.onEnded({ value in
+										onDragEnd(plant: plant, value: value)
+									})
+							)
+					}
 				}
 			}
 		}
