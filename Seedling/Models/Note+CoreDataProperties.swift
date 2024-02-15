@@ -16,12 +16,24 @@ extension Note {
         return NSFetchRequest<Note>(entityName: "Note")
     }
 
-    @NSManaged public var body: String?
     @NSManaged public var id: UUID?
-    @NSManaged public var offset: Float
     @NSManaged public var timestamp: Date?
     @NSManaged public var title: String?
+	@NSManaged public var body: String?
     @NSManaged public var plant: Plant?
+	@NSManaged public var offset: Float
+	
+	public var wrappedTimestamp: Date {
+		timestamp ?? Date()
+	}
+	
+	public var wrappedTitle: String {
+		title ?? ""
+	}
+	
+	public var wrappedBody: String {
+		body ?? ""
+	}
 
 }
 
