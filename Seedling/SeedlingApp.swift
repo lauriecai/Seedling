@@ -18,9 +18,9 @@ struct SeedlingApp: App {
 			NavigationStack {
 				ZStack {
 					HomeView()
-						.environmentObject(viewModel)
 				}
 			}
+			.environmentObject(viewModel)
 		}
     }
 }

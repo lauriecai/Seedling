@@ -15,20 +15,20 @@ struct HomeView: View {
 	
 	@State private var showAddPlant = false
 	
+	@State private var selectedPlant: Plant? = nil
+	@State private var showingDetailView = false
+	
     var body: some View {
 		ZStack(alignment: .bottomTrailing) {
-			// background
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
-			// content
 			VStack(alignment: .leading, spacing: 15) {
 				dateHeader
 				plantsList
 			}
 			.padding(.horizontal)
 			
-			// cta
 			addPlantButton
 				.onTapGesture { showAddPlant.toggle() }
 				.padding(.trailing, 20)
@@ -50,6 +50,9 @@ struct HomeView: View {
 		.sheet(isPresented: $showAddPlant) {
 			AddPlantView()
 		}
+		.navigationDestination(isPresented: $showingDetailView) {
+			DetailLoadingView(plant: $selectedPlant)
+		}
     }
 }
 
@@ -61,7 +64,7 @@ struct HomeView: View {
 // MARK: - Condensed UI
 extension HomeView {
 	
-//	weather
+/// ``weather``
 	private var dateHeader: some View {
 		Text("\(Date().withDayAndDate())")
 			.font(.handjet(.extraBold, size: 32))
@@ -104,7 +107,7 @@ extension HomeView {
 		.cornerRadius(8)
 	}
 	
-//	plants list
+/// ``plants list``
 	private var plantsList: some View {
 		ScrollView {
 			ForEach(viewModel.plants) { plant in
@@ -126,22 +129,36 @@ extension HomeView {
 							.padding()
 					}
 					
-					NavigationLink {
-						DetailView(plant: plant)
-					} label: {
-						PlantRowView(plant: plant)
-							.offset(x: CGFloat(plant.offset))
-							.gesture(
-								DragGesture()
-									.updating($dragDistance, body: { value, state, _ in
-										state = value.translation
-										onDragChange(plant: plant, value: value)
-									})
-									.onEnded({ value in
-										onDragEnd(plant: plant, value: value)
-									})
-							)
-					}
+					PlantRowView(plant: plant)
+						.offset(x: CGFloat(plant.offset))
+						.gesture(
+							DragGesture()
+								.updating($dragDistance, body: { value, state, _ in
+									state = value.translation
+									onDragChange(plant: plant, value: value)
+								})
+								.onEnded({ value in
+									onDragEnd(plant: plant, value: value)
+								})
+						)
+						.onTapGesture { segue(plant: plant) }
+					
+//					NavigationLink {
+//						DetailView(plant: plant)
+//					} label: {
+//						PlantRowView(plant: plant)
+//							.offset(x: CGFloat(plant.offset))
+//							.gesture(
+//								DragGesture()
+//									.updating($dragDistance, body: { value, state, _ in
+//										state = value.translation
+//										onDragChange(plant: plant, value: value)
+//									})
+//									.onEnded({ value in
+//										onDragEnd(plant: plant, value: value)
+//									})
+//							)
+//					}
 				}
 			}
 		}
@@ -159,7 +176,13 @@ extension HomeView {
 // MARK: - UI Functions
 extension HomeView {
 	
-//	card drag behavior
+/// ``segueway into detail view``
+	private func segue(plant: Plant) {
+		selectedPlant = plant
+		showingDetailView.toggle()
+	}
+	
+/// ``card drag behavior``
 	private func onDragChange(plant: Plant, value: DragGesture.Value) {
 		if value.translation.width < 0 {
 			DispatchQueue.main.async {
