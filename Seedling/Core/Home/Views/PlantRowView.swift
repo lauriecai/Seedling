@@ -14,9 +14,8 @@ struct PlantRowView: View {
     var body: some View {
 		VStack(alignment: .leading) {
 			// plant name
-			if let variety = plant.variety,
-			   !variety.isEmpty {
-				Text("\(plant.wrappedName): \(variety)")
+			if !plant.wrappedVariety.isEmpty {
+				Text("\(plant.wrappedName): \(plant.wrappedVariety)")
 					.font(.handjet(.bold, size: 24))
 					.foregroundStyle(Color.theme.textPrimary)
 			} else {

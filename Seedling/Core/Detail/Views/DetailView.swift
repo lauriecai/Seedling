@@ -11,25 +11,31 @@ struct DetailLoadingView: View {
 	
 	@Binding var plant: Plant?
 	
-	init(plant: Binding<Plant?>) {
-		self._plant = plant
-		print("initializing detail view for :\(plant.wrappedValue?.wrappedName)")
-	}
-	
 	var body: some View {
-		Text(plant?.wrappedName ?? "")
+		ZStack {
+			if let plant = plant {
+				DetailView(plant: plant)
+			}
+		}
 	}
 }
 
-//struct DetailView: View {
-//	
-//	@StateObject private var viewModel: DetailViewModel
-//	
-//	init(plant: Plant) {
-//		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
-//	}
-//	
-//    var body: some View {
-//		PlantRowView(plant: viewModel.plant)
-//    }
-//}
+struct DetailView: View {
+	
+	@StateObject private var viewModel: DetailViewModel
+	
+	init(plant: Plant) {
+		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
+		print("DetailView initialized for \(plant.wrappedName)")
+	}
+	
+    var body: some View {
+		ZStack {
+			Color.theme.backgroundPrimary
+				.ignoresSafeArea()
+			
+			Text(viewModel.plant.wrappedName)
+		}
+		.navigationTitle(viewModel.plant.wrappedFullName)
+    }
+}

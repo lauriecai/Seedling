@@ -31,6 +31,14 @@ extension Plant {
 	public var wrappedVariety: String {
 		variety ?? ""
 	}
+	
+	public var wrappedFullName: String {
+		if !wrappedVariety.isEmpty {
+			return "\(wrappedName): \(wrappedVariety)"
+		} else {
+			return "\(wrappedName)"
+		}
+	}
 
 	public var wrappedStage: String {
 		stage ?? ""
