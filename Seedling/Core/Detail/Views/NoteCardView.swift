@@ -1,16 +1,13 @@
 //
-//  NoteView.swift
+//  NoteCardView.swift
 //  Seedling
 //
-//  Created by Laurie Cai on 2/14/24.
+//  Created by Laurie Cai on 2/18/24.
 //
 
 import SwiftUI
 
-struct NoteView: View {
-	
-//	let plant: Plant
-	
+struct NoteCardView: View {
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			Text("February 14, 2023: 3:05pm")
@@ -32,5 +29,5 @@ struct NoteView: View {
 }
 
 #Preview {
-    NoteView()
+    NoteCardView()
 }
