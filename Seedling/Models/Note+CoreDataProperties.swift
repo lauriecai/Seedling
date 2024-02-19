@@ -16,11 +16,11 @@ extension Note {
         return NSFetchRequest<Note>(entityName: "Note")
     }
 
+	@NSManaged public var plant: Plant?
     @NSManaged public var id: UUID?
     @NSManaged public var timestamp: Date?
     @NSManaged public var title: String?
 	@NSManaged public var body: String?
-    @NSManaged public var plant: Plant?
 	@NSManaged public var offset: Float
 	
 	public var wrappedTimestamp: Date {
@@ -34,7 +34,6 @@ extension Note {
 	public var wrappedBody: String {
 		body ?? ""
 	}
-
 }
 
 extension Note : Identifiable {

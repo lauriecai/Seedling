@@ -17,18 +17,16 @@ class DetailViewModel: ObservableObject {
 	
 	init(plant: Plant) {
 		self.plant = plant
-		print("detail view model assigned \(plant.wrappedName) to plant var")
-		fetchNotes(for: plant)
 	}
 	
-	private func fetchNotes(for plant: Plant) {
-		print("in fetchNotes(for plant: Plant) function")
+	func fetchNotes(for plant: Plant) {
+		print("fetching notes for \(plant.wrappedName)")
 		let request = NSFetchRequest<Note>(entityName: "Note")
 		request.predicate = NSPredicate(format: "plant == %@", plant)
 		
 		do {
 			notes = try manager.context.fetch(request)
-			print("notes fetched")
+			print("done fetching notes for \(plant.wrappedName)")
 		} catch let error {
 			print("Error fetching plants from Core Data. \(error)")
 		}
@@ -36,16 +34,15 @@ class DetailViewModel: ObservableObject {
 	
 	private func save() {
 		manager.save()
-		fetchNotes(for: plant)
 	}
 	
-	func addNote(plant: Plant) {
+	func addNote(plant: Plant, title: String, body: String) {
 		let newNote = Note(context: manager.context)
 		newNote.plant = plant
 		newNote.id = UUID()
 		newNote.timestamp = Date()
-		newNote.title = "here's a note about my \(plant.wrappedName)!"
-		newNote.body = "here's a description of something that happened today. this will probably contain events in the future but for now it's just free text."
+		newNote.title = title
+		newNote.body = body
 		newNote.offset = 0
 		
 		save()

@@ -23,11 +23,12 @@ struct DetailLoadingView: View {
 struct DetailView: View {
 	
 	@StateObject private var viewModel: DetailViewModel
-	
-	@State private var showAddNote = false
+
+	@State private var plant: Plant
 	
 	init(plant: Plant) {
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
+		self.plant = plant
 		print("DetailView initialized for \(plant.wrappedName)")
 	}
 	
@@ -36,27 +37,31 @@ struct DetailView: View {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
-			ScrollView {
-				ForEach(0..<10) { _ in
-					NoteCardView()
-				}
-			}
+			notesList
 			
 			addNoteButton
-				.onTapGesture { showAddNote.toggle() }
 				.padding(.trailing, 20)
 		}
 		.navigationTitle(viewModel.plant.wrappedFullName)
-		.sheet(isPresented: $showAddNote) {
-			AddNoteView(plant: viewModel.plant)
+		.onAppear {
+			viewModel.fetchNotes(for: plant)
 		}
     }
 }
 
 extension DetailView {
 	
+	private var notesList: some View {
+		ScrollView {
+			ForEach(viewModel.notes) { note in
+				NoteCardView(note: note)
+			}
+		}
+		.frame(maxWidth: .infinity)
+	}
+	
 	private var addNoteButton: some View {
-		NavigationLink(destination: AddNoteView(plant: viewModel.plant)) {
+		NavigationLink(destination: AddNoteView(viewModel: DetailViewModel(plant: plant))) {
 			ButtonCircle(icon: "PlusIcon")
 		}
 	}

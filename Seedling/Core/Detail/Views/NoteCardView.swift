@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct NoteCardView: View {
+	
+	let note: Note
+	
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			Text("February 14, 2023: 3:05pm")
-				.font(.handjet(.regular, size: 16))
-				.foregroundStyle(Color.theme.textPrimary.opacity(0.50))
+			HStack {
+				Text(note.wrappedTimestamp.asDateAndTime())
+					.font(.handjet(.regular, size: 16))
+					.foregroundStyle(Color.theme.textPrimary.opacity(0.50))
+				
+				Spacer()
+			}
 			
-			Text("They've finally sprouted!")
+			Text(note.wrappedTitle)
 				.font(.handjet(.bold, size: 24))
 				.foregroundStyle(Color.theme.textPrimary)
 			
-			Text("I didn't think they were going to survive. What a pleasant surprise. Maybe I should stick them outside for a few hours everyday to get the stems to thicken up a bit. Hope no pests get to them.")
+			Text(note.wrappedBody)
 				.font(.handjet(.regular, size: 18))
 				.foregroundStyle(Color.theme.textPrimary)
 		}
@@ -26,8 +33,4 @@ struct NoteCardView: View {
 		.background(Color.theme.backgroundAccent)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
-}
-
-#Preview {
-    NoteCardView()
 }

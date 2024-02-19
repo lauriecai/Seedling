@@ -13,8 +13,6 @@ struct HomeView: View {
 	
 	@GestureState private var dragDistance = CGSize.zero
 	
-	@State private var showAddPlant = false
-	
 	@State private var selectedPlant: Plant? = nil
 	@State private var showingDetailView = false
 	
@@ -30,7 +28,6 @@ struct HomeView: View {
 			.padding(.horizontal)
 			
 			addPlantButton
-				.onTapGesture { showAddPlant.toggle() }
 				.padding(.trailing, 20)
 		}
 		.gesture(
@@ -47,9 +44,6 @@ struct HomeView: View {
 				}
 			})
 		)
-		.sheet(isPresented: $showAddPlant) {
-			AddPlantView()
-		}
 		.navigationDestination(isPresented: $showingDetailView) {
 			DetailLoadingView(plant: $selectedPlant)
 		}
@@ -66,7 +60,7 @@ extension HomeView {
 	
 /// ``weather``
 	private var dateHeader: some View {
-		Text("\(Date().withDayAndDate())")
+		Text(Date().asDayAndDate())
 			.font(.handjet(.extraBold, size: 32))
 			.foregroundStyle(Color.theme.textPrimary)
 			.frame(maxWidth: .infinity, alignment: .leading)

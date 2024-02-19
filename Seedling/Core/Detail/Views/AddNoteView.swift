@@ -9,9 +9,36 @@ import SwiftUI
 
 struct AddNoteView: View {
 	
-	let plant: Plant
+	@ObservedObject var viewModel: DetailViewModel
+	
+	@Environment(\.dismiss) var dismiss
+	
+	@State private var title: String = ""
+	@State private var bodyText: String = ""
 	
     var body: some View {
-		Text("Add a new note for \(plant.wrappedFullName)")
+		NavigationView {
+			Form {
+				Section {
+					TextField("Title", text: $title)
+				}
+				
+				Section("Description") {
+					TextEditor(text: $bodyText)
+				}
+				
+				Button("Save") {
+					viewModel.addNote(
+						plant: viewModel.plant,
+						title: title,
+						body: bodyText
+					)
+					
+					dismiss()
+				}
+			}
+		}
     }
 }
+
+

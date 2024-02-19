@@ -27,6 +27,11 @@ class HomeViewModel: ObservableObject {
 		}
 	}
 	
+	func save() {
+		manager.save()
+		fetchPlants() // refreshes plants array with most recently saved data
+	}
+	
 	func addPlant(type: String, name: String, variety: String, stage: String) {
 		let newPlant = Plant(context: manager.context)
 		newPlant.id = UUID()
@@ -37,11 +42,6 @@ class HomeViewModel: ObservableObject {
 		newPlant.offset = 0
 		
 		save()
-	}
-	
-	func save() {
-		manager.save()
-		fetchPlants() // refreshes plants array with most recently saved data
 	}
 	
 	func deletePlant(plant: Plant) {
