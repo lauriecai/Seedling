@@ -20,6 +20,10 @@ class HomeViewModel: ObservableObject {
 	
 	private func fetchPlants() {
 		let request = NSFetchRequest<Plant>(entityName: "Plant")
+		
+		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+		request.sortDescriptors = [sortDescriptor]
+		
 		do {
 			plants = try manager.context.fetch(request)
 		} catch let error {
