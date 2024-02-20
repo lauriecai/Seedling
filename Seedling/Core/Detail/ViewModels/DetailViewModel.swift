@@ -24,6 +24,9 @@ class DetailViewModel: ObservableObject {
 		let request = NSFetchRequest<Note>(entityName: "Note")
 		request.predicate = NSPredicate(format: "plant == %@", plant)
 		
+		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+		request.sortDescriptors = [sortDescriptor]
+		
 		do {
 			notes = try manager.context.fetch(request)
 			print("done fetching notes for \(plant.wrappedName)")
