@@ -141,7 +141,7 @@ extension HomeView {
 		}
 	}
 	
-//	actions
+/// ``actions``
 	private var addPlantButton: some View {
 		NavigationLink(destination: AddPlantView()) {
 			ButtonCircle(icon: "PlusIcon")

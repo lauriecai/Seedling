@@ -23,12 +23,14 @@ struct DetailLoadingView: View {
 struct DetailView: View {
 	
 	@StateObject private var viewModel: DetailViewModel
+	
+	@Environment(\.dismiss) var dismiss
 
 	@State private var plant: Plant
 	
 	init(plant: Plant) {
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
-		self.plant = plant
+		_plant = State(initialValue: plant)
 		print("DetailView initialized for \(plant.wrappedName)")
 	}
 	
@@ -43,8 +45,19 @@ struct DetailView: View {
 				.padding(.trailing, 20)
 		}
 		.navigationTitle(viewModel.plant.wrappedFullName)
-		.onAppear {
-			viewModel.fetchNotes(for: plant)
+		.onAppear { viewModel.fetchNotes(for: plant) }
+		.navigationBarBackButtonHidden(true)
+		.toolbar {
+			ToolbarItem(placement: .topBarLeading) {
+				HStack(spacing: 5) {
+					Image(systemName: "chevron.left")
+						.font(.handjet(.medium, size: 18))
+					Text("Back")
+						.font(.handjet(.bold, size: 20))
+				}
+				.foregroundStyle(Color.theme.accentGreen)
+				.onTapGesture { dismiss() }
+			}
 		}
     }
 }
