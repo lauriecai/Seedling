@@ -21,9 +21,11 @@ struct NoteCardView: View {
 				Spacer()
 			}
 			
-			Text(note.wrappedTitle)
-				.font(.handjet(.bold, size: 24))
-				.foregroundStyle(Color.theme.textPrimary)
+			if !note.wrappedTitle.isEmpty {
+				Text(note.wrappedTitle)
+					.font(.handjet(.bold, size: 24))
+					.foregroundStyle(Color.theme.textPrimary)
+			}
 			
 			Text(note.wrappedBody)
 				.font(.handjet(.regular, size: 18))
