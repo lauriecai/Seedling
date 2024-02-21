@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */; };
 		D3385B432B164C330055234B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B422B164C330055234B /* Color.swift */; };
 		D3385B5C2B165E9D0055234B /* Handjet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B582B165E9D0055234B /* Handjet-Regular.ttf */; };
 		D3385B5D2B165E9D0055234B /* Handjet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B592B165E9D0055234B /* Handjet-Bold.ttf */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D3385B422B164C330055234B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D3385B582B165E9D0055234B /* Handjet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Regular.ttf"; sourceTree = "<group>"; };
 		D3385B592B165E9D0055234B /* Handjet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Bold.ttf"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				D3385B422B164C330055234B /* Color.swift */,
 				D338A1E32B71D83300E3676E /* Date.swift */,
 				D3385B6A2B16DEC80055234B /* Font.swift */,
+				D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				D3EFDE542B8298D900A6D22C /* NoteCardView.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
+				D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */,
 				D338A1E42B71D83300E3676E /* Date.swift in Sources */,
 				D3EFDE4D2B7EB66B00A6D22C /* Note+CoreDataClass.swift in Sources */,
 				D338A1E22B71D61C00E3676E /* NavigationBar.swift in Sources */,
