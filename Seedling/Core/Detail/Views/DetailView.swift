@@ -38,9 +38,7 @@ struct DetailView: View {
 		ZStack(alignment: .bottomTrailing) {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
-			
 			notesList
-			
 			addNoteButton
 				.padding(.trailing, 20)
 		}
