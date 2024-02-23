@@ -23,33 +23,57 @@ struct AddPlantView: View {
 	
     var body: some View {
 		NavigationView {
-			Form {
-				Section {
-					TextField("Name of plant", text: $name)
-					TextField("Variety", text: $variety)
-					
-					Picker("Stage", selection: $stage) {
-						ForEach(stages, id: \.self) {
-							Text($0)
-						}
-					}
-					
-					Picker("Type", selection: $type) {
-						ForEach(types, id: \.self) {
-							Text($0)
+			ZStack {
+				Color.theme.backgroundPrimary
+					.ignoresSafeArea()
+				
+				ScrollView {
+					VStack {
+						TextField("Name of plant", text: $name)
+							.foregroundStyle(Color.theme.textLight)
+						TextField("Variety", text: $variety)
+							.foregroundStyle(Color.theme.textLight)
+						
+						Button("Save") {
+							viewModel.addPlant(
+								type: type,
+								name: name,
+								variety: variety,
+								stage: stage
+							)
+							dismiss()
 						}
 					}
 				}
 				
-				Button("Save") {
-					viewModel.addPlant(
-						type: type,
-						name: name,
-						variety: variety,
-						stage: stage
-					)
-					dismiss()
-				}
+//				Form {
+//					Section {
+//						TextField("Name of plant", text: $name)
+//						TextField("Variety", text: $variety)
+//						
+//						Picker("Stage", selection: $stage) {
+//							ForEach(stages, id: \.self) {
+//								Text($0)
+//							}
+//						}
+//						
+//						Picker("Type", selection: $type) {
+//							ForEach(types, id: \.self) {
+//								Text($0)
+//							}
+//						}
+//					}
+//					
+//					Button("Save") {
+//						viewModel.addPlant(
+//							type: type,
+//							name: name,
+//							variety: variety,
+//							stage: stage
+//						)
+//						dismiss()
+//					}
+//				}
 			}
 		}
     }
