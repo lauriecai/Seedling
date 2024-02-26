@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum PlantStage: String {
+enum PlantStage: String, CaseIterable {
 	case seed = "Seed"
 	case seedling = "Seedling"
 	case bulb = "Bulb"
 	case transplant = "Transplant"
 }
 
-enum PlantType: String {
+enum PlantType: String, CaseIterable {
 	case vegetable = "Vegetable"
 	case fruit = "Fruit"
 	case herb = "Herb"
