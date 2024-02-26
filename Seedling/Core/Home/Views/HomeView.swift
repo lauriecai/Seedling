@@ -15,6 +15,7 @@ struct HomeView: View {
 	
 	@State private var selectedPlant: Plant? = nil
 	@State private var showingDetailView = false
+	@State private var showingAddPlantView = false
 	
     var body: some View {
 		ZStack(alignment: .bottomTrailing) {
@@ -46,6 +47,9 @@ struct HomeView: View {
 		)
 		.navigationDestination(isPresented: $showingDetailView) {
 			DetailLoadingView(plant: $selectedPlant)
+		}
+		.sheet(isPresented: $showingAddPlantView) {
+			AddPlantView()
 		}
     }
 }
@@ -143,10 +147,9 @@ extension HomeView {
 	
 /// ``actions``
 	private var addPlantButton: some View {
-		NavigationLink(destination: AddPlantView()) {
-			ButtonCircle(icon: "PlusIcon")
-				.frame(width: 65, height: 65)
-		}
+		ButtonCircle(icon: "PlusIcon")
+			.frame(width: 65, height: 65)
+			.onTapGesture { showingAddPlantView.toggle() }
 	}
 }
 
