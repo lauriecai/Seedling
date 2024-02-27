@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct ButtonPillRow: View {
+struct ButtonPillRow<T>: View where T: Hashable & RawRepresentable, T.RawValue == String {
 	
 	let rowLabel: String
-	let items: [String]
+	let items: [T]
 	
 	@State private var selectedIndex: Int = 0
+	
+	@Binding var selectedItem: T
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
@@ -22,9 +24,10 @@ struct ButtonPillRow: View {
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
 					ForEach(0..<items.count, id: \.self) { i in
-						ButtonPill(pillText: items[i], isSelected: i == selectedIndex)
+						ButtonPill(pillText: items[i].rawValue, isSelected: i == selectedIndex)
 							.onTapGesture {
 								selectedIndex = i
+								selectedItem = items[i]
 							}
 					}
 				}
@@ -35,5 +38,5 @@ struct ButtonPillRow: View {
 }
 
 #Preview {
-	ButtonPillRow(rowLabel: "Stage", items: ["Seed", "Seedling", "Bulb", "Transplant"])
+	ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: .constant(.seed))
 }

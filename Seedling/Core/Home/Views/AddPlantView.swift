@@ -47,7 +47,7 @@ struct AddPlantView: View {
 							Image(systemName: "chevron.left")
 								.font(.handjet(.medium, size: 18))
 							Text("Back")
-								.font(.handjet(.bold, size: 20))
+								.font(.handjet(.medium, size: 22))
 						}
 						.foregroundStyle(Color.theme.textSecondary)
 						.onTapGesture { dismiss() }
@@ -77,15 +77,19 @@ extension AddPlantView {
 	}
 	
 	private var plantStageSelection: some View {
-		let plantStages = PlantStage.allCases.map { $0.rawValue }
-		
-		return ButtonPillRow(rowLabel: "Stage", items: plantStages)
+		VStack(alignment: .leading, spacing: 10) {
+			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $stage)
+			
+			Text(stage.definition)
+				.font(.handjet(.regular, size: 18))
+				.foregroundStyle(Color.theme.textPrimary.opacity(0.5))
+		}
 	}
 	
 	private var plantTypeSelection: some View {
-		let plantTypes = PlantType.allCases.map { $0.rawValue }
-		
-		return ButtonPillRow(rowLabel: "Type", items: plantTypes)
+		VStack(alignment: .leading, spacing: 10) {
+			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, selectedItem: $type)
+		}
 	}
 	
 	private var saveButton: some View {
@@ -98,7 +102,7 @@ extension AddPlantView {
 			)
 			dismiss()
 		}
-		.font(.handjet(.bold, size: 20))
+		.font(.handjet(.extraBold, size: 22))
 		.foregroundStyle(Color.theme.accentGreen)
 	}
 }
