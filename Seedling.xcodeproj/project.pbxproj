@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */; };
+		D31FBCF62B8D199200C10F9D /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF52B8D199200C10F9D /* TextInput.swift */; };
+		D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */; };
+		D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */; };
+		D31FBCFC2B8D205300C10F9D /* ButtonPillRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */; };
 		D3385B432B164C330055234B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B422B164C330055234B /* Color.swift */; };
 		D3385B5C2B165E9D0055234B /* Handjet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B582B165E9D0055234B /* Handjet-Regular.ttf */; };
 		D3385B5D2B165E9D0055234B /* Handjet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B592B165E9D0055234B /* Handjet-Bold.ttf */; };
@@ -41,6 +45,10 @@
 
 /* Begin PBXFileReference section */
 		D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		D31FBCF52B8D199200C10F9D /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
+		D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantEnums.swift; sourceTree = "<group>"; };
+		D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPill.swift; sourceTree = "<group>"; };
+		D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPillRow.swift; sourceTree = "<group>"; };
 		D3385B422B164C330055234B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D3385B582B165E9D0055234B /* Handjet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Regular.ttf"; sourceTree = "<group>"; };
 		D3385B592B165E9D0055234B /* Handjet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Bold.ttf"; sourceTree = "<group>"; };
@@ -149,8 +157,11 @@
 			isa = PBXGroup;
 			children = (
 				D3EFDE0A2B77E74D00A6D22C /* ButtonCircle.swift */,
+				D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */,
+				D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */,
 				D338A1E12B71D61C00E3676E /* NavigationBar.swift */,
 				D338A1DF2B71B98400E3676E /* NavigationTab.swift */,
+				D31FBCF52B8D199200C10F9D /* TextInput.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -199,6 +210,7 @@
 		D3BBD89F2B6836520061FE92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
 				D3EFDE4B2B7EB66B00A6D22C /* Plant+CoreDataClass.swift */,
 				D3EFDE4C2B7EB66B00A6D22C /* Plant+CoreDataProperties.swift */,
 				D3EFDE492B7EB66B00A6D22C /* Note+CoreDataClass.swift */,
@@ -342,9 +354,12 @@
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
 				D3385B732B16F0420055234B /* PlantRowView.swift in Sources */,
 				D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */,
+				D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */,
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
 				D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */,
+				D31FBCFC2B8D205300C10F9D /* ButtonPillRow.swift in Sources */,
+				D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */,
 				D3EFDE542B8298D900A6D22C /* NoteCardView.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
@@ -357,6 +372,7 @@
 				D338A1E02B71B98400E3676E /* NavigationTab.swift in Sources */,
 				D3EFDE4F2B7EB66B00A6D22C /* Plant+CoreDataClass.swift in Sources */,
 				D3EFDE4E2B7EB66B00A6D22C /* Note+CoreDataProperties.swift in Sources */,
+				D31FBCF62B8D199200C10F9D /* TextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

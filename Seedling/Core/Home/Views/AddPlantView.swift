@@ -15,37 +15,43 @@ struct AddPlantView: View {
 	
 	@State private var name = ""
 	@State private var variety = ""
-	@State private var stage = "Seed"
-	@State private var type = "Vegetable"
-	
-	let stages = ["Seed", "Seedling", "Bulb", "Transplant"]
-	let types = ["Vegetable", "Fruit", "Herb", "Flower"]
+	@State private var stage: PlantStage = .seed
+	@State private var type: PlantType = .vegetable
 	
     var body: some View {
-		ZStack {
-			Color.theme.backgroundPrimary
-				.ignoresSafeArea()
-			
-			ScrollView {
-				VStack(spacing: 20) {
-					plantTextInput
-					plantVarietyInput
-					saveButton
-				}
-				.padding()
-			}
-			.navigationTitle("Add Plant")
-			.navigationBarBackButtonHidden(true)
-			.toolbar {
-				ToolbarItem(placement: .topBarLeading) {
-					HStack(spacing: 5) {
-						Image(systemName: "chevron.left")
-							.font(.handjet(.medium, size: 18))
-						Text("Back")
-							.font(.handjet(.bold, size: 20))
+		NavigationStack {
+			ZStack {
+				Color.theme.backgroundPrimary
+					.ignoresSafeArea()
+				
+				ScrollView {
+					VStack(spacing: 20) {
+						plantTextInput
+						plantVarietyInput
+						
+						plantStageSelection
+						plantTypeSelection
 					}
-					.foregroundStyle(Color.theme.accentGreen)
-					.onTapGesture { dismiss() }
+					.padding()
+				}
+				.navigationTitle("Add Plant")
+				.navigationBarTitleDisplayMode(.inline)
+				.navigationBarBackButtonHidden(true)
+				.toolbar {
+					ToolbarItem(placement: .topBarLeading) {
+						HStack(spacing: 5) {
+							Image(systemName: "chevron.left")
+								.font(.handjet(.medium, size: 18))
+							Text("Back")
+								.font(.handjet(.bold, size: 20))
+						}
+						.foregroundStyle(Color.theme.textSecondary)
+						.onTapGesture { dismiss() }
+					}
+					
+					ToolbarItem(placement: .topBarTrailing) {
+						saveButton
+					}
 				}
 			}
 		}
@@ -59,56 +65,36 @@ struct AddPlantView: View {
 extension AddPlantView {
 	
 	private var plantTextInput: some View {
-		VStack(alignment: .leading, spacing: 10) {
-			ZStack(alignment: .leading) {
-				if name.isEmpty {
-					Text("What's your plant called?")
-						.padding()
-						.foregroundStyle(Color.theme.textSecondary)
-				}
-				
-				TextField("", text: $name)
-					.foregroundStyle(Color.theme.textPrimary)
-					.padding()
-			}
-			.overlay(
-				RoundedRectangle(cornerRadius: 10)
-					.stroke(Color.theme.backgroundAccent, lineWidth: 3)
-			)
-		}
-		.font(.handjet(.bold, size: 22))
+		textInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", name: $name)
 	}
 	
 	private var plantVarietyInput: some View {
-		VStack(alignment: .leading, spacing: 10) {
-			ZStack(alignment: .leading) {
-				if name.isEmpty {
-					Text("What variety is it?")
-						.padding()
-						.foregroundStyle(Color.theme.textSecondary)
-				}
-				
-				TextField("", text: $variety)
-					.foregroundStyle(Color.theme.textPrimary)
-					.padding()
-			}
-			.overlay(
-				RoundedRectangle(cornerRadius: 10)
-					.stroke(Color.theme.backgroundAccent, lineWidth: 3)
-			)
-		}
-		.font(.handjet(.bold, size: 22))
+		textInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", name: $variety)
+	}
+	
+	private var plantStageSelection: some View {
+		let plantStages = PlantStage.allCases.map { $0.rawValue }
+		
+		return ButtonPillRow(rowLabel: "Stage", items: plantStages)
+	}
+	
+	private var plantTypeSelection: some View {
+		let plantTypes = PlantType.allCases.map { $0.rawValue }
+		
+		return ButtonPillRow(rowLabel: "Type", items: plantTypes)
 	}
 	
 	private var saveButton: some View {
 		Button("Save") {
 			viewModel.addPlant(
-				type: type,
+				type: type.rawValue,
 				name: name,
 				variety: variety,
-				stage: stage
+				stage: stage.rawValue
 			)
 			dismiss()
 		}
+		.font(.handjet(.bold, size: 20))
+		.foregroundStyle(Color.theme.accentGreen)
 	}
 }

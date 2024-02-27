@@ -10,17 +10,18 @@ import SwiftUI
 struct ButtonPill: View {
 	
 	let pillText: String
+	let isSelected: Bool
 	
     var body: some View {
 			Text(pillText)
 				.font(.handjet(.bold, size: 24))
 				.padding()
 				.padding(.horizontal, 8)
-				.background(Color.theme.backgroundAccent)
+				.background(isSelected ? Color.theme.accentLightGreen : Color.theme.backgroundAccent)
 				.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
 #Preview {
-    ButtonPill(pillText: "Seed")
+	ButtonPill(pillText: "Seed", isSelected: false)
 }

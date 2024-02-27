@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct textInput: View {
+	
 	let inputHeader: String
 	let inputPlaceholder: String
 	@Binding var name: String
@@ -16,11 +17,13 @@ struct textInput: View {
 		VStack(alignment: .leading, spacing: 10) {
 			Text(inputHeader)
 				.font(.handjet(.bold, size: 24))
+				.foregroundStyle(Color.theme.textPrimary)
 			
 			ZStack(alignment: .leading) {
 				TextField("", text: $name, prompt: Text(inputPlaceholder).foregroundStyle(Color.theme.textPrimary.opacity(0.4))
 				)
 				.padding()
+				.foregroundStyle(Color.theme.textPrimary)
 				.background(Color.theme.backgroundAccent)
 				.clipShape(RoundedRectangle(cornerRadius: 8))
 			}
