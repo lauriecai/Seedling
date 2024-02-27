@@ -16,7 +16,6 @@ struct textInput: View {
 	var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			Text(inputHeader)
-				.font(.handjet(.bold, size: 24))
 				.foregroundStyle(Color.theme.textPrimary)
 			
 			ZStack(alignment: .leading) {
@@ -26,9 +25,11 @@ struct textInput: View {
 				.foregroundStyle(Color.theme.textPrimary)
 				.background(Color.theme.backgroundAccent)
 				.clipShape(RoundedRectangle(cornerRadius: 8))
+				.autocorrectionDisabled()
+				.textInputAutocapitalization(.never)
 			}
 		}
-		.font(.handjet(.bold, size: 24))
+		.font(.handjet(.bold, size: 22))
 	}
 }
 

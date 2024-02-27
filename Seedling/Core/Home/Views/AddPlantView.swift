@@ -18,6 +18,8 @@ struct AddPlantView: View {
 	@State private var stage: PlantStage = .seed
 	@State private var type: PlantType = .vegetable
 	
+	@FocusState private var keyboardFocused: Bool
+	
     var body: some View {
 		NavigationStack {
 			ZStack {
@@ -27,6 +29,8 @@ struct AddPlantView: View {
 				ScrollView {
 					VStack(spacing: 20) {
 						plantTextInput
+							.focused($keyboardFocused)
+							.onAppear { keyboardFocused.toggle() }
 						plantVarietyInput
 						
 						plantStageSelection
@@ -34,7 +38,7 @@ struct AddPlantView: View {
 					}
 					.padding()
 				}
-				.navigationTitle("Add Plant")
+				.navigationTitle("New Plant")
 				.navigationBarTitleDisplayMode(.inline)
 				.navigationBarBackButtonHidden(true)
 				.toolbar {
@@ -85,7 +89,7 @@ extension AddPlantView {
 	}
 	
 	private var saveButton: some View {
-		Button("Save") {
+		Button("Add") {
 			viewModel.addPlant(
 				type: type.rawValue,
 				name: name,

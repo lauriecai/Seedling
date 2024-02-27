@@ -17,7 +17,7 @@ struct ButtonPillRow: View {
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			Text(rowLabel)
-				.font(.handjet(.bold, size: 24))
+				.font(.handjet(.bold, size: 22))
 			
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
