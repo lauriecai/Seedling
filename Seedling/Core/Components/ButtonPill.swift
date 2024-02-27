@@ -15,7 +15,7 @@ struct ButtonPill: View {
     var body: some View {
 			Text(pillText)
 				.font(.handjet(.bold, size: 22))
-				.foregroundStyle(isSelected ? Color.theme.textPrimary : Color.theme.textPrimary.opacity(0.4))
+				.foregroundStyle(isSelected ? Color.theme.textPrimary : Color.theme.textSecondary)
 				.padding(.vertical, 10)
 				.padding(.horizontal, 18)
 				.background(isSelected ? Color.theme.accentLightGreen : Color.theme.backgroundAccent)

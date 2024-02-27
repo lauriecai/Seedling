@@ -27,7 +27,7 @@ struct AddPlantView: View {
 					.ignoresSafeArea()
 				
 				ScrollView {
-					VStack(spacing: 20) {
+					VStack(spacing: 15) {
 						plantTextInput
 							.focused($keyboardFocused)
 							.onAppear { keyboardFocused.toggle() }
@@ -43,12 +43,12 @@ struct AddPlantView: View {
 				.navigationBarBackButtonHidden(true)
 				.toolbar {
 					ToolbarItem(placement: .topBarLeading) {
-						HStack(spacing: 5) {
-							Image(systemName: "chevron.left")
-								.font(.handjet(.medium, size: 18))
-							Text("Back")
+//						HStack(spacing: 5) {
+//							Image(systemName: "chevron.left")
+//								.font(.handjet(.medium, size: 18))
+							Text("Cancel")
 								.font(.handjet(.medium, size: 22))
-						}
+//						}
 						.foregroundStyle(Color.theme.textSecondary)
 						.onTapGesture { dismiss() }
 					}
@@ -82,7 +82,7 @@ extension AddPlantView {
 			
 			Text(stage.definition)
 				.font(.handjet(.regular, size: 18))
-				.foregroundStyle(Color.theme.textPrimary.opacity(0.5))
+				.foregroundStyle(Color.theme.textSecondary)
 		}
 	}
 	
@@ -105,4 +105,5 @@ extension AddPlantView {
 		.font(.handjet(.extraBold, size: 22))
 		.foregroundStyle(Color.theme.accentGreen)
 	}
+	
 }

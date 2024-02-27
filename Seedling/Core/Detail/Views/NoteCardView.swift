@@ -16,7 +16,7 @@ struct NoteCardView: View {
 			HStack {
 				Text(note.wrappedTimestamp.asDateAndTime())
 					.font(.handjet(.regular, size: 16))
-					.foregroundStyle(Color.theme.textPrimary.opacity(0.50))
+					.foregroundStyle(Color.theme.textSecondary)
 				
 				Spacer()
 			}

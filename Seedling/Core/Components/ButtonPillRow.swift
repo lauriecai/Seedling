@@ -17,9 +17,9 @@ struct ButtonPillRow<T>: View where T: Hashable & RawRepresentable, T.RawValue =
 	@Binding var selectedItem: T
 	
     var body: some View {
-		VStack(alignment: .leading, spacing: 10) {
+		VStack(alignment: .leading, spacing: 8) {
 			Text(rowLabel)
-				.font(.handjet(.bold, size: 22))
+				.font(.handjet(.bold, size: 20))
 			
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
