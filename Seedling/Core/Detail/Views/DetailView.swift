@@ -59,13 +59,11 @@ extension DetailView {
 			}
 		}
 		.frame(maxWidth: .infinity)
+		.padding(.horizontal)
 	}
 	
 	private var addNoteButton: some View {
-		for note in viewModel.notes {
-			print("[addNoteButton] note: (\(note.wrappedTitle)) created: \(note.wrappedTimestamp.asDateAndTime())")
-		}
-		return NavigationLink(destination: AddNoteView(viewModel: viewModel)) {
+		NavigationLink(destination: AddNoteView(viewModel: viewModel)) {
 			ButtonCircle(icon: "PlusIcon")
 		}
 	}

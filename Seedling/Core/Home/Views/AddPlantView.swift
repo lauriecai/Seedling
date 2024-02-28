@@ -45,6 +45,8 @@ struct AddPlantView: View {
 					ToolbarItem(placement: .topBarLeading) { cancelButton }
 					ToolbarItem(placement: .topBarTrailing) { addPlantButton }
 				}
+				.keyboardType(.default)
+				.autocorrectionDisabled()
 			}
 		}
 	}
@@ -57,11 +59,11 @@ struct AddPlantView: View {
 extension AddPlantView {
 	
 	private var plantTextInput: some View {
-		textInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", name: $name)
+		TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", text: $name)
 	}
 	
 	private var plantVarietyInput: some View {
-		textInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", name: $variety)
+		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", text: $variety)
 	}
 	
 	private var plantStageSelection: some View {

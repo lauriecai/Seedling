@@ -45,7 +45,7 @@ extension Date {
 	/// Converts Monday, February 19 to "Monday, February 19"
 	/// ```
 	func asDayAndDate() -> String {
-		return dayAndDateFormatter.string(from: self)
+		dayAndDateFormatter.string(from: self)
 	}
 	
 	/// Converts a date-and-time-formatted date into a String
@@ -53,6 +53,6 @@ extension Date {
 	/// Converts February 19, 2023 12:34pm to "February 19, 2023 12:34pm"
 	/// ```
 	func asDateAndTime() -> String {
-		return dateAndTimeFormatter.string(from: self)
+		dateAndTimeFormatter.string(from: self)
 	}
 }

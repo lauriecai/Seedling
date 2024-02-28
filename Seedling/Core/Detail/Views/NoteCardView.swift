@@ -32,7 +32,7 @@ struct NoteCardView: View {
 				.foregroundStyle(Color.theme.textPrimary)
 		}
 		.padding()
-		.background(Color.theme.backgroundAccent)
+		.background(Color.theme.backgroundLight)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
