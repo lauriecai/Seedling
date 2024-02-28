@@ -26,3 +26,4 @@ Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a p
 
 ## Features
 <img src="images/ui/home-view.png" width="50%">
+<img src="images/ui/add-plant-view.png" width="50%">
