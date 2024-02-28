@@ -23,8 +23,8 @@ extension Note {
 	@NSManaged public var body: String?
 	@NSManaged public var offset: Float
 	
-	public var wrappedTimestamp: Date {
-		timestamp ?? Date()
+	public var wrappedTimestamp: String {
+		timestamp?.asDateAndTime() ?? "SHIT'S WRONG IN THE WRAPPED TIMESTAMP PROPERTY"
 	}
 	
 	public var wrappedTitle: String {

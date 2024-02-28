@@ -14,8 +14,8 @@ struct NoteCardView: View {
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			HStack {
-				Text(note.wrappedTimestamp.asDateAndTime())
-					.font(.handjet(.regular, size: 16))
+				Text(note.wrappedTimestamp)
+					.font(.handjet(.regular, size: 18))
 					.foregroundStyle(Color.theme.textSecondary)
 				
 				Spacer()
@@ -28,7 +28,7 @@ struct NoteCardView: View {
 			}
 			
 			Text(note.wrappedBody)
-				.font(.handjet(.regular, size: 18))
+				.font(.handjet(.medium, size: 20))
 				.foregroundStyle(Color.theme.textPrimary)
 		}
 		.padding()

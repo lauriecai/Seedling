@@ -18,7 +18,7 @@ struct ButtonPill: View {
 				.foregroundStyle(isSelected ? Color.theme.textPrimary : Color.theme.textSecondary)
 				.padding(.vertical, 10)
 				.padding(.horizontal, 18)
-				.background(isSelected ? Color.theme.accentLightGreen : Color.theme.backgroundAccent)
+				.background(isSelected ? Color.theme.accentLightGreen : Color.theme.backgroundAccent.opacity(0.8))
 				.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }

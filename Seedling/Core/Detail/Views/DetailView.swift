@@ -25,13 +25,11 @@ struct DetailView: View {
 	@StateObject private var viewModel: DetailViewModel
 	
 	@Environment(\.dismiss) var dismiss
-
-	@State private var plant: Plant
 	
 	init(plant: Plant) {
+		print("Initializing DetailView...")
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
-		_plant = State(initialValue: plant)
-		print("DetailView initialized for \(plant.wrappedName)")
+		print("DetailView initialized!")
 	}
 	
     var body: some View {
@@ -43,20 +41,11 @@ struct DetailView: View {
 				.padding(.trailing, 20)
 		}
 		.navigationTitle(viewModel.plant.wrappedFullName)
-		.onAppear { viewModel.fetchNotes(for: plant) }
 		.navigationBarBackButtonHidden(true)
 		.toolbar {
-			ToolbarItem(placement: .topBarLeading) {
-				HStack(spacing: 5) {
-					Image(systemName: "chevron.left")
-						.font(.handjet(.medium, size: 18))
-					Text("Back")
-						.font(.handjet(.bold, size: 20))
-				}
-				.foregroundStyle(Color.theme.accentGreen)
-				.onTapGesture { dismiss() }
-			}
+			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
+		.onAppear { viewModel.fetchNotes(for: viewModel.plant) }
     }
 }
 
@@ -72,8 +61,22 @@ extension DetailView {
 	}
 	
 	private var addNoteButton: some View {
-		NavigationLink(destination: AddNoteView(viewModel: DetailViewModel(plant: plant))) {
+		NavigationLink(destination: AddNoteView(viewModel: viewModel)) {
 			ButtonCircle(icon: "PlusIcon")
+		}
+	}
+	
+	private var backButton: some View {
+		Button {
+			dismiss()
+		} label: {
+			HStack(spacing: 5) {
+				Image(systemName: "chevron.left")
+					.font(.handjet(.medium, size: 18))
+				Text("Back")
+					.font(.handjet(.medium, size: 20))
+			}
+			.foregroundStyle(Color.theme.textSecondary)
 		}
 	}
 }

@@ -42,20 +42,8 @@ struct AddPlantView: View {
 				.navigationBarTitleDisplayMode(.inline)
 				.navigationBarBackButtonHidden(true)
 				.toolbar {
-					ToolbarItem(placement: .topBarLeading) {
-//						HStack(spacing: 5) {
-//							Image(systemName: "chevron.left")
-//								.font(.handjet(.medium, size: 18))
-							Text("Cancel")
-								.font(.handjet(.medium, size: 22))
-//						}
-						.foregroundStyle(Color.theme.textSecondary)
-						.onTapGesture { dismiss() }
-					}
-					
-					ToolbarItem(placement: .topBarTrailing) {
-						saveButton
-					}
+					ToolbarItem(placement: .topBarLeading) { cancelButton }
+					ToolbarItem(placement: .topBarTrailing) { addPlantButton }
 				}
 			}
 		}
@@ -81,7 +69,7 @@ extension AddPlantView {
 			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $stage)
 			
 			Text(stage.definition)
-				.font(.handjet(.regular, size: 18))
+				.font(.handjet(.medium, size: 18))
 				.foregroundStyle(Color.theme.textSecondary)
 		}
 	}
@@ -92,8 +80,8 @@ extension AddPlantView {
 		}
 	}
 	
-	private var saveButton: some View {
-		Button("Add") {
+	private var addPlantButton: some View {
+		Button("Add Plant") {
 			viewModel.addPlant(
 				type: type.rawValue,
 				name: name,
@@ -102,8 +90,15 @@ extension AddPlantView {
 			)
 			dismiss()
 		}
-		.font(.handjet(.extraBold, size: 22))
+		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(Color.theme.accentGreen)
 	}
 	
+	private var cancelButton: some View {
+		Button("Cancel") {
+			dismiss()
+		}
+		.font(.handjet(.medium, size: 20))
+		.foregroundStyle(Color.theme.textSecondary)
+	}
 }

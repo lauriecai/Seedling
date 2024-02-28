@@ -11,6 +11,7 @@ import SwiftUI
 struct SeedlingApp: App {
 	
 	@StateObject private var viewModel = HomeViewModel()
+	
 	@State private var showLaunchView: Bool = true
 	
 	init() {

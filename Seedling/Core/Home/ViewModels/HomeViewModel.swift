@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
 	
 	func save() {
 		manager.save()
-		fetchPlants() // refreshes plants array with most recently saved data
+		fetchPlants()
 	}
 	
 	func addPlant(type: String, name: String, variety: String, stage: String) {
