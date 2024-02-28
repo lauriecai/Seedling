@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct textInput: View {
+struct TextInput: View {
 	
 	let inputHeader: String
 	let inputPlaceholder: String
-	@Binding var name: String
+	
+	@Binding var text: String
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 8) {
@@ -20,9 +21,9 @@ struct textInput: View {
 				.foregroundStyle(Color.theme.textPrimary)
 			
 			ZStack(alignment: .leading) {
-				TextField("", text: $name, prompt: Text(inputPlaceholder).foregroundStyle(Color.theme.textSecondary)
+				TextField("", text: $text, prompt: Text(inputPlaceholder).foregroundStyle(Color.theme.textSecondary)
 				)
-				.font(.handjet(.bold, size: 22))
+				.font(.handjet(.medium, size: 22))
 				.padding(.horizontal)
 				.padding(.vertical, 10)
 				.foregroundStyle(Color.theme.textPrimary)
@@ -36,5 +37,5 @@ struct textInput: View {
 }
 
 #Preview {
-	textInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", name: .constant(""))
+	TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", text: .constant(""))
 }
