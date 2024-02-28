@@ -14,7 +14,7 @@ struct NoteCardView: View {
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			HStack {
-				Text(note.wrappedTimestamp)
+				Text(note.wrappedTimestamp.asDateAndTime())
 					.font(.handjet(.regular, size: 18))
 					.foregroundStyle(Color.theme.textSecondary)
 				

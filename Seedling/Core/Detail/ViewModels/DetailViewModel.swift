@@ -16,14 +16,10 @@ class DetailViewModel: ObservableObject {
 	@Published var notes: [Note] = []
 	
 	init(plant: Plant) {
-		print("**Initializing DetailViewModel...")
 		self.plant = plant
-//		fetchNotes(for: plant)
-		print("--DetailViewModel initialized!")
 	}
 	
 	func fetchNotes(for plant: Plant) {
-		print("****fetching notes for \(plant.wrappedName)")
 		let request = NSFetchRequest<Note>(entityName: "Note")
 		request.predicate = NSPredicate(format: "plant == %@", plant)
 		
@@ -32,7 +28,10 @@ class DetailViewModel: ObservableObject {
 		
 		do {
 			notes = try manager.context.fetch(request)
-			print("----done fetching notes for \(plant.wrappedName)")
+			
+			for note in notes {
+				print("[fetchNotes func] \(plant.wrappedName) note (\(note.id?.uuidString ?? "No ID")): \(note.wrappedTimestamp.asDateAndTime())")
+			}
 		} catch let error {
 			print("Error fetching plants from Core Data. \(error)")
 		}
@@ -50,6 +49,7 @@ class DetailViewModel: ObservableObject {
 		newNote.title = title
 		newNote.body = body
 		newNote.offset = 0
+		print("[addNote func] \(plant.wrappedName) note created: \(newNote.wrappedTimestamp.asDateAndTime())")
 		
 		save()
 	}

@@ -27,15 +27,16 @@ struct DetailView: View {
 	@Environment(\.dismiss) var dismiss
 	
 	init(plant: Plant) {
-		print("Initializing DetailView...")
+		print("Initializing DetailView for \(plant.wrappedName)...")
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
-		print("DetailView initialized!")
+		print("DetailView initialized for \(plant.wrappedName)!")
 	}
 	
     var body: some View {
 		ZStack(alignment: .bottomTrailing) {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
+			
 			notesList
 			addNoteButton
 				.padding(.trailing, 20)
@@ -61,7 +62,10 @@ extension DetailView {
 	}
 	
 	private var addNoteButton: some View {
-		NavigationLink(destination: AddNoteView(viewModel: viewModel)) {
+		for note in viewModel.notes {
+			print("[addNoteButton] note: (\(note.wrappedTitle)) created: \(note.wrappedTimestamp.asDateAndTime())")
+		}
+		return NavigationLink(destination: AddNoteView(viewModel: viewModel)) {
 			ButtonCircle(icon: "PlusIcon")
 		}
 	}
