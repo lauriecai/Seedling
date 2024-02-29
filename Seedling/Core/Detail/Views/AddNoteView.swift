@@ -75,7 +75,8 @@ extension AddNoteView {
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(Color.theme.accentGreen)
+		.foregroundStyle(bodyText.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(bodyText.isEmpty)
 	}
 	
 	private var backButton: some View {
