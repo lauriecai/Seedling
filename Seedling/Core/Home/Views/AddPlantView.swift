@@ -93,7 +93,8 @@ extension AddPlantView {
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(Color.theme.accentGreen)
+		.foregroundStyle(name.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(name.isEmpty)
 	}
 	
 	private var cancelButton: some View {
