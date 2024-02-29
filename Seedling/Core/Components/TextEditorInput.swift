@@ -14,6 +14,8 @@ struct TextEditorInput: View {
 	
 	@Binding var text: String
 	
+	@FocusState private var inputFocused: Bool
+	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 8) {
 			Text(inputHeader)
@@ -24,11 +26,26 @@ struct TextEditorInput: View {
 				TextEditor(text: $text)
 					.font(.handjet(.medium, size: 22))
 					.scrollContentBackground(.hidden)
-					.padding(12)
+					.padding(.horizontal, 12)
+					.padding(.vertical, 6)
 					.background(Color.theme.backgroundAccent)
 					.foregroundStyle(Color.theme.textPrimary)
-					.frame(height: 250)
+					.frame(height: 200)
 					.clipShape(RoundedRectangle(cornerRadius: 8))
+					.focused($inputFocused)
+					
+				
+				if text.isEmpty {
+					Text("Start writing...")
+						.font(.handjet(.medium, size: 22))
+						.foregroundStyle(Color.theme.textSecondary)
+						.frame(maxWidth: .infinity, maxHeight: 200, alignment: .topLeading)
+						.padding(.horizontal)
+						.padding(.vertical, 14)
+						.onTapGesture {
+							inputFocused.toggle()
+						}
+				}
 			}
 		}
 	}

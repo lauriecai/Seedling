@@ -30,7 +30,6 @@ struct TextInput: View {
 				.background(Color.theme.backgroundAccent)
 				.clipShape(RoundedRectangle(cornerRadius: 8))
 				.autocorrectionDisabled()
-				.textInputAutocapitalization(.never)
 			}
 		}
 	}

@@ -41,7 +41,7 @@ struct DetailView: View {
 			addNoteButton
 				.padding(.trailing, 20)
 		}
-		.navigationTitle(viewModel.plant.wrappedFullName)
+		.navigationTitle(viewModel.plant.wrappedFullNameLabel)
 		.navigationBarBackButtonHidden(true)
 		.toolbar {
 			ToolbarItem(placement: .topBarLeading) { backButton }

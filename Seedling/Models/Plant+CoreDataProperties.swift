@@ -32,9 +32,17 @@ extension Plant {
 		variety ?? ""
 	}
 	
-	public var wrappedFullName: String {
+	public var wrappedFullNameLabel: String {
 		if !wrappedVariety.isEmpty {
 			return "\(wrappedName): \(wrappedVariety)"
+		} else {
+			return "\(wrappedName)"
+		}
+	}
+	
+	public var wrappedFullNameSentence: String {
+		if !wrappedVariety.isEmpty {
+			return "\(wrappedVariety) \(wrappedName)"
 		} else {
 			return "\(wrappedName)"
 		}

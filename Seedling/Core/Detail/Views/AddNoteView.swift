@@ -50,15 +50,15 @@ struct AddNoteView: View {
 
 extension AddNoteView {
 	
-	private var notePrompt: some View { // fix weird spacing when plant has no variety
-		Text("How's your \(viewModel.plant.wrappedVariety.lowercased()) \(viewModel.plant.wrappedName.lowercased()) doing today?")
-			.font(.handjet(.extraBold, size: 24))
+	private var notePrompt: some View {
+		Text("How's your \(viewModel.plant.wrappedFullNameSentence.lowercased()) doing today?")
+			.font(.handjet(.extraBold, size: 26))
 			.foregroundStyle(Color.theme.textPrimary)
 			.frame(maxWidth: .infinity, alignment: .leading)
 	}
 	
 	private var noteTitleInput: some View {
-		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It Sprouted!", text: $title)
+		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", text: $title)
 	}
 	
 	private var noteBodyInput: some View {
