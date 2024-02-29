@@ -11,14 +11,23 @@ struct TextInput: View {
 	
 	let inputHeader: String
 	let inputPlaceholder: String
+	let headerDescription: String?
 	
 	@Binding var text: String
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 8) {
-			Text(inputHeader)
-				.font(.handjet(.bold, size: 20))
-				.foregroundStyle(Color.theme.textPrimary)
+			HStack {
+				Text(inputHeader)
+					.font(.handjet(.bold, size: 20))
+					.foregroundStyle(Color.theme.textPrimary)
+				
+				if let description = headerDescription {
+					Text("(\(description))")
+						.font(.handjet(.regular, size: 18))
+						.foregroundStyle(Color.theme.textSecondary)
+				}
+			}
 			
 			ZStack(alignment: .leading) {
 				TextField("", text: $text, prompt: Text(inputPlaceholder).foregroundStyle(Color.theme.textSecondary)
@@ -36,5 +45,5 @@ struct TextInput: View {
 }
 
 #Preview {
-	TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", text: .constant(""))
+	TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: .constant(""))
 }
