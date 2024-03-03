@@ -9,29 +9,34 @@ import SwiftUI
 
 struct NavigationTab: View {
 	
-	let tabName: String
+	let tabLabel: String
+	let tabIconName: String
 	
-	@Binding var selectedTab: String
+//	@Binding var selectedTab: String
 	
 	var body: some View {
 		Button {
-			withAnimation(.spring()) {
-				selectedTab = tabName
-			}
+//			withAnimation(.spring()) {
+//				selectedTab = tabName
+//			}
+			print("\(tabLabel) tapped")
 		} label: {
-			VStack(spacing: 10) {
-				Rectangle()
-					.fill(Color.gray)
-					.frame(width: 26, height: 26)
-					.cornerRadius(8)
+			VStack(spacing: 2) {
+				Image(tabIconName)
+					.resizable()
+					.aspectRatio(contentMode: .fit)
+					.frame(width: 28, height: 28)
 				
-				Text(tabName)
-					.font(.handjet(.bold, size: 18))
+				Text(tabLabel)
+					.font(.handjet(.medium, size: 16))
 					.foregroundStyle(Color.theme.textLight)
 			}
-			.padding()
-			.background(Color.white.opacity(selectedTab == tabName ? 0.08 : 0))
-			.clipShape(RoundedRectangle(cornerRadius: 8))
+			.padding(.top, 10)
 		}
 	}
+}
+
+#Preview(traits: .sizeThatFitsLayout) {
+	NavigationTab(tabLabel: "Tasks", tabIconName: "icon-tasks")
+		.background(Color.theme.backgroundDark)
 }
