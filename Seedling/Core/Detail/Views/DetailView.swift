@@ -64,7 +64,7 @@ extension DetailView {
 	
 	private var addNoteButton: some View {
 		NavigationLink(destination: AddNoteView(viewModel: viewModel)) {
-			ButtonCircle(icon: "PlusIcon")
+			ButtonCircle(icon: "icon-plus")
 		}
 	}
 	

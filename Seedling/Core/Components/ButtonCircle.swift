@@ -24,7 +24,7 @@ struct ButtonCircle: View {
 	ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
 		Color.white
 		
-		ButtonCircle(icon: "PlusIcon")
+		ButtonCircle(icon: "icon-plus")
 			.padding(.horizontal, 20)
 			.padding(.bottom, 20)
 	}

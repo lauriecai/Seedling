@@ -152,7 +152,7 @@ extension HomeView {
 	
 /// ``actions``
 	private var addPlantButton: some View {
-		ButtonCircle(icon: "PlusIcon")
+		ButtonCircle(icon: "icon-plus")
 			.frame(width: 65, height: 65)
 			.onTapGesture { showingAddPlantView.toggle() }
 	}
