@@ -11,6 +11,7 @@ struct NavigationTab: View {
 	
 	let tabLabel: String
 	let tabIconName: String
+	let isSelected: Bool
 	
 //	@Binding var selectedTab: String
 	
@@ -25,6 +26,7 @@ struct NavigationTab: View {
 				Image(tabIconName)
 					.resizable()
 					.aspectRatio(contentMode: .fit)
+					.foregroundStyle(isSelected ? Color.theme.accentGreen : Color.theme.)
 					.frame(width: 28, height: 28)
 				
 				Text(tabLabel)
@@ -37,6 +39,6 @@ struct NavigationTab: View {
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
-	NavigationTab(tabLabel: "Tasks", tabIconName: "icon-tasks")
+	NavigationTab(tabLabel: "Tasks", tabIconName: "icon-tasks", isSelected: true)
 		.background(Color.theme.backgroundDark)
 }

@@ -11,11 +11,11 @@ struct NavigationBar: View {
 	
     var body: some View {
 		HStack {
-			NavigationTab(tabLabel: "Garden", tabIconName: "icon-garden")
+			NavigationTab(tabLabel: "Garden", tabIconName: "icon-garden", isSelected: true)
 			Spacer()
-			NavigationTab(tabLabel: "Journal", tabIconName: "icon-journal")
+			NavigationTab(tabLabel: "Journal", tabIconName: "icon-journal", isSelected: false)
 			Spacer()
-			NavigationTab(tabLabel: "Tasks", tabIconName: "icon-tasks")
+			NavigationTab(tabLabel: "Tasks", tabIconName: "icon-tasks", isSelected: false)
 		}
 		.padding(.horizontal, 40)
 		.background(Color.theme.backgroundDark)
