@@ -35,7 +35,7 @@ struct HomeView: View {
 			
 			addPlantButton
 				.padding(.trailing, 20)
-				.padding(.bottom, 80)
+				.padding(.bottom, 25)
 		}
 		.gesture(
 			TapGesture().onEnded({ _ in
