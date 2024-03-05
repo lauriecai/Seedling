@@ -26,6 +26,10 @@
 		D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D58292B156DD200E541E4 /* Assets.xcassets */; };
 		D36D582D2B156DD200E541E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */; };
 		D3B4116E2B9778C500CD1F41 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */; };
+		D3B411772B979E2800CD1F41 /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B411762B979E2800CD1F41 /* JournalViewModel.swift */; };
+		D3B411792B979E3000CD1F41 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B411782B979E3000CD1F41 /* JournalView.swift */; };
+		D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */; };
+		D3B4117D2B979FD400CD1F41 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4117C2B979FD400CD1F41 /* TasksView.swift */; };
 		D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */; };
 		D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */; };
 		D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */; };
@@ -66,6 +70,10 @@
 		D36D58292B156DD200E541E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		D3B411762B979E2800CD1F41 /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
+		D3B411782B979E3000CD1F41 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		D3B4117C2B979FD400CD1F41 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		D3BBD89D2B68362C0061FE92 /* Seedling.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Seedling.xcdatamodel; sourceTree = "<group>"; };
 		D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -123,6 +131,8 @@
 				D3EFDE152B793ABB00A6D22C /* Launch */,
 				D3385B6F2B16EB2B0055234B /* Home */,
 				D3EFDE0E2B7937F800A6D22C /* Detail */,
+				D3B4116F2B979DC000CD1F41 /* Journal */,
+				D3B411702B979DD200CD1F41 /* Tasks */,
 				D338A1DE2B71B95600E3676E /* Components */,
 			);
 			path = Core;
@@ -208,6 +218,56 @@
 				D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D3B4116F2B979DC000CD1F41 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				D3B411712B979DF500CD1F41 /* ViewModels */,
+				D3B411722B979DFA00CD1F41 /* Views */,
+			);
+			path = Journal;
+			sourceTree = "<group>";
+		};
+		D3B411702B979DD200CD1F41 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D3B411752B979E1600CD1F41 /* ViewModels */,
+				D3B411732B979E0800CD1F41 /* Views */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		D3B411712B979DF500CD1F41 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3B411762B979E2800CD1F41 /* JournalViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D3B411722B979DFA00CD1F41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3B411782B979E3000CD1F41 /* JournalView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D3B411732B979E0800CD1F41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3B4117C2B979FD400CD1F41 /* TasksView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D3B411752B979E1600CD1F41 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D3BBD89F2B6836520061FE92 /* Models */ = {
@@ -350,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3B411772B979E2800CD1F41 /* JournalViewModel.swift in Sources */,
 				D3EFDE0B2B77E74D00A6D22C /* ButtonCircle.swift in Sources */,
 				D3EFDE092B76B70C00A6D22C /* AddPlantView.swift in Sources */,
 				D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */,
@@ -365,14 +426,17 @@
 				D31FBCFC2B8D205300C10F9D /* ButtonPillRow.swift in Sources */,
 				D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */,
 				D3EFDE542B8298D900A6D22C /* NoteCardView.swift in Sources */,
+				D3B4117D2B979FD400CD1F41 /* TasksView.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
 				D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */,
+				D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */,
 				D338A1E42B71D83300E3676E /* Date.swift in Sources */,
 				D3EFDE4D2B7EB66B00A6D22C /* Note+CoreDataClass.swift in Sources */,
 				D3EFDE502B7EB66B00A6D22C /* Plant+CoreDataProperties.swift in Sources */,
 				D3EFDE142B79387B00A6D22C /* DetailViewModel.swift in Sources */,
 				D338A1E02B71B98400E3676E /* NavigationTab.swift in Sources */,
+				D3B411792B979E3000CD1F41 /* JournalView.swift in Sources */,
 				D3B4116E2B9778C500CD1F41 /* NavigationBar.swift in Sources */,
 				D3EFDE4F2B7EB66B00A6D22C /* Plant+CoreDataClass.swift in Sources */,
 				D3EFDE4E2B7EB66B00A6D22C /* Note+CoreDataProperties.swift in Sources */,
