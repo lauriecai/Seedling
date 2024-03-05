@@ -36,8 +36,6 @@ struct HomeView: View {
 			addPlantButton
 				.padding(.trailing, 20)
 				.padding(.bottom, 80)
-			
-			NavigationBar()
 		}
 		.gesture(
 			TapGesture().onEnded({ _ in

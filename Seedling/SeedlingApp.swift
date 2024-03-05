@@ -24,11 +24,31 @@ struct SeedlingApp: App {
     var body: some Scene {
 		WindowGroup {
 			NavigationStack {
-				ZStack {
-					HomeView()
-				}
+				ContentView()
 			}
 			.environmentObject(viewModel)
 		}
     }
+}
+
+struct ContentView: View {
+	
+	@State private var selectedItem: Int = 0 // First tab selected by default
+	
+	var body: some View {
+		ZStack(alignment: .bottom) {
+			TabView(selection: $selectedItem) {
+				HomeView()
+					.tag(0)
+				
+				Text("Journal")
+					.tag(1)
+				
+				Text("Tasks")
+					.tag(2)
+			}
+			
+			NavigationBar(selectedIndex: $selectedItem)
+		}
+	}
 }
