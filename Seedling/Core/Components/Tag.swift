@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct Tag: View {
+	
+	let text: String
+	
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(text)
+			.font(.handjet(.bold, size: 18))
+			.foregroundStyle(Color.theme.textPrimary)
+			.padding(.horizontal, 8)
+			.padding(.vertical, 5)
+			.background(Color.theme.backgroundAccent)
+			.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
 #Preview {
-    Tag()
+    Tag(text: "Eggplant: Shikou")
 }

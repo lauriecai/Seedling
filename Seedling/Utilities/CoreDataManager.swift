@@ -24,6 +24,7 @@ class CoreDataManager {
 				print("Successfully loaded Core Data.")
 			}
 		}
+		
 		context = container.viewContext
 	}
 	

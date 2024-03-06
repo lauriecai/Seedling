@@ -17,11 +17,6 @@ struct HomeView: View {
 	@State private var showingDetailView = false
 	@State private var showingAddPlantView = false
 	
-	init() {
-		print("Initializing HomeView...")
-		print("HomeView initialized!")
-	}
-	
     var body: some View {
 		ZStack(alignment: .bottomTrailing) {
 			Color.theme.backgroundPrimary
@@ -65,7 +60,7 @@ struct HomeView: View {
 		.environmentObject(HomeViewModel())
 }
 
-// MARK: - Condensed UI
+// MARK: - UI
 extension HomeView {
 	
 /// ``weather``

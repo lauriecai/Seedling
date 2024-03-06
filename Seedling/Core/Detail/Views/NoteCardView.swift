@@ -10,15 +10,18 @@ import SwiftUI
 struct NoteCardView: View {
 	
 	let note: Note
+	let showPlantTag: Bool
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			HStack {
-				Text(note.wrappedTimestamp.asDateAndTime())
-					.font(.handjet(.regular, size: 18))
-					.foregroundStyle(Color.theme.textSecondary)
-				
-				Spacer()
+			if showPlantTag {
+				HStack {
+					if let plant = note.plant {
+						Tag(text: plant.wrappedFullNameLabel)
+					}
+					
+					Spacer()
+				}
 			}
 			
 			if !note.wrappedTitle.isEmpty {
