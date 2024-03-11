@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddPlantView: View {
 	
+	let dataManager = CoreDataManager.shared
+	
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
 	@Environment(\.dismiss) var dismiss
@@ -84,7 +86,7 @@ extension AddPlantView {
 	
 	private var addPlantButton: some View {
 		Button("Add Plant") {
-			viewModel.addPlant(
+			dataManager.addPlant(
 				type: type.rawValue,
 				name: name,
 				variety: variety,

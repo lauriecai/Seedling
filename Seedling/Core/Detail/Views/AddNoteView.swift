@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AddNoteView: View {
 	
+	let dataManager = CoreDataManager.shared
+	
 	@ObservedObject var viewModel: DetailViewModel
 	
 	@Environment(\.dismiss) var dismiss
@@ -67,7 +69,7 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
-			viewModel.addNote(
+			dataManager.addNote(
 				plant: viewModel.plant,
 				title: title,
 				body: bodyText

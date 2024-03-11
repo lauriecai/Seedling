@@ -19,10 +19,7 @@ class HomeViewModel: ObservableObject {
 	}
 	
 	private func fetchPlants() {
-		let request = NSFetchRequest<Plant>(entityName: "Plant")
-		
-		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-		request.sortDescriptors = [sortDescriptor]
+		let request = manager.requestAllPlants()
 		
 		do {
 			plants = try manager.context.fetch(request)
@@ -31,34 +28,15 @@ class HomeViewModel: ObservableObject {
 		}
 	}
 	
-	func save() {
-		manager.save()
-		fetchPlants()
-	}
-	
-	func addPlant(type: String, name: String, variety: String, stage: String) {
-		let newPlant = Plant(context: manager.context)
-		newPlant.id = UUID()
-		newPlant.type = type
-		newPlant.name = name
-		newPlant.variety = variety
-		newPlant.stage = stage
-		newPlant.offset = 0
-		
-		save()
-	}
-	
 	func deletePlant(plant: Plant) {
 		if let savedPlant = plants.first(where: { $0.id == plant.id }) {
-			manager.context.delete(savedPlant)
-			save()
+			manager.deletePlant(plant: savedPlant)
 		}
 	}
 	
 	func resetOffsets() {
 		for plant in plants {
-			plant.offset = 0
+			resetOffsets()
 		}
-		save()
 	}
 }
