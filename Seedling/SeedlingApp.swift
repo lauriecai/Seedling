@@ -41,7 +41,7 @@ struct ContentView: View {
 				HomeView()
 					.tag(0)
 				
-				JournalView()
+				Text("Journal")
 					.tag(1)
 				
 				Text("Tasks")

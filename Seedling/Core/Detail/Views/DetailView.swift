@@ -55,7 +55,7 @@ extension DetailView {
 	private var notesList: some View {
 		ScrollView {
 			ForEach(viewModel.notes) { note in
-				NoteCardView(note: note, showPlantTag: false)
+				NoteCardView(note: note)
 			}
 		}
 		.frame(maxWidth: .infinity)
