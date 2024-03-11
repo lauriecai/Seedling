@@ -36,7 +36,7 @@ class HomeViewModel: ObservableObject {
 	
 	func resetOffsets() {
 		for plant in plants {
-			resetOffsets()
+			plant.offset = 0
 		}
 	}
 }
