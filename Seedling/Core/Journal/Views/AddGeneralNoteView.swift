@@ -15,7 +15,7 @@ struct AddGeneralNoteView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
-	@State var selectedPlant: Plant
+	@State var selectedIndex: Int
 	
 	@State private var title: String = ""
 	@State private var bodyText: String = ""
@@ -30,14 +30,7 @@ struct AddGeneralNoteView: View {
 				
 				ScrollView {
 					VStack(spacing: 15) {
-						Picker("Choose a plant", selection: $selectedPlant) {
-							ForEach(viewModel.plants) { plant in
-								Text(plant.wrappedFullNameLabel)
-									.tag(plant)
-						 	}
-						}
-						
-						Text("selected plant: \(selectedPlant.wrappedFullNameLabel)")
+						Dropdown(pickerHeader: "Plant", items: viewModel.plantNames, selectedIndex: $selectedIndex)
 						
 						noteTitleInput
 							.focused($keyboardFocused)
@@ -74,7 +67,7 @@ extension AddGeneralNoteView {
 	private var addNoteButton: some View {
 		Button("Add Note") {
 			dataManager.addNote(
-				plant: selectedPlant,
+				plant: viewModel.plants[selectedIndex],
 				title: title,
 				body: bodyText
 			)

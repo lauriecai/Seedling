@@ -18,6 +18,15 @@ class HomeViewModel: ObservableObject {
 		fetchPlants()
 	}
 	
+	var plantNames: [String] {
+		var names: [String] = []
+		for plant in plants {
+			names.append(plant.wrappedFullNameLabel)
+		}
+		
+		return names
+	}
+	
 	private func fetchPlants() {
 		let request = manager.requestAllPlants()
 		

@@ -47,8 +47,8 @@ extension JournalView {
 	}
 	
 	private var addNoteButton: some View {
-		NavigationLink(destination: AddGeneralNoteView(selectedPlant: viewModel.allPlants.first!)) {
-		ButtonCircle(icon: "icon-plus")
+		NavigationLink(destination: AddGeneralNoteView(selectedIndex: 0)) {
+			ButtonCircle(icon: "icon-plus")
 		}
 	}
 }

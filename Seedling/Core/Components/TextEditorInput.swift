@@ -30,10 +30,9 @@ struct TextEditorInput: View {
 					.padding(.vertical, 6)
 					.background(Color.theme.backgroundAccent)
 					.foregroundStyle(Color.theme.textPrimary)
-					.frame(height: 200)
+					.frame(height: 180)
 					.clipShape(RoundedRectangle(cornerRadius: 8))
 					.focused($inputFocused)
-					
 				
 				if text.isEmpty {
 					Text("Start writing...")

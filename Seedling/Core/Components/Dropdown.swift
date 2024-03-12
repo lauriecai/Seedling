@@ -12,23 +12,13 @@ struct Dropdown: View {
 	let pickerHeader: String
 	let items: [String]
 	
-	@State private var selectedIndex: Int = 0
+	@Binding var selectedIndex: Int
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 8) {
 			Text(pickerHeader)
 				.font(.handjet(.bold, size: 20))
 				.foregroundStyle(Color.theme.textPrimary)
-			
-//			Picker("Plant", selection: $selectedItem) {
-//				ForEach(items.indices, id: \.self) { index in
-//					Text(items[index])
-//						.font(.handjet(.medium, size: 22))
-//						.foregroundStyle(Color.theme.textPrimary)
-//				}
-//			}
-//			.background(Color.theme.backgroundAccent)
-//			.pickerStyle(.menu)
 			
 			Menu {
 				ForEach(items.indices, id: \.self) { index in
@@ -56,13 +46,4 @@ struct Dropdown: View {
 			}
 		}
     }
-}
-
-#Preview(traits: .sizeThatFitsLayout) {
-	ZStack {
-		Color.theme.backgroundPrimary
-			.ignoresSafeArea()
-		
-		Dropdown(pickerHeader: "Fruits", items: ["apple", "banana", "cherry", "orange", "strawberry", "watermelon"])
-	}
 }
