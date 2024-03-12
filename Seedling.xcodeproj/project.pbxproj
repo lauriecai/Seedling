@@ -30,6 +30,7 @@
 		D3B411792B979E3000CD1F41 /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B411782B979E3000CD1F41 /* JournalView.swift */; };
 		D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */; };
 		D3B4117D2B979FD400CD1F41 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4117C2B979FD400CD1F41 /* TasksView.swift */; };
+		D3B6357F2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6357E2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift */; };
 		D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */; };
 		D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */; };
 		D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */; };
@@ -74,6 +75,7 @@
 		D3B411782B979E3000CD1F41 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		D3B4117C2B979FD400CD1F41 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
+		D3B6357E2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeneralNoteView.swift; sourceTree = "<group>"; };
 		D3BBD89D2B68362C0061FE92 /* Seedling.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Seedling.xcdatamodel; sourceTree = "<group>"; };
 		D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				D3B411782B979E3000CD1F41 /* JournalView.swift */,
+				D3B6357E2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */,
 				D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */,
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
+				D3B6357F2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
 				D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */,
 				D31FBCFC2B8D205300C10F9D /* ButtonPillRow.swift in Sources */,

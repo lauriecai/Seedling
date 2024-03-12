@@ -8,11 +8,47 @@
 import SwiftUI
 
 struct JournalView: View {
+	
+	@StateObject private var viewModel = JournalViewModel()
+	
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		ZStack(alignment: .bottomTrailing) {
+			Color.theme.backgroundPrimary
+				.ignoresSafeArea()
+			
+			
+			notesList
+				.padding(.horizontal)
+			
+			if !viewModel.allPlants.isEmpty {
+				addNoteButton
+					.padding(.trailing, 20)
+					.padding(.bottom, 25)
+			}
+		}
+		.onAppear {
+			viewModel.fetchAllNotes()
+		}
     }
 }
 
 #Preview {
     JournalView()
+}
+
+extension JournalView {
+	
+	private var notesList: some View {
+		ScrollView {
+			ForEach(viewModel.allNotes) { note in
+				NoteCardView(note: note)
+			}
+		}
+	}
+	
+	private var addNoteButton: some View {
+		NavigationLink(destination: AddGeneralNoteView(selectedPlant: viewModel.allPlants.first!)) {
+		ButtonCircle(icon: "icon-plus")
+		}
+	}
 }
