@@ -31,6 +31,7 @@
 		D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */; };
 		D3B4117D2B979FD400CD1F41 /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4117C2B979FD400CD1F41 /* TasksView.swift */; };
 		D3B6357F2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B6357E2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift */; };
+		D3B635832BA0EB7600CE3BE1 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */; };
 		D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */; };
 		D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */; };
 		D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */; };
@@ -76,6 +77,7 @@
 		D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		D3B4117C2B979FD400CD1F41 /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
 		D3B6357E2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGeneralNoteView.swift; sourceTree = "<group>"; };
+		D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
 		D3BBD89D2B68362C0061FE92 /* Seedling.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Seedling.xcdatamodel; sourceTree = "<group>"; };
 		D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				D3EFDE0A2B77E74D00A6D22C /* ButtonCircle.swift */,
 				D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */,
 				D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */,
+				D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */,
 				D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */,
 				D338A1DF2B71B98400E3676E /* NavigationTab.swift */,
 				D31FBCF52B8D199200C10F9D /* TextInput.swift */,
@@ -417,6 +420,7 @@
 				D3EFDE0B2B77E74D00A6D22C /* ButtonCircle.swift in Sources */,
 				D3EFDE092B76B70C00A6D22C /* AddPlantView.swift in Sources */,
 				D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */,
+				D3B635832BA0EB7600CE3BE1 /* Dropdown.swift in Sources */,
 				D3EA61C12B8FEA69002676F4 /* TextEditorInput.swift in Sources */,
 				D3EFDE122B79387100A6D22C /* DetailView.swift in Sources */,
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,

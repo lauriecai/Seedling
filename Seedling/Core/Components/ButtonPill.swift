@@ -23,6 +23,6 @@ struct ButtonPill: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
 	ButtonPill(pillText: "Seed", isSelected: false)
 }

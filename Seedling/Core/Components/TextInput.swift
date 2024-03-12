@@ -29,21 +29,24 @@ struct TextInput: View {
 				}
 			}
 			
-			ZStack(alignment: .leading) {
-				TextField("", text: $text, prompt: Text(inputPlaceholder).foregroundStyle(Color.theme.textSecondary)
-				)
-				.font(.handjet(.medium, size: 22))
-				.padding(.horizontal)
-				.padding(.vertical, 10)
-				.foregroundStyle(Color.theme.textPrimary)
-				.background(Color.theme.backgroundAccent)
-				.clipShape(RoundedRectangle(cornerRadius: 8))
-				.autocorrectionDisabled()
-			}
+			TextField("", text: $text, prompt: Text(inputPlaceholder).foregroundStyle(Color.theme.textSecondary)
+			)
+			.font(.handjet(.medium, size: 22))
+			.padding(.horizontal)
+			.padding(.vertical, 10)
+			.foregroundStyle(Color.theme.textPrimary)
+			.background(Color.theme.backgroundAccent)
+			.clipShape(RoundedRectangle(cornerRadius: 8))
+			.autocorrectionDisabled()
 		}
 	}
 }
 
 #Preview {
-	TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: .constant(""))
+	ZStack {
+		Color.theme.backgroundPrimary
+			.ignoresSafeArea()
+		
+		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: .constant(""))
+	}
 }
