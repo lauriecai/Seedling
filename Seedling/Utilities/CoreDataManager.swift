@@ -92,7 +92,6 @@ class CoreDataManager {
 		newNote.timestamp = Date()
 		newNote.title = title
 		newNote.body = body
-		newNote.offset = 0
 		
 		save()
 	}

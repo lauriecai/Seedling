@@ -21,7 +21,6 @@ extension Note {
     @NSManaged public var timestamp: Date?
     @NSManaged public var title: String?
 	@NSManaged public var body: String?
-	@NSManaged public var offset: Float
 	
 	public var wrappedTimestamp: Date {
 		timestamp ?? Date()
