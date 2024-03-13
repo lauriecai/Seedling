@@ -86,7 +86,7 @@ extension AddPlantView {
 	
 	private var addPlantButton: some View {
 		Button("Add Plant") {
-			dataManager.addPlant(
+			viewModel.addPlant(
 				type: type.rawValue,
 				name: name,
 				variety: variety,
