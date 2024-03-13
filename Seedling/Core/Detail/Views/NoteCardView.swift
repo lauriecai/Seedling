@@ -22,8 +22,11 @@ struct NoteCardView: View {
 				Spacer()
 				noteActions
 			}
+			
 			if !note.wrappedTitle.isEmpty { titleText }
+			
 			bodyText
+			
 			timeStamp
 		}
 		.padding()
@@ -49,6 +52,7 @@ extension NoteCardView {
 			showActionForNote = note
 		} label: {
 			Image(systemName: "ellipsis")
+				.font(.handjet(.bold, size: 20))
 				.foregroundStyle(Color.theme.textSecondary)
 		}
 	}
