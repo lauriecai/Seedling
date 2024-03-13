@@ -9,8 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
 	
-	let dataManager = CoreDataManager.shared
-	
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
 	@GestureState private var dragDistance = CGSize.zero
@@ -59,6 +57,7 @@ struct HomeView: View {
 		.sheet(isPresented: $showingAddPlantView) {
 			AddPlantView()
 		}
+		.onAppear { viewModel.fetchPlants() }
     }
 }
 
@@ -125,7 +124,6 @@ extension HomeView {
 								viewModel.deletePlant(plant: plant)
 							}
 						}
-						
 					
 					HStack {
 						Spacer()
@@ -179,7 +177,7 @@ extension HomeView {
 					plant.offset = Float(value.translation.width)
 				}
 				
-				dataManager.save()
+				viewModel.save()
 			}
 		}
 	}
@@ -188,12 +186,12 @@ extension HomeView {
 		if -value.translation.width >= 70 {
 			withAnimation(Animation.spring) {
 				plant.offset = -70
-				dataManager.save()
+				viewModel.save()
 			}
 		} else {
 			withAnimation(Animation.spring(Spring(duration: 0.2))) {
 				plant.offset = 0
-				dataManager.save()
+				viewModel.save()
 			}
 		}
 	}

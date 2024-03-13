@@ -28,4 +28,10 @@ class DetailViewModel: ObservableObject {
 			print("Error fetching plants from Core Data. \(error)")
 		}
 	}
+	
+	func deleteNote(note: Note) {
+		if let savedNote = notes.first(where: { $0.id == note.id }) {
+			manager.deleteNote(note: savedNote)
+		}
+	}
 }

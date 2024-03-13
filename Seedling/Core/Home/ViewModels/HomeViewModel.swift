@@ -27,7 +27,7 @@ class HomeViewModel: ObservableObject {
 		return names
 	}
 	
-	private func fetchPlants() {
+	func fetchPlants() {
 		let request = manager.requestAllPlants()
 		
 		do {
@@ -41,6 +41,11 @@ class HomeViewModel: ObservableObject {
 		if let savedPlant = plants.first(where: { $0.id == plant.id }) {
 			manager.deletePlant(plant: savedPlant)
 		}
+	}
+	
+	func save() {
+		manager.save()
+		fetchPlants()
 	}
 	
 	func resetOffsets() {

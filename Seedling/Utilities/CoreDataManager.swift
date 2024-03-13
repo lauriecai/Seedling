@@ -61,6 +61,11 @@ class CoreDataManager {
 		save()
 	}
 	
+	func resetOffsets(plant: Plant) {
+		plant.offset = 0
+		save()
+	}
+	
 	// note functions
 	func requestNotes(for plant: Plant) -> NSFetchRequest<Note> {
 		let request = NSFetchRequest<Note>(entityName: "Note")
@@ -92,9 +97,8 @@ class CoreDataManager {
 		save()
 	}
 	
-	// card functions
-	func resetOffsets(plant: Plant) {
-		plant.offset = 0
+	func deleteNote(note: Note) {
+		context.delete(note)
 		save()
 	}
 }

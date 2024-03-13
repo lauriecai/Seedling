@@ -26,6 +26,9 @@ struct DetailView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	@State private var showActionSheet: Bool = false
+	@State private var selectedNote: Note? = nil
+	
 	init(plant: Plant) {
 		print("Initializing DetailView for \(plant.wrappedName)...")
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
@@ -47,6 +50,22 @@ struct DetailView: View {
 			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
 		.onAppear { viewModel.fetchNotes(for: viewModel.plant) }
+		.actionSheet(isPresented: $showActionSheet) {
+			ActionSheet(
+				title: Text("Note options"),
+				buttons: [
+					.destructive(Text("Delete note")) {
+						if let selectedNote = selectedNote {
+							withAnimation(Animation.easeInOut(duration: 0.4)) {
+								viewModel.deleteNote(note: selectedNote)
+								viewModel.fetchNotes(for: viewModel.plant)
+							}
+						}
+					},
+					.cancel()
+				]
+			)
+		}
     }
 }
 
@@ -55,11 +74,10 @@ extension DetailView {
 	private var notesList: some View {
 		ScrollView {
 			ForEach(viewModel.notes) { note in
-				NoteCardView(note: note)
+				NoteCardView(note: note, showPlantTag: false, showActionSheet: $showActionSheet, showActionForNote: $selectedNote)
 			}
 		}
 		.frame(maxWidth: .infinity)
-		.padding(.horizontal)
 	}
 	
 	private var addNoteButton: some View {
