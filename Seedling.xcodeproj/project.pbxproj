@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30CE7BC2BA4D2EE00B28F67 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CE7BA2BA4D2EE00B28F67 /* Event+CoreDataClass.swift */; };
+		D30CE7BD2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */; };
 		D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */; };
 		D31FBCF62B8D199200C10F9D /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF52B8D199200C10F9D /* TextInput.swift */; };
 		D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D30CE7BA2BA4D2EE00B28F67 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D31FBCF52B8D199200C10F9D /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantEnums.swift; sourceTree = "<group>"; };
@@ -107,6 +111,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D30CE7BE2BA4D31200B28F67 /* Plant */ = {
+			isa = PBXGroup;
+			children = (
+				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
+				D3EFDE4B2B7EB66B00A6D22C /* Plant+CoreDataClass.swift */,
+				D3EFDE4C2B7EB66B00A6D22C /* Plant+CoreDataProperties.swift */,
+			);
+			name = Plant;
+			sourceTree = "<group>";
+		};
+		D30CE7BF2BA4D32100B28F67 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				D3EFDE492B7EB66B00A6D22C /* Note+CoreDataClass.swift */,
+				D3EFDE4A2B7EB66B00A6D22C /* Note+CoreDataProperties.swift */,
+			);
+			name = Note;
+			sourceTree = "<group>";
+		};
+		D30CE7C02BA4D32700B28F67 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D30CE7BA2BA4D2EE00B28F67 /* Event+CoreDataClass.swift */,
+				D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
 		D3385B442B164C3D0055234B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,12 +311,10 @@
 		D3BBD89F2B6836520061FE92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
-				D3EFDE4B2B7EB66B00A6D22C /* Plant+CoreDataClass.swift */,
-				D3EFDE4C2B7EB66B00A6D22C /* Plant+CoreDataProperties.swift */,
-				D3EFDE492B7EB66B00A6D22C /* Note+CoreDataClass.swift */,
-				D3EFDE4A2B7EB66B00A6D22C /* Note+CoreDataProperties.swift */,
 				D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */,
+				D30CE7C02BA4D32700B28F67 /* Event */,
+				D30CE7BF2BA4D32100B28F67 /* Note */,
+				D30CE7BE2BA4D31200B28F67 /* Plant */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,6 +468,8 @@
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
 				D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */,
+				D30CE7BC2BA4D2EE00B28F67 /* Event+CoreDataClass.swift in Sources */,
+				D30CE7BD2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift in Sources */,
 				D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */,
 				D338A1E42B71D83300E3676E /* Date.swift in Sources */,
 				D3EFDE4D2B7EB66B00A6D22C /* Note+CoreDataClass.swift in Sources */,

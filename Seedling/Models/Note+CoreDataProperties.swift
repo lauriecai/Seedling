@@ -18,13 +18,9 @@ extension Note {
 
 	@NSManaged public var plant: Plant?
     @NSManaged public var id: UUID?
-    @NSManaged public var timestamp: Date?
     @NSManaged public var title: String?
 	@NSManaged public var body: String?
-	
-	public var wrappedTimestamp: Date {
-		timestamp ?? Date()
-	}
+	@NSManaged public var timestamp: Date?
 	
 	public var wrappedTitle: String {
 		title ?? ""
@@ -32,6 +28,10 @@ extension Note {
 	
 	public var wrappedBody: String {
 		body ?? ""
+	}
+	
+	public var wrappedTimestamp: Date {
+		timestamp ?? Date()
 	}
 }
 

@@ -27,7 +27,7 @@ struct NoteCardView: View {
 			
 			bodyText
 			
-			timeStamp
+			timestamp
 		}
 		.padding()
 		.background(Color.theme.backgroundLight)
@@ -69,7 +69,7 @@ extension NoteCardView {
 			.foregroundStyle(Color.theme.textPrimary)
 	}
 	
-	private var timeStamp: some View {
+	private var timestamp: some View {
 		HStack {
 			Text(note.wrappedTimestamp.asDateAndTime())
 				.font(.handjet(.regular, size: 18))
