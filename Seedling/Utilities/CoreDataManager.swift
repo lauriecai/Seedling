@@ -100,4 +100,23 @@ class CoreDataManager {
 		context.delete(note)
 		save()
 	}
+	
+	// event functions
+	func requestEvents(for plant: Plant) -> NSFetchRequest<Event> {
+		let request = NSFetchRequest<Event>(entityName: "Event")
+		request.predicate = NSPredicate(format: "plant == %@", plant)
+		
+		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+		request.sortDescriptors = [sortDescriptor]
+		
+		return request
+	}
+	
+	func requestAllEvents() -> NSFetchRequest<Event> {
+		let request = NSFetchRequest<Event>(entityName: "Event")
+		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+		request.sortDescriptors = [sortDescriptor]
+		
+		return request
+	}
 }
