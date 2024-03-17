@@ -21,7 +21,7 @@ class JournalViewModel: ObservableObject {
 	}
 	
 	func fetchAllNotes() {
-		let request = manager.requestAllNotes()
+		let request = manager.requestNotes()
 		
 		do {
 			allNotes = try manager.context.fetch(request)

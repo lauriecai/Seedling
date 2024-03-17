@@ -67,23 +67,37 @@ class CoreDataManager {
 	}
 	
 	// note functions
-	func requestNotes(for plant: Plant) -> NSFetchRequest<Note> {
+	
+	/// returns a fetch request for either all notes or notes of a specified plant
+	func requestNotes(for plant: Plant? = nil) -> NSFetchRequest<Note> {
 		let request = NSFetchRequest<Note>(entityName: "Note")
-		request.predicate = NSPredicate(format: "plant == %@", plant)
-		
 		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
 		request.sortDescriptors = [sortDescriptor]
+		
+		if let plant = plant {
+			request.predicate = NSPredicate(format: "plant == %@", plant)
+		}
 		
 		return request
 	}
 	
-	func requestAllNotes() -> NSFetchRequest<Note> {
-		let request = NSFetchRequest<Note>(entityName: "Note")
-		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
-		request.sortDescriptors = [sortDescriptor]
-		
-		return request
-	}
+//	func requestNotes(for plant: Plant) -> NSFetchRequest<Note> {
+//		let request = NSFetchRequest<Note>(entityName: "Note")
+//		request.predicate = NSPredicate(format: "plant == %@", plant)
+//		
+//		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+//		request.sortDescriptors = [sortDescriptor]
+//		
+//		return request
+//	}
+//	
+//	func requestAllNotes() -> NSFetchRequest<Note> {
+//		let request = NSFetchRequest<Note>(entityName: "Note")
+//		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+//		request.sortDescriptors = [sortDescriptor]
+//		
+//		return request
+//	}
 	
 	func addNote(plant: Plant, title: String, body: String) {
 		let newNote = Note(context: context)
