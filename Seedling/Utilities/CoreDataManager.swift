@@ -35,8 +35,17 @@ class CoreDataManager {
 		}
 	}
 	
-	// plant functions
-	func requestAllPlants() -> NSFetchRequest<Plant> {
+	private var sortByNewest: NSSortDescriptor {
+		NSSortDescriptor(key: "timestamp", ascending: false)
+	}
+	
+	private var sortByOldest: NSSortDescriptor {
+		NSSortDescriptor(key: "timestamp", ascending: true)
+	}
+	
+	// MARK: - Plant functions
+	
+	func requestPlants() -> NSFetchRequest<Plant> {
 		let request = NSFetchRequest<Plant>(entityName: "Plant")
 		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
 		request.sortDescriptors = [sortDescriptor]
@@ -66,13 +75,12 @@ class CoreDataManager {
 		save()
 	}
 	
-	// note functions
+	// MARK: - Note functions
 	
 	/// returns a fetch request for either all notes or notes of a specified plant
 	func requestNotes(for plant: Plant? = nil) -> NSFetchRequest<Note> {
 		let request = NSFetchRequest<Note>(entityName: "Note")
-		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
-		request.sortDescriptors = [sortDescriptor]
+		request.sortDescriptors = [sortByNewest]
 		
 		if let plant = plant {
 			request.predicate = NSPredicate(format: "plant == %@", plant)
@@ -80,24 +88,6 @@ class CoreDataManager {
 		
 		return request
 	}
-	
-//	func requestNotes(for plant: Plant) -> NSFetchRequest<Note> {
-//		let request = NSFetchRequest<Note>(entityName: "Note")
-//		request.predicate = NSPredicate(format: "plant == %@", plant)
-//		
-//		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
-//		request.sortDescriptors = [sortDescriptor]
-//		
-//		return request
-//	}
-//	
-//	func requestAllNotes() -> NSFetchRequest<Note> {
-//		let request = NSFetchRequest<Note>(entityName: "Note")
-//		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
-//		request.sortDescriptors = [sortDescriptor]
-//		
-//		return request
-//	}
 	
 	func addNote(plant: Plant, title: String, body: String) {
 		let newNote = Note(context: context)
@@ -115,22 +105,27 @@ class CoreDataManager {
 		save()
 	}
 	
-	// event functions
-	func requestEvents(for plant: Plant) -> NSFetchRequest<Event> {
+	// MARK: - Event functions
+	
+	/// returns a fetch request for either all events or events of a specified plant
+	func requestEvents(for plant: Plant? = nil) -> NSFetchRequest<Event> {
 		let request = NSFetchRequest<Event>(entityName: "Event")
-		request.predicate = NSPredicate(format: "plant == %@", plant)
+		request.sortDescriptors = [sortByNewest]
 		
-		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
-		request.sortDescriptors = [sortDescriptor]
+		if let plant = plant {
+			request.predicate = NSPredicate(format: "plant == %@", plant)
+		}
 		
 		return request
 	}
 	
-	func requestAllEvents() -> NSFetchRequest<Event> {
-		let request = NSFetchRequest<Event>(entityName: "Event")
-		let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
-		request.sortDescriptors = [sortDescriptor]
+	func addEvent(plant: Plant, previousStage: String, newStage: String) {
+		let newEvent = Event(context: context)
+		newEvent.plant = plant
+		newEvent.id = UUID()
+		newEvent.timestamp = Date()
+		newEvent.title = "\(previousStage) to \(newStage)"
 		
-		return request
+		save()
 	}
 }
