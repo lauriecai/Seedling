@@ -1,5 +1,5 @@
 //
-//  PlantRowView.swift
+//  PlantCardView.swift
 //  Seedling
 //
 //  Created by Laurie Cai on 11/28/23.
