@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
 	}
 	
 	func fetchPlants() {
-		let request = manager.requestAllPlants()
+		let request = manager.requestPlants()
 		
 		do {
 			plants = try manager.context.fetch(request)

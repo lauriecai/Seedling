@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D30CE7BC2BA4D2EE00B28F67 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CE7BA2BA4D2EE00B28F67 /* Event+CoreDataClass.swift */; };
 		D30CE7BD2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */; };
+		D30CE7C42BA4DD9A00B28F67 /* EventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30CE7C32BA4DD9A00B28F67 /* EventCardView.swift */; };
 		D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */; };
 		D31FBCF62B8D199200C10F9D /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF52B8D199200C10F9D /* TextInput.swift */; };
 		D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */; };
@@ -21,7 +22,7 @@
 		D3385B5F2B165E9D0055234B /* Handjet-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B5B2B165E9D0055234B /* Handjet-ExtraBold.ttf */; };
 		D3385B6B2B16DEC80055234B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B6A2B16DEC80055234B /* Font.swift */; };
 		D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B6C2B16EB1F0055234B /* HomeView.swift */; };
-		D3385B732B16F0420055234B /* PlantRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B722B16F0420055234B /* PlantRowView.swift */; };
+		D3385B732B16F0420055234B /* PlantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B722B16F0420055234B /* PlantCardView.swift */; };
 		D338A1E02B71B98400E3676E /* NavigationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338A1DF2B71B98400E3676E /* NavigationTab.swift */; };
 		D338A1E42B71D83300E3676E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338A1E32B71D83300E3676E /* Date.swift */; };
 		D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58252B156DD100E541E4 /* SeedlingApp.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		D30CE7BA2BA4D2EE00B28F67 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D30CE7C32BA4DD9A00B28F67 /* EventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardView.swift; sourceTree = "<group>"; };
 		D31FBCF32B86B8C900C10F9D /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		D31FBCF52B8D199200C10F9D /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantEnums.swift; sourceTree = "<group>"; };
@@ -68,7 +70,7 @@
 		D3385B612B165ECE0055234B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3385B6A2B16DEC80055234B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D3385B6C2B16EB1F0055234B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		D3385B722B16F0420055234B /* PlantRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRowView.swift; sourceTree = "<group>"; };
+		D3385B722B16F0420055234B /* PlantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCardView.swift; sourceTree = "<group>"; };
 		D338A1DF2B71B98400E3676E /* NavigationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTab.swift; sourceTree = "<group>"; };
 		D338A1E32B71D83300E3676E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D36D58222B156DD100E541E4 /* Seedling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seedling.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,31 @@
 			name = Event;
 			sourceTree = "<group>";
 		};
+		D30CE7C12BA4DAB600B28F67 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				D3EFDE532B8298D900A6D22C /* NoteCardView.swift */,
+				D3385B722B16F0420055234B /* PlantCardView.swift */,
+				D30CE7C32BA4DD9A00B28F67 /* EventCardView.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		D30CE7C22BA4DB0900B28F67 /* Foundational */ = {
+			isa = PBXGroup;
+			children = (
+				D3EFDE0A2B77E74D00A6D22C /* ButtonCircle.swift */,
+				D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */,
+				D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */,
+				D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */,
+				D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */,
+				D338A1DF2B71B98400E3676E /* NavigationTab.swift */,
+				D31FBCF52B8D199200C10F9D /* TextInput.swift */,
+				D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */,
+			);
+			path = Foundational;
+			sourceTree = "<group>";
+		};
 		D3385B442B164C3D0055234B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +223,6 @@
 			children = (
 				D3385B6C2B16EB1F0055234B /* HomeView.swift */,
 				D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */,
-				D3385B722B16F0420055234B /* PlantRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,14 +230,8 @@
 		D338A1DE2B71B95600E3676E /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				D3EFDE0A2B77E74D00A6D22C /* ButtonCircle.swift */,
-				D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */,
-				D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */,
-				D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */,
-				D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */,
-				D338A1DF2B71B98400E3676E /* NavigationTab.swift */,
-				D31FBCF52B8D199200C10F9D /* TextInput.swift */,
-				D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */,
+				D30CE7C22BA4DB0900B28F67 /* Foundational */,
+				D30CE7C12BA4DAB600B28F67 /* Feature */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -349,7 +369,6 @@
 			children = (
 				D3EFDE112B79387100A6D22C /* DetailView.swift */,
 				D3EFDE512B82973F00A6D22C /* AddNoteView.swift */,
-				D3EFDE532B8298D900A6D22C /* NoteCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -454,7 +473,7 @@
 				D3EA61C12B8FEA69002676F4 /* TextEditorInput.swift in Sources */,
 				D3EFDE122B79387100A6D22C /* DetailView.swift in Sources */,
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
-				D3385B732B16F0420055234B /* PlantRowView.swift in Sources */,
+				D3385B732B16F0420055234B /* PlantCardView.swift in Sources */,
 				D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */,
 				D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */,
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
@@ -467,6 +486,7 @@
 				D3B4117D2B979FD400CD1F41 /* TasksView.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
+				D30CE7C42BA4DD9A00B28F67 /* EventCardView.swift in Sources */,
 				D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */,
 				D30CE7BC2BA4D2EE00B28F67 /* Event+CoreDataClass.swift in Sources */,
 				D30CE7BD2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift in Sources */,

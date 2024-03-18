@@ -31,7 +31,7 @@ class JournalViewModel: ObservableObject {
 	}
 	
 	func fetchAllPlants() {
-		let request = manager.requestAllPlants()
+		let request = manager.requestPlants()
 		
 		do {
 			allPlants = try manager.context.fetch(request)

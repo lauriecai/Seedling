@@ -133,7 +133,7 @@ extension HomeView {
 							.padding()
 					}
 					
-					PlantRowView(plant: plant)
+					PlantCardView(plant: plant)
 						.offset(x: CGFloat(plant.offset))
 						.gesture(
 							DragGesture()
