@@ -13,7 +13,6 @@ struct ButtonCircle: View {
 	
 	var body: some View {
 		Image(icon)
-			.foregroundStyle(Color.black)
 			.frame(width: 65, height: 65)
 			.background(Color.theme.accentGreen)
 			.clipShape(Circle())
