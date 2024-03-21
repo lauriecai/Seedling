@@ -12,9 +12,10 @@ struct ButtonPillRow<T>: View where T: Hashable & RawRepresentable, T.RawValue =
 	let rowLabel: String
 	let items: [T]
 	
-	@State private var selectedIndex: Int = 0
+//	@State private var selectedIndex: Int = 0
 	
 	@Binding var selectedItem: T
+	@Binding var selectedIndex: Int
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 8) {
@@ -38,5 +39,5 @@ struct ButtonPillRow<T>: View where T: Hashable & RawRepresentable, T.RawValue =
 }
 
 #Preview {
-	ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: .constant(.seed))
+	ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: .constant(.seed), selectedIndex: .constant(0))
 }

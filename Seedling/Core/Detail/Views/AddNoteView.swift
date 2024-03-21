@@ -17,8 +17,22 @@ struct AddNoteView: View {
 	
 	@State private var title: String = ""
 	@State private var bodyText: String = ""
+	@State private var stage: PlantStage
+	@State private var selectedIndex: Int
 	
 	@FocusState private var keyboardFocused: Bool
+	
+	init(viewModel: DetailViewModel) {
+		print("-----\nInitializing AddNoteView for \(viewModel.plant.wrappedName)")
+		
+		self.viewModel = viewModel
+		
+		_stage = State(wrappedValue: PlantStage(rawValue: viewModel.plant.wrappedStage)!)
+		
+		_selectedIndex = State(wrappedValue: PlantStage.allCases.firstIndex(of: PlantStage(rawValue: viewModel.plant.wrappedStage)!)!)
+		
+		print("AddNoteView initialized!")
+	}
 	
     var body: some View {
 		NavigationStack {
@@ -33,6 +47,7 @@ struct AddNoteView: View {
 							.focused($keyboardFocused)
 							.onAppear { keyboardFocused.toggle() }
 						noteBodyInput
+						plantStageSelection
 					}
 					.padding()
 				}
@@ -53,7 +68,7 @@ struct AddNoteView: View {
 extension AddNoteView {
 	
 	private var notePrompt: some View {
-		Text("How's your \(viewModel.plant.wrappedFullNameSentence.lowercased()) doing today?")
+		Text("How's your \(viewModel.plant.wrappedFullNameSentence.lowercased())?")
 			.font(.handjet(.extraBold, size: 26))
 			.foregroundStyle(Color.theme.textPrimary)
 			.frame(maxWidth: .infinity, alignment: .leading)
@@ -65,6 +80,16 @@ extension AddNoteView {
 	
 	private var noteBodyInput: some View {
 		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", text: $bodyText)
+	}
+	
+	private var plantStageSelection: some View {
+		VStack(alignment: .leading, spacing: 10) {
+			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $stage, selectedIndex: $selectedIndex)
+			
+			Text(stage.definition)
+				.font(.handjet(.medium, size: 18))
+				.foregroundStyle(Color.theme.textSecondary)
+		}
 	}
 	
 	private var addNoteButton: some View {

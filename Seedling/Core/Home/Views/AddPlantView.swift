@@ -17,8 +17,12 @@ struct AddPlantView: View {
 	
 	@State private var name = ""
 	@State private var variety = ""
+	
 	@State private var stage: PlantStage = .seed
+	@State private var selectedStageIndex: Int = 0
+	
 	@State private var type: PlantType = .vegetable
+	@State private var selectedTypeIndex: Int = 0
 	
 	@FocusState private var keyboardFocused: Bool
 	
@@ -70,7 +74,7 @@ extension AddPlantView {
 	
 	private var plantStageSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $stage)
+			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $stage, selectedIndex: $selectedStageIndex)
 			
 			Text(stage.definition)
 				.font(.handjet(.medium, size: 18))
@@ -80,7 +84,7 @@ extension AddPlantView {
 	
 	private var plantTypeSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, selectedItem: $type)
+			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, selectedItem: $type, selectedIndex: $selectedTypeIndex)
 		}
 	}
 	
