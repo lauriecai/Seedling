@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+struct AddNoteLoadingView: View {
+	
+	let viewModel: DetailViewModel
+	
+	var body: some View {
+		AddNoteView(viewModel: viewModel)
+	}
+}
+
 struct AddNoteView: View {
 	
 	let dataManager = CoreDataManager.shared
@@ -60,7 +69,6 @@ struct AddNoteView: View {
 				ToolbarItem(placement: .topBarTrailing) { addNoteButton }
 			}
 			.keyboardType(.default)
-			.autocorrectionDisabled()
 		}
     }
 }

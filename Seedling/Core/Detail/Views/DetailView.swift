@@ -29,8 +29,10 @@ struct DetailView: View {
 	@State private var showActionSheet: Bool = false
 	@State private var selectedNote: Note? = nil
 	
+	@State private var showingAddNoteLoadingView: Bool = false
+	
 	init(plant: Plant) {
-		print("Initializing DetailView for \(plant.wrappedName)...")
+		print("-----\nInitializing DetailView for \(plant.wrappedName)...")
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
 		print("DetailView initialized for \(plant.wrappedName)!")
 	}
@@ -66,8 +68,15 @@ struct DetailView: View {
 				]
 			)
 		}
+		.navigationDestination(isPresented: $showingAddNoteLoadingView) {
+			if showingAddNoteLoadingView {
+				AddNoteLoadingView(viewModel: viewModel)
+			}
+		}
     }
 }
+
+// MARK: - UI
 
 extension DetailView {
 	
@@ -81,9 +90,8 @@ extension DetailView {
 	}
 	
 	private var addNoteButton: some View {
-		NavigationLink(destination: AddNoteView(viewModel: viewModel)) {
-			ButtonCircle(icon: "icon-plus")
-		}
+		ButtonCircle(icon: "icon-plus")
+			.onTapGesture { showingAddNoteLoadingView.toggle() }
 	}
 	
 	private var backButton: some View {

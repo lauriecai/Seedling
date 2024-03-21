@@ -18,7 +18,7 @@ struct HomeView: View {
 	@State private var showingAddPlantView = false
 	
 	init() {
-		print("Initializing HomeView...")
+		print("-----\nInitializing HomeView...")
 		print("HomeView initialized!")
 	}
 	
@@ -66,10 +66,12 @@ struct HomeView: View {
 		.environmentObject(HomeViewModel())
 }
 
-// MARK: - Condensed UI
+// MARK: - UI
+
 extension HomeView {
 	
 /// ``weather``
+	
 	private var dateHeader: some View {
 		Text(Date().asDayAndDate())
 			.font(.handjet(.extraBold, size: 32))
@@ -113,6 +115,7 @@ extension HomeView {
 	}
 	
 /// ``plants list``
+	
 	private var plantsList: some View {
 		ScrollView {
 			ForEach(viewModel.plants) { plant in
@@ -152,6 +155,7 @@ extension HomeView {
 	}
 	
 /// ``actions``
+	
 	private var addPlantButton: some View {
 		ButtonCircle(icon: "icon-plus")
 			.frame(width: 65, height: 65)
@@ -160,15 +164,18 @@ extension HomeView {
 }
 
 // MARK: - UI Functions
+
 extension HomeView {
 	
 /// ``segueway into detail view``
+	
 	private func segue(plant: Plant) {
 		selectedPlant = plant
 		showingDetailView.toggle()
 	}
 	
 /// ``card drag behavior``
+	
 	private func onDragChange(plant: Plant, value: DragGesture.Value) {
 		if value.translation.width < 0 {
 			DispatchQueue.main.async {
