@@ -35,6 +35,22 @@ enum PlantStage: String, CaseIterable, RawRepresentable {
 		case .harvested: "The act of gathering and collecting mature crops or plants."
 		}
 	}
+	
+	var update: String {
+		switch self {
+		case .seed: ""
+		case .germination: "germinated."
+		case .seedling: "has become a seedling."
+		case .bulb: ""
+		case .transplant: "has been transplanted."
+		case .vegetativeGrowth: "has started developing leaves."
+		case .flowering: "has begun flowering."
+		case .pollination: "is undergoing pollination."
+		case .fruitFormation: "is going through fruit formation."
+		case .vegetableFormation: "is going through vegetable formation."
+		case .harvested: "has been harvested!"
+		}
+	}
 }
 
 enum PlantType: String, CaseIterable {
