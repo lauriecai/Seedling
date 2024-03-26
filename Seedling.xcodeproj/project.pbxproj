@@ -115,34 +115,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D30CE7BE2BA4D31200B28F67 /* Plant */ = {
-			isa = PBXGroup;
-			children = (
-				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
-				D3EFDE4B2B7EB66B00A6D22C /* Plant+CoreDataClass.swift */,
-				D3EFDE4C2B7EB66B00A6D22C /* Plant+CoreDataProperties.swift */,
-			);
-			name = Plant;
-			sourceTree = "<group>";
-		};
-		D30CE7BF2BA4D32100B28F67 /* Note */ = {
-			isa = PBXGroup;
-			children = (
-				D3EFDE492B7EB66B00A6D22C /* Note+CoreDataClass.swift */,
-				D3EFDE4A2B7EB66B00A6D22C /* Note+CoreDataProperties.swift */,
-			);
-			name = Note;
-			sourceTree = "<group>";
-		};
-		D30CE7C02BA4D32700B28F67 /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				D30CE7BA2BA4D2EE00B28F67 /* Event+CoreDataClass.swift */,
-				D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */,
-			);
-			name = Event;
-			sourceTree = "<group>";
-		};
 		D30CE7C12BA4DAB600B28F67 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,9 +307,13 @@
 			isa = PBXGroup;
 			children = (
 				D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */,
-				D30CE7C02BA4D32700B28F67 /* Event */,
-				D30CE7BF2BA4D32100B28F67 /* Note */,
-				D30CE7BE2BA4D31200B28F67 /* Plant */,
+				D30CE7BA2BA4D2EE00B28F67 /* Event+CoreDataClass.swift */,
+				D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */,
+				D3EFDE492B7EB66B00A6D22C /* Note+CoreDataClass.swift */,
+				D3EFDE4A2B7EB66B00A6D22C /* Note+CoreDataProperties.swift */,
+				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
+				D3EFDE4B2B7EB66B00A6D22C /* Plant+CoreDataClass.swift */,
+				D3EFDE4C2B7EB66B00A6D22C /* Plant+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

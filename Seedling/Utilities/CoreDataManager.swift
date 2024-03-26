@@ -27,7 +27,10 @@ class CoreDataManager {
 		context = container.viewContext
 	}
 	
-	func save() {
+// 	MARK: - Save function
+	
+	/// Saves contextual working changes to Core Data
+	private func save() {
 		do {
 			try context.save()
 		} catch let error {
@@ -35,24 +38,34 @@ class CoreDataManager {
 		}
 	}
 	
+// 	MARK: - Private variables
+	
+	/// Returns an NSSortDescriptor specifying sort by newest first
 	private var sortByNewest: NSSortDescriptor {
 		NSSortDescriptor(key: "timestamp", ascending: false)
 	}
 	
+	/// Returns an NSSortDescriptor specifying sort by oldest first
 	private var sortByOldest: NSSortDescriptor {
 		NSSortDescriptor(key: "timestamp", ascending: true)
 	}
 	
-	// MARK: - Plant functions
+	/// Returns an NSSortDescriptor specifying sort by alphabetical order
+	private var sortByName: NSSortDescriptor {
+		NSSortDescriptor(key: "name", ascending: true)
+	}
 	
+// 	MARK: - Plant functions
+	
+	/// Returns an NSFetchRequest for plants with alphabetical sorting
 	func requestPlants() -> NSFetchRequest<Plant> {
 		let request = NSFetchRequest<Plant>(entityName: "Plant")
-		let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-		request.sortDescriptors = [sortDescriptor]
+		request.sortDescriptors = [sortByName]
 		
 		return request
 	}
 	
+	/// Creates new plant and saves to Core Data
 	func addPlant(type: String, name: String, variety: String, stage: String) {
 		let newPlant = Plant(context: context)
 		newPlant.id = UUID()
@@ -65,11 +78,13 @@ class CoreDataManager {
 		save()
 	}
 	
+	/// Deletes specified plant from Core Data
 	func deletePlant(plant: Plant) {
 		context.delete(plant)
 		save()
 	}
 	
+	/// Resets plant card offsets
 	func resetOffsets(plant: Plant) {
 		plant.offset = 0
 		save()
