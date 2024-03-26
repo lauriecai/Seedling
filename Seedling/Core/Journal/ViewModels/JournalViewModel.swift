@@ -12,38 +12,65 @@ class JournalViewModel: ObservableObject {
 	
 	let manager = CoreDataManager.shared
 	
-	@Published var allPlants: [Plant] = []
-	@Published var allNotes: [Note] = []
+	@Published var plants: [Plant] = []
+	@Published var notes: [Note] = []
 	
 	init() {
-		fetchAllNotes()
-		fetchAllPlants()
+		fetchPlantsAndNotes()
 	}
 	
-	func fetchAllNotes() {
-		let request = manager.requestNotes()
+	private func fetchPlantsAndNotes() {
+		fetchPlants()
+		fetchNotes()
+	}
+	
+//	MARK: - Plant variables
+	
+	/// Returns an array of plant names
+	var plantNames: [String] {
+		var names: [String] = []
+		for plant in plants { names.append(plant.wrappedFullNameLabel) }
 		
-		do {
-			allNotes = try manager.context.fetch(request)
-		} catch let error {
-			print("Error fetching notes from Core Data. \(error)")
-		}
+		return names
 	}
 	
-	func fetchAllPlants() {
+//	MARK: - Plant functions
+//	Data needs to be refetched every time a change has been saved to Core Data
+	
+	/// Fetches the most up-to-date plants from Core Data
+	func fetchPlants() {
 		let request = manager.requestPlants()
 		
 		do {
-			allPlants = try manager.context.fetch(request)
+			plants = try manager.context.fetch(request)
 		} catch let error {
 			print("Error fetching plants from Core Data. \(error)")
 		}
 	}
 	
-	func deleteNote(note: Note) {
-		if let savedNote = allNotes.first(where: { $0.id == note.id }) {
-			manager.deleteNote(note: savedNote)
-			fetchAllNotes()
+//	MARK: - Note functions
+//	Data needs to be refetched every time a change has been saved to Core Data
+	
+	/// Fetches the most up-to-date notes for a specified plant from Core Data
+	func fetchNotes() {
+		let request = manager.requestNotes()
+		
+		do {
+			notes = try manager.context.fetch(request)
+		} catch let error {
+			print("Error fetching notes from Core Data. \(error)")
 		}
+	}
+	
+	/// Creates a new note associated with a specific plant and saves to Core Data, then refreshes the notes array
+	func addNote(for plant: Plant, title: String, body: String) {
+		manager.addNote(for: plant, title: title, body: body)
+		fetchNotes()
+	}
+	
+	/// Deletes a note from Core Data, then fetches notes for a specific plant
+	func deleteNote(note: Note) {
+		manager.deleteNote(note: note)
+		fetchNotes()
 	}
 }

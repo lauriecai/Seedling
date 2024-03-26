@@ -19,6 +19,10 @@ class DetailViewModel: ObservableObject {
 		self.plant = plant
 	}
 	
+//	MARK: - Note functions
+//	Data needs to be refetched every time a change has been saved to Core Data
+	
+	/// Fetches the most up-to-date notes for a specified plant from Core Data
 	func fetchNotes(for plant: Plant) {
 		let request = manager.requestNotes(for: plant)
 		
@@ -29,9 +33,15 @@ class DetailViewModel: ObservableObject {
 		}
 	}
 	
+	/// Creates a new note associated with a specific plant and saves to Core Data, then refreshes the notes array
+	func addNote(for plant: Plant, title: String, body: String) {
+		manager.addNote(for: plant, title: title, body: body)
+		fetchNotes(for: plant)
+	}
+	
+	/// Deletes a note from Core Data, then fetches notes for a specific plant
 	func deleteNote(note: Note) {
-		if let savedNote = notes.first(where: { $0.id == note.id }) {
-			manager.deleteNote(note: savedNote)
-		}
+		manager.deleteNote(note: note)
+		fetchNotes(for: plant)
 	}
 }

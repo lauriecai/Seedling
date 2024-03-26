@@ -14,10 +14,6 @@ class HomeViewModel: ObservableObject {
 	
 	@Published var plants: [Plant] = []
 	
-	init() {
-		fetchPlants()
-	}
-	
 //	MARK: - Plant functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	

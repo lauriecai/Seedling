@@ -18,8 +18,6 @@ struct AddNoteLoadingView: View {
 
 struct AddNoteView: View {
 	
-	let dataManager = CoreDataManager.shared
-	
 	@ObservedObject var viewModel: DetailViewModel
 	
 	@Environment(\.dismiss) var dismiss
@@ -102,11 +100,7 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
-			dataManager.addNote(
-				plant: viewModel.plant,
-				title: title,
-				body: bodyText
-			)
+			viewModel.addNote(for: viewModel.plant, title: title, body: bodyText)
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))

@@ -51,7 +51,9 @@ struct DetailView: View {
 		.toolbar {
 			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
-		.onAppear { viewModel.fetchNotes(for: viewModel.plant) }
+		.onAppear {
+			viewModel.fetchNotes(for: viewModel.plant)
+		}
 		.actionSheet(isPresented: $showActionSheet) {
 			ActionSheet(
 				title: Text("Note options"),

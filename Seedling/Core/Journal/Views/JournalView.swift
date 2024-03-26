@@ -21,14 +21,14 @@ struct JournalView: View {
 			
 			notesList
 			
-			if !viewModel.allPlants.isEmpty {
+			if !viewModel.plants.isEmpty {
 				addNoteButton
 					.padding(.trailing, 20)
 					.padding(.bottom, 25)
 			}
 		}
 		.onAppear {
-			viewModel.fetchAllNotes()
+			viewModel.fetchNotes()
 		}
 		.actionSheet(isPresented: $showActionSheet) {
 			ActionSheet(
@@ -57,7 +57,7 @@ extension JournalView {
 	private var notesList: some View {
 		ScrollView {
 			VStack(spacing: 10) {
-				ForEach(viewModel.allNotes) { note in
+				ForEach(viewModel.notes) { note in
 					NoteCardView(note: note, showPlantTag: true, showActionSheet: $showActionSheet, showActionForNote: $selectedNote)
 				}
 			}
@@ -66,7 +66,7 @@ extension JournalView {
 	}
 	
 	private var addNoteButton: some View {
-		NavigationLink(destination: AddGeneralNoteView(selectedIndex: 0)) {
+		NavigationLink(destination: AddGeneralNoteView(viewModel: viewModel, selectedIndex: 0)) {
 			ButtonCircle(icon: "icon-plus")
 		}
 	}
