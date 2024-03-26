@@ -51,12 +51,4 @@ class HomeViewModel: ObservableObject {
 		manager.deletePlant(plant: plant)
 		fetchPlants()
 	}
-	
-	/// Resets plant card offsets, then refreshes the plants array
-	func resetOffsets() {
-		for plant in plants {
-			manager.resetOffsets(plant: plant)
-		}
-		fetchPlants()
-	}
 }

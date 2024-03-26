@@ -37,20 +37,6 @@ struct HomeView: View {
 				.padding(.trailing, 20)
 				.padding(.bottom, 25)
 		}
-		.gesture(
-			TapGesture().onEnded({ _ in
-				withAnimation(Animation.spring(Spring(duration: 0.2))) {
-					viewModel.resetOffsets()
-				}
-			})
-		)
-		.gesture(
-			DragGesture().onChanged({ _ in
-				withAnimation(Animation.spring(Spring(duration: 0.2))) {
-					viewModel.resetOffsets()
-				}
-			})
-		)
 		.navigationDestination(isPresented: $showingDetailView) {
 			DetailLoadingView(plant: $selectedPlant)
 		}
@@ -119,37 +105,8 @@ extension HomeView {
 	private var plantsList: some View {
 		ScrollView {
 			ForEach(viewModel.plants) { plant in
-				ZStack {
-					Color.theme.accentRed
-						.clipShape(RoundedRectangle(cornerRadius: 8))
-						.onTapGesture {
-							withAnimation(Animation.easeInOut(duration: 0.4)) {
-								viewModel.deletePlant(plant: plant)
-							}
-						}
-					
-					HStack {
-						Spacer()
-						Text("Delete")
-							.font(.handjet(.bold, size: 18))
-							.foregroundStyle(Color.white)
-							.padding()
-					}
-					
-					PlantCardView(plant: plant)
-						.offset(x: CGFloat(plant.offset))
-						.gesture(
-							DragGesture()
-								.updating($dragDistance, body: { value, state, _ in
-									state = value.translation
-									onDragChange(plant: plant, value: value)
-								})
-								.onEnded({ value in
-									onDragEnd(plant: plant, value: value)
-								})
-						)
-						.onTapGesture { segue(plant: plant) }
-				}
+				PlantCardView(plant: plant)
+					.onTapGesture { segue(plant: plant) }
 			}
 		}
 	}
