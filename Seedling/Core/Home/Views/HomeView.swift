@@ -173,33 +173,4 @@ extension HomeView {
 		selectedPlant = plant
 		showingDetailView.toggle()
 	}
-	
-/// ``card drag behavior``
-	
-	private func onDragChange(plant: Plant, value: DragGesture.Value) {
-		if value.translation.width < 0 {
-			DispatchQueue.main.async {
-				withAnimation(Animation.spring(Spring(duration: 0.2))) {
-					viewModel.resetOffsets()
-					plant.offset = Float(value.translation.width)
-				}
-				
-				viewModel.save()
-			}
-		}
-	}
-	
-	private func onDragEnd(plant: Plant, value: DragGesture.Value) {
-		if -value.translation.width >= 70 {
-			withAnimation(Animation.spring) {
-				plant.offset = -70
-				viewModel.save()
-			}
-		} else {
-			withAnimation(Animation.spring(Spring(duration: 0.2))) {
-				plant.offset = 0
-				viewModel.save()
-			}
-		}
-	}
 }

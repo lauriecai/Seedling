@@ -26,19 +26,7 @@ class CoreDataManager {
 		}
 		context = container.viewContext
 	}
-	
-// 	MARK: - Save function
-	
-	/// Saves contextual working changes to Core Data
-	private func save() {
-		do {
-			try context.save()
-		} catch let error {
-			print("Error saving to Core Data. \(error)")
-		}
-	}
-	
-// 	MARK: - Private variables
+// 	MARK: - Sort variables
 	
 	/// Returns an NSSortDescriptor specifying sort by newest first
 	private var sortByNewest: NSSortDescriptor {
@@ -53,6 +41,17 @@ class CoreDataManager {
 	/// Returns an NSSortDescriptor specifying sort by alphabetical order
 	private var sortByName: NSSortDescriptor {
 		NSSortDescriptor(key: "name", ascending: true)
+	}
+	
+// 	MARK: - Save function
+	
+	/// Saves contextual working changes to Core Data
+	func save() {
+		do {
+			try context.save()
+		} catch let error {
+			print("Error saving to Core Data. \(error)")
+		}
 	}
 	
 // 	MARK: - Plant functions
@@ -73,7 +72,6 @@ class CoreDataManager {
 		newPlant.name = name
 		newPlant.variety = variety
 		newPlant.stage = stage
-		newPlant.offset = 0
 		
 		save()
 	}
@@ -84,15 +82,9 @@ class CoreDataManager {
 		save()
 	}
 	
-	/// Resets plant card offsets
-	func resetOffsets(plant: Plant) {
-		plant.offset = 0
-		save()
-	}
+// 	MARK: - Note functions
 	
-	// MARK: - Note functions
-	
-	/// returns a fetch request for either all notes or notes of a specified plant
+	/// Returns an NSFetchRequest for either all notes or notes of a specified plant
 	func requestNotes(for plant: Plant? = nil) -> NSFetchRequest<Note> {
 		let request = NSFetchRequest<Note>(entityName: "Note")
 		request.sortDescriptors = [sortByNewest]
@@ -104,7 +96,8 @@ class CoreDataManager {
 		return request
 	}
 	
-	func addNote(plant: Plant, title: String, body: String) {
+	/// Creates a new note associated with a specific plant and saves to Core Data
+	func addNote(for plant: Plant, title: String, body: String) {
 		let newNote = Note(context: context)
 		newNote.plant = plant
 		newNote.id = UUID()
@@ -115,6 +108,7 @@ class CoreDataManager {
 		save()
 	}
 	
+	/// Deletes a specified note from Core Data
 	func deleteNote(note: Note) {
 		context.delete(note)
 		save()

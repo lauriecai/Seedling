@@ -22,7 +22,6 @@ extension Plant {
 	@NSManaged public var stage: String?
 	@NSManaged public var type: String?
     @NSManaged public var notes: NSSet?
-	@NSManaged public var offset: Float
 	
 	public var wrappedName: String {
 		name ?? ""

@@ -18,7 +18,7 @@ class HomeViewModel: ObservableObject {
 		fetchPlants()
 	}
 	
-//	MARK: - Data functions
+//	MARK: - Save function
 	
 	/// Saves contextual working changes to Core Data, then refreshes the plants array
 	func save() {
@@ -26,20 +26,10 @@ class HomeViewModel: ObservableObject {
 		fetchPlants()
 	}
 	
-//	MARK: - Plant variables
-	
-	/// Returns an array of plant names
-	var plantNames: [String] {
-		var names: [String] = []
-		for plant in plants { names.append(plant.wrappedFullNameLabel) }
-		
-		return names
-	}
-	
 //	MARK: - Plant functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
-	/// Fetches the most up-to-date data from Core Data
+	/// Fetches the most up-to-date plants from Core Data
 	func fetchPlants() {
 		let request = manager.requestPlants()
 		
