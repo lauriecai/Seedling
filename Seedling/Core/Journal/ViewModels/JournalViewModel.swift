@@ -28,10 +28,7 @@ class JournalViewModel: ObservableObject {
 	
 	/// Returns an array of plant names
 	var plantNames: [String] {
-		var names: [String] = []
-		for plant in plants { names.append(plant.wrappedFullNameLabel) }
-		
-		return names
+		plants.map { $0.wrappedFullNameLabel }
 	}
 	
 //	MARK: - Plant functions
