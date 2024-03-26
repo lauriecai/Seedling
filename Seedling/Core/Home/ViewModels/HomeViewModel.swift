@@ -18,14 +18,6 @@ class HomeViewModel: ObservableObject {
 		fetchPlants()
 	}
 	
-//	MARK: - Save function
-	
-	/// Saves contextual working changes to Core Data, then refreshes the plants array
-	func save() {
-		manager.save()
-		fetchPlants()
-	}
-	
 //	MARK: - Plant functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
