@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import SwiftUI
 
 class CoreDataManager {
 	
@@ -74,6 +75,14 @@ class CoreDataManager {
 		newPlant.stage = stage
 		
 		save()
+	}
+	
+	/// Updates specified plant with a new stage and saves to Core Data
+	func updatePlant(plant: Plant, newStage: String) {
+		print("-----\nIn CoreDataManager.updatePlant")
+		plant.stage = newStage
+		save()
+		print("CoreDataManager.updatePlant completed!")
 	}
 	
 	/// Deletes specified plant from Core Data

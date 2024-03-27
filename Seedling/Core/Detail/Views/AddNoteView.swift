@@ -26,6 +26,7 @@ struct AddNoteView: View {
 	@State private var bodyText: String = ""
 	@State private var stage: PlantStage
 	@State private var selectedIndex: Int
+	@State private var stageUpdated: Bool = false
 	
 	@FocusState private var keyboardFocused: Bool
 	
@@ -67,6 +68,7 @@ struct AddNoteView: View {
 				ToolbarItem(placement: .topBarTrailing) { addNoteButton }
 			}
 			.keyboardType(.default)
+			.onChange(of: stage) { stageUpdated.toggle() }
 		}
     }
 }
@@ -100,6 +102,10 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
+			if stageUpdated {
+				print("-----\nStage updated!")
+				viewModel.updatePlant(plant: viewModel.plant, newStage: stage)
+			}
 			viewModel.addNote(for: viewModel.plant, title: title, body: bodyText)
 			dismiss()
 		}

@@ -19,7 +19,14 @@ class DetailViewModel: ObservableObject {
 		self.plant = plant
 	}
 	
-//	MARK: - Note functions
+//	MARK: - Plant functions
+//	Data needs to be refetched every time a change has been saved to Core Data
+	
+	func updatePlant(plant: Plant, newStage: PlantStage) {
+		manager.updatePlant(plant: plant, newStage: newStage.rawValue)
+	}
+	
+	//	MARK: - Note functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
 	/// Fetches the most up-to-date notes for a specified plant from Core Data
