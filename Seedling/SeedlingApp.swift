@@ -15,10 +15,12 @@ struct SeedlingApp: App {
 	@State private var showLaunchView: Bool = true
 	
 	init() {
+		print("-----\nInitializing Seedling app")
 		UINavigationBar.appearance().titleTextAttributes = [
 			.foregroundColor: UIColor(Color.theme.textPrimary),
 			.font: UIFont(name: "Handjet-Bold", size: 24)!
 		]
+		print("Seedling app initialized!")
 	}
 	
     var body: some Scene {
