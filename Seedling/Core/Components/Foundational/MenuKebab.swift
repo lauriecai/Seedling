@@ -13,6 +13,8 @@ struct MenuKebab: View {
 			.font(.handjet(.bold, size: 20))
 			.foregroundStyle(Color.theme.textSecondary)
 			.rotationEffect(.degrees(-90))
+			.padding(.leading, 20)
+			.frame(maxHeight: .infinity)
     }
 }
 
