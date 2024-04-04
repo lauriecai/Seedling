@@ -14,6 +14,15 @@ class HomeViewModel: ObservableObject {
 	
 	@Published var plants: [Plant] = []
 	
+	init() {
+		print("-----\nInitializing HomeViewModel")
+		print("HomeViewModel initialized!")
+	}
+	
+	deinit {
+		print("-----\nDeinitializing HomeViewModel")
+	}
+	
 //	MARK: - Plant functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	

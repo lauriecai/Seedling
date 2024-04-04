@@ -14,6 +14,11 @@ struct JournalView: View {
 	@State private var showActionSheet: Bool = false
 	@State private var selectedNote: Note? = nil
 	
+	init() {
+		print("-----\nInitializing JournalView...")
+		print("JournalView initialized!")
+	}
+	
     var body: some View {
 		ZStack(alignment: .bottomTrailing) {
 			Color.theme.backgroundPrimary
@@ -66,7 +71,7 @@ extension JournalView {
 	}
 	
 	private var addNoteButton: some View {
-		NavigationLink(destination: AddGeneralNoteView(viewModel: viewModel, selectedIndex: 0)) {
+		NavigationLink(destination: AddGeneralNoteView(viewModel: viewModel)) {
 			ButtonCircle(icon: "icon-plus")
 		}
 	}

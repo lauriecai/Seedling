@@ -26,6 +26,11 @@ struct AddPlantView: View {
 	
 	@FocusState private var keyboardFocused: Bool
 	
+	init() {
+		print("-----\nInitializing AddPlantView...")
+		print("AddPlantView initialized!")
+	}
+	
     var body: some View {
 		NavigationStack {
 			ZStack {

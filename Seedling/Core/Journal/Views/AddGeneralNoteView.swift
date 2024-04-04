@@ -13,12 +13,18 @@ struct AddGeneralNoteView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
-	@State var selectedIndex: Int
+	@State var selectedIndex: Int = 0
 	
 	@State private var title: String = ""
 	@State private var bodyText: String = ""
 	
 	@FocusState private var keyboardFocused: Bool
+	
+	init(viewModel: JournalViewModel) {
+		print("-----\nInitializing AddGeneralNoteView...")
+		self.viewModel = viewModel
+		print("AddGeneralNoteView initialized!")
+	}
 	
     var body: some View {
 		NavigationStack {

@@ -16,7 +16,13 @@ class JournalViewModel: ObservableObject {
 	@Published var notes: [Note] = []
 	
 	init() {
+		print("-----\nInitializing JournalViewModel")
 		fetchPlantsAndNotes()
+		print("JournalViewModel initialized!")
+	}
+	
+	deinit {
+		print("-----\nDeinitializing JournalViewModel")
 	}
 	
 	private func fetchPlantsAndNotes() {
