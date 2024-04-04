@@ -14,6 +14,7 @@ class DetailViewModel: ObservableObject {
 	
 	@Published var plant: Plant
 	@Published var notes: [Note] = []
+	@Published var events: [Event] = []
 	
 	init(plant: Plant) {
 		print("-----\nInitializing DetailViewModel")
@@ -25,6 +26,13 @@ class DetailViewModel: ObservableObject {
 		print("-----\nDeinitializing DetailViewModel")
 	}
 	
+//	MARK: - Consolidated functions
+	
+	func fetchNotesAndEvents(for plant: Plant) {
+		fetchNotes(for: plant)
+		fetchEvents(for: plant)
+	}
+	
 //	MARK: - Plant functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
@@ -32,7 +40,7 @@ class DetailViewModel: ObservableObject {
 		manager.updatePlant(plant: plant, newStage: newStage.rawValue)
 	}
 	
-	//	MARK: - Note functions
+//	MARK: - Note functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
 	/// Fetches the most up-to-date notes for a specified plant from Core Data
@@ -42,7 +50,7 @@ class DetailViewModel: ObservableObject {
 		do {
 			notes = try manager.context.fetch(request)
 		} catch let error {
-			print("Error fetching plants from Core Data. \(error)")
+			print("Error fetching notes from Core Data. \(error)")
 		}
 	}
 	
@@ -56,5 +64,24 @@ class DetailViewModel: ObservableObject {
 	func deleteNote(note: Note) {
 		manager.deleteNote(note: note)
 		fetchNotes(for: plant)
+	}
+	
+//	MARK: - Event functions
+//	Data needs to be refetched every time a change has been saved to Core Data
+	
+	func fetchEvents(for plant: Plant) {
+		let request = manager.requestEvents(for: plant)
+		
+		do {
+			events = try manager.context.fetch(request)
+		} catch let error {
+			print("Error fetching events from Core Data. \(error)")
+		}
+	}
+	
+	/// Deletes an event from Core Data, then fetches events for a specific plant
+	func deleteEvent(event: Event) {
+		manager.deleteEvent(event: event)
+		fetchEvents(for: plant)
 	}
 }

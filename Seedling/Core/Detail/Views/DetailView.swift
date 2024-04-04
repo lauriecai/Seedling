@@ -26,8 +26,11 @@ struct DetailView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
-	@State private var showActionSheet: Bool = false
+	@State private var showNoteActionSheet: Bool = false
 	@State private var selectedNote: Note? = nil
+	
+	@State private var showEventActionSheet: Bool = false
+	@State private var selectedEvent: Event? = nil
 	
 	@State private var showingAddNoteLoadingView: Bool = false
 	
@@ -42,7 +45,12 @@ struct DetailView: View {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
-			notesList
+			ScrollView {
+				eventsList
+				notesList
+			}
+			.padding(.horizontal)
+			
 			addNoteButton
 				.padding(.trailing, 20)
 		}
@@ -52,9 +60,9 @@ struct DetailView: View {
 			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
 		.onAppear {
-			viewModel.fetchNotes(for: viewModel.plant)
+			viewModel.fetchNotesAndEvents(for: viewModel.plant)
 		}
-		.actionSheet(isPresented: $showActionSheet) {
+		.actionSheet(isPresented: $showNoteActionSheet) {
 			ActionSheet(
 				title: Text("Note options"),
 				buttons: [
@@ -63,6 +71,22 @@ struct DetailView: View {
 							withAnimation(Animation.easeInOut(duration: 0.4)) {
 								viewModel.deleteNote(note: selectedNote)
 								viewModel.fetchNotes(for: viewModel.plant)
+							}
+						}
+					},
+					.cancel()
+				]
+			)
+		}
+		.actionSheet(isPresented: $showEventActionSheet) {
+			ActionSheet(
+				title: Text("Event options"),
+				buttons: [
+					.destructive(Text("Delete event")) {
+						if let selectedEvent = selectedEvent {
+							withAnimation(Animation.easeInOut(duration: 0.4)) {
+								viewModel.deleteEvent(event: selectedEvent)
+								viewModel.fetchEvents(for: viewModel.plant)
 							}
 						}
 					},
@@ -82,13 +106,16 @@ struct DetailView: View {
 
 extension DetailView {
 	
-	private var notesList: some View {
-		ScrollView {
-			ForEach(viewModel.notes) { note in
-				NoteCardView(note: note, showPlantTag: false, showActionSheet: $showActionSheet, showActionForNote: $selectedNote)
-			}
+	private var eventsList: some View {
+		ForEach(viewModel.events) { event in
+			EventCardView(event: event, showActionSheet: $showEventActionSheet, showActionForEvent: $selectedEvent)
 		}
-		.frame(maxWidth: .infinity)
+	}
+	
+	private var notesList: some View {
+		ForEach(viewModel.notes) { note in
+			NoteCardView(note: note, showPlantTag: false, showActionSheet: $showNoteActionSheet, showActionForNote: $selectedNote)
+		}
 	}
 	
 	private var addNoteButton: some View {

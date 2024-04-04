@@ -20,8 +20,8 @@ struct NoteCardView: View {
 			VStack(alignment: .leading, spacing: 10) {
 				if showPlantTag { plantTag }
 				
-				if !note.wrappedTitle.isEmpty { titleText }
-				bodyText
+				if !note.wrappedTitle.isEmpty { noteTitle }
+				noteDescription
 				
 				HStack {
 					timestamp
@@ -32,6 +32,7 @@ struct NoteCardView: View {
 		}
 		.padding()
 		.background(Color.theme.backgroundLight)
+		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
@@ -47,25 +48,13 @@ extension NoteCardView {
 			.clipShape(RoundedRectangle(cornerRadius: 4))
 	}
 	
-	private var noteActions: some View {
-		Button {
-			showActionSheet = true
-			showActionForNote = note
-		} label: {
-			MenuKebab()
-				.padding(.top, 10)
-				.frame(maxHeight: .infinity, alignment: .top)
-				.opacity(0.7)
-		}
-	}
-	
-	private var titleText: some View {
+	private var noteTitle: some View {
 		Text(note.wrappedTitle)
 			.font(.handjet(.bold, size: 24))
 			.foregroundStyle(Color.theme.textPrimary)
 	}
 	
-	private var bodyText: some View {
+	private var noteDescription: some View {
 		Text(note.wrappedBody)
 			.font(.handjet(.medium, size: 20))
 			.foregroundStyle(Color.theme.textPrimary)
@@ -78,6 +67,18 @@ extension NoteCardView {
 				.foregroundStyle(Color.theme.textSecondary)
 			
 			Spacer()
+		}
+	}
+	
+	private var noteActions: some View {
+		Button {
+			showActionSheet = true
+			showActionForNote = note
+		} label: {
+			MenuKebab()
+				.padding(.top, 10)
+				.frame(maxHeight: .infinity, alignment: .top)
+				.opacity(0.7)
 		}
 	}
 }

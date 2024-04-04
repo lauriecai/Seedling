@@ -8,27 +8,56 @@
 import SwiftUI
 
 struct EventCardView: View {
+
+	let event: Event
 	
-	let previousStage: String
-	let newStage: String
+	@Binding var showActionSheet: Bool
+	@Binding var showActionForEvent: Event?
 	
     var body: some View {
-		HStack() {
-			Text(previousStage)
-				.fontWeight(.bold)
-			Text("to")
-			Text(newStage)
-				.fontWeight(.bold)
-			Spacer()
+		VStack(alignment: .leading, spacing: 5) {
+			eventTitle
+			
+			HStack {
+				timestamp
+				Spacer()
+				eventActions
+			}
 		}
 		.padding()
-		.frame(maxWidth: .infinity)
-		.background(Color.theme.backgroundDark)
-		.font(.handjet(.regular, size: 18))
-		.foregroundStyle(Color.theme.textLight)
+		.frame(maxWidth: .infinity, alignment: .leading)
+		.background(Color.theme.backgroundAccent)
+		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
-#Preview {
-	EventCardView(previousStage: "Seed", newStage: "Seedling")
+extension EventCardView {
+	
+	private var eventTitle: some View {
+		Text(event.wrappedTitle)
+			.font(.handjet(.bold, size: 20))
+			.foregroundStyle(Color.theme.textPrimary)
+	}
+	
+	private var timestamp: some View {
+		HStack {
+			Text(event.wrappedTimestamp.asDateAndTime())
+				.font(.handjet(.regular, size: 18))
+				.foregroundStyle(Color.theme.textSecondary)
+			
+			Spacer()
+		}
+	}
+	
+	private var eventActions: some View {
+		Button {
+			showActionSheet = true
+			showActionForEvent = event
+		} label: {
+			MenuKebab()
+				.padding(.top, 10)
+				.frame(maxHeight: .infinity, alignment: .top)
+				.opacity(0.7)
+		}
+	}
 }

@@ -66,7 +66,7 @@ class CoreDataManager {
 		return request
 	}
 	
-	/// Creates new plant and saves to Core Data
+	/// Creates new plant and an associated plant added event, then saves to Core Data
 	func addPlant(type: String, name: String, variety: String, stage: String) {
 		let newPlant = Plant(context: context)
 		newPlant.id = UUID()
@@ -75,13 +75,17 @@ class CoreDataManager {
 		newPlant.variety = variety
 		newPlant.stage = stage
 		
+		createPlantAddedEvent(for: newPlant)
+		
 		save()
 	}
 	
-	/// Updates specified plant with a new stage and saves to Core Data
+	/// Updates specified plant with a new stage and creates a plant stage updated event, then saves to Core Data
 	func updatePlant(plant: Plant, newStage: String) {
 		print("-----\nIn CoreDataManager.updatePlant")
 		plant.stage = newStage
+		createPlantUpdatedEvent(for: plant, newStage: newStage)
+		
 		save()
 		print("CoreDataManager.updatePlant completed!")
 	}
@@ -126,7 +130,7 @@ class CoreDataManager {
 	
 	// MARK: - Event functions
 	
-	/// returns a fetch request for either all events or events of a specified plant
+	/// Returns an  NSFetchRequest for either all events or events of a specified plant
 	func requestEvents(for plant: Plant? = nil) -> NSFetchRequest<Event> {
 		let request = NSFetchRequest<Event>(entityName: "Event")
 		request.sortDescriptors = [sortByNewest]
@@ -138,13 +142,30 @@ class CoreDataManager {
 		return request
 	}
 	
-	func addEvent(plant: Plant, previousStage: String, newStage: String) {
+	/// Creates a new event when a new plant is added
+	private func createPlantAddedEvent(for plant: Plant) {
 		let newEvent = Event(context: context)
 		newEvent.plant = plant
 		newEvent.id = UUID()
 		newEvent.timestamp = Date()
-		newEvent.title = "\(previousStage) to \(newStage)"
+		newEvent.title = "\(plant.wrappedFullNameSentence) has been added to the garden!"
 		
+		save()
+	}
+	
+	/// Creates a new event when an existing plant's stage is updated
+	private func createPlantUpdatedEvent(for plant: Plant, newStage: String) {
+		let newEvent = Event(context: context)
+		newEvent.plant = plant
+		newEvent.id = UUID()
+		newEvent.timestamp = Date()
+		newEvent.title = "Stage updated: \(newStage)"
+		
+		save()
+	}
+	
+	func deleteEvent(event: Event) {
+		context.delete(event)
 		save()
 	}
 }
