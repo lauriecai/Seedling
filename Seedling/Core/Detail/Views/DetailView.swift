@@ -42,7 +42,10 @@ struct DetailView: View {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
-			notesList
+			VStack {
+				Text(viewModel.plant.wrappedStage)
+				notesList
+			}
 			addNoteButton
 				.padding(.trailing, 20)
 		}

@@ -19,10 +19,12 @@ class HomeViewModel: ObservableObject {
 	
 	/// Fetches the most up-to-date plants from Core Data
 	func fetchPlants() {
+		print("-----\nIn HomeViewModel fetchPlants()")
 		let request = manager.requestPlants()
 		
 		do {
-			self.plants = try manager.context.fetch(request)
+			plants = try manager.context.fetch(request)
+			print("HomeViewModel fetchPlants() complete!")
 		} catch let error {
 			print("Error fetching plants from Core Data. \(error)")
 		}

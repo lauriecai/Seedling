@@ -16,7 +16,13 @@ class DetailViewModel: ObservableObject {
 	@Published var notes: [Note] = []
 	
 	init(plant: Plant) {
+		print("-----\nInitializing DetailViewModel")
 		self.plant = plant
+		print("DetailViewModel initialized!")
+	}
+	
+	deinit {
+		print("-----\nDeinitializing DetailViewModel")
 	}
 	
 //	MARK: - Plant functions

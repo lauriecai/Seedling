@@ -106,6 +106,7 @@ extension AddNoteView {
 				print("-----\nStage updated!")
 				viewModel.updatePlant(plant: viewModel.plant, newStage: stage)
 			}
+			
 			viewModel.addNote(for: viewModel.plant, title: title, body: bodyText)
 			dismiss()
 		}

@@ -12,8 +12,6 @@ struct ButtonPillRow<T>: View where T: Hashable & RawRepresentable, T.RawValue =
 	let rowLabel: String
 	let items: [T]
 	
-//	@State private var selectedIndex: Int = 0
-	
 	@Binding var selectedItem: T
 	@Binding var selectedIndex: Int
 	

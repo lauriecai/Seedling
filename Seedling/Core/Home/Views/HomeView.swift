@@ -11,11 +11,9 @@ struct HomeView: View {
 	
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
-	@GestureState private var dragDistance = CGSize.zero
-	
 	@State private var selectedPlant: Plant? = nil
-	@State private var showingDetailView = false
-	@State private var showingAddPlantView = false
+	@State private var showingDetailView: Bool = false
+	@State private var showingAddPlantView: Bool = false
 	
 	init() {
 		print("-----\nInitializing HomeView...")

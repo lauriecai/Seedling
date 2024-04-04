@@ -27,6 +27,7 @@ class CoreDataManager {
 		}
 		context = container.viewContext
 	}
+	
 // 	MARK: - Sort variables
 	
 	/// Returns an NSSortDescriptor specifying sort by newest first
