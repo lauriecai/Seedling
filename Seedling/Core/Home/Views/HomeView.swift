@@ -15,6 +15,8 @@ struct HomeView: View {
 	@State private var showingDetailView: Bool = false
 	@State private var showingAddPlantView: Bool = false
 	
+	@State private var showActionSheet: Bool = false
+	
 	init() {
 		print("-----\nInitializing HomeView...")
 		print("HomeView initialized!")
@@ -40,6 +42,20 @@ struct HomeView: View {
 		}
 		.sheet(isPresented: $showingAddPlantView) {
 			AddPlantView()
+		}
+		.actionSheet(isPresented: $showActionSheet) {
+			ActionSheet(title: Text("Plant options"),
+						buttons: [
+							.destructive(Text("Delete plant")) {
+								if let selectedPlant = selectedPlant {
+									withAnimation(Animation.easeInOut(duration: 0.4)) {
+										viewModel.deletePlant(plant: selectedPlant)
+										viewModel.fetchPlants()
+									}
+								}
+							},
+							.cancel()
+						])
 		}
 		.onAppear { viewModel.fetchPlants() }
     }
@@ -103,13 +119,11 @@ extension HomeView {
 	private var plantsList: some View {
 		ScrollView {
 			ForEach(viewModel.plants, id: \.self.customHash) { plant in
-				PlantCardView(plant: plant)
+				PlantCardView(plant: plant, showActionSheet: $showActionSheet, showActionForPlant: $selectedPlant)
 					.onTapGesture { segue(plant: plant) }
 			}
 		}
 	}
-	
-/// ``actions``
 	
 	private var addPlantButton: some View {
 		ButtonCircle(icon: "icon-plus")

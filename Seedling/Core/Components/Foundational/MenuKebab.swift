@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MenuKebab: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+		Image(systemName: "ellipsis")
+			.font(.handjet(.bold, size: 20))
+			.foregroundStyle(Color.theme.textSecondary)
     }
 }
 

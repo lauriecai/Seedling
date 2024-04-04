@@ -50,11 +50,7 @@ extension NoteCardView {
 		Button {
 			showActionSheet = true
 			showActionForNote = note
-		} label: {
-			Image(systemName: "ellipsis")
-				.font(.handjet(.bold, size: 20))
-				.foregroundStyle(Color.theme.textSecondary)
-		}
+		} label: { MenuKebab() }
 	}
 	
 	private var titleText: some View {
