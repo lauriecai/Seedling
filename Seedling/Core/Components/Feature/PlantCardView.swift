@@ -48,6 +48,8 @@ extension PlantCardView {
 			showActionForPlant = plant
 		} label: {
 			MenuKebab()
+				.frame(maxHeight: .infinity)
+				.rotationEffect(.degrees(-90))
 		}
 	}
 }

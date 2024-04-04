@@ -16,18 +16,19 @@ struct NoteCardView: View {
 	@Binding var showActionForNote: Note?
 	
     var body: some View {
-		VStack(alignment: .leading, spacing: 10) {
-			HStack {
+		HStack(alignment: .top) {
+			VStack(alignment: .leading, spacing: 10) {
 				if showPlantTag { plantTag }
-				Spacer()
-				noteActions
+				
+				if !note.wrappedTitle.isEmpty { titleText }
+				bodyText
+				
+				HStack {
+					timestamp
+					Spacer()
+					noteActions
+				}
 			}
-			
-			if !note.wrappedTitle.isEmpty { titleText }
-			
-			bodyText
-			
-			timestamp
 		}
 		.padding()
 		.background(Color.theme.backgroundLight)
@@ -50,7 +51,12 @@ extension NoteCardView {
 		Button {
 			showActionSheet = true
 			showActionForNote = note
-		} label: { MenuKebab() }
+		} label: {
+			MenuKebab()
+				.padding(.top, 10)
+				.frame(maxHeight: .infinity, alignment: .top)
+				.opacity(0.7)
+		}
 	}
 	
 	private var titleText: some View {
