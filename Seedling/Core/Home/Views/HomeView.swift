@@ -102,7 +102,7 @@ extension HomeView {
 	
 	private var plantsList: some View {
 		ScrollView {
-			ForEach(viewModel.plants) { plant in
+			ForEach(viewModel.plants, id: \.self.customHash) { plant in
 				PlantCardView(plant: plant)
 					.onTapGesture { segue(plant: plant) }
 			}

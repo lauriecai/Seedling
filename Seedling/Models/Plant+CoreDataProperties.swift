@@ -62,6 +62,14 @@ extension Plant {
 			$0.wrappedTimestamp > $1.wrappedTimestamp
 		}
 	}
+	
+	public var customHash: Int {
+		var hasher = Hasher()
+		hasher.combine(self.id)
+		hasher.combine(self.stage)
+		
+		return hasher.finalize()
+	}
 }
 
 // MARK: Generated accessors for notes
