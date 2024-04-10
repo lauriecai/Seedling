@@ -14,6 +14,12 @@ class HomeViewModel: ObservableObject {
 	
 	@Published var plants: [Plant] = []
 	
+	@Published var selectedPlant: Plant? = nil
+	@Published var showingDetailView: Bool = false
+	@Published var showingAddPlantView: Bool = false
+	
+	@Published var showActionSheet: Bool = false
+	
 	init() {
 		print("-----\nInitializing HomeViewModel")
 		print("HomeViewModel initialized!")

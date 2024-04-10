@@ -11,11 +11,11 @@ struct HomeView: View {
 	
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
-	@State private var selectedPlant: Plant? = nil
-	@State private var showingDetailView: Bool = false
-	@State private var showingAddPlantView: Bool = false
-	
-	@State private var showActionSheet: Bool = false
+//	@State private var selectedPlant: Plant? = nil
+//	@State private var showingDetailView: Bool = false
+//	@State private var showingAddPlantView: Bool = false
+//	
+//	@State private var showActionSheet: Bool = false
 	
 	init() {
 		print("-----\nInitializing HomeView...")
@@ -37,17 +37,17 @@ struct HomeView: View {
 				.padding(.trailing, 20)
 				.padding(.bottom, 25)
 		}
-		.navigationDestination(isPresented: $showingDetailView) {
-			DetailLoadingView(plant: $selectedPlant)
+		.navigationDestination(isPresented: $viewModel.showingDetailView) {
+			DetailLoadingView(plant: $viewModel.selectedPlant)
 		}
-		.sheet(isPresented: $showingAddPlantView) {
+		.sheet(isPresented: $viewModel.showingAddPlantView) {
 			AddPlantView()
 		}
-		.actionSheet(isPresented: $showActionSheet) {
+		.actionSheet(isPresented: $viewModel.showActionSheet) {
 			ActionSheet(title: Text("Plant options"),
 						buttons: [
 							.destructive(Text("Delete plant")) {
-								if let selectedPlant = selectedPlant {
+								if let selectedPlant = viewModel.selectedPlant {
 									withAnimation(Animation.easeInOut(duration: 0.4)) {
 										viewModel.deletePlant(plant: selectedPlant)
 										viewModel.fetchPlants()
@@ -119,7 +119,7 @@ extension HomeView {
 	private var plantsList: some View {
 		ScrollView {
 			ForEach(viewModel.plants, id: \.self.customHash) { plant in
-				PlantCardView(plant: plant, showActionSheet: $showActionSheet, showActionForPlant: $selectedPlant)
+				PlantCardView(plant: plant, showActionSheet: $viewModel.showActionSheet, showActionForPlant: $viewModel.selectedPlant)
 					.onTapGesture { segue(plant: plant) }
 			}
 		}
@@ -128,7 +128,7 @@ extension HomeView {
 	private var addPlantButton: some View {
 		ButtonCircle(icon: "icon-plus")
 			.frame(width: 65, height: 65)
-			.onTapGesture { showingAddPlantView.toggle() }
+			.onTapGesture { viewModel.showingAddPlantView.toggle() }
 	}
 }
 
@@ -139,7 +139,7 @@ extension HomeView {
 /// ``segueway into detail view``
 	
 	private func segue(plant: Plant) {
-		selectedPlant = plant
-		showingDetailView.toggle()
+		viewModel.selectedPlant = plant
+		viewModel.showingDetailView.toggle()
 	}
 }
