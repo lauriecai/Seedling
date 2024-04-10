@@ -7,11 +7,9 @@
 
 import Foundation
 
-struct PlantPost: Identifiable {
-	let timestamp: Date
+struct PlantPost {
 	let entity: EntityType
-	var id: Date { timestamp }
-	
+	let timestamp: Date
 }
 
 enum EntityType {

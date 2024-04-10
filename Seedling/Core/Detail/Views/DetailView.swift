@@ -43,12 +43,8 @@ struct DetailView: View {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
-			ScrollView {
-				eventsList
-				notesList
-			}
-			.padding(.horizontal)
-			
+			postsList
+
 			addNoteButton
 		}
 		.navigationTitle(viewModel.plant.wrappedFullNameLabel)
@@ -57,7 +53,7 @@ struct DetailView: View {
 			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
 		.onAppear {
-			viewModel.fetchNotesAndEvents(for: viewModel.plant)
+			viewModel.fetchPosts(for: viewModel.plant)
 		}
 		.navigationDestination(isPresented: $showingAddNoteLoadingView) {
 			if showingAddNoteLoadingView {
@@ -71,47 +67,49 @@ struct DetailView: View {
 
 extension DetailView {
 	
-	private var eventsList: some View {
-		ForEach(viewModel.events) { event in
-			EventCardView(event: event, showActionSheet: $showEventActionSheet, showActionsForEvent: $selectedEvent)
-		}
-		.actionSheet(isPresented: $showEventActionSheet) {
-			ActionSheet(
-				title: Text("Event options"),
-				buttons: [
-					.destructive(Text("Delete event")) {
-						if let selectedEvent = selectedEvent {
-							withAnimation(Animation.easeInOut(duration: 0.4)) {
-								viewModel.deleteEvent(event: selectedEvent)
-								viewModel.fetchEvents(for: viewModel.plant)
-							}
+	private var postsList: some View {
+		ScrollView {
+			ForEach(viewModel.posts, id: \.timestamp) { post in
+				switch post.entity {
+				case .event(let event):
+					EventCardView(event: event, showActionSheet: $showEventActionSheet, showActionsForEvent: $selectedEvent)
+						.actionSheet(isPresented: $showEventActionSheet) {
+							ActionSheet(
+								title: Text("Event options"),
+								buttons: [
+									.destructive(Text("Delete event")) {
+										if let selectedEvent = selectedEvent {
+											withAnimation(Animation.easeInOut(duration: 0.4)) {
+												viewModel.deleteEvent(event: selectedEvent)
+												viewModel.fetchEvents(for: viewModel.plant)
+											}
+										}
+									},
+									.cancel()
+								]
+							)
 						}
-					},
-					.cancel()
-				]
-			)
-		}
-	}
-	
-	private var notesList: some View {
-		ForEach(viewModel.notes) { note in
-			NoteCardView(note: note, showPlantTag: false, showActionSheet: $showNoteActionSheet, showActionsForNote: $selectedNote)
-		}
-		.actionSheet(isPresented: $showNoteActionSheet) {
-			ActionSheet(
-				title: Text("Note options"),
-				buttons: [
-					.destructive(Text("Delete note")) {
-						if let selectedNote = selectedNote {
-							withAnimation(Animation.easeInOut(duration: 0.4)) {
-								viewModel.deleteNote(note: selectedNote)
-								viewModel.fetchNotes(for: viewModel.plant)
-							}
+				case .note(let note):
+					NoteCardView(note: note, showPlantTag: false, showActionSheet: $showNoteActionSheet, showActionsForNote: $selectedNote)
+						.actionSheet(isPresented: $showNoteActionSheet) {
+							ActionSheet(
+								title: Text("Note options"),
+								buttons: [
+									.destructive(Text("Delete note")) {
+										if let selectedNote = selectedNote {
+											withAnimation(Animation.easeInOut(duration: 0.4)) {
+												viewModel.deleteNote(note: selectedNote)
+												viewModel.fetchNotes(for: viewModel.plant)
+											}
+										}
+									},
+									.cancel()
+								]
+							)
 						}
-					},
-					.cancel()
-				]
-			)
+				}
+			}
+			.padding(.horizontal)
 		}
 	}
 	

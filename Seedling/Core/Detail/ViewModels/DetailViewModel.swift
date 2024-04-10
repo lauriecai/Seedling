@@ -16,31 +16,47 @@ class DetailViewModel: ObservableObject {
 	@Published var notes: [Note] = []
 	@Published var events: [Event] = []
 	
+	/// An array of combined notes and events
+	@Published var posts: [PlantPost] = []
+	
 	init(plant: Plant) {
 		self.plant = plant
 	}
 	
-//	MARK: - Plant notes and events
-//	var notesAndEvents: [PlantPost] {
-//		var combinedArray: [PlantPost] = []
-//		
-//		for event in events {
-//			combinedArray.append(PlantPost(timestamp: event.wrappedTimestamp, entity: .event(event)))
-//		}
-//		
-//		for note in notes {
-//			combinedArray.append(PlantPost(timestamp: note.wrappedTimestamp, entity: .note(note)))
-//		}
-//		combinedArray.sort { $0.timestamp < $1.timestamp }
-//		return combinedArray
-//	}
+	//	var notesAndEvents: [PlantPost] {
+	//		var combinedArray: [PlantPost] = []
+	//
+	//		for event in events {
+	//			combinedArray.append(PlantPost(timestamp: event.wrappedTimestamp, entity: .event(event)))
+	//		}
+	//
+	//		for note in notes {
+	//			combinedArray.append(PlantPost(timestamp: note.wrappedTimestamp, entity: .note(note)))
+	//		}
+	//		combinedArray.sort { $0.timestamp < $1.timestamp }
+	//		return combinedArray
+	//	}
 	
-//	MARK: - Convenience functions
+//	MARK: - General functions
 	
 	/// Fetches all notes and events for a plant
-	func fetchNotesAndEvents(for plant: Plant) {
+	func fetchPosts(for plant: Plant) {
 		fetchNotes(for: plant)
 		fetchEvents(for: plant)
+		assemblePosts(for: plant)
+	}
+	
+	/// Combines all notes and events into a single list and sorts by most recent
+	func assemblePosts(for plant: Plant) {
+		for event in events {
+			posts.append(PlantPost(entity: .event(event), timestamp: event.wrappedTimestamp))
+		}
+		
+		for note in notes {
+			posts.append(PlantPost(entity: .note(note), timestamp: note.wrappedTimestamp))
+		}
+		
+		posts.sort { $0.timestamp > $1.timestamp }
 	}
 	
 //	MARK: - Plant functions
