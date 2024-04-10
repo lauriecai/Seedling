@@ -20,26 +20,15 @@ class HomeViewModel: ObservableObject {
 	
 	@Published var showActionSheet: Bool = false
 	
-	init() {
-		print("-----\nInitializing HomeViewModel")
-		print("HomeViewModel initialized!")
-	}
-	
-	deinit {
-		print("-----\nDeinitializing HomeViewModel")
-	}
-	
 //	MARK: - Plant functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
 	/// Fetches the most up-to-date plants from Core Data
 	func fetchPlants() {
-		print("-----\nIn HomeViewModel fetchPlants()")
 		let request = manager.requestPlants()
 		
 		do {
 			plants = try manager.context.fetch(request)
-			print("HomeViewModel fetchPlants() complete!")
 		} catch let error {
 			print("Error fetching plants from Core Data. \(error)")
 		}
