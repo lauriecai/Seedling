@@ -23,8 +23,6 @@ struct HomeView: View {
 			.padding(.horizontal)
 			
 			addPlantButton
-				.padding(.trailing, 20)
-				.padding(.bottom, 25)
 		}
 		.navigationDestination(isPresented: $viewModel.showingDetailView) {
 			DetailLoadingView(plant: $viewModel.selectedPlant)
@@ -59,7 +57,12 @@ struct HomeView: View {
 
 extension HomeView {
 	
-/// ``plants list``
+	private var dateHeader: some View {
+		Text(Date().asDayAndDate())
+			.font(.handjet(.extraBold, size: 32))
+			.foregroundStyle(Color.theme.textPrimary)
+			.frame(maxWidth: .infinity, alignment: .leading)
+	}
 	
 	private var plantsList: some View {
 		ScrollView {
@@ -74,6 +77,8 @@ extension HomeView {
 		ButtonCircle(icon: "icon-plus")
 			.frame(width: 65, height: 65)
 			.onTapGesture { viewModel.showingAddPlantView.toggle() }
+			.padding(.trailing, 20)
+			.padding(.bottom, 25)
 	}
 }
 

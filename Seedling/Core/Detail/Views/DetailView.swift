@@ -35,9 +35,7 @@ struct DetailView: View {
 	@State private var showingAddNoteLoadingView: Bool = false
 	
 	init(plant: Plant) {
-		print("-----\nInitializing DetailView for \(plant.wrappedName)...")
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
-		print("DetailView initialized for \(plant.wrappedName)!")
 	}
 	
     var body: some View {
@@ -52,7 +50,6 @@ struct DetailView: View {
 			.padding(.horizontal)
 			
 			addNoteButton
-				.padding(.trailing, 20)
 		}
 		.navigationTitle(viewModel.plant.wrappedFullNameLabel)
 		.navigationBarBackButtonHidden(true)
@@ -73,20 +70,6 @@ struct DetailView: View {
 // MARK: - UI
 
 extension DetailView {
-	
-	private var plantPosts: [PlantPost] {
-		var notesAndEvents: [PlantPost] = []
-		
-		for event in viewModel.events {
-			notesAndEvents.append(PlantPost(timestamp: event.wrappedTimestamp, entity: .event(event)))
-		}
-		
-		for note in viewModel.notes {
-			notesAndEvents.append(PlantPost(timestamp: note.wrappedTimestamp, entity: .note(note)))
-		}
-		notesAndEvents.sort { $0.timestamp < $1.timestamp }
-		return notesAndEvents
-	}
 	
 	private var eventsList: some View {
 		ForEach(viewModel.events) { event in
@@ -135,6 +118,7 @@ extension DetailView {
 	private var addNoteButton: some View {
 		ButtonCircle(icon: "icon-plus")
 			.onTapGesture { showingAddNoteLoadingView.toggle() }
+			.padding(.trailing, 20)
 	}
 	
 	private var backButton: some View {

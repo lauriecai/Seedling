@@ -17,13 +17,7 @@ class DetailViewModel: ObservableObject {
 	@Published var events: [Event] = []
 	
 	init(plant: Plant) {
-		print("-----\nInitializing DetailViewModel")
 		self.plant = plant
-		print("DetailViewModel initialized!")
-	}
-	
-	deinit {
-		print("-----\nDeinitializing DetailViewModel")
 	}
 	
 //	MARK: - Plant notes and events

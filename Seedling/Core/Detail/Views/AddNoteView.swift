@@ -31,15 +31,9 @@ struct AddNoteView: View {
 	@FocusState private var keyboardFocused: Bool
 	
 	init(viewModel: DetailViewModel) {
-		print("-----\nInitializing AddNoteView for \(viewModel.plant.wrappedName)")
-		
 		self.viewModel = viewModel
-		
 		_stage = State(wrappedValue: PlantStage(rawValue: viewModel.plant.wrappedStage)!)
-		
 		_selectedIndex = State(wrappedValue: PlantStage.allCases.firstIndex(of: PlantStage(rawValue: viewModel.plant.wrappedStage)!)!)
-		
-		print("AddNoteView initialized!")
 	}
 	
     var body: some View {
@@ -103,11 +97,13 @@ extension AddNoteView {
 	private var addNoteButton: some View {
 		Button("Add Note") {
 			if stageUpdated {
-				print("-----\nStage updated!")
 				viewModel.updatePlant(plant: viewModel.plant, newStage: stage)
 			}
 			
-			viewModel.addNote(for: viewModel.plant, title: title, body: bodyText)
+			if !bodyText.isEmpty {
+				viewModel.addNote(for: viewModel.plant, title: title, body: bodyText)
+			}
+			
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
