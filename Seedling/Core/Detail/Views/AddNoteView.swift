@@ -111,7 +111,7 @@ extension AddNoteView {
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(bodyText.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.foregroundStyle(bodyText.isEmpty && !stageUpdated ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
 		.disabled(bodyText.isEmpty && !stageUpdated)
 	}
 	
