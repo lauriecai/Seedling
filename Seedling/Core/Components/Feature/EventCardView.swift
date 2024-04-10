@@ -12,7 +12,7 @@ struct EventCardView: View {
 	let event: Event
 	
 	@Binding var showActionSheet: Bool
-	@Binding var showActionForEvent: Event?
+	@Binding var showActionsForEvent: Event?
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
@@ -52,7 +52,7 @@ extension EventCardView {
 	private var eventActions: some View {
 		Button {
 			showActionSheet = true
-			showActionForEvent = event
+			showActionsForEvent = event
 		} label: {
 			MenuKebab()
 				.padding(.top, 10)

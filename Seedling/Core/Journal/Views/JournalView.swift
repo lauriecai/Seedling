@@ -63,7 +63,7 @@ extension JournalView {
 		ScrollView {
 			VStack(spacing: 10) {
 				ForEach(viewModel.notes) { note in
-					NoteCardView(note: note, showPlantTag: true, showActionSheet: $showActionSheet, showActionForNote: $selectedNote)
+					NoteCardView(note: note, showPlantTag: true, showActionSheet: $showActionSheet, showActionsForNote: $selectedNote)
 				}
 			}
 			.padding(.bottom, 50)

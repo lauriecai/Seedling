@@ -13,7 +13,7 @@ struct NoteCardView: View {
 	let showPlantTag: Bool
 	
 	@Binding var showActionSheet: Bool
-	@Binding var showActionForNote: Note?
+	@Binding var showActionsForNote: Note?
 	
     var body: some View {
 		HStack(alignment: .top) {
@@ -73,7 +73,7 @@ extension NoteCardView {
 	private var noteActions: some View {
 		Button {
 			showActionSheet = true
-			showActionForNote = note
+			showActionsForNote = note
 		} label: {
 			MenuKebab()
 				.padding(.top, 10)

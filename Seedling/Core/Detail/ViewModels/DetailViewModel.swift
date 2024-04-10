@@ -26,8 +26,24 @@ class DetailViewModel: ObservableObject {
 		print("-----\nDeinitializing DetailViewModel")
 	}
 	
-//	MARK: - Consolidated functions
+//	MARK: - Plant notes and events
+//	var notesAndEvents: [PlantPost] {
+//		var combinedArray: [PlantPost] = []
+//		
+//		for event in events {
+//			combinedArray.append(PlantPost(timestamp: event.wrappedTimestamp, entity: .event(event)))
+//		}
+//		
+//		for note in notes {
+//			combinedArray.append(PlantPost(timestamp: note.wrappedTimestamp, entity: .note(note)))
+//		}
+//		combinedArray.sort { $0.timestamp < $1.timestamp }
+//		return combinedArray
+//	}
 	
+//	MARK: - Convenience functions
+	
+	/// Fetches all notes and events for a plant
 	func fetchNotesAndEvents(for plant: Plant) {
 		fetchNotes(for: plant)
 		fetchEvents(for: plant)
@@ -36,6 +52,7 @@ class DetailViewModel: ObservableObject {
 //	MARK: - Plant functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
+	/// Updates the plant stage
 	func updatePlant(plant: Plant, newStage: PlantStage) {
 		manager.updatePlant(plant: plant, newStage: newStage.rawValue)
 	}
@@ -69,6 +86,7 @@ class DetailViewModel: ObservableObject {
 //	MARK: - Event functions
 //	Data needs to be refetched every time a change has been saved to Core Data
 	
+	/// Fetches the most up-to-date events for a specified plant from Core Data
 	func fetchEvents(for plant: Plant) {
 		let request = manager.requestEvents(for: plant)
 		

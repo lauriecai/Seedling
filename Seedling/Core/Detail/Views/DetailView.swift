@@ -62,21 +62,35 @@ struct DetailView: View {
 		.onAppear {
 			viewModel.fetchNotesAndEvents(for: viewModel.plant)
 		}
-		.actionSheet(isPresented: $showNoteActionSheet) {
-			ActionSheet(
-				title: Text("Note options"),
-				buttons: [
-					.destructive(Text("Delete note")) {
-						if let selectedNote = selectedNote {
-							withAnimation(Animation.easeInOut(duration: 0.4)) {
-								viewModel.deleteNote(note: selectedNote)
-								viewModel.fetchNotes(for: viewModel.plant)
-							}
-						}
-					},
-					.cancel()
-				]
-			)
+		.navigationDestination(isPresented: $showingAddNoteLoadingView) {
+			if showingAddNoteLoadingView {
+				AddNoteLoadingView(viewModel: viewModel)
+			}
+		}
+    }
+}
+
+// MARK: - UI
+
+extension DetailView {
+	
+	private var plantPosts: [PlantPost] {
+		var notesAndEvents: [PlantPost] = []
+		
+		for event in viewModel.events {
+			notesAndEvents.append(PlantPost(timestamp: event.wrappedTimestamp, entity: .event(event)))
+		}
+		
+		for note in viewModel.notes {
+			notesAndEvents.append(PlantPost(timestamp: note.wrappedTimestamp, entity: .note(note)))
+		}
+		notesAndEvents.sort { $0.timestamp < $1.timestamp }
+		return notesAndEvents
+	}
+	
+	private var eventsList: some View {
+		ForEach(viewModel.events) { event in
+			EventCardView(event: event, showActionSheet: $showEventActionSheet, showActionsForEvent: $selectedEvent)
 		}
 		.actionSheet(isPresented: $showEventActionSheet) {
 			ActionSheet(
@@ -94,27 +108,27 @@ struct DetailView: View {
 				]
 			)
 		}
-		.navigationDestination(isPresented: $showingAddNoteLoadingView) {
-			if showingAddNoteLoadingView {
-				AddNoteLoadingView(viewModel: viewModel)
-			}
-		}
-    }
-}
-
-// MARK: - UI
-
-extension DetailView {
-	
-	private var eventsList: some View {
-		ForEach(viewModel.events) { event in
-			EventCardView(event: event, showActionSheet: $showEventActionSheet, showActionForEvent: $selectedEvent)
-		}
 	}
 	
 	private var notesList: some View {
 		ForEach(viewModel.notes) { note in
-			NoteCardView(note: note, showPlantTag: false, showActionSheet: $showNoteActionSheet, showActionForNote: $selectedNote)
+			NoteCardView(note: note, showPlantTag: false, showActionSheet: $showNoteActionSheet, showActionsForNote: $selectedNote)
+		}
+		.actionSheet(isPresented: $showNoteActionSheet) {
+			ActionSheet(
+				title: Text("Note options"),
+				buttons: [
+					.destructive(Text("Delete note")) {
+						if let selectedNote = selectedNote {
+							withAnimation(Animation.easeInOut(duration: 0.4)) {
+								viewModel.deleteNote(note: selectedNote)
+								viewModel.fetchNotes(for: viewModel.plant)
+							}
+						}
+					},
+					.cancel()
+				]
+			)
 		}
 	}
 	
