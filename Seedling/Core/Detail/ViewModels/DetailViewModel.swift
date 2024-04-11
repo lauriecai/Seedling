@@ -23,21 +23,7 @@ class DetailViewModel: ObservableObject {
 		self.plant = plant
 	}
 	
-	//	var notesAndEvents: [PlantPost] {
-	//		var combinedArray: [PlantPost] = []
-	//
-	//		for event in events {
-	//			combinedArray.append(PlantPost(timestamp: event.wrappedTimestamp, entity: .event(event)))
-	//		}
-	//
-	//		for note in notes {
-	//			combinedArray.append(PlantPost(timestamp: note.wrappedTimestamp, entity: .note(note)))
-	//		}
-	//		combinedArray.sort { $0.timestamp < $1.timestamp }
-	//		return combinedArray
-	//	}
-	
-//	MARK: - General functions
+	//	MARK: - General functions
 	
 	/// Fetches all notes and events for a plant
 	func fetchPosts(for plant: Plant) {
@@ -46,14 +32,21 @@ class DetailViewModel: ObservableObject {
 		assemblePosts(for: plant)
 	}
 	
+	private func resetPosts() {
+		posts = []
+	}
+	
 	/// Combines all notes and events into a single list and sorts by most recent
 	func assemblePosts(for plant: Plant) {
+		
+		resetPosts()
+		
 		for event in events {
-			posts.append(PlantPost(entity: .event(event), timestamp: event.wrappedTimestamp))
+			posts.append(PlantPost(entity: .event(event)))
 		}
 		
 		for note in notes {
-			posts.append(PlantPost(entity: .note(note), timestamp: note.wrappedTimestamp))
+			posts.append(PlantPost(entity: .note(note)))
 		}
 		
 		posts.sort { $0.timestamp > $1.timestamp }
