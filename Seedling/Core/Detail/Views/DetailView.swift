@@ -81,7 +81,7 @@ extension DetailView {
 										if let selectedEvent = selectedEvent {
 											withAnimation(Animation.easeInOut(duration: 0.4)) {
 												viewModel.deleteEvent(event: selectedEvent)
-												viewModel.fetchEvents(for: viewModel.plant)
+												viewModel.fetchPosts(for: viewModel.plant)
 											}
 										}
 									},
@@ -99,7 +99,7 @@ extension DetailView {
 										if let selectedNote = selectedNote {
 											withAnimation(Animation.easeInOut(duration: 0.4)) {
 												viewModel.deleteNote(note: selectedNote)
-												viewModel.fetchNotes(for: viewModel.plant)
+												viewModel.fetchPosts(for: viewModel.plant)
 											}
 										}
 									},

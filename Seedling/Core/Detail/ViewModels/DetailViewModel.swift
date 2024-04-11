@@ -23,9 +23,8 @@ class DetailViewModel: ObservableObject {
 		self.plant = plant
 	}
 	
-	//	MARK: - General functions
+	//	MARK: - Post functions
 	
-	/// Fetches all notes and events for a plant
 	func fetchPosts(for plant: Plant) {
 		fetchNotes(for: plant)
 		fetchEvents(for: plant)
@@ -36,8 +35,7 @@ class DetailViewModel: ObservableObject {
 		posts = []
 	}
 	
-	/// Combines all notes and events into a single list and sorts by most recent
-	func assemblePosts(for plant: Plant) {
+	private func assemblePosts(for plant: Plant) {
 		
 		resetPosts()
 		
