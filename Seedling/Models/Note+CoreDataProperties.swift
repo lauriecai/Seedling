@@ -22,6 +22,10 @@ extension Note {
 	@NSManaged public var body: String?
 	@NSManaged public var timestamp: Date?
 	
+	public var wrappedId: UUID {
+		id ?? UUID()
+	}
+	
 	public var wrappedTitle: String {
 		title ?? ""
 	}

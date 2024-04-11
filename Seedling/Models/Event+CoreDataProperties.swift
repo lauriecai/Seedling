@@ -20,6 +20,10 @@ extension Event {
     @NSManaged public var title: String?
     @NSManaged public var timestamp: Date?
 	
+	public var wrappedId: UUID {
+		id ?? UUID()
+	}
+	
 	public var wrappedTitle: String {
 		title ?? ""
 	}
