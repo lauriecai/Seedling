@@ -26,14 +26,6 @@ struct DetailView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
-	@State private var showNoteActionSheet: Bool = false
-	@State private var selectedNote: Note? = nil
-	
-	@State private var showEventActionSheet: Bool = false
-	@State private var selectedEvent: Event? = nil
-	
-	@State private var showingAddNoteLoadingView: Bool = false
-	
 	init(plant: Plant) {
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
 	}
@@ -55,8 +47,8 @@ struct DetailView: View {
 		.onAppear {
 			viewModel.fetchPosts(for: viewModel.plant)
 		}
-		.navigationDestination(isPresented: $showingAddNoteLoadingView) {
-			if showingAddNoteLoadingView {
+		.navigationDestination(isPresented: $viewModel.showAddNoteLoadingView) {
+			if viewModel.showAddNoteLoadingView {
 				AddNoteLoadingView(viewModel: viewModel)
 			}
 		}
@@ -72,13 +64,13 @@ extension DetailView {
 			ForEach(viewModel.posts) { post in
 				switch post.entity {
 				case .event(let event):
-					EventCardView(event: event, showActionSheet: $showEventActionSheet, showActionsForEvent: $selectedEvent)
-						.actionSheet(isPresented: $showEventActionSheet) {
+					EventCardView(event: event, showActionSheet: $viewModel.showEventActionSheet, showActionsForEvent: $viewModel.selectedEvent)
+						.actionSheet(isPresented: $viewModel.showEventActionSheet) {
 							ActionSheet(
 								title: Text("Event options"),
 								buttons: [
 									.destructive(Text("Delete event")) {
-										if let selectedEvent = selectedEvent {
+										if let selectedEvent = viewModel.selectedEvent {
 											withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
 												viewModel.deleteEvent(event: selectedEvent)
 											}
@@ -89,13 +81,13 @@ extension DetailView {
 							)
 						}
 				case .note(let note):
-					NoteCardView(note: note, showPlantTag: false, showActionSheet: $showNoteActionSheet, showActionsForNote: $selectedNote)
-						.actionSheet(isPresented: $showNoteActionSheet) {
+					NoteCardView(note: note, showPlantTag: false, showActionSheet: $viewModel.showNoteActionSheet, showActionsForNote: $viewModel.selectedNote)
+						.actionSheet(isPresented: $viewModel.showNoteActionSheet) {
 							ActionSheet(
 								title: Text("Note options"),
 								buttons: [
 									.destructive(Text("Delete note")) {
-										if let selectedNote = selectedNote {
+										if let selectedNote = viewModel.selectedNote {
 											withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
 												viewModel.deleteNote(note: selectedNote)
 											}
@@ -113,7 +105,7 @@ extension DetailView {
 	
 	private var addNoteButton: some View {
 		ButtonCircle(icon: "icon-plus")
-			.onTapGesture { showingAddNoteLoadingView.toggle() }
+			.onTapGesture { viewModel.showAddNoteLoadingView.toggle() }
 			.padding(.trailing, 20)
 	}
 	

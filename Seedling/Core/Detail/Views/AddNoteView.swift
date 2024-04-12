@@ -22,18 +22,10 @@ struct AddNoteView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
-	@State private var title: String = ""
-	@State private var bodyText: String = ""
-	@State private var stage: PlantStage
-	@State private var selectedIndex: Int
-	@State private var stageUpdated: Bool = false
-	
 	@FocusState private var keyboardFocused: Bool
 	
 	init(viewModel: DetailViewModel) {
 		self.viewModel = viewModel
-		_stage = State(wrappedValue: PlantStage(rawValue: viewModel.plant.wrappedStage)!)
-		_selectedIndex = State(wrappedValue: PlantStage.allCases.firstIndex(of: PlantStage(rawValue: viewModel.plant.wrappedStage)!)!)
 	}
 	
     var body: some View {
@@ -62,7 +54,7 @@ struct AddNoteView: View {
 				ToolbarItem(placement: .topBarTrailing) { addNoteButton }
 			}
 			.keyboardType(.default)
-			.onChange(of: stage) { stageUpdated = true }
+			.onChange(of: viewModel.plantStage) { viewModel.plantStageUpdated = true }
 		}
     }
 }
@@ -77,18 +69,18 @@ extension AddNoteView {
 	}
 	
 	private var noteTitleInput: some View {
-		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: "Optional", text: $title)
+		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: "Optional", text: $viewModel.noteTitle)
 	}
 	
 	private var noteBodyInput: some View {
-		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", text: $bodyText)
+		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", text: $viewModel.noteBodyText)
 	}
 	
 	private var plantStageSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $stage, selectedIndex: $selectedIndex)
+			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $viewModel.plantStage, selectedIndex: $viewModel.selectedStageIndex)
 			
-			Text(stage.definition)
+			Text(viewModel.plantStage.definition)
 				.font(.handjet(.medium, size: 18))
 				.foregroundStyle(Color.theme.textSecondary)
 		}
@@ -96,19 +88,19 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
-			if stageUpdated {
-				viewModel.updatePlant(plant: viewModel.plant, newStage: stage)
+			if viewModel.plantStageUpdated {
+				viewModel.updatePlant(plant: viewModel.plant, newStage: viewModel.plantStage)
 			}
 			
-			if !bodyText.isEmpty {
-				viewModel.addNote(for: viewModel.plant, title: title, body: bodyText)
+			if !viewModel.noteBodyText.isEmpty {
+				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitle, body: viewModel.noteBodyText)
 			}
 			
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(bodyText.isEmpty && !stageUpdated ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
-		.disabled(bodyText.isEmpty && !stageUpdated)
+		.foregroundStyle(viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated)
 	}
 	
 	private var backButton: some View {

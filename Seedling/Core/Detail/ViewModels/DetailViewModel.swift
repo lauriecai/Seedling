@@ -12,14 +12,35 @@ class DetailViewModel: ObservableObject {
 	
 	let manager = CoreDataManager.shared
 	
+	// Detail View
 	@Published var plant: Plant
 	@Published var posts: [PlantPost] = []
 	
+	// Segues
+	@Published var showNoteActionSheet: Bool = false
+	@Published var selectedNote: Note? = nil
+	
+	@Published var showEventActionSheet: Bool = false
+	@Published var selectedEvent: Event? = nil
+	
+	@Published var showAddNoteLoadingView: Bool = false
+	
+	// Add Note View
+	@Published var noteTitle: String = ""
+	@Published var noteBodyText: String = ""
+	@Published var plantStage: PlantStage
+	@Published var selectedStageIndex: Int
+	@Published var plantStageUpdated: Bool = false
+	
 	init(plant: Plant) {
 		self.plant = plant
+		
+		let stageStringToEnum = PlantStage(rawValue: plant.wrappedStage)!
+		self.plantStage = stageStringToEnum
+		self.selectedStageIndex = PlantStage.allCases.firstIndex(of: stageStringToEnum)!
 	}
 	
-	//	MARK: - Post functions
+//	MARK: - Post functions
 	
 	func fetchPosts(for plant: Plant) {
 		let notes = fetchNotes(for: plant) ?? []
