@@ -62,7 +62,7 @@ struct AddNoteView: View {
 				ToolbarItem(placement: .topBarTrailing) { addNoteButton }
 			}
 			.keyboardType(.default)
-			.onChange(of: stage) { stageUpdated.toggle() }
+			.onChange(of: stage) { stageUpdated = true }
 		}
     }
 }
