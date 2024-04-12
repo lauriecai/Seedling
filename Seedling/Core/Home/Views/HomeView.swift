@@ -85,8 +85,6 @@ extension HomeView {
 
 extension HomeView {
 	
-/// ``segueway into detail view``
-	
 	private func segue(plant: Plant) {
 		viewModel.selectedPlant = plant
 		viewModel.showingDetailView.toggle()

@@ -12,13 +12,25 @@ class HomeViewModel: ObservableObject {
 	
 	let manager = CoreDataManager.shared
 	
+	// Home View
 	@Published var plants: [Plant] = []
 	
-	@Published var selectedPlant: Plant? = nil
+	// Segues
 	@Published var showingDetailView: Bool = false
 	@Published var showingAddPlantView: Bool = false
 	
+	@Published var selectedPlant: Plant? = nil
 	@Published var showActionSheet: Bool = false
+	
+	// Add Plant View
+	@Published var plantName: String = ""
+	@Published var plantVariety: String = ""
+	
+	@Published var plantStage: PlantStage = .seed
+	@Published var selectedStageIndex: Int = 0
+	
+	@Published var plantType: PlantType = .vegetable
+	@Published var selectedTypeIndex: Int = 0
 	
 //	MARK: - Plant functions
 	

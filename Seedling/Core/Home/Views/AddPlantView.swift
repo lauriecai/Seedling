@@ -9,20 +9,9 @@ import SwiftUI
 
 struct AddPlantView: View {
 	
-	let dataManager = CoreDataManager.shared
-	
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
 	@Environment(\.dismiss) var dismiss
-	
-	@State private var name = ""
-	@State private var variety = ""
-	
-	@State private var stage: PlantStage = .seed
-	@State private var selectedStageIndex: Int = 0
-	
-	@State private var type: PlantType = .vegetable
-	@State private var selectedTypeIndex: Int = 0
 	
 	@FocusState private var keyboardFocused: Bool
 	
@@ -65,18 +54,18 @@ struct AddPlantView: View {
 extension AddPlantView {
 	
 	private var plantTextInput: some View {
-		TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", headerDescription: nil, text: $name)
+		TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", headerDescription: nil, text: $viewModel.plantName)
 	}
 	
 	private var plantVarietyInput: some View {
-		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: $variety)
+		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: $viewModel.plantVariety)
 	}
 	
 	private var plantStageSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $stage, selectedIndex: $selectedStageIndex)
+			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $viewModel.plantStage, selectedIndex: $viewModel.selectedStageIndex)
 			
-			Text(stage.definition)
+			Text(viewModel.plantStage.definition)
 				.font(.handjet(.medium, size: 18))
 				.foregroundStyle(Color.theme.textSecondary)
 		}
@@ -84,23 +73,23 @@ extension AddPlantView {
 	
 	private var plantTypeSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, selectedItem: $type, selectedIndex: $selectedTypeIndex)
+			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, selectedItem: $viewModel.plantType, selectedIndex: $viewModel.selectedTypeIndex)
 		}
 	}
 	
 	private var addPlantButton: some View {
 		Button("Add Plant") {
 			viewModel.addPlant(
-				type: type.rawValue,
-				name: name,
-				variety: variety,
-				stage: stage.rawValue
+				type: viewModel.plantType.rawValue,
+				name: viewModel.plantName,
+				variety: viewModel.plantVariety,
+				stage: viewModel.plantStage.rawValue
 			)
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(name.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
-		.disabled(name.isEmpty)
+		.foregroundStyle(viewModel.plantName.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(viewModel.plantName.isEmpty)
 	}
 	
 	private var cancelButton: some View {
