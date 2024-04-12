@@ -58,7 +58,6 @@ class CoreDataManager {
 	
 // 	MARK: - Plant functions
 	
-	/// Returns an NSFetchRequest for plants with alphabetical sorting
 	func requestPlants() -> NSFetchRequest<Plant> {
 		let request = NSFetchRequest<Plant>(entityName: "Plant")
 		request.sortDescriptors = [sortByName]
@@ -66,7 +65,6 @@ class CoreDataManager {
 		return request
 	}
 	
-	/// Creates new plant and an associated plant added event, then saves to Core Data
 	func addPlant(type: String, name: String, variety: String, stage: String) {
 		let newPlant = Plant(context: context)
 		newPlant.id = UUID()
@@ -80,17 +78,13 @@ class CoreDataManager {
 		save()
 	}
 	
-	/// Updates specified plant with a new stage and creates a plant stage updated event, then saves to Core Data
 	func updatePlant(plant: Plant, newStage: String) {
-		print("-----\nIn CoreDataManager.updatePlant")
 		plant.stage = newStage
 		createPlantUpdatedEvent(for: plant, newStage: newStage)
 		
 		save()
-		print("CoreDataManager.updatePlant completed!")
 	}
 	
-	/// Deletes specified plant from Core Data
 	func deletePlant(plant: Plant) {
 		context.delete(plant)
 		save()

@@ -22,15 +22,12 @@ class DetailViewModel: ObservableObject {
 	//	MARK: - Post functions
 	
 	func fetchPosts(for plant: Plant) {
-		posts.removeAll()
-		
 		let notes = fetchNotes(for: plant) ?? []
 		let events = fetchEvents(for: plant) ?? []
-		
-		let notesAndEvents = notes.map { PlantPost(entity: .note($0)) } + events.map { PlantPost(entity: .event($0)) }
-		
-		posts.append(contentsOf: notesAndEvents)
-		posts.sort { $0.timestamp > $1.timestamp }
+
+		let notesAndEventsAsPosts = notes.map { PlantPost(entity: .note($0)) } + events.map { PlantPost(entity: .event($0)) }
+	
+		posts = notesAndEventsAsPosts.sorted { $0.timestamp > $1.timestamp }
 	}
 	
 //	MARK: - Plant functions
