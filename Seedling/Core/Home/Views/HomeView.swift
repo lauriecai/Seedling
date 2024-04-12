@@ -35,9 +35,8 @@ struct HomeView: View {
 						buttons: [
 							.destructive(Text("Delete plant")) {
 								if let selectedPlant = viewModel.selectedPlant {
-									withAnimation(Animation.easeInOut(duration: 0.4)) {
+									withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
 										viewModel.deletePlant(plant: selectedPlant)
-										viewModel.fetchPlants()
 									}
 								}
 							},

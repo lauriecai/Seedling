@@ -79,9 +79,8 @@ extension DetailView {
 								buttons: [
 									.destructive(Text("Delete event")) {
 										if let selectedEvent = selectedEvent {
-											withAnimation(Animation.easeInOut(duration: 0.4)) {
+											withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
 												viewModel.deleteEvent(event: selectedEvent)
-												viewModel.fetchPosts(for: viewModel.plant)
 											}
 										}
 									},
@@ -97,9 +96,8 @@ extension DetailView {
 								buttons: [
 									.destructive(Text("Delete note")) {
 										if let selectedNote = selectedNote {
-											withAnimation(Animation.easeInOut(duration: 0.4)) {
+											withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
 												viewModel.deleteNote(note: selectedNote)
-												viewModel.fetchPosts(for: viewModel.plant)
 											}
 										}
 									},
