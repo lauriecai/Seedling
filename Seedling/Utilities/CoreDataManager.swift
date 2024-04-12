@@ -21,33 +21,27 @@ class CoreDataManager {
 		container.loadPersistentStores { description, error in
 			if let error = error {
 				print("-----\nError loading Core Data. \(error)")
-			} else {
-				print("-----\nSuccessfully loaded Core Data.")
 			}
 		}
 		context = container.viewContext
 	}
 	
 // 	MARK: - Sort variables
-	
-	/// Returns an NSSortDescriptor specifying sort by newest first
+
 	private var sortByNewest: NSSortDescriptor {
 		NSSortDescriptor(key: "timestamp", ascending: false)
 	}
-	
-	/// Returns an NSSortDescriptor specifying sort by oldest first
+
 	private var sortByOldest: NSSortDescriptor {
 		NSSortDescriptor(key: "timestamp", ascending: true)
 	}
-	
-	/// Returns an NSSortDescriptor specifying sort by alphabetical order
+
 	private var sortByName: NSSortDescriptor {
 		NSSortDescriptor(key: "name", ascending: true)
 	}
 	
 // 	MARK: - Save function
 	
-	/// Saves contextual working changes to Core Data
 	func save() {
 		do {
 			try context.save()
@@ -92,7 +86,6 @@ class CoreDataManager {
 	
 // 	MARK: - Note functions
 	
-	/// Returns an NSFetchRequest for either all notes or notes of a specified plant
 	func requestNotes(for plant: Plant? = nil) -> NSFetchRequest<Note> {
 		let request = NSFetchRequest<Note>(entityName: "Note")
 		request.sortDescriptors = [sortByNewest]
@@ -104,7 +97,6 @@ class CoreDataManager {
 		return request
 	}
 	
-	/// Creates a new note associated with a specific plant and saves to Core Data
 	func addNote(for plant: Plant, title: String, body: String) {
 		let newNote = Note(context: context)
 		newNote.plant = plant
@@ -116,15 +108,13 @@ class CoreDataManager {
 		save()
 	}
 	
-	/// Deletes a specified note from Core Data
 	func deleteNote(note: Note) {
 		context.delete(note)
 		save()
 	}
 	
 	// MARK: - Event functions
-	
-	/// Returns an  NSFetchRequest for either all events or events of a specified plant
+
 	func requestEvents(for plant: Plant? = nil) -> NSFetchRequest<Event> {
 		let request = NSFetchRequest<Event>(entityName: "Event")
 		request.sortDescriptors = [sortByNewest]
@@ -135,8 +125,7 @@ class CoreDataManager {
 		
 		return request
 	}
-	
-	/// Creates a new event when a new plant is added
+
 	private func createPlantAddedEvent(for plant: Plant) {
 		let newEvent = Event(context: context)
 		newEvent.plant = plant
@@ -146,8 +135,7 @@ class CoreDataManager {
 		
 		save()
 	}
-	
-	/// Creates a new event when an existing plant's stage is updated
+
 	private func createPlantUpdatedEvent(for plant: Plant, newStage: String) {
 		let newEvent = Event(context: context)
 		newEvent.plant = plant

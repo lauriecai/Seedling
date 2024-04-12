@@ -21,9 +21,7 @@ struct AddGeneralNoteView: View {
 	@FocusState private var keyboardFocused: Bool
 	
 	init(viewModel: JournalViewModel) {
-		print("-----\nInitializing AddGeneralNoteView...")
 		self.viewModel = viewModel
-		print("AddGeneralNoteView initialized!")
 	}
 	
     var body: some View {

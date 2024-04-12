@@ -14,11 +14,6 @@ struct JournalView: View {
 	@State private var showActionSheet: Bool = false
 	@State private var selectedNote: Note? = nil
 	
-	init() {
-		print("-----\nInitializing JournalView...")
-		print("JournalView initialized!")
-	}
-	
     var body: some View {
 		ZStack(alignment: .bottomTrailing) {
 			Color.theme.backgroundPrimary
