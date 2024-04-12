@@ -21,9 +21,7 @@ class HomeViewModel: ObservableObject {
 	@Published var showActionSheet: Bool = false
 	
 //	MARK: - Plant functions
-//	Data needs to be refetched every time a change has been saved to Core Data
 	
-	/// Fetches the most up-to-date plants from Core Data
 	func fetchPlants() {
 		let request = manager.requestPlants()
 		
@@ -34,13 +32,11 @@ class HomeViewModel: ObservableObject {
 		}
 	}
 	
-	/// Creates a new plant and saves to Core Data, then refreshes the plants array
 	func addPlant(type: String, name: String, variety: String, stage: String) {
 		manager.addPlant(type: type, name: name, variety: variety, stage: stage)
 		fetchPlants()
 	}
 	
-	/// Deletes a plant from Core Data, then refreshes the plants array
 	func deletePlant(plant: Plant) {
 		manager.deletePlant(plant: plant)
 		fetchPlants()
