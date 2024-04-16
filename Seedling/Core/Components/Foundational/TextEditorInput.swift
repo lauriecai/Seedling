@@ -35,7 +35,7 @@ struct TextEditorInput: View {
 					.focused($inputFocused)
 				
 				if text.isEmpty {
-					Text("Start writing...")
+					Text(inputPlaceholder)
 						.font(.handjet(.medium, size: 22))
 						.foregroundStyle(Color.theme.textSecondary)
 						.frame(maxWidth: .infinity, maxHeight: 200, alignment: .topLeading)
