@@ -21,7 +21,7 @@ struct NoteCardView: View {
 				if showPlantTag { plantTag }
 				
 				if !note.wrappedTitle.isEmpty { noteTitle }
-				noteDescription
+				if !note.wrappedBody.isEmpty { noteDescription }
 				
 				HStack {
 					timestamp

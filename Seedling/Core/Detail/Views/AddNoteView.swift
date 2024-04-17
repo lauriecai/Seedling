@@ -69,7 +69,7 @@ extension AddNoteView {
 	}
 	
 	private var noteTitleInput: some View {
-		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: "Optional", text: $viewModel.noteTitle)
+		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: nil, text: $viewModel.noteTitle)
 	}
 	
 	private var noteBodyInput: some View {
@@ -92,15 +92,15 @@ extension AddNoteView {
 				viewModel.updatePlant(plant: viewModel.plant, newStage: viewModel.plantStage)
 			}
 			
-			if !viewModel.noteBodyText.isEmpty {
+			if !viewModel.noteBodyText.isEmpty || !viewModel.noteTitle.isEmpty {
 				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitle, body: viewModel.noteBodyText)
 			}
 			
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
-		.disabled(viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated)
+		.foregroundStyle(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated)
 	}
 	
 	private var backButton: some View {
