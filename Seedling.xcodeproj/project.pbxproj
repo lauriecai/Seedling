@@ -316,9 +316,9 @@
 				D30CE7BB2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift */,
 				D3EFDE492B7EB66B00A6D22C /* Note+CoreDataClass.swift */,
 				D3EFDE4A2B7EB66B00A6D22C /* Note+CoreDataProperties.swift */,
-				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
 				D3EFDE4B2B7EB66B00A6D22C /* Plant+CoreDataClass.swift */,
 				D3EFDE4C2B7EB66B00A6D22C /* Plant+CoreDataProperties.swift */,
+				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
 				D38AB78F2BBF6F95006B015B /* PlantPost.swift */,
 			);
 			path = Models;

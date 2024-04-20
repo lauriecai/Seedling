@@ -56,9 +56,9 @@ extension Plant {
 	}
 	
 	public var notesArray: [Note] {
-		let set = notes as? Set<Note> ?? []
+		let notes = notes as? Set<Note> ?? []
 		
-		return set.sorted {
+		return notes.sorted {
 			$0.wrappedTimestamp > $1.wrappedTimestamp
 		}
 	}
