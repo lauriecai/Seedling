@@ -72,7 +72,7 @@ class CoreDataManager {
 		save()
 	}
 	
-	func updatePlant(plant: Plant, newStage: String) {
+	func updatePlantStage(plant: Plant, newStage: String) {
 		plant.stage = newStage
 		createPlantUpdatedEvent(for: plant, newStage: newStage)
 		
@@ -141,7 +141,9 @@ class CoreDataManager {
 		newEvent.plant = plant
 		newEvent.id = UUID()
 		newEvent.timestamp = Date()
-		newEvent.title = "Stage updated: \(newStage)"
+		
+		let newStage = PlantStage(rawValue: newStage)!
+		newEvent.title = "Your \(plant.wrappedFullNameSentence) \(newStage.updateMessage)"
 		
 		save()
 	}

@@ -17,12 +17,7 @@ struct EventCardView: View {
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
 			eventTitle
-			
-			HStack {
-				timestamp
-				Spacer()
-				eventActions
-			}
+			timestampAndActionsFooter
 		}
 		.padding()
 		.frame(maxWidth: .infinity, alignment: .leading)
@@ -37,6 +32,14 @@ extension EventCardView {
 		Text(event.wrappedTitle)
 			.font(.handjet(.bold, size: 20))
 			.foregroundStyle(Color.theme.textPrimary)
+	}
+	
+	private var timestampAndActionsFooter: some View {
+		HStack {
+			timestamp
+			Spacer()
+			eventActions
+		}
 	}
 	
 	private var timestamp: some View {

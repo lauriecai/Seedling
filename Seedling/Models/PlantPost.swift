@@ -8,10 +8,10 @@
 import Foundation
 
 struct PlantPost: Identifiable {
-	let entity: EntityType
+	let type: CoreDataEntityType
 	
 	var id: UUID {
-		switch entity {
+		switch type {
 		case .event(let event):
 			event.wrappedId
 		case .note(let note):
@@ -20,7 +20,7 @@ struct PlantPost: Identifiable {
 	}
 	
 	var timestamp: Date {
-		switch entity {
+		switch type {
 		case .event(let event):
 			event.wrappedTimestamp
 		case .note(let note):
@@ -29,7 +29,7 @@ struct PlantPost: Identifiable {
 	}
 }
 
-enum EntityType {
+enum CoreDataEntityType {
 	case event(Event)
 	case note(Note)
 }

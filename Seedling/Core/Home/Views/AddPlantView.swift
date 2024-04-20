@@ -97,6 +97,7 @@ extension AddPlantView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
+			viewModel.resetAddPlantFormInputs()
 			dismiss()
 		}
 		.font(.handjet(.medium, size: 20))

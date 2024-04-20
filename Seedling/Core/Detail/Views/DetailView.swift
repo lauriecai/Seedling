@@ -62,7 +62,7 @@ extension DetailView {
 	private var postsList: some View {
 		ScrollView {
 			ForEach(viewModel.posts) { post in
-				switch post.entity {
+				switch post.type {
 				case .event(let event):
 					EventCardView(event: event, showActionSheet: $viewModel.showEventActionSheet, showActionsForEvent: $viewModel.selectedEvent)
 						.actionSheet(isPresented: $viewModel.showEventActionSheet) {

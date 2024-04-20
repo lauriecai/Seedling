@@ -36,7 +36,7 @@ enum PlantStage: String, CaseIterable {
 		}
 	}
 	
-	var update: String {
+	var updateMessage: String {
 		switch self {
 		case .seed: ""
 		case .germination: "germinated."

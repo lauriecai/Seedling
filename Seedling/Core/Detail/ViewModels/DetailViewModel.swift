@@ -16,13 +16,7 @@ class DetailViewModel: ObservableObject {
 	@Published var plant: Plant
 	@Published var posts: [PlantPost] = []
 	
-	// Segues
-	@Published var showNoteActionSheet: Bool = false
-	@Published var selectedNote: Note? = nil
-	
-	@Published var showEventActionSheet: Bool = false
-	@Published var selectedEvent: Event? = nil
-	
+	// Detail View Segues
 	@Published var showAddNoteLoadingView: Bool = false
 	
 	// Add Note View
@@ -32,12 +26,20 @@ class DetailViewModel: ObservableObject {
 	@Published var selectedStageIndex: Int
 	@Published var plantStageUpdated: Bool = false
 	
+	// Add Note View Segues
+	@Published var showNoteActionSheet: Bool = false
+	@Published var selectedNote: Note? = nil
+	
+	@Published var showEventActionSheet: Bool = false
+	@Published var selectedEvent: Event? = nil
+	
 	init(plant: Plant) {
 		self.plant = plant
 		
-		let stageStringToEnum = PlantStage(rawValue: plant.wrappedStage)!
-		self.plantStage = stageStringToEnum
-		self.selectedStageIndex = PlantStage.allCases.firstIndex(of: stageStringToEnum)!
+		// Add Note View
+		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
+		self.plantStage = savedPlantStage
+		self.selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
 	}
 	
 //	MARK: - Post functions
@@ -46,7 +48,7 @@ class DetailViewModel: ObservableObject {
 		let notes = fetchNotes(for: plant) ?? []
 		let events = fetchEvents(for: plant) ?? []
 
-		let notesAndEventsAsPosts = notes.map { PlantPost(entity: .note($0)) } + events.map { PlantPost(entity: .event($0)) }
+		let notesAndEventsAsPosts = notes.map { PlantPost(type: .note($0)) } + events.map { PlantPost(type: .event($0)) }
 	
 		posts = notesAndEventsAsPosts.sorted { $0.timestamp > $1.timestamp }
 	}
@@ -54,7 +56,7 @@ class DetailViewModel: ObservableObject {
 //	MARK: - Plant functions
 	
 	func updatePlant(plant: Plant, newStage: PlantStage) {
-		manager.updatePlant(plant: plant, newStage: newStage.rawValue)
+		manager.updatePlantStage(plant: plant, newStage: newStage.rawValue)
 	}
 	
 //	MARK: - Note functions
