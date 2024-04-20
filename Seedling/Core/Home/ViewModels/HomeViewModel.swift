@@ -46,11 +46,23 @@ class HomeViewModel: ObservableObject {
 	
 	func addPlant(type: String, name: String, variety: String, stage: String) {
 		manager.addPlant(type: type, name: name, variety: variety, stage: stage)
+		resetAddPlantFormInputs()
 		fetchPlants()
 	}
 	
 	func deletePlant(plant: Plant) {
 		manager.deletePlant(plant: plant)
 		fetchPlants()
+	}
+	
+	func resetAddPlantFormInputs() {
+		plantName = ""
+		plantVariety = ""
+		
+		plantStage = .seed
+		selectedStageIndex = 0
+		
+		plantType = .vegetable
+		selectedTypeIndex = 0
 	}
 }
