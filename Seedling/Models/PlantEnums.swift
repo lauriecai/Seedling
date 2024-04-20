@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PlantStage: String, CaseIterable, RawRepresentable {
+enum PlantStage: String, CaseIterable {
 	case seed = "Seed"
 	case germination = "Germination"
 	case seedling = "Seedling"
