@@ -56,12 +56,22 @@ class HomeViewModel: ObservableObject {
 	}
 	
 	func resetAddPlantFormInputs() {
+		resetNameAndVarietyTextFields()
+		resetPlantStageSelectionRow()
+		resetPlantTypeSelectionRow()
+	}
+	
+	private func resetNameAndVarietyTextFields() {
 		plantName = ""
 		plantVariety = ""
-		
+	}
+	
+	private func resetPlantStageSelectionRow() {
 		plantStage = .seed
 		selectedStageIndex = 0
-		
+	}
+	
+	private func resetPlantTypeSelectionRow() {
 		plantType = .vegetable
 		selectedTypeIndex = 0
 	}
