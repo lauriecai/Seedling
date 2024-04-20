@@ -27,7 +27,6 @@ struct AddPlantView: View {
 							.focused($keyboardFocused)
 							.onAppear { keyboardFocused.toggle() }
 						plantVarietyInput
-						
 						plantStageSelection
 						plantTypeSelection
 					}
@@ -65,10 +64,14 @@ extension AddPlantView {
 		VStack(alignment: .leading, spacing: 10) {
 			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $viewModel.plantStage, selectedIndex: $viewModel.selectedStageIndex)
 			
-			Text(viewModel.plantStage.definition)
-				.font(.handjet(.medium, size: 18))
-				.foregroundStyle(Color.theme.textSecondary)
+			selectedPlantStageDefinition
 		}
+	}
+	
+	private var selectedPlantStageDefinition: some View {
+		Text(viewModel.plantStage.definition)
+			.font(.handjet(.medium, size: 18))
+			.foregroundStyle(Color.theme.textSecondary)
 	}
 	
 	private var plantTypeSelection: some View {
