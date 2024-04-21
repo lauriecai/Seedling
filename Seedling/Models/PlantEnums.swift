@@ -36,10 +36,10 @@ enum PlantStage: String, CaseIterable {
 	
 	var updateMessage: String {
 		switch self {
-		case .seed: ""
+		case .seed: "is currently a seed."
 		case .germination: "is germinating."
 		case .seedling: "has become a seedling."
-		case .bulb: ""
+		case .bulb: "is currently a bulb."
 		case .vegetativeGrowth: "has started developing leaves."
 		case .flowering: "has begun flowering."
 		case .pollination: "is undergoing pollination."
