@@ -41,7 +41,7 @@ extension Plant {
 	
 	public var wrappedFullNameSentence: String {
 		if !wrappedVariety.isEmpty {
-			return "\(wrappedVariety) \(wrappedName)"
+			return "\(wrappedVariety) \(wrappedName)".lowercased()
 		} else {
 			return "\(wrappedName)"
 		}
