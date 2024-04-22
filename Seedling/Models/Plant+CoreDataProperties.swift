@@ -43,7 +43,7 @@ extension Plant {
 		if !wrappedVariety.isEmpty {
 			return "\(wrappedVariety) \(wrappedName)".lowercased()
 		} else {
-			return "\(wrappedName)"
+			return "\(wrappedName)".lowercased()
 		}
 	}
 
