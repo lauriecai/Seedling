@@ -38,8 +38,8 @@ class DetailViewModel: ObservableObject {
 		
 		// Add Note View
 		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
-		self.plantStage = savedPlantStage
-		self.selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
+		plantStage = savedPlantStage
+		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
 	}
 	
 //	MARK: - Post functions
@@ -80,6 +80,20 @@ class DetailViewModel: ObservableObject {
 	func deleteNote(note: Note) {
 		manager.deleteNote(note: note)
 		fetchPosts(for: plant)
+	}
+	
+	func resetAddNoteFormInputs() {
+		resetTitleAndBodyTextFields()
+		resetStageUpdatedFlag()
+	}
+	
+	private func resetTitleAndBodyTextFields() {
+		noteTitle = ""
+		noteBodyText = ""
+	}
+	
+	private func resetStageUpdatedFlag() {
+		plantStageUpdated = false
 	}
 	
 //	MARK: - Event functions

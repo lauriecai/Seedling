@@ -96,6 +96,7 @@ extension AddNoteView {
 				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitle, body: viewModel.noteBodyText)
 			}
 			
+			viewModel.resetAddNoteFormInputs()
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
