@@ -30,18 +30,10 @@ struct HomeView: View {
 		.sheet(isPresented: $viewModel.showingAddPlantView) {
 			AddPlantView()
 		}
-		.actionSheet(isPresented: $viewModel.showActionSheet) {
-			ActionSheet(title: Text("Plant options"),
-						buttons: [
-							.destructive(Text("Delete plant")) {
-								if let selectedPlant = viewModel.selectedPlant {
-									withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
-										viewModel.deletePlant(plant: selectedPlant)
-									}
-								}
-							},
-							.cancel()
-						])
+		.confirmationDialog("Plant Options", isPresented: $viewModel.showActionSheet) {
+			deletePlantButton
+		} message: {
+			Text("What do you want to do with this plant?")
 		}
 		.onAppear { viewModel.fetchPlants() }
     }
@@ -79,9 +71,19 @@ extension HomeView {
 			.padding(.trailing, 20)
 			.padding(.bottom, 25)
 	}
+	
+	private var deletePlantButton: some View {
+		Button("Delete Plant", role: .destructive) {
+			if let selectedPlant = viewModel.selectedPlant {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+					viewModel.deletePlant(plant: selectedPlant)
+				}
+			}
+		}
+	}
 }
 
-// MARK: - UI Functions
+// MARK: - Functions
 
 extension HomeView {
 	

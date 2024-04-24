@@ -65,15 +65,19 @@ extension DetailView {
 				switch post.type {
 				case .event(let event):
 					eventCard(for: event)
-						.confirmationDialog("What do you want to do with this event?", isPresented: $viewModel.showEventActionSheet) {
+						.confirmationDialog("Event Options", isPresented: $viewModel.showEventActionSheet) {
 							editEventButton
 							deleteEventButton
+						} message: {
+							Text("What do you want to do with this event?")
 						}
 				case .note(let note):
 					noteCard(for: note)
-						.confirmationDialog("What do you want to do with this note?", isPresented: $viewModel.showNoteActionSheet) {
+						.confirmationDialog("Note Options", isPresented: $viewModel.showNoteActionSheet) {
 							editNoteButton
 							deleteNoteButton
+						} message: {
+							Text("What do you want to do with this note?")
 						}
 				}
 			}
