@@ -98,7 +98,7 @@ extension DetailView {
 	private var deleteEventButton: some View {
 		Button("Delete event", role: .destructive) {
 			if let selectedEvent = viewModel.selectedEvent {
-				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteEvent(event: selectedEvent)
 				}
 			}
@@ -118,7 +118,7 @@ extension DetailView {
 	private var deleteNoteButton: some View {
 		Button("Delete note", role: .destructive) {
 			if let selectedNote = viewModel.selectedNote {
-				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteNote(note: selectedNote)
 				}
 			}

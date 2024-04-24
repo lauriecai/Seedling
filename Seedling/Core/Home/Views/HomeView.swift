@@ -75,7 +75,7 @@ extension HomeView {
 	private var deletePlantButton: some View {
 		Button("Delete Plant", role: .destructive) {
 			if let selectedPlant = viewModel.selectedPlant {
-				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deletePlant(plant: selectedPlant)
 				}
 			}
