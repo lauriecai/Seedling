@@ -64,36 +64,60 @@ extension DetailView {
 			ForEach(viewModel.posts) { post in
 				switch post.type {
 				case .event(let event):
-					EventCardView(event: event, showActionSheet: $viewModel.showEventActionSheet, showActionsForEvent: $viewModel.selectedEvent)
+					eventCard(for: event)
 						.confirmationDialog("What do you want to do with this event?", isPresented: $viewModel.showEventActionSheet) {
-							Button("Edit event") {
-								print("Add note view edit event triggered!")
-							}
-							Button("Delete event", role: .destructive) {
-								if let selectedEvent = viewModel.selectedEvent {
-									withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
-										viewModel.deleteEvent(event: selectedEvent)
-									}
-								}
-							}
+							editEventButton
+							deleteEventButton
 						}
 				case .note(let note):
-					NoteCardView(note: note, showPlantTag: false, showActionSheet: $viewModel.showNoteActionSheet, showActionsForNote: $viewModel.selectedNote)
+					noteCard(for: note)
 						.confirmationDialog("What do you want to do with this note?", isPresented: $viewModel.showNoteActionSheet) {
-							Button("Edit note") {
-								print("Add note view edit note triggered!")
-							}
-							Button("Delete note", role: .destructive) {
-								if let selectedNote = viewModel.selectedNote {
-									withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
-										viewModel.deleteNote(note: selectedNote)
-									}
-								}
-							}
+							editNoteButton
+							deleteNoteButton
 						}
 				}
 			}
 			.padding(.horizontal)
+		}
+	}
+	
+	private func eventCard(for event: Event) -> EventCardView {
+		EventCardView(event: event, showActionSheet: $viewModel.showEventActionSheet, showActionsForEvent: $viewModel.selectedEvent)
+	}
+	
+	private var editEventButton: some View {
+		Button("Edit event") {
+			print("Add note view edit event triggered!")
+		}
+	}
+	
+	private var deleteEventButton: some View {
+		Button("Delete event", role: .destructive) {
+			if let selectedEvent = viewModel.selectedEvent {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+					viewModel.deleteEvent(event: selectedEvent)
+				}
+			}
+		}
+	}
+	
+	private func noteCard(for note: Note) -> NoteCardView {
+		NoteCardView(note: note, showPlantTag: false, showActionSheet: $viewModel.showNoteActionSheet, showActionsForNote: $viewModel.selectedNote)
+	}
+	
+	private var editNoteButton: some View {
+		Button("Edit note") {
+			print("Add note view edit note triggered!")
+		}
+	}
+	
+	private var deleteNoteButton: some View {
+		Button("Delete note", role: .destructive) {
+			if let selectedNote = viewModel.selectedNote {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+					viewModel.deleteNote(note: selectedNote)
+				}
+			}
 		}
 	}
 	
