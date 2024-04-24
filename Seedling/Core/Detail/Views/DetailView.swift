@@ -65,37 +65,31 @@ extension DetailView {
 				switch post.type {
 				case .event(let event):
 					EventCardView(event: event, showActionSheet: $viewModel.showEventActionSheet, showActionsForEvent: $viewModel.selectedEvent)
-						.actionSheet(isPresented: $viewModel.showEventActionSheet) {
-							ActionSheet(
-								title: Text("Event options"),
-								buttons: [
-									.destructive(Text("Delete event")) {
-										if let selectedEvent = viewModel.selectedEvent {
-											withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
-												viewModel.deleteEvent(event: selectedEvent)
-											}
-										}
-									},
-									.cancel()
-								]
-							)
+						.confirmationDialog("What do you want to do with this event?", isPresented: $viewModel.showEventActionSheet) {
+							Button("Edit event") {
+								print("Add note view edit event triggered!")
+							}
+							Button("Delete event", role: .destructive) {
+								if let selectedEvent = viewModel.selectedEvent {
+									withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+										viewModel.deleteEvent(event: selectedEvent)
+									}
+								}
+							}
 						}
 				case .note(let note):
 					NoteCardView(note: note, showPlantTag: false, showActionSheet: $viewModel.showNoteActionSheet, showActionsForNote: $viewModel.selectedNote)
-						.actionSheet(isPresented: $viewModel.showNoteActionSheet) {
-							ActionSheet(
-								title: Text("Note options"),
-								buttons: [
-									.destructive(Text("Delete note")) {
-										if let selectedNote = viewModel.selectedNote {
-											withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
-												viewModel.deleteNote(note: selectedNote)
-											}
-										}
-									},
-									.cancel()
-								]
-							)
+						.confirmationDialog("What do you want to do with this note?", isPresented: $viewModel.showNoteActionSheet) {
+							Button("Edit note") {
+								print("Add note view edit note triggered!")
+							}
+							Button("Delete note", role: .destructive) {
+								if let selectedNote = viewModel.selectedNote {
+									withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.25)) {
+										viewModel.deleteNote(note: selectedNote)
+									}
+								}
+							}
 						}
 				}
 			}
