@@ -30,8 +30,9 @@ struct HomeView: View {
 		.sheet(isPresented: $viewModel.showingAddPlantView) {
 			AddPlantView()
 		}
-		.confirmationDialog("Plant Options", isPresented: $viewModel.showActionSheet) {
+		.confirmationDialog("Plant Options", isPresented: $viewModel.showingActionSheet) {
 			deletePlantButton
+			editPlantButton
 		} message: {
 			Text("What do you want to do with this plant?")
 		}
@@ -58,8 +59,12 @@ extension HomeView {
 	private var plantsList: some View {
 		ScrollView {
 			ForEach(viewModel.plants, id: \.self.customHash) { plant in
-				PlantCardView(plant: plant, showActionSheet: $viewModel.showActionSheet, showActionForPlant: $viewModel.selectedPlant)
-					.onTapGesture { segue(plant: plant) }
+				PlantCardView(
+					plant: plant,
+					showActionSheet: $viewModel.showingActionSheet,
+					showActionForPlant: $viewModel.selectedPlant
+				)
+				.onTapGesture { segue(plant: plant) }
 			}
 		}
 	}
@@ -70,6 +75,12 @@ extension HomeView {
 			.onTapGesture { viewModel.showingAddPlantView.toggle() }
 			.padding(.trailing, 20)
 			.padding(.bottom, 25)
+	}
+	
+	private var editPlantButton: some View {
+		Button("Edit Plant") {
+			print("Edit Plant tapped.")
+		}
 	}
 	
 	private var deletePlantButton: some View {
