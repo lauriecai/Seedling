@@ -32,12 +32,18 @@ struct AddPlantView: View {
 					}
 					.padding()
 				}
-				.navigationTitle("New Plant")
+				.navigationTitle(viewModel.editingExistingPlant ? "Edit Plant" : "New Plant")
 				.navigationBarTitleDisplayMode(.inline)
 				.navigationBarBackButtonHidden(true)
 				.toolbar {
 					ToolbarItem(placement: .topBarLeading) { cancelButton }
-					ToolbarItem(placement: .topBarTrailing) { addPlantButton }
+					ToolbarItem(placement: .topBarTrailing) {
+						if viewModel.editingExistingPlant {
+							saveChangesButton
+						} else {
+							addPlantButton
+						}
+					}
 				}
 				.keyboardType(.default)
 				.autocorrectionDisabled()
@@ -88,6 +94,16 @@ extension AddPlantView {
 				variety: viewModel.plantVariety,
 				stage: viewModel.plantStage.rawValue
 			)
+			dismiss()
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.plantName.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(viewModel.plantName.isEmpty)
+	}
+	
+	private var saveChangesButton: some View {
+		Button("Save Changes") {
+			print("Changes saved.")
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))

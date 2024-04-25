@@ -20,7 +20,7 @@ class HomeViewModel: ObservableObject {
 	@Published var showingAddPlantView: Bool = false
 	
 	@Published var selectedPlant: Plant? = nil
-	@Published var showActionSheet: Bool = false
+	@Published var showingActionSheet: Bool = false
 	
 	// Add Plant View
 	@Published var plantName: String = ""
@@ -31,6 +31,8 @@ class HomeViewModel: ObservableObject {
 	
 	@Published var plantType: PlantType = .vegetable
 	@Published var selectedTypeIndex: Int = 0
+	
+	@Published var editingExistingPlant: Bool = false
 	
 //	MARK: - Plant functions
 	
@@ -53,6 +55,10 @@ class HomeViewModel: ObservableObject {
 	func deletePlant(plant: Plant) {
 		manager.deletePlant(plant: plant)
 		fetchPlants()
+	}
+	
+	func updatePlant(plant: Plant) {
+		// create a new plant vs update value of existing plant?
 	}
 	
 	func resetAddPlantFormInputs() {
