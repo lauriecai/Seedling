@@ -31,12 +31,14 @@ struct HomeView: View {
 			AddPlantView()
 		}
 		.confirmationDialog("Plant Options", isPresented: $viewModel.showingActionSheet) {
+			editPlantNameButton
 			deletePlantButton
-			editPlantButton
 		} message: {
 			Text("What do you want to do with this plant?")
 		}
-		.onAppear { viewModel.fetchPlants() }
+		.onAppear {
+			viewModel.fetchPlants()
+		}
     }
 }
 
@@ -77,9 +79,15 @@ extension HomeView {
 			.padding(.bottom, 25)
 	}
 	
-	private var editPlantButton: some View {
-		Button("Edit Plant") {
-			print("Edit Plant tapped.")
+	private var editPlantNameButton: some View {
+		Button("Edit Name and Variety") {
+			viewModel.plantDetailsChanged = false
+			
+			if let selectedPlant = viewModel.selectedPlant {
+				viewModel.editingExistingPlant = true
+				viewModel.showingAddPlantView = true
+				viewModel.fetchExistingPlantData(for: selectedPlant)
+			}
 		}
 	}
 	

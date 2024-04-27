@@ -55,8 +55,8 @@ class DetailViewModel: ObservableObject {
 	
 //	MARK: - Plant functions
 	
-	func updatePlant(plant: Plant, newStage: PlantStage) {
-		manager.updatePlantStage(plant: plant, newStage: newStage.rawValue)
+	func updatePlantStage(plant: Plant, newStage: PlantStage) {
+		manager.addStageUpdate(plant: plant, newStage: newStage.rawValue)
 	}
 	
 //	MARK: - Note functions

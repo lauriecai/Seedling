@@ -59,22 +59,29 @@ class CoreDataManager {
 		return request
 	}
 	
-	func addPlant(type: String, name: String, variety: String, stage: String) {
+	func addPlant(name: String, variety: String, stage: String, type: String) {
 		let newPlant = Plant(context: context)
 		newPlant.id = UUID()
-		newPlant.type = type
 		newPlant.name = name
 		newPlant.variety = variety
 		newPlant.stage = stage
+		newPlant.type = type
 		
 		createPlantAddedEvent(for: newPlant)
 		
 		save()
 	}
 	
-	func updatePlantStage(plant: Plant, newStage: String) {
+	func addStageUpdate(plant: Plant, newStage: String) {
 		plant.stage = newStage
 		createPlantUpdatedEvent(for: plant, newStage: newStage)
+		
+		save()
+	}
+	
+	func updatePlantName(for plant: Plant, name: String, variety: String) {
+		plant.name = name
+		plant.variety = variety
 		
 		save()
 	}

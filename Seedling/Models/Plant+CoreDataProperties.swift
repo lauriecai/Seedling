@@ -66,6 +66,8 @@ extension Plant {
 	public var customHash: Int {
 		var hasher = Hasher()
 		hasher.combine(self.id)
+		hasher.combine(self.wrappedName)
+		hasher.combine(self.wrappedVariety)
 		hasher.combine(self.stage)
 		
 		return hasher.finalize()

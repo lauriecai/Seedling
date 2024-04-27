@@ -26,9 +26,13 @@ struct AddPlantView: View {
 						plantTextInput
 							.focused($keyboardFocused)
 							.onAppear { keyboardFocused.toggle() }
+						
 						plantVarietyInput
-						plantStageSelection
-						plantTypeSelection
+						
+						if !viewModel.editingExistingPlant {
+							plantStageSelection
+							plantTypeSelection
+						}
 					}
 					.padding()
 				}
@@ -44,6 +48,12 @@ struct AddPlantView: View {
 							addPlantButton
 						}
 					}
+				}
+				.onChange(of: viewModel.plantName) {
+					viewModel.plantDetailsChanged = true
+				}
+				.onChange(of: viewModel.plantVariety) {
+					viewModel.plantDetailsChanged = true
 				}
 				.keyboardType(.default)
 				.autocorrectionDisabled()
@@ -89,10 +99,10 @@ extension AddPlantView {
 	private var addPlantButton: some View {
 		Button("Add Plant") {
 			viewModel.addPlant(
-				type: viewModel.plantType.rawValue,
 				name: viewModel.plantName,
 				variety: viewModel.plantVariety,
-				stage: viewModel.plantStage.rawValue
+				stage: viewModel.plantStage.rawValue,
+				type: viewModel.plantType.rawValue
 			)
 			dismiss()
 		}
@@ -103,17 +113,23 @@ extension AddPlantView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			print("Changes saved.")
+			if let selectedPlant = viewModel.selectedPlant {
+				viewModel.updatePlantName(
+					for: selectedPlant,
+					name: viewModel.plantName,
+					variety: viewModel.plantVariety
+				)
+			}
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(viewModel.plantName.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
-		.disabled(viewModel.plantName.isEmpty)
+		.foregroundStyle(viewModel.plantDetailsChanged ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.plantDetailsChanged)
 	}
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
-			viewModel.resetAddPlantFormInputs()
+			viewModel.resetAddPlantFormInputsAndFlags()
 			dismiss()
 		}
 		.font(.handjet(.medium, size: 20))

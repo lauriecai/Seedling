@@ -33,6 +33,7 @@ class HomeViewModel: ObservableObject {
 	@Published var selectedTypeIndex: Int = 0
 	
 	@Published var editingExistingPlant: Bool = false
+	@Published var plantDetailsChanged: Bool = false
 	
 //	MARK: - Plant functions
 	
@@ -46,9 +47,9 @@ class HomeViewModel: ObservableObject {
 		}
 	}
 	
-	func addPlant(type: String, name: String, variety: String, stage: String) {
-		manager.addPlant(type: type, name: name, variety: variety, stage: stage)
-		resetAddPlantFormInputs()
+	func addPlant(name: String, variety: String, stage: String, type: String) {
+		manager.addPlant(name: name, variety: variety, stage: stage, type: type)
+		resetAddPlantFormInputsAndFlags()
 		fetchPlants()
 	}
 	
@@ -57,14 +58,28 @@ class HomeViewModel: ObservableObject {
 		fetchPlants()
 	}
 	
-	func updatePlant(plant: Plant) {
-		// create a new plant vs update value of existing plant?
+	func updatePlantName(for plant: Plant, name: String, variety: String) {
+		manager.updatePlantName(for: plant, name: name, variety: variety)
+		fetchPlants()
 	}
 	
-	func resetAddPlantFormInputs() {
+	func fetchExistingPlantData(for plant: Plant) {
+		plantName = plant.wrappedName
+		plantVariety = plant.wrappedVariety
+		
+		plantStage = PlantStage(rawValue: plant.wrappedStage)!
+		selectedStageIndex = PlantStage.allCases.firstIndex(of: plantStage)!
+		
+		plantType = PlantType(rawValue: plant.wrappedType)!
+		selectedTypeIndex = PlantType.allCases.firstIndex(of: plantType)!
+	}
+	
+	func resetAddPlantFormInputsAndFlags() {
 		resetNameAndVarietyTextFields()
 		resetPlantStageSelectionRow()
 		resetPlantTypeSelectionRow()
+		
+		editingExistingPlant = false
 	}
 	
 	private func resetNameAndVarietyTextFields() {
