@@ -50,10 +50,10 @@ struct AddPlantView: View {
 					}
 				}
 				.onChange(of: viewModel.plantName) {
-					viewModel.plantDetailsChanged = true
+					viewModel.plantDetailsEdited = true
 				}
 				.onChange(of: viewModel.plantVariety) {
-					viewModel.plantDetailsChanged = true
+					viewModel.plantDetailsEdited = true
 				}
 				.keyboardType(.default)
 				.autocorrectionDisabled()
@@ -123,8 +123,8 @@ extension AddPlantView {
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(viewModel.plantDetailsChanged ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
-		.disabled(!viewModel.plantDetailsChanged)
+		.foregroundStyle(viewModel.plantDetailsEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.plantDetailsEdited)
 	}
 	
 	private var cancelButton: some View {

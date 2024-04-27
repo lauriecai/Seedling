@@ -33,7 +33,7 @@ class HomeViewModel: ObservableObject {
 	@Published var selectedTypeIndex: Int = 0
 	
 	@Published var editingExistingPlant: Bool = false
-	@Published var plantDetailsChanged: Bool = false
+	@Published var plantDetailsEdited: Bool = false
 	
 //	MARK: - Plant functions
 	
@@ -80,6 +80,10 @@ class HomeViewModel: ObservableObject {
 		resetPlantTypeSelectionRow()
 		
 		editingExistingPlant = false
+	}
+	
+	func resetPlantDetailsChangedFlag() {
+		plantDetailsEdited = false
 	}
 	
 	private func resetNameAndVarietyTextFields() {

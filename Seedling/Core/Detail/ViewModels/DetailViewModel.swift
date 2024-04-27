@@ -26,6 +26,9 @@ class DetailViewModel: ObservableObject {
 	@Published var selectedStageIndex: Int
 	@Published var plantStageUpdated: Bool = false
 	
+	@Published var editingExistingNote: Bool = false
+	@Published var noteEdited: Bool = false
+	
 	// Add Note View Segues
 	@Published var showNoteActionSheet: Bool = false
 	@Published var selectedNote: Note? = nil

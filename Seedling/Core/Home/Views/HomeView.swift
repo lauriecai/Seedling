@@ -81,7 +81,7 @@ extension HomeView {
 	
 	private var editPlantNameButton: some View {
 		Button("Edit Name and Variety") {
-			viewModel.plantDetailsChanged = false
+			viewModel.resetPlantDetailsChangedFlag()
 			
 			if let selectedPlant = viewModel.selectedPlant {
 				viewModel.editingExistingPlant = true
