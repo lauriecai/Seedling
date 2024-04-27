@@ -90,6 +90,11 @@ class DetailViewModel: ObservableObject {
 		fetchPosts(for: plant)
 	}
 	
+	func fetchExistingNoteTitleAndBody(for note: Note) {
+		noteTitle = note.wrappedTitle
+		noteBodyText = note.wrappedBody
+	}
+	
 	func resetAddNoteFormInputs() {
 		resetTitleAndBodyTextFields()
 		resetStageUpdatedFlag()
