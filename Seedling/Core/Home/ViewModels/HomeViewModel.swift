@@ -63,22 +63,13 @@ class HomeViewModel: ObservableObject {
 		fetchPlants()
 	}
 	
-	func fetchExistingPlantData(for plant: Plant) {
+	func fetchExistingPlantNameAndVariety(for plant: Plant) {
 		plantName = plant.wrappedName
 		plantVariety = plant.wrappedVariety
-		
-		plantStage = PlantStage(rawValue: plant.wrappedStage)!
-		selectedStageIndex = PlantStage.allCases.firstIndex(of: plantStage)!
-		
-		plantType = PlantType(rawValue: plant.wrappedType)!
-		selectedTypeIndex = PlantType.allCases.firstIndex(of: plantType)!
 	}
 	
 	func resetAddPlantFormInputsAndFlags() {
 		resetNameAndVarietyTextFields()
-		resetPlantStageSelectionRow()
-		resetPlantTypeSelectionRow()
-		
 		editingExistingPlant = false
 	}
 	
@@ -89,15 +80,5 @@ class HomeViewModel: ObservableObject {
 	private func resetNameAndVarietyTextFields() {
 		plantName = ""
 		plantVariety = ""
-	}
-	
-	private func resetPlantStageSelectionRow() {
-		plantStage = .seed
-		selectedStageIndex = 0
-	}
-	
-	private func resetPlantTypeSelectionRow() {
-		plantType = .vegetable
-		selectedTypeIndex = 0
 	}
 }

@@ -86,7 +86,7 @@ extension HomeView {
 			if let selectedPlant = viewModel.selectedPlant {
 				viewModel.editingExistingPlant = true
 				viewModel.showingAddPlantView = true
-				viewModel.fetchExistingPlantData(for: selectedPlant)
+				viewModel.fetchExistingPlantNameAndVariety(for: selectedPlant)
 			}
 		}
 	}
