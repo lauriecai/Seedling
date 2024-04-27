@@ -58,7 +58,7 @@ class HomeViewModel: ObservableObject {
 		fetchPlants()
 	}
 	
-	func updatePlantName(for plant: Plant, name: String, variety: String) {
+	func updatePlantNameAndVariety(for plant: Plant, name: String, variety: String) {
 		manager.updatePlantName(for: plant, name: name, variety: variety)
 		fetchPlants()
 	}

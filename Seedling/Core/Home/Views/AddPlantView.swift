@@ -114,7 +114,7 @@ extension AddPlantView {
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
 			if let selectedPlant = viewModel.selectedPlant {
-				viewModel.updatePlantName(
+				viewModel.updatePlantNameAndVariety(
 					for: selectedPlant,
 					name: viewModel.plantName,
 					variety: viewModel.plantVariety
