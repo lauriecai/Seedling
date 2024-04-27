@@ -79,7 +79,7 @@ class CoreDataManager {
 		save()
 	}
 	
-	func updatePlantName(for plant: Plant, name: String, variety: String) {
+	func updatePlantNameAndVariety(for plant: Plant, name: String, variety: String) {
 		plant.name = name
 		plant.variety = variety
 		
@@ -92,7 +92,7 @@ class CoreDataManager {
 	}
 	
 // 	MARK: - Note functions
-	
+
 	func requestNotes(for plant: Plant? = nil) -> NSFetchRequest<Note> {
 		let request = NSFetchRequest<Note>(entityName: "Note")
 		request.sortDescriptors = [sortByNewest]
@@ -111,6 +111,13 @@ class CoreDataManager {
 		newNote.timestamp = Date()
 		newNote.title = title
 		newNote.body = body
+		
+		save()
+	}
+	
+	func updateNoteTitleAndBody(for note: Note, title: String, body: String) {
+		note.title = title
+		note.body = body
 		
 		save()
 	}
