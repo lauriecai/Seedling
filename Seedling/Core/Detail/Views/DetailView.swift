@@ -111,7 +111,13 @@ extension DetailView {
 	
 	private var editNoteButton: some View {
 		Button("Edit note") {
-			print("Add note view edit note triggered!")
+			viewModel.resetNoteEditedFlag()
+			
+			if let selectedNote = viewModel.selectedNote {
+				viewModel.editingExistingNote = true
+				viewModel.showAddNoteLoadingView = true
+				viewModel.fetchExistingNoteTitleAndBody(for: selectedNote)
+			}
 		}
 	}
 	
