@@ -46,15 +46,23 @@ struct AddNoteView: View {
 					.padding()
 				}
 			}
-			.navigationTitle("New Note")
+			.navigationTitle(viewModel.editingExistingNote ? "Edit Note" : "New Note")
 			.navigationBarTitleDisplayMode(.inline)
 			.navigationBarBackButtonHidden(true)
 			.toolbar {
 				ToolbarItem(placement: .topBarLeading) { backButton }
-				ToolbarItem(placement: .topBarTrailing) { addNoteButton }
+				ToolbarItem(placement: .topBarTrailing) {
+					if viewModel.editingExistingNote {
+						saveChangesButton
+					} else {
+						addNoteButton
+					}
+				}
 			}
 			.keyboardType(.default)
 			.onChange(of: viewModel.plantStage) { viewModel.plantStageUpdated = true }
+			.onChange(of: viewModel.noteTitle) { viewModel.noteEdited = true }
+			.onChange(of: viewModel.noteBodyText) { viewModel.noteEdited = true }
 		}
     }
 }
@@ -102,6 +110,22 @@ extension AddNoteView {
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
 		.disabled(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated)
+	}
+	
+	private var saveChangesButton: some View {
+		Button("Save Changes") {
+			if let selectedNote = viewModel.selectedNote {
+				viewModel.updateNoteTitleAndBody(
+					for: selectedNote,
+					title: viewModel.noteTitle,
+					body: viewModel.noteBodyText
+				)
+			}
+			dismiss()
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.noteEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.noteEdited)
 	}
 	
 	private var backButton: some View {
