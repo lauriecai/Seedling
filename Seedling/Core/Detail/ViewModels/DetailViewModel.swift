@@ -98,6 +98,11 @@ class DetailViewModel: ObservableObject {
 	func resetAddNoteFormInputs() {
 		resetTitleAndBodyTextFields()
 		resetStageUpdatedFlag()
+		editingExistingNote = false
+	}
+	
+	func resetNoteEditedFlag() {
+		noteEdited = false
 	}
 	
 	private func resetTitleAndBodyTextFields() {
