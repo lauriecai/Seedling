@@ -61,15 +61,15 @@ extension DetailView {
 	
 	private var postsList: some View {
 		ScrollView {
-			ForEach(viewModel.posts) { post in
+			ForEach(viewModel.posts, id: \.self.hashValue) { post in
 				switch post.type {
 				case .event(let event):
 					eventCard(for: event)
-						.confirmationDialog("Event Options", isPresented: $viewModel.showEventActionSheet) {
+						.confirmationDialog("Stage Update Options", isPresented: $viewModel.showEventActionSheet) {
 							editEventButton
 							deleteEventButton
 						} message: {
-							Text("What do you want to do with this event?")
+							Text("What do you want to do with this stage update?")
 						}
 				case .note(let note):
 					noteCard(for: note)
@@ -90,13 +90,13 @@ extension DetailView {
 	}
 	
 	private var editEventButton: some View {
-		Button("Edit event") {
+		Button("Edit Stage Update") {
 			print("Add note view edit event triggered!")
 		}
 	}
 	
 	private var deleteEventButton: some View {
-		Button("Delete event", role: .destructive) {
+		Button("Delete Stage Update", role: .destructive) {
 			if let selectedEvent = viewModel.selectedEvent {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteEvent(event: selectedEvent)
