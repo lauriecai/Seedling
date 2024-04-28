@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct PlantPost: Identifiable {
+struct PlantPost: Identifiable, Hashable {
+	
 	let type: CoreDataEntityType
 	
 	var id: UUID {
@@ -26,6 +27,21 @@ struct PlantPost: Identifiable {
 		case .note(let note):
 			note.wrappedTimestamp
 		}
+	}
+	
+	func hash(into hasher: inout Hasher) {
+		switch type {
+		case .event(let event):
+			hasher.combine(event.title)
+			hasher.combine(event.wrappedTimestamp)
+		case .note(let note):
+			hasher.combine(note.wrappedTitle)
+			hasher.combine(note.wrappedBody)
+		}
+	}
+	
+	static func == (lhs: PlantPost, rhs: PlantPost) -> Bool {
+		lhs.hashValue == rhs.hashValue
 	}
 }
 
