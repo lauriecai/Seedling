@@ -26,6 +26,8 @@ struct DetailView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	@State private var showingAddPostOptions: Bool = false
+	
 	init(plant: Plant) {
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
 	}
@@ -37,7 +39,7 @@ struct DetailView: View {
 			
 			postsList
 
-			addNoteButton
+			addPostActionGroup
 		}
 		.navigationTitle(viewModel.plant.wrappedFullNameLabel)
 		.navigationBarBackButtonHidden(true)
@@ -46,6 +48,7 @@ struct DetailView: View {
 		}
 		.onAppear {
 			viewModel.fetchPosts(for: viewModel.plant)
+			showingAddPostOptions = false
 		}
 		.navigationDestination(isPresented: $viewModel.showAddNoteLoadingView) {
 			if viewModel.showAddNoteLoadingView {
@@ -131,10 +134,47 @@ extension DetailView {
 		}
 	}
 	
+	private var addPostActionGroup: some View {
+		VStack(alignment: .trailing, spacing: 20) {
+			if showingAddPostOptions {
+				addPostOptionsButtons
+			}
+			
+			addPostButton
+		}
+		.padding(.horizontal, 20)
+		.padding(.bottom, 20)
+	}
+	
+	private var addPostOptionsButtons: some View {
+		VStack(alignment: .trailing, spacing: 12) {
+			addNoteButton
+			addPhotoButton
+			updateStageButton
+		}
+	}
+	
 	private var addNoteButton: some View {
-		ButtonCircle(icon: "icon-plus")
+		ButtonRounded(iconName: "pencil", text: "Add Note")
 			.onTapGesture { viewModel.showAddNoteLoadingView.toggle() }
-			.padding(.trailing, 20)
+	}
+	
+	private var addPhotoButton: some View {
+		ButtonRounded(iconName: "photo.fill", text: "Add Photo")
+	}
+	
+	private var updateStageButton: some View {
+		ButtonRounded(iconName: "sparkles", text: "Update Stage")
+	}
+	
+	private var addPostButton: some View {
+		ButtonCircle(icon: "icon-plus")
+			.onTapGesture {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
+					showingAddPostOptions.toggle()
+				}
+			}
+			.rotationEffect(showingAddPostOptions ? .degrees(45) : .degrees(0))
 	}
 	
 	private var backButton: some View {
