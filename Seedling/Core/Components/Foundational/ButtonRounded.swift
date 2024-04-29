@@ -35,10 +35,11 @@ struct ButtonRounded: View {
 		}
 		.padding(.horizontal, 20)
 		.foregroundStyle(Color.black)
-		.background(Color.theme.backgroundAccent)
+		.background(Color.theme.accentLightGreen)
 		.clipShape(
 			RoundedRectangle(cornerRadius: 100)
 		)
+		.shadow(color: .black.opacity(0.10), radius: 5, x: 0, y: 5)
     }
 }
 
