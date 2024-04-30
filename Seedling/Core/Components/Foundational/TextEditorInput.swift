@@ -30,7 +30,7 @@ struct TextEditorInput: View {
 					.padding(.vertical, 6)
 					.background(Color.theme.backgroundAccent)
 					.foregroundStyle(Color.theme.textPrimary)
-					.frame(height: 140)
+					.frame(height: 200)
 					.clipShape(RoundedRectangle(cornerRadius: 8))
 					.focused($inputFocused)
 				
