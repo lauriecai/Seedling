@@ -39,6 +39,8 @@ struct DetailView: View {
 			
 			postsList
 
+			if showingAddPostOptions { darkOverlay }
+			
 			addPostActionGroup
 		}
 		.navigationTitle(viewModel.plant.wrappedFullNameLabel)
@@ -161,10 +163,12 @@ extension DetailView {
 	
 	private var addPhotoButton: some View {
 		ButtonRounded(iconName: "photo.fill", text: "Add Photo")
+			.onTapGesture { print("Add photo tapped!") }
 	}
 	
 	private var updateStageButton: some View {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
+			.onTapGesture { print("Update stage tapped!") }
 	}
 	
 	private var addPostButton: some View {
@@ -175,6 +179,14 @@ extension DetailView {
 				}
 			}
 			.rotationEffect(showingAddPostOptions ? .degrees(45) : .degrees(0))
+	}
+	
+	private var darkOverlay: some View {
+		Color.black.opacity(0.30)
+			.ignoresSafeArea()
+			.onTapGesture {
+				showingAddPostOptions = false
+			}
 	}
 	
 	private var backButton: some View {
