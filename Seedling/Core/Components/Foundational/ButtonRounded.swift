@@ -34,8 +34,8 @@ struct ButtonRounded: View {
 				.frame(height: 55)
 		}
 		.padding(.horizontal, 20)
-		.foregroundStyle(Color.black)
-		.background(Color.theme.accentLightGreen)
+		.foregroundStyle(Color.theme.accentGreen)
+		.background(Color.theme.backgroundLight)
 		.clipShape(
 			RoundedRectangle(cornerRadius: 100)
 		)
