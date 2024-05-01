@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StageCardView: View {
 	
-	let stage: String
+	let stageName: String
 	let stageDefinition: String
 	
 	let isCurrentStage: Bool
@@ -18,33 +18,53 @@ struct StageCardView: View {
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
 			HStack(spacing: 8) {
-				Text(stage)
-					.font(.handjet(.bold, size: 24))
+				stageHeader
+					.opacity(isCurrentStage ? 0.5 : 1.0)
 				
-				if isNewStage {
-					Text("New Stage")
-						.font(.handjet(.bold, size: 18))
-						.padding(5)
-						.padding(.horizontal, 3)
-						.background(Color.theme.accentYellow)
-						.clipShape(RoundedRectangle(cornerRadius: 4))
-				}
+				if isCurrentStage { currentStagePill }
+				if isNewStage { newStagePill }
 			}
 			
-			Text(stageDefinition)
-				.font(.handjet(.medium, size: 20))
+			definitionBody
+				.opacity(isCurrentStage ? 0.5 : 1.0)
 		}
 		.padding()
-		.background(Color.theme.backgroundAccent)
-		.border(Color.theme.textPrimary, width: 5)
+		.background(Color.theme.backgroundAccent.opacity(isCurrentStage ? 0.5 : 1.0))
+		.overlay(isNewStage ? selectedBorder : nil)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
+extension StageCardView {
+	
+	private var stageHeader: some View {
+		Text(stageName)
+			.font(.handjet(.bold, size: 24))
+	}
+	
+	private var definitionBody: some View {
+		Text(stageDefinition)
+			.font(.handjet(.medium, size: 20))
+	}
+	
+	private var currentStagePill: some View {
+		TextPill(label: "Current Stage", backgroundColor: Color.theme.backgroundLight)
+	}
+	
+	private var newStagePill: some View {
+		TextPill(label: "New Stage", backgroundColor: Color.theme.accentYellow)
+	}
+	
+	private var selectedBorder: some View {
+		RoundedRectangle(cornerRadius: 8)
+			.stroke(Color.theme.textPrimary, lineWidth: 8)
+	}
+}
+
 #Preview {
 	StageCardView(
-		stage: PlantStage.leafyGrowth.rawValue,
+		stageName: PlantStage.leafyGrowth.rawValue,
 		stageDefinition: PlantStage.leafyGrowth.definition,
-		isCurrentStage: false,
-		isNewStage: true)
+		isCurrentStage: true,
+		isNewStage: false)
 }
