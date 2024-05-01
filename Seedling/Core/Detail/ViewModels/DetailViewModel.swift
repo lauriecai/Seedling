@@ -18,16 +18,19 @@ class DetailViewModel: ObservableObject {
 	
 	// Detail View Segues
 	@Published var showAddNoteLoadingView: Bool = false
+	@Published var showUpdateStageLoadingView: Bool = false
 	
 	// Add Note View
 	@Published var noteTitle: String = ""
 	@Published var noteBodyText: String = ""
-	@Published var plantStage: PlantStage
-	@Published var selectedStageIndex: Int
-	@Published var plantStageUpdated: Bool = false
 	
 	@Published var editingExistingNote: Bool = false
 	@Published var noteEdited: Bool = false
+	
+	// Update Stage View
+	@Published var plantStage: PlantStage
+	@Published var selectedStageIndex: Int
+	@Published var plantStageUpdated: Bool = false
 	
 	// Add Note View Segues
 	@Published var showNoteActionSheet: Bool = false

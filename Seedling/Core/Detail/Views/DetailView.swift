@@ -57,6 +57,11 @@ struct DetailView: View {
 				AddNoteLoadingView(viewModel: viewModel)
 			}
 		}
+		.navigationDestination(isPresented: $viewModel.showUpdateStageLoadingView) {
+			if viewModel.showUpdateStageLoadingView {
+				UpdateStageLoadingView(viewModel: viewModel)
+			}
+		}
     }
 }
 
@@ -168,7 +173,7 @@ extension DetailView {
 	
 	private var updateStageButton: some View {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
-			.onTapGesture { print("Update stage tapped!") }
+			.onTapGesture { viewModel.showUpdateStageLoadingView.toggle() }
 	}
 	
 	private var addPostButton: some View {
