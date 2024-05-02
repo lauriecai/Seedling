@@ -22,11 +22,11 @@ struct ButtonPillRow<T>: View where T: Hashable & RawRepresentable, T.RawValue =
 			
 			ScrollView(.horizontal, showsIndicators: false) {
 				HStack {
-					ForEach(0..<items.count, id: \.self) { i in
-						ButtonPill(pillText: items[i].rawValue, isSelected: i == selectedIndex)
+					ForEach(Array(items.enumerated()), id: \.1) { index, item in
+						ButtonPill(pillText: item.rawValue, isSelected: index == selectedIndex)
 							.onTapGesture {
-								selectedIndex = i
-								selectedItem = items[i]
+								selectedIndex = index
+								selectedItem = item
 							}
 					}
 				}
