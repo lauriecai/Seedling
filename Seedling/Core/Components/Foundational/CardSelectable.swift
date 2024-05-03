@@ -10,13 +10,13 @@ import SwiftUI
 struct CardSelectable: View {
 	
 	let title: String
-	let bodyText: String
+	let description: String?
 	
-	let isCurrentlyActive: Bool
 	let currentlyActivePillText: String
+	let isCurrentlyActive: Bool
 	
-	let isNewlySelected: Bool
 	let newlySelectedPillText: String
+	let isNewlySelected: Bool
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
@@ -34,17 +34,29 @@ struct CardSelectable: View {
 				}
 			}
 			
-			Text(bodyText)
-				.font(.handjet(.medium, size: 20))
-				.opacity(isCurrentlyActive ? 0.5 : 1.0)
+			if let description = description {
+				Text(description)
+					.font(.handjet(.medium, size: 20))
+					.opacity(isCurrentlyActive ? 0.5 : 1.0)
+			}
 		}
 		.padding()
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.background(Color.theme.backgroundAccent)
 		.overlay(isNewlySelected ? selectedBorder : nil)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
-		.padding(.horizontal)
     }
+}
+
+#Preview {
+	CardSelectable(
+		title: "Seedling",
+		description: "A young plant with its first set of leaves.",
+		currentlyActivePillText: "Current Stage",
+		isCurrentlyActive: true,
+		newlySelectedPillText: "New Stage",
+		isNewlySelected: false
+	)
 }
 
 extension CardSelectable {
