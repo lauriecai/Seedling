@@ -7,7 +7,11 @@
 
 import Foundation
 
-enum PlantStage: String, CaseIterable {
+protocol Definable {
+	var definition: String { get }
+}
+
+enum PlantStage: String, CaseIterable, Definable {
 	case seed = "Seed"
 	case germination = "Germination"
 	case seedling = "Seedling"
