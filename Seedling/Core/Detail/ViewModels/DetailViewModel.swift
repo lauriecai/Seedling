@@ -16,10 +16,6 @@ class DetailViewModel: ObservableObject {
 	@Published var plant: Plant
 	@Published var posts: [PlantPost] = []
 	
-	// Detail View Segues
-	@Published var showAddNoteLoadingView: Bool = false
-	@Published var showUpdateStageLoadingView: Bool = false
-	
 	// Add Note View
 	@Published var noteTitle: String = ""
 	@Published var noteBodyText: String = ""
@@ -31,6 +27,10 @@ class DetailViewModel: ObservableObject {
 	@Published var plantStage: PlantStage
 	@Published var selectedStageIndex: Int
 	@Published var plantStageUpdated: Bool = false
+	
+	// Detail View Segues
+	@Published var showAddNoteLoadingView: Bool = false
+	@Published var showUpdateStageLoadingView: Bool = false
 	
 	// Add Note View Segues
 	@Published var showNoteActionSheet: Bool = false
@@ -100,7 +100,6 @@ class DetailViewModel: ObservableObject {
 	
 	func resetAddNoteFormInputs() {
 		resetTitleAndBodyTextFields()
-		resetStageUpdatedFlag()
 		editingExistingNote = false
 	}
 	
@@ -113,7 +112,7 @@ class DetailViewModel: ObservableObject {
 		noteBodyText = ""
 	}
 	
-	private func resetStageUpdatedFlag() {
+	func resetStageUpdatedFlag() {
 		plantStageUpdated = false
 	}
 	
