@@ -64,12 +64,18 @@ class DetailViewModel: ObservableObject {
 	
 	func updatePlantStage(plant: Plant, newStage: PlantStage) {
 		manager.addStageUpdate(plant: plant, newStage: newStage.rawValue)
+		fetchPosts(for: plant)
 	}
 	
 	func fetchPlantStage(for plant: Plant) {
 		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
 		plantStage = savedPlantStage
 		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
+	}
+	
+	func resetStageUpdatedFlag() {
+		plantStageUpdated = false
+		showingAddPostOptions = false
 	}
 	
 //	MARK: - Note functions
@@ -117,10 +123,6 @@ class DetailViewModel: ObservableObject {
 	private func resetTitleAndBodyTextFields() {
 		noteTitle = ""
 		noteBodyText = ""
-	}
-	
-	func resetStageUpdatedFlag() {
-		plantStageUpdated = false
 	}
 	
 //	MARK: - Event functions
