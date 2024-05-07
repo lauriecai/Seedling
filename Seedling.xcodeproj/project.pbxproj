@@ -15,6 +15,7 @@
 		D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */; };
 		D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */; };
 		D31FBCFC2B8D205300C10F9D /* ButtonPillRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */; };
+		D32DE2B52BE327CB002295FF /* CardSelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DE2B42BE327CB002295FF /* CardSelectionList.swift */; };
 		D3385B432B164C330055234B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B422B164C330055234B /* Color.swift */; };
 		D3385B5C2B165E9D0055234B /* Handjet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B582B165E9D0055234B /* Handjet-Regular.ttf */; };
 		D3385B5D2B165E9D0055234B /* Handjet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B592B165E9D0055234B /* Handjet-Bold.ttf */; };
@@ -26,6 +27,9 @@
 		D338A1E02B71B98400E3676E /* NavigationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338A1DF2B71B98400E3676E /* NavigationTab.swift */; };
 		D338A1E42B71D83300E3676E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338A1E32B71D83300E3676E /* Date.swift */; };
 		D33D61F72BAB65FE00C15B7D /* ButtonRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D61F62BAB65FE00C15B7D /* ButtonRounded.swift */; };
+		D349D9DF2BE2E4EC0081ABE5 /* UpdateStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D9DE2BE2E4EC0081ABE5 /* UpdateStageView.swift */; };
+		D349D9E12BE2E7A30081ABE5 /* CardSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D9E02BE2E7A30081ABE5 /* CardSelectable.swift */; };
+		D349D9E32BE2EF4D0081ABE5 /* TextPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D9E22BE2EF4D0081ABE5 /* TextPill.swift */; };
 		D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58252B156DD100E541E4 /* SeedlingApp.swift */; };
 		D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D58292B156DD200E541E4 /* Assets.xcassets */; };
 		D36D582D2B156DD200E541E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */; };
@@ -65,6 +69,7 @@
 		D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantEnums.swift; sourceTree = "<group>"; };
 		D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPill.swift; sourceTree = "<group>"; };
 		D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPillRow.swift; sourceTree = "<group>"; };
+		D32DE2B42BE327CB002295FF /* CardSelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectionList.swift; sourceTree = "<group>"; };
 		D3385B422B164C330055234B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D3385B582B165E9D0055234B /* Handjet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Regular.ttf"; sourceTree = "<group>"; };
 		D3385B592B165E9D0055234B /* Handjet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Bold.ttf"; sourceTree = "<group>"; };
@@ -77,6 +82,9 @@
 		D338A1DF2B71B98400E3676E /* NavigationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTab.swift; sourceTree = "<group>"; };
 		D338A1E32B71D83300E3676E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D33D61F62BAB65FE00C15B7D /* ButtonRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRounded.swift; sourceTree = "<group>"; };
+		D349D9DE2BE2E4EC0081ABE5 /* UpdateStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStageView.swift; sourceTree = "<group>"; };
+		D349D9E02BE2E7A30081ABE5 /* CardSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectable.swift; sourceTree = "<group>"; };
+		D349D9E22BE2EF4D0081ABE5 /* TextPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPill.swift; sourceTree = "<group>"; };
 		D36D58222B156DD100E541E4 /* Seedling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seedling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36D58252B156DD100E541E4 /* SeedlingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedlingApp.swift; sourceTree = "<group>"; };
 		D36D58292B156DD200E541E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,12 +144,15 @@
 				D33D61F62BAB65FE00C15B7D /* ButtonRounded.swift */,
 				D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */,
 				D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */,
+				D349D9E02BE2E7A30081ABE5 /* CardSelectable.swift */,
+				D32DE2B42BE327CB002295FF /* CardSelectionList.swift */,
 				D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */,
 				D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */,
 				D338A1DF2B71B98400E3676E /* NavigationTab.swift */,
 				D31FBCF52B8D199200C10F9D /* TextInput.swift */,
 				D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */,
 				D38AB78D2BBF2605006B015B /* MenuKebab.swift */,
+				D349D9E22BE2EF4D0081ABE5 /* TextPill.swift */,
 			);
 			path = Foundational;
 			sourceTree = "<group>";
@@ -353,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EFDE112B79387100A6D22C /* DetailView.swift */,
+				D349D9DE2BE2E4EC0081ABE5 /* UpdateStageView.swift */,
 				D3EFDE512B82973F00A6D22C /* AddNoteView.swift */,
 			);
 			path = Views;
@@ -460,6 +472,7 @@
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
 				D3385B732B16F0420055234B /* PlantCardView.swift in Sources */,
 				D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */,
+				D349D9DF2BE2E4EC0081ABE5 /* UpdateStageView.swift in Sources */,
 				D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */,
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
 				D3B6357F2B9FCABF00CE3BE1 /* AddGeneralNoteView.swift in Sources */,
@@ -471,11 +484,13 @@
 				D3B4117D2B979FD400CD1F41 /* TasksView.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
+				D32DE2B52BE327CB002295FF /* CardSelectionList.swift in Sources */,
 				D30CE7C42BA4DD9A00B28F67 /* EventCardView.swift in Sources */,
 				D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */,
 				D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */,
 				D30CE7BC2BA4D2EE00B28F67 /* Event+CoreDataClass.swift in Sources */,
 				D30CE7BD2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift in Sources */,
+				D349D9E32BE2EF4D0081ABE5 /* TextPill.swift in Sources */,
 				D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */,
 				D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */,
 				D338A1E42B71D83300E3676E /* Date.swift in Sources */,
@@ -483,6 +498,7 @@
 				D3EFDE502B7EB66B00A6D22C /* Plant+CoreDataProperties.swift in Sources */,
 				D3EFDE142B79387B00A6D22C /* DetailViewModel.swift in Sources */,
 				D33D61F72BAB65FE00C15B7D /* ButtonRounded.swift in Sources */,
+				D349D9E12BE2E7A30081ABE5 /* CardSelectable.swift in Sources */,
 				D338A1E02B71B98400E3676E /* NavigationTab.swift in Sources */,
 				D3B411792B979E3000CD1F41 /* JournalView.swift in Sources */,
 				D3B4116E2B9778C500CD1F41 /* NavigationBar.swift in Sources */,
@@ -619,6 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Seedling/Preview Content\"";
@@ -640,6 +657,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lauriecai.Seedling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -655,6 +673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Seedling/Preview Content\"";
@@ -676,6 +695,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lauriecai.Seedling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
