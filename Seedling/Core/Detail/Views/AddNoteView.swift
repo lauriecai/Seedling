@@ -84,10 +84,6 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
-			if viewModel.plantStageUpdated {
-				viewModel.updatePlantStage(plant: viewModel.plant, newStage: viewModel.plantStage)
-			}
-			
 			if !viewModel.noteBodyText.isEmpty || !viewModel.noteTitle.isEmpty {
 				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitle, body: viewModel.noteBodyText)
 			}

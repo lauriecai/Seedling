@@ -47,6 +47,7 @@ struct UpdateStageView: View {
 			.navigationTitle("Update Stage")
 			.navigationBarTitleDisplayMode(.inline)
 			.navigationBarBackButtonHidden(true)
+			.onAppear { viewModel.fetchPlantStage(for: viewModel.plant) }
 			.toolbar {
 				ToolbarItem(placement: .topBarLeading) { cancelButton }
 				ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
@@ -67,7 +68,9 @@ extension UpdateStageView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			viewModel.updatePlantStage(plant: viewModel.plant, newStage: viewModel.plantStage)
+			if viewModel.plantStageUpdated {
+				viewModel.updatePlantStage(plant: viewModel.plant, newStage: viewModel.plantStage)
+			}
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))

@@ -44,7 +44,6 @@ class DetailViewModel: ObservableObject {
 	init(plant: Plant) {
 		self.plant = plant
 		
-		// Add Note View
 		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
 		plantStage = savedPlantStage
 		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
@@ -65,6 +64,12 @@ class DetailViewModel: ObservableObject {
 	
 	func updatePlantStage(plant: Plant, newStage: PlantStage) {
 		manager.addStageUpdate(plant: plant, newStage: newStage.rawValue)
+	}
+	
+	func fetchPlantStage(for plant: Plant) {
+		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
+		plantStage = savedPlantStage
+		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
 	}
 	
 //	MARK: - Note functions
