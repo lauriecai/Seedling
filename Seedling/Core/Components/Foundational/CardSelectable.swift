@@ -12,51 +12,44 @@ struct CardSelectable: View {
 	let title: String
 	let description: String?
 	
-	let currentlyActivePillText: String
-	let isCurrentlyActive: Bool
-	
-	let newlySelectedPillText: String
-	let isNewlySelected: Bool
+	let isSelected: Bool
+	let selectedPillLabel: String
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
 			HStack(spacing: 8) {
 				Text(title)
 					.font(.handjet(.bold, size: 24))
-					.opacity(isCurrentlyActive ? 0.5 : 1.0)
 				
-				if isCurrentlyActive {
-					TextPill(label: currentlyActivePillText, backgroundColor: Color.theme.backgroundLight)
-				}
-				
-				if isNewlySelected {
-					TextPill(label: newlySelectedPillText, backgroundColor: Color.theme.accentYellow)
+				if isSelected {
+					TextPill(label: selectedPillLabel, backgroundColor: Color.theme.accentYellow)
 				}
 			}
 			
 			if let description = description {
 				Text(description)
 					.font(.handjet(.medium, size: 20))
-					.opacity(isCurrentlyActive ? 0.5 : 1.0)
 			}
 		}
 		.padding()
 		.frame(maxWidth: .infinity, alignment: .leading)
 		.background(Color.theme.backgroundAccent)
-		.overlay(isNewlySelected ? selectedBorder : nil)
+		.overlay(isSelected ? selectedBorder : nil)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
 #Preview {
-	CardSelectable(
-		title: "Seedling",
-		description: "A young plant with its first set of leaves.",
-		currentlyActivePillText: "Current Stage",
-		isCurrentlyActive: true,
-		newlySelectedPillText: "New Stage",
-		isNewlySelected: false
-	)
+	ScrollView {
+		VStack {
+			CardSelectable(
+				title: "Seed",
+				description: "A small object from which a new plant can grow.",
+				isSelected: true,
+				selectedPillLabel: "Selected"
+			)
+		}
+	}
 }
 
 extension CardSelectable {
