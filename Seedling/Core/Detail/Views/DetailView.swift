@@ -57,11 +57,12 @@ struct DetailView: View {
 				AddNoteLoadingView(viewModel: viewModel)
 			}
 		}
-		.navigationDestination(isPresented: $viewModel.showUpdateStageLoadingView) {
+		.sheet(isPresented: $viewModel.showUpdateStageLoadingView) {
 			if viewModel.showUpdateStageLoadingView {
 				UpdateStageLoadingView(viewModel: viewModel)
 			}
 		}
+		
     }
 }
 
