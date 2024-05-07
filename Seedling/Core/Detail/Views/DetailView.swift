@@ -26,7 +26,7 @@ struct DetailView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
-	@State private var showingAddPostOptions: Bool = false
+//	@State private var showingAddPostOptions: Bool = false
 	
 	init(plant: Plant) {
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
@@ -39,7 +39,7 @@ struct DetailView: View {
 			
 			postsList
 
-			if showingAddPostOptions { darkOverlay }
+			if viewModel.showingAddPostOptions { darkOverlay }
 			
 			addPostActionGroup
 		}
@@ -50,7 +50,7 @@ struct DetailView: View {
 		}
 		.onAppear {
 			viewModel.fetchPosts(for: viewModel.plant)
-			showingAddPostOptions = false
+			viewModel.showingAddPostOptions = false
 		}
 		.navigationDestination(isPresented: $viewModel.showAddNoteLoadingView) {
 			if viewModel.showAddNoteLoadingView {
@@ -144,7 +144,7 @@ extension DetailView {
 	
 	private var addPostActionGroup: some View {
 		VStack(alignment: .trailing, spacing: 20) {
-			if showingAddPostOptions {
+			if viewModel.showingAddPostOptions {
 				addPostOptionsButtons
 			}
 			
@@ -181,17 +181,17 @@ extension DetailView {
 		ButtonCircle(icon: "icon-plus")
 			.onTapGesture {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
-					showingAddPostOptions.toggle()
+					viewModel.showingAddPostOptions.toggle()
 				}
 			}
-			.rotationEffect(showingAddPostOptions ? .degrees(45) : .degrees(0))
+			.rotationEffect(viewModel.showingAddPostOptions ? .degrees(45) : .degrees(0))
 	}
 	
 	private var darkOverlay: some View {
 		Color.black.opacity(0.30)
 			.ignoresSafeArea()
 			.onTapGesture {
-				showingAddPostOptions = false
+				viewModel.showingAddPostOptions = false
 			}
 	}
 	

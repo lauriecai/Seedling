@@ -78,6 +78,7 @@ extension UpdateStageView {
 	private var cancelButton: some View {
 		Button {
 			viewModel.resetStageUpdatedFlag()
+			viewModel.showingAddPostOptions = false
 			dismiss()
 		} label: {
 			Text("Cancel")

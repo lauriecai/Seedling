@@ -16,6 +16,8 @@ class DetailViewModel: ObservableObject {
 	@Published var plant: Plant
 	@Published var posts: [PlantPost] = []
 	
+	@Published var showingAddPostOptions: Bool = false
+	
 	// Add Note View
 	@Published var noteTitle: String = ""
 	@Published var noteBodyText: String = ""
