@@ -41,7 +41,6 @@ struct AddNoteView: View {
 							.focused($keyboardFocused)
 							.onAppear { keyboardFocused.toggle() }
 						noteBodyInput
-						plantStageSelection
 					}
 					.padding()
 				}
@@ -60,7 +59,6 @@ struct AddNoteView: View {
 				}
 			}
 			.keyboardType(.default)
-			.onChange(of: viewModel.plantStage) { viewModel.plantStageUpdated = true }
 			.onChange(of: viewModel.noteTitle) { viewModel.noteEdited = true }
 			.onChange(of: viewModel.noteBodyText) { viewModel.noteEdited = true }
 		}
@@ -77,21 +75,11 @@ extension AddNoteView {
 	}
 	
 	private var noteTitleInput: some View {
-		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: nil, text: $viewModel.noteTitle)
+		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: "Optional", text: $viewModel.noteTitle)
 	}
 	
 	private var noteBodyInput: some View {
 		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", text: $viewModel.noteBodyText)
-	}
-	
-	private var plantStageSelection: some View {
-		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $viewModel.plantStage, selectedIndex: $viewModel.selectedStageIndex)
-			
-			Text(viewModel.plantStage.definition)
-				.font(.handjet(.medium, size: 18))
-				.foregroundStyle(Color.theme.textSecondary)
-		}
 	}
 	
 	private var addNoteButton: some View {
@@ -108,8 +96,8 @@ extension AddNoteView {
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
-		.disabled(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty && !viewModel.plantStageUpdated)
+		.foregroundStyle(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty)
 	}
 	
 	private var saveChangesButton: some View {
