@@ -15,13 +15,6 @@ class HomeViewModel: ObservableObject {
 	// Home View
 	@Published var plants: [Plant] = []
 	
-	// Segues
-	@Published var showingDetailView: Bool = false
-	@Published var showingAddPlantView: Bool = false
-	
-	@Published var selectedPlant: Plant? = nil
-	@Published var showingActionSheet: Bool = false
-	
 	// Add Plant View
 	@Published var plantName: String = ""
 	@Published var plantVariety: String = ""
@@ -34,6 +27,13 @@ class HomeViewModel: ObservableObject {
 	
 	@Published var editingExistingPlant: Bool = false
 	@Published var plantDetailsEdited: Bool = false
+	
+	// Segues
+	@Published var showingDetailView: Bool = false
+	@Published var showingAddPlantView: Bool = false
+	
+	@Published var selectedPlant: Plant? = nil
+	@Published var showingActionSheet: Bool = false
 	
 //	MARK: - Plant functions
 	
