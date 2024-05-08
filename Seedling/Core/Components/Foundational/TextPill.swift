@@ -15,6 +15,7 @@ struct TextPill: View {
     var body: some View {
 		Text(label)
 			.font(.handjet(.bold, size: 18))
+			.foregroundStyle(Color.theme.textPrimary)
 			.padding(5)
 			.padding(.horizontal, 3)
 			.background(backgroundColor)

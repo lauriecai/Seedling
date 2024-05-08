@@ -20,6 +20,7 @@ struct CardSelectable: View {
 			HStack(spacing: 8) {
 				Text(title)
 					.font(.handjet(.bold, size: 24))
+					.foregroundStyle(Color.theme.textPrimary)
 				
 				if isSelected {
 					TextPill(label: selectedPillLabel, backgroundColor: Color.theme.accentYellow)
@@ -29,6 +30,7 @@ struct CardSelectable: View {
 			if let description = description {
 				Text(description)
 					.font(.handjet(.medium, size: 20))
+					.foregroundStyle(Color.theme.textPrimary)
 			}
 		}
 		.padding()
