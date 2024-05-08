@@ -145,7 +145,7 @@ class CoreDataManager {
 		newEvent.plant = plant
 		newEvent.id = UUID()
 		newEvent.timestamp = Date()
-		newEvent.title = "\(plant.wrappedFullNameSentence) has been added to the garden!"
+		newEvent.title = "Your \(plant.wrappedFullNameSentence) has been added to the garden!"
 		
 		save()
 	}
