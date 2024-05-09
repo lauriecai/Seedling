@@ -31,8 +31,9 @@ class DetailViewModel: ObservableObject {
 	@Published var plantStageUpdated: Bool = false
 	
 	// Detail View Segues
-	@Published var showAddNoteLoadingView: Bool = false
-	@Published var showUpdateStageLoadingView: Bool = false
+	@Published var showingAddNoteLoadingView: Bool = false
+	@Published var showingUpdateStageLoadingView: Bool = false
+	@Published var showingPlantDetailsLoadingView: Bool = false
 	
 	// Add Note View Segues
 	@Published var showNoteActionSheet: Bool = false
