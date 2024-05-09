@@ -16,7 +16,7 @@ struct CardSelectionList<T>: View where T: Hashable & RawRepresentable & Definab
 	@Binding var selectedItemIndex: Int
 	
     var body: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false) {
 			VStack(alignment: .leading, spacing: 10) {
 				ForEach(Array(items.enumerated()), id: \.1) { index, item in
 					CardSelectable(

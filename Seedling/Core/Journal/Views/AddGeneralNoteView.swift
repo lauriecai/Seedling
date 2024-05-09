@@ -30,7 +30,7 @@ struct AddGeneralNoteView: View {
 				Color.theme.backgroundPrimary
 					.ignoresSafeArea()
 				
-				ScrollView {
+				ScrollView(showsIndicators: false) {
 					VStack(spacing: 15) {
 						Dropdown(pickerHeader: "Plant", items: viewModel.plantNames, selectedIndex: $selectedIndex)
 						

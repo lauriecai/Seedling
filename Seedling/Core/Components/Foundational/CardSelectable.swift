@@ -42,7 +42,7 @@ struct CardSelectable: View {
 }
 
 #Preview {
-	ScrollView {
+	ScrollView(showsIndicators: false) {
 		VStack {
 			CardSelectable(
 				title: "Seed",

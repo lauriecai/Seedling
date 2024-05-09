@@ -26,8 +26,6 @@ struct DetailView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
-//	@State private var showingAddPostOptions: Bool = false
-	
 	init(plant: Plant) {
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
 	}
@@ -47,20 +45,20 @@ struct DetailView: View {
 		.navigationBarBackButtonHidden(true)
 		.toolbar {
 			ToolbarItem(placement: .topBarLeading) { backButton }
+			ToolbarItem(placement: .topBarTrailing) { detailsButton }
 		}
 		.onAppear {
 			viewModel.fetchPosts(for: viewModel.plant)
 			viewModel.showingAddPostOptions = false
 		}
-		.navigationDestination(isPresented: $viewModel.showAddNoteLoadingView) {
-			if viewModel.showAddNoteLoadingView {
-				AddNoteLoadingView(viewModel: viewModel)
-			}
+		.navigationDestination(isPresented: $viewModel.showingAddNoteLoadingView) {
+			AddNoteLoadingView(viewModel: viewModel)
 		}
-		.sheet(isPresented: $viewModel.showUpdateStageLoadingView) {
-			if viewModel.showUpdateStageLoadingView {
-				UpdateStageLoadingView(viewModel: viewModel)
-			}
+		.navigationDestination(isPresented: $viewModel.showingPlantDetailsLoadingView) {
+			PlantDetailsLoadingView(viewModel: viewModel)
+		}
+		.sheet(isPresented: $viewModel.showingUpdateStageLoadingView) {
+			UpdateStageLoadingView(viewModel: viewModel)
 		}
 		
     }
@@ -71,7 +69,7 @@ struct DetailView: View {
 extension DetailView {
 	
 	private var postsList: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false) {
 			ForEach(viewModel.posts, id: \.self.hashValue) { post in
 				switch post.type {
 				case .event(let event):
@@ -126,7 +124,7 @@ extension DetailView {
 			
 			if let selectedNote = viewModel.selectedNote {
 				viewModel.editingExistingNote = true
-				viewModel.showAddNoteLoadingView = true
+				viewModel.showingAddNoteLoadingView = true
 				viewModel.fetchExistingNoteTitleAndBody(for: selectedNote)
 			}
 		}
@@ -163,12 +161,12 @@ extension DetailView {
 	
 	private var addNoteButton: some View {
 		ButtonRounded(iconName: "pencil", text: "Add Note")
-			.onTapGesture { viewModel.showAddNoteLoadingView.toggle() }
+			.onTapGesture { viewModel.showingAddNoteLoadingView.toggle() }
 	}
 	
 	private var updateStageButton: some View {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
-			.onTapGesture { viewModel.showUpdateStageLoadingView.toggle() }
+			.onTapGesture { viewModel.showingUpdateStageLoadingView.toggle() }
 	}
 	
 	private var addPostButton: some View {
@@ -200,6 +198,16 @@ extension DetailView {
 					.font(.handjet(.medium, size: 20))
 			}
 			.foregroundStyle(Color.theme.textSecondary)
+		}
+	}
+	
+	private var detailsButton: some View {
+		Button {
+			viewModel.showingPlantDetailsLoadingView.toggle()
+		} label: {
+			Text("Details")
+				.font(.handjet(.extraBold, size: 20))
+				.foregroundStyle(Color.theme.accentGreen)
 		}
 	}
 }

@@ -59,7 +59,7 @@ extension HomeView {
 	}
 	
 	private var plantsList: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false) {
 			ForEach(viewModel.plants, id: \.self.customHash) { plant in
 				PlantCardView(
 					plant: plant,

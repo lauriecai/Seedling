@@ -24,17 +24,13 @@ struct AddNoteView: View {
 	
 	@FocusState private var keyboardFocused: Bool
 	
-	init(viewModel: DetailViewModel) {
-		self.viewModel = viewModel
-	}
-	
     var body: some View {
 		NavigationStack {
 			ZStack {
 				Color.theme.backgroundPrimary
 					.ignoresSafeArea()
 				
-				ScrollView {
+				ScrollView(showsIndicators: false) {
 					VStack(spacing: 15) {
 						notePrompt
 						noteTitleInput

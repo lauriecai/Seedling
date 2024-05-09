@@ -55,7 +55,7 @@ struct JournalView: View {
 extension JournalView {
 	
 	private var notesList: some View {
-		ScrollView {
+		ScrollView(showsIndicators: false) {
 			VStack(spacing: 10) {
 				ForEach(viewModel.notes) { note in
 					NoteCardView(note: note, showPlantTag: true, showActionSheet: $showActionSheet, showActionsForNote: $selectedNote)

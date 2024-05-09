@@ -21,7 +21,7 @@ struct AddPlantView: View {
 				Color.theme.backgroundPrimary
 					.ignoresSafeArea()
 				
-				ScrollView {
+				ScrollView(showsIndicators: false) {
 					VStack(spacing: 15) {
 						plantTextInput
 							.focused($keyboardFocused)
