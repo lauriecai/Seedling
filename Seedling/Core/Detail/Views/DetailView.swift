@@ -157,7 +157,6 @@ extension DetailView {
 	private var addPostOptionsButtons: some View {
 		VStack(alignment: .trailing, spacing: 12) {
 			addNoteButton
-			addPhotoButton
 			updateStageButton
 		}
 	}
@@ -165,11 +164,6 @@ extension DetailView {
 	private var addNoteButton: some View {
 		ButtonRounded(iconName: "pencil", text: "Add Note")
 			.onTapGesture { viewModel.showAddNoteLoadingView.toggle() }
-	}
-	
-	private var addPhotoButton: some View {
-		ButtonRounded(iconName: "photo.fill", text: "Add Photo")
-			.onTapGesture { print("Add photo tapped!") }
 	}
 	
 	private var updateStageButton: some View {
