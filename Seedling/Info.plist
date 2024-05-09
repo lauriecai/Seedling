@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Seedling requires photo library access to add photos.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Seedling requires camera access to take photos.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Handjet-Regular.ttf</string>
