@@ -16,7 +16,7 @@ struct TextPill: View {
 		Text(label)
 			.font(.handjet(.bold, size: 18))
 			.foregroundStyle(Color.theme.textPrimary)
-			.padding(5)
+			.padding(3)
 			.padding(.horizontal, 3)
 			.background(backgroundColor)
 			.clipShape(RoundedRectangle(cornerRadius: 4))
