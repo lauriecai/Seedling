@@ -60,7 +60,13 @@ struct DetailView: View {
 		.sheet(isPresented: $viewModel.showingUpdateStageLoadingView) {
 			UpdateStageLoadingView(viewModel: viewModel)
 		}
-		
+		.confirmationDialog("Photo Options", isPresented: $viewModel.showingPhotoSelectionActionSheet) {
+			takePhotoButton
+			selectFromLibraryButton
+		}
+		.sheet(isPresented: $viewModel.showingPhotoPicker) {
+			PhotoPicker(image: $viewModel.selectedImage, isShown: $viewModel.showingPhotoPicker, sourceType: viewModel.photoSourceType)
+		}
     }
 }
 
@@ -155,6 +161,7 @@ extension DetailView {
 	private var addPostOptionsButtons: some View {
 		VStack(alignment: .trailing, spacing: 12) {
 			addNoteButton
+			addPhotoButton
 			updateStageButton
 		}
 	}
@@ -162,6 +169,11 @@ extension DetailView {
 	private var addNoteButton: some View {
 		ButtonRounded(iconName: "pencil", text: "Add Note")
 			.onTapGesture { viewModel.showingAddNoteLoadingView.toggle() }
+	}
+	
+	private var addPhotoButton: some View {
+		ButtonRounded(iconName: "photo.fill", text: "Add Photo")
+			.onTapGesture { viewModel.showingPhotoSelectionActionSheet.toggle() }
 	}
 	
 	private var updateStageButton: some View {
@@ -177,6 +189,20 @@ extension DetailView {
 				}
 			}
 			.rotationEffect(viewModel.showingAddPostOptions ? .degrees(45) : .degrees(0))
+	}
+	
+	private var takePhotoButton: some View {
+		Button("Take Photo") {
+			viewModel.showingPhotoPicker = true
+			viewModel.photoSourceType = .camera
+		}
+	}
+	
+	private var selectFromLibraryButton: some View {
+		Button("Select from Library") {
+			viewModel.showingPhotoPicker = true
+			viewModel.photoSourceType = .photoLibrary
+		}
 	}
 	
 	private var darkOverlay: some View {
