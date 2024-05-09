@@ -36,10 +36,10 @@ class DetailViewModel: ObservableObject {
 	@Published var showingUpdateStageLoadingView: Bool = false
 	@Published var showingPlantDetailsLoadingView: Bool = false
 	
-	@Published var showingPhotoSelectionActionSheet: Bool = false
-	@Published var showingPhotoPicker: Bool = false
-	@Published var photoSourceType: UIImagePickerController.SourceType = .camera
-	@Published var selectedImage: UIImage? = nil
+//	@Published var showingPhotoSelectionActionSheet: Bool = false
+//	@Published var showingPhotoPicker: Bool = false
+//	@Published var photoSourceType: UIImagePickerController.SourceType = .camera
+//	@Published var selectedImage: UIImage? = nil
 	
 	// Add Note View Segues
 	@Published var showNoteActionSheet: Bool = false
