@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import SwiftUI
 
 class DetailViewModel: ObservableObject {
 	
@@ -34,6 +35,11 @@ class DetailViewModel: ObservableObject {
 	@Published var showingAddNoteLoadingView: Bool = false
 	@Published var showingUpdateStageLoadingView: Bool = false
 	@Published var showingPlantDetailsLoadingView: Bool = false
+	
+	@Published var showingPhotoSelectionActionSheet: Bool = false
+	@Published var showingPhotoPicker: Bool = false
+	@Published var photoSourceType: UIImagePickerController.SourceType = .camera
+	@Published var selectedImage: UIImage? = nil
 	
 	// Add Note View Segues
 	@Published var showNoteActionSheet: Bool = false
