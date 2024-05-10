@@ -41,11 +41,8 @@ struct ContentView: View {
 				HomeView()
 					.tag(0)
 				
-				JournalView()
-					.tag(1)
-				
 				Text("Tasks")
-					.tag(2)
+					.tag(1)
 			}
 			
 			NavigationBar(selectedIndex: $selectedItem)
