@@ -55,7 +55,7 @@ struct ButtonRounded: View {
 				ButtonRounded(iconName: "sparkles", text: "Update Stage")
 			}
 			
-			ButtonCircle(icon: "icon-plus")
+			ButtonCircle(iconName: "icon-plus")
 		}
 		.padding(.horizontal, 20)
 		.padding(.bottom, 20)

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ButtonCircle: View {
 	
-	let icon: String
+	let iconName: String
 	
 	var body: some View {
-		Image(icon)
+		Image(iconName)
 			.frame(width: 65, height: 65)
 			.background(Color.theme.accentGreen)
 			.clipShape(Circle())
@@ -23,7 +23,7 @@ struct ButtonCircle: View {
 	ZStack(alignment: Alignment(horizontal: .trailing, vertical: .bottom)) {
 		Color.white
 		
-		ButtonCircle(icon: "icon-plus")
+		ButtonCircle(iconName: "icon-plus")
 			.padding(.horizontal, 20)
 			.padding(.bottom, 20)
 	}
