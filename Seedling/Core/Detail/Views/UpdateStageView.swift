@@ -68,6 +68,7 @@ extension UpdateStageView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantStageUpdated {
 				viewModel.updatePlantStage(plant: viewModel.plant, newStage: viewModel.plantStage)
 			}

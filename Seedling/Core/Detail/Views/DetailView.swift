@@ -168,22 +168,32 @@ extension DetailView {
 	
 	private var addNoteButton: some View {
 		ButtonRounded(iconName: "pencil", text: "Add Note")
-			.onTapGesture { viewModel.showingAddNoteLoadingView.toggle() }
+			.onTapGesture {
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+				viewModel.showingAddNoteLoadingView.toggle()
+			}
 	}
 	
 //	private var addPhotoButton: some View {
 //		ButtonRounded(iconName: "photo.fill", text: "Add Photo")
-//			.onTapGesture { viewModel.showingPhotoSelectionActionSheet.toggle() }
+//			.onTapGesture {
+//				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+//				viewModel.showingPhotoSelectionActionSheet.toggle()
+//			}
 //	}
 	
 	private var updateStageButton: some View {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
-			.onTapGesture { viewModel.showingUpdateStageLoadingView.toggle() }
+			.onTapGesture {
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+				viewModel.showingUpdateStageLoadingView.toggle()
+			}
 	}
 	
 	private var addPostButton: some View {
-		ButtonCircle(icon: "icon-plus")
+		ButtonCircle(iconName: "icon-plus")
 			.onTapGesture {
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.showingAddPostOptions.toggle()
 				}
@@ -229,6 +239,7 @@ extension DetailView {
 	
 	private var detailsButton: some View {
 		Button {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.showingPlantDetailsLoadingView.toggle()
 		} label: {
 			Text("Details")

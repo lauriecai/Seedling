@@ -80,6 +80,7 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if !viewModel.noteBodyText.isEmpty || !viewModel.noteTitle.isEmpty {
 				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitle, body: viewModel.noteBodyText)
 			}
@@ -94,6 +95,7 @@ extension AddNoteView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if let selectedNote = viewModel.selectedNote {
 				viewModel.updateNoteTitleAndBody(
 					for: selectedNote,

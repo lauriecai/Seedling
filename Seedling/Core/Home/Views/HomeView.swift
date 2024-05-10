@@ -66,17 +66,23 @@ extension HomeView {
 					showActionSheet: $viewModel.showingActionSheet,
 					showActionForPlant: $viewModel.selectedPlant
 				)
-				.onTapGesture { segue(plant: plant) }
+				.onTapGesture {
+					UIImpactFeedbackGenerator(style: .light).impactOccurred()
+					segue(plant: plant)
+				}
 			}
 		}
 	}
 	
 	private var addPlantButton: some View {
-		ButtonCircle(icon: "icon-plus")
+		ButtonCircle(iconName: "icon-plus")
 			.frame(width: 65, height: 65)
-			.onTapGesture { viewModel.showingAddPlantView.toggle() }
 			.padding(.trailing, 20)
 			.padding(.bottom, 25)
+			.onTapGesture {
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+				viewModel.showingAddPlantView.toggle()
+			}
 	}
 	
 	private var editPlantNameButton: some View {
