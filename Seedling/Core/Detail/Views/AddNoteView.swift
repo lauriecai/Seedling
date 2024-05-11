@@ -65,7 +65,7 @@ extension AddNoteView {
 	
 	private var notePrompt: some View {
 		Text("How's your \(viewModel.plant.wrappedFullNameSentence.lowercased())?")
-			.font(.handjet(.extraBold, size: 26))
+			.font(.handjet(.extraBold, size: 24))
 			.foregroundStyle(Color.theme.textPrimary)
 			.frame(maxWidth: .infinity, alignment: .leading)
 	}

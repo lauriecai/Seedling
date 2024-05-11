@@ -19,7 +19,7 @@ struct CardSelectable: View {
 		VStack(alignment: .leading, spacing: 5) {
 			HStack(spacing: 8) {
 				Text(title)
-					.font(.handjet(.bold, size: 24))
+					.font(.handjet(.bold, size: 22))
 					.foregroundStyle(Color.theme.textPrimary)
 				
 				if isSelected {
@@ -29,7 +29,7 @@ struct CardSelectable: View {
 			
 			if let description = description {
 				Text(description)
-					.font(.handjet(.medium, size: 20))
+					.font(.handjet(.medium, size: 18))
 					.foregroundStyle(Color.theme.textPrimary)
 			}
 		}

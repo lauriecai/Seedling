@@ -61,7 +61,7 @@ extension UpdateStageView {
 	
 	private var updateStagePrompt: some View {
 		Text("Select a new stage:")
-			.font(.handjet(.extraBold, size: 26))
+			.font(.handjet(.extraBold, size: 24))
 			.foregroundStyle(Color.theme.textPrimary)
 			.frame(maxWidth: .infinity, alignment: .leading)
 	}

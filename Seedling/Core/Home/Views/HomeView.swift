@@ -60,17 +60,20 @@ extension HomeView {
 	
 	private var plantsList: some View {
 		ScrollView(showsIndicators: false) {
-			ForEach(viewModel.plants, id: \.self.customHash) { plant in
-				PlantCardView(
-					plant: plant,
-					showActionSheet: $viewModel.showingActionSheet,
-					showActionForPlant: $viewModel.selectedPlant
-				)
-				.onTapGesture {
-					UIImpactFeedbackGenerator(style: .light).impactOccurred()
-					segue(plant: plant)
+			VStack {
+				ForEach(viewModel.plants, id: \.self.customHash) { plant in
+					PlantCardView(
+						plant: plant,
+						showActionSheet: $viewModel.showingActionSheet,
+						showActionForPlant: $viewModel.selectedPlant
+					)
+					.onTapGesture {
+						UIImpactFeedbackGenerator(style: .light).impactOccurred()
+						segue(plant: plant)
+					}
 				}
 			}
+			.padding(.bottom, 50)
 		}
 	}
 	
