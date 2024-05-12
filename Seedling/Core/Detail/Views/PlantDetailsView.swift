@@ -20,19 +20,26 @@ struct PlantDetailsView: View {
 	
 	@ObservedObject var viewModel: DetailViewModel
 	
+	@Environment(\.dismiss) var dismiss
+	
     var body: some View {
 		ZStack {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
 			ScrollView {
-				VStack {
+				VStack(spacing: 10) {
 					generalCard
 					cardRequirementsCard
 					additionalCareNotesCard
 				}
-				.padding()
+				.padding(.horizontal)
 			}
+		}
+		.navigationTitle("Plant Details")
+		.navigationBarBackButtonHidden(true)
+		.toolbar {
+			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
     }
 }
@@ -108,6 +115,20 @@ extension PlantDetailsView {
 		.padding()
 		.background(Color.white)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
+	}
+	
+	private var backButton: some View {
+		Button {
+			dismiss()
+		} label: {
+			HStack(spacing: 5) {
+				Image(systemName: "chevron.left")
+					.font(.handjet(.medium, size: 18))
+				Text("Back")
+					.font(.handjet(.medium, size: 20))
+			}
+			.foregroundStyle(Color.theme.textSecondary)
+		}
 	}
 	
 	struct cardHeader: View {
