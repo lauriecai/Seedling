@@ -31,15 +31,15 @@ class DetailViewModel: ObservableObject {
 	@Published var selectedStageIndex: Int
 	@Published var plantStageUpdated: Bool = false
 	
+	// Plant Details View
+	@Published var editingGeneralPlantDetails: Bool = false
+	@Published var editingCareRequirements: Bool = false
+	@Published var editingAdditionalCareNotes: Bool = false
+	
 	// Detail View Segues
 	@Published var showingAddNoteLoadingView: Bool = false
 	@Published var showingUpdateStageLoadingView: Bool = false
 	@Published var showingPlantDetailsLoadingView: Bool = false
-	
-//	@Published var showingPhotoSelectionActionSheet: Bool = false
-//	@Published var showingPhotoPicker: Bool = false
-//	@Published var photoSourceType: UIImagePickerController.SourceType = .camera
-//	@Published var selectedImage: UIImage? = nil
 	
 	// Add Note View Segues
 	@Published var showNoteActionSheet: Bool = false
