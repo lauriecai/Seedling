@@ -62,3 +62,20 @@ enum PlantType: String, CaseIterable {
 	case shrub = "Shrub"
 	case succulent = "Succulent"
 }
+
+enum PlantGeneralCategory: String, CaseIterable {
+	case name = "Name"
+	case variety = "Variety"
+	case scientificName = "Scientific Name"
+	case type = "Type"
+	case stage = "Stage"
+}
+
+enum PlantCareRequirementCategory: String, CaseIterable {
+	case sunlight = "Sunlight"
+	case temperature = "Temperature"
+	case water = "Water"
+	case humidity = "Humidity"
+	case soil = "Soil"
+	case fertilizer = "Fertilizer"
+}
