@@ -85,6 +85,10 @@ class DetailViewModel: ObservableObject {
 		showingAddPostOptions = false
 	}
 	
+	func editPlantGeneralDetails(plant: Plant, name: String, variety: String, scientificName: String, type: String, stage: String) {
+		manager.editPlantGeneralDetails(for: plant, name: name, variety: variety, scientificName: scientificName, type: type, stage: stage)
+	}
+	
 //	MARK: - Note functions
 	
 	private func fetchNotes(for plant: Plant) -> [Note]? {
