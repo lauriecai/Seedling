@@ -86,7 +86,30 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func editPlantGeneralDetails(plant: Plant, name: String, variety: String, scientificName: String, type: String, stage: String) {
-		manager.editPlantGeneralDetails(for: plant, name: name, variety: variety, scientificName: scientificName, type: type, stage: stage)
+		manager.editPlantGeneralDetails(
+			for: plant,
+			name: name,
+			variety: variety,
+			scientificName: scientificName,
+			type: type,
+			stage: stage
+		)
+	}
+	
+	func editPlantCareRequirements(plant: Plant, sunlightRequirement: String, temperatureRequirement: String, waterRequirement: String, humidityRequirement: String, soilRequirement: String, fertilizerRequirement: String) {
+		manager.editPlantCareRequirements(
+			for: plant,
+			sunlightRequirement: sunlightRequirement,
+			temperatureRequirement: temperatureRequirement,
+			waterRequirement: waterRequirement,
+			humidityRequirement: humidityRequirement,
+			soilRequirement: soilRequirement,
+			fertilizerRequirement: fertilizerRequirement
+		)
+	}
+	
+	func editAdditionalCareNotes(plant: Plant, additionalCareNotes: String) {
+		manager.editAdditionalCareNotes(for: plant, additionalCareNotes: additionalCareNotes)
 	}
 	
 //	MARK: - Note functions

@@ -30,7 +30,7 @@ struct PlantDetailsView: View {
 			ScrollView {
 				VStack(spacing: 10) {
 					generalCard
-					cardRequirementsCard
+					careRequirementsCard
 					additionalCareNotesCard
 				}
 				.padding(.horizontal)
@@ -48,7 +48,7 @@ extension PlantDetailsView {
 	
 	private var generalCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			cardHeader(cardTitle: "General")
+			cardHeader(cardTitle: "General", editTapped: <#Binding<Bool>#>)
 			
 			VStack(alignment: .leading, spacing: 15) {
 //				LabelProperty(label: "Name", value: viewModel.plant.wrappedName)
@@ -69,9 +69,9 @@ extension PlantDetailsView {
 		.clipShape(RoundedRectangle(cornerRadius: 8))
 	}
 	
-	private var cardRequirementsCard: some View {
+	private var careRequirementsCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			cardHeader(cardTitle: "Care Requirements")
+			cardHeader(cardTitle: "Care Requirements", editTapped: <#Binding<Bool>#>)
 			
 			VStack(alignment: .leading, spacing: 15) {
 //				LabelProperty(iconName: "sun.max.fill", label: "Sunlight", value: viewModel.plant.sunlightRequirement ?? "-")
@@ -96,7 +96,7 @@ extension PlantDetailsView {
 	
 	private var additionalCareNotesCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			cardHeader(cardTitle: "Additional Care Notes")
+			cardHeader(cardTitle: "Additional Care Notes", editTapped: <#Binding<Bool>#>)
 			
 			VStack(alignment: .leading, spacing: 10) {
 				Text("These guys don't need any pruning, but are very sensitive to heat. Keep an eye out for aphids. No pesticides and fertilize once a month.")
@@ -134,6 +134,7 @@ extension PlantDetailsView {
 	struct cardHeader: View {
 		
 		let cardTitle: String
+		@Binding var editTapped: Bool
 		
 		var body: some View {
 			HStack {
@@ -142,7 +143,7 @@ extension PlantDetailsView {
 					.foregroundStyle(Color.theme.textPrimary)
 				Spacer()
 				Button {
-					// do something
+					editTapped = true
 				} label: {
 					Text("Edit")
 						.font(.handjet(.extraBold, size: 18))
