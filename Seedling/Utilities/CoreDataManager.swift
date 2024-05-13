@@ -96,6 +96,23 @@ class CoreDataManager {
 		save()
 	}
 	
+	func editPlantCareRequirements(for plant: Plant, sunlightRequirement: String, temperatureRequirement: String, waterRequirement: String, humidityRequirement: String, soilRequirement: String, fertilizerRequirement: String) {
+		plant.sunlightRequirement = sunlightRequirement
+		plant.temperatureRequirement = temperatureRequirement
+		plant.waterRequirement = waterRequirement
+		plant.humidityRequirement = humidityRequirement
+		plant.soilRequirement = soilRequirement
+		plant.fertilizerRequirement = fertilizerRequirement
+		
+		save()
+	}
+	
+	func editAdditionalCareNotes(for plant: Plant, additionalCareNotes: String) {
+		plant.additionalCareNotes = additionalCareNotes
+		
+		save()
+	}
+	
 	func deletePlant(plant: Plant) {
 		context.delete(plant)
 		save()
