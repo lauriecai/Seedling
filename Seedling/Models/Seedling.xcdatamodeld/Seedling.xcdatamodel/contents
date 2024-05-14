@@ -23,7 +23,6 @@
         <attribute name="humidityRequirement" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="scientificName" optional="YES" attributeType="String"/>
         <attribute name="soilRequirement" optional="YES" attributeType="String"/>
         <attribute name="stage" optional="YES" attributeType="String"/>
         <attribute name="sunlightRequirement" optional="YES" attributeType="String"/>

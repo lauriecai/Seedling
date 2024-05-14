@@ -66,7 +66,6 @@ enum PlantType: String, CaseIterable {
 enum PlantGeneralProperty: String, CaseIterable {
 	case name = "Name"
 	case variety = "Variety"
-	case scientificName = "Scientific Name"
 	case type = "Type"
 	case stage = "Stage"
 }

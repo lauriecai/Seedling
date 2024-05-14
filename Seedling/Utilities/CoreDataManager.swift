@@ -86,10 +86,9 @@ class CoreDataManager {
 		save()
 	}
 	
-	func editPlantGeneralDetails(for plant: Plant, name: String, variety: String, scientificName: String, type: String, stage: String) {
+	func editPlantGeneralDetails(for plant: Plant, name: String, variety: String, type: String, stage: String) {
 		plant.name = name
 		plant.variety = variety
-		plant.scientificName = scientificName
 		plant.type = type
 		plant.stage = stage
 		

@@ -32,7 +32,7 @@ class DetailViewModel: ObservableObject {
 	@Published var plantStageUpdated: Bool = false
 	
 	// Plant Details View
-	@Published var editingGeneralPlantDetails: Bool = false
+	@Published var editingGeneralDetails: Bool = false
 	@Published var editingCareRequirements: Bool = false
 	@Published var editingAdditionalCareNotes: Bool = false
 	
@@ -85,12 +85,11 @@ class DetailViewModel: ObservableObject {
 		showingAddPostOptions = false
 	}
 	
-	func editPlantGeneralDetails(plant: Plant, name: String, variety: String, scientificName: String, type: String, stage: String) {
+	func editPlantGeneralDetails(plant: Plant, name: String, variety: String, type: String, stage: String) {
 		manager.editPlantGeneralDetails(
 			for: plant,
 			name: name,
 			variety: variety,
-			scientificName: scientificName,
 			type: type,
 			stage: stage
 		)

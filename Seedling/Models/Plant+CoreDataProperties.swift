@@ -18,7 +18,6 @@ extension Plant {
     @NSManaged public var id: UUID?
     @NSManaged public var name: String?
 	@NSManaged public var variety: String?
-	@NSManaged public var scientificName: String?
 	@NSManaged public var type: String?
 	@NSManaged public var stage: String?
 	
