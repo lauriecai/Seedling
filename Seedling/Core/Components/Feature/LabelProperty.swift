@@ -25,7 +25,7 @@ struct LabelProperty: View {
 		self.propertyValue = value
 	}
 	
-    var body: some View {
+	var body: some View {
 		HStack(alignment: .center, spacing: 10) {
 			
 			if let image = iconName {
@@ -46,12 +46,13 @@ struct LabelProperty: View {
 				Text(propertyLabel)
 					.font(.handjet(.bold, size: 16))
 					.foregroundStyle(Color.theme.textGrey)
+				
 				Text(propertyValue)
 					.font(.handjet(.medium, size: 22))
 					.foregroundStyle(Color.theme.textPrimary)
 			}
 		}
-    }
+	}
 }
 
 #Preview {
