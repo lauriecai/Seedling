@@ -29,7 +29,7 @@ struct PlantDetailsView: View {
 			
 			ScrollView {
 				VStack(spacing: 10) {
-					generalCard
+					generalDetailsCard
 					careRequirementsCard
 					additionalCareNotesCard
 				}
@@ -46,52 +46,177 @@ struct PlantDetailsView: View {
 
 extension PlantDetailsView {
 	
-	private var generalCard: some View {
+	// General Details card
+	
+	private var generalDetailsCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			cardHeader(cardTitle: "General", showingEditMode: $viewModel.editingGeneralDetails)
-			
-			VStack(alignment: .leading, spacing: 15) {
-				LabelProperty(label: "Name", value: viewModel.plant.wrappedName)
-				LabelProperty(label: "Variety", value: viewModel.plant.wrappedVariety)
-				LabelProperty(label: "Type", value: viewModel.plant.wrappedType)
-				LabelProperty(label: "Stage", value: viewModel.plant.wrappedStage)
-			}
+			generalDetailsCardHeader
+			generalDetailsCardProperties
 		}
 		.padding()
 		.background(Color.white)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
 	}
+	
+	private var generalDetailsCardHeader: some View {
+		HStack {
+			CardTitle(title: "General")
+			
+			Spacer()
+			
+			if viewModel.editingGeneralDetails {
+				saveGeneralDetailsButton
+			} else {
+				editGeneralDetailsButton
+			}
+		}
+	}
+	
+	private var generalDetailsCardProperties: some View {
+		VStack(alignment: .leading, spacing: 15) {
+			PropertyLabel(label: "Name", value: viewModel.plant.wrappedName)
+			PropertyLabel(label: "Variety", value: viewModel.plant.wrappedVariety)
+			PropertyLabel(label: "Type", value: viewModel.plant.wrappedType)
+			PropertyLabel(label: "Stage", value: viewModel.plant.wrappedStage)
+		}
+	}
+	
+	private var editGeneralDetailsButton: some View {
+		Button("Edit") {
+			viewModel.editingGeneralDetails = true
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(Color.theme.accentGreen)
+	}
+	
+	private var saveGeneralDetailsButton: some View {
+		Button("Save Changes") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			if viewModel.plantGeneralDetailsEdited {
+				viewModel.editPlantGeneralDetails(for: viewModel.plant)
+			}
+			viewModel.resetGeneralDetailsEditedFlag()
+			dismiss()
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.plantGeneralDetailsEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.plantGeneralDetailsEdited)
+	}
+	
+	// Care Requirements card
 	
 	private var careRequirementsCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			cardHeader(cardTitle: "Care Requirements", showingEditMode: $viewModel.editingCareRequirements)
-			
-			VStack(alignment: .leading, spacing: 15) {
-				LabelProperty(iconName: "sun.max.fill", label: "Sunlight", value: viewModel.plant.sunlightRequirement ?? "-")
-				LabelProperty(iconName: "thermometer.medium", label: "Temperature", value: viewModel.plant.temperatureRequirement ?? "-")
-				LabelProperty(iconName: "drop.fill", label: "Water", value: viewModel.plant.waterRequirement ?? "-")
-				LabelProperty(iconName: "water.waves", label: "Humidity", value: viewModel.plant.humidityRequirement ?? "-")
-				LabelProperty(iconName: "button.angledbottom.horizontal.right", label: "Soil", value: viewModel.plant.soilRequirement ?? "-")
-				LabelProperty(iconName: "aqi.low", label: "Fertilizer", value: viewModel.plant.fertilizerRequirement ?? "-")
-			}
+			careRequirementsCardHeader
+			careRequirementsCardProperties
 		}
 		.padding()
 		.background(Color.white)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
 	}
 	
+	private var careRequirementsCardHeader: some View {
+		HStack {
+			CardTitle(title: "Care Requirements")
+			
+			Spacer()
+			
+			if viewModel.editingCareRequirements {
+				saveCareRequirementsButton
+			} else {
+				editCareRequirementsButton
+			}
+		}
+	}
+	
+	private var careRequirementsCardProperties: some View {
+		VStack(alignment: .leading, spacing: 15) {
+			PropertyLabel(iconName: "sun.max.fill", label: "Sunlight", value: viewModel.plant.sunlightRequirement ?? "-")
+			PropertyLabel(iconName: "thermometer.medium", label: "Temperature", value: viewModel.plant.temperatureRequirement ?? "-")
+			PropertyLabel(iconName: "drop.fill", label: "Water", value: viewModel.plant.waterRequirement ?? "-")
+			PropertyLabel(iconName: "water.waves", label: "Humidity", value: viewModel.plant.humidityRequirement ?? "-")
+			PropertyLabel(iconName: "button.angledbottom.horizontal.right", label: "Soil", value: viewModel.plant.soilRequirement ?? "-")
+			PropertyLabel(iconName: "aqi.low", label: "Fertilizer", value: viewModel.plant.fertilizerRequirement ?? "-")
+		}
+	}
+	
+	private var saveCareRequirementsButton: some View {
+		Button("Save Changes") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			if viewModel.plantCareRequirementsEdited {
+				viewModel.editPlantCareRequirements(for: viewModel.plant)
+			}
+			viewModel.resetCareRequirementsEditedFlag()
+			dismiss()
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.plantCareRequirementsEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.plantCareRequirementsEdited)
+	}
+	
+	private var editCareRequirementsButton: some View {
+		Button("Edit") {
+			viewModel.editingCareRequirements = true
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(Color.theme.accentGreen)
+	}
+	
+	// Additional Care Notes card
+	
 	private var additionalCareNotesCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			cardHeader(cardTitle: "Additional Care Notes", showingEditMode: $viewModel.editingAdditionalCareNotes)
-			
-			Text(viewModel.plant.additionalCareNotes ?? "-")
-				.font(.handjet(.medium, size: 22))
-				.foregroundStyle(Color.theme.textPrimary)
+			additionalCareNotesCardHeader
+			additionalCareNotes
 		}
 		.padding()
 		.background(Color.white)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
 	}
+	
+	private var additionalCareNotesCardHeader: some View {
+		HStack {
+			CardTitle(title: "Additional Care Notes")
+			
+			Spacer()
+			
+			if viewModel.editingAdditionalCareNotes {
+				saveAdditionalCareNotesButton
+			} else {
+				editAdditionalCareNotesButton
+			}
+		}
+	}
+	
+	private var additionalCareNotes: some View {
+		Text(viewModel.plant.additionalCareNotes ?? "-")
+			.font(.handjet(.medium, size: 22))
+			.foregroundStyle(Color.theme.textPrimary)
+	}
+	
+	private var editAdditionalCareNotesButton: some View {
+		Button("Edit") {
+			viewModel.editingAdditionalCareNotes = true
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(Color.theme.accentGreen)
+	}
+	
+	private var saveAdditionalCareNotesButton: some View {
+		Button("Save Changes") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			if viewModel.plantAdditionalCareNotesEdited {
+				viewModel.editAdditionalCareNotes(for: viewModel.plant)
+			}
+			viewModel.resetAdditionalCareNotesEditedFlag()
+			dismiss()
+		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.plantAdditionalCareNotesEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.plantAdditionalCareNotesEdited)
+	}
+	
+	// Other
 	
 	private var backButton: some View {
 		Button {
@@ -107,26 +232,59 @@ extension PlantDetailsView {
 		}
 	}
 	
-	struct cardHeader: View {
+	struct CardTitle: View {
 		
-		let cardTitle: String
-		
-		@Binding var showingEditMode: Bool
+		let title: String
 		
 		var body: some View {
-			HStack {
-				Text(cardTitle)
-					.font(.handjet(.extraBold, size: 24))
-					.foregroundStyle(Color.theme.textPrimary)
+			Text(title)
+				.font(.handjet(.extraBold, size: 24))
+				.foregroundStyle(Color.theme.textPrimary)
+		}
+	}
+	
+	struct PropertyLabel: View {
+		
+		let iconName: String?
+		let label: String
+		let value: String
+		
+		init(label: String, value: String) {
+			self.iconName = nil
+			self.label = label
+			self.value = value
+		}
+		init(iconName: String, label: String, value: String) {
+			self.iconName = iconName
+			self.label = label
+			self.value = value
+		}
+		
+		var body: some View {
+			HStack(alignment: .center, spacing: 10) {
 				
-				Spacer()
+				if let image = iconName {
+					ZStack {
+						Color.theme.textGrey.opacity(0.25)
+							.frame(width: 40, height: 40)
+							.clipShape(RoundedRectangle(cornerRadius: 8))
+						
+						Image(systemName: image)
+							.resizable()
+							.scaledToFit()
+							.frame(width: 24, height: 24)
+							.foregroundStyle(Color.theme.textPrimary)
+					}
+				}
 				
-				Button {
-					showingEditMode = true
-				} label: {
-					Text("Edit")
-						.font(.handjet(.extraBold, size: 18))
-						.foregroundStyle(Color.theme.accentGreen)
+				VStack(alignment: .leading, spacing: 2) {
+					Text(label)
+						.font(.handjet(.bold, size: 16))
+						.foregroundStyle(Color.theme.textGrey)
+					
+					Text(value)
+						.font(.handjet(.medium, size: 22))
+						.foregroundStyle(Color.theme.textPrimary)
 				}
 			}
 		}
