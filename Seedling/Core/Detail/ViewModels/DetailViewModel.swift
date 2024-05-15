@@ -138,6 +138,15 @@ class DetailViewModel: ObservableObject {
 		plantGeneralDetailsEdited = false
 	}
 	
+	func fetchPlantCareRequirements(for plant: Plant) {
+		sunlightRequirementInput = plant.wrappedSunlightRequirement
+		temperatureRequirementInput = plant.wrappedTemperatureRequirement
+		waterRequirementInput = plant.wrappedWaterRequirement
+		humidityRequirementInput = plant.wrappedHumidityRequirement
+		soilRequirementInput = plant.wrappedSoilRequirement
+		fertilizerRequirementInput = plant.wrappedFertilizerRequirement
+	}
+	
 	func editPlantCareRequirements(for plant: Plant) {
 		manager.editPlantCareRequirements(
 			for: plant,

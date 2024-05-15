@@ -16,8 +16,7 @@ struct EditGeneralDetailsCardView: View {
     var body: some View {
 		NavigationStack {
 			ZStack {
-				Color.white
-					.ignoresSafeArea()
+				Color.white.ignoresSafeArea()
 				
 				ScrollView {
 					VStack(alignment: .leading, spacing: 15) {

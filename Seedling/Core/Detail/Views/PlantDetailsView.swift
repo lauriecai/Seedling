@@ -43,6 +43,9 @@ struct PlantDetailsView: View {
 		}
 		.sheet(isPresented: $viewModel.editingGeneralDetails) { EditGeneralDetailsCardView(viewModel: viewModel)
 		}
+		.sheet(isPresented: $viewModel.editingCareRequirements) {
+			EditCareRequirementsCardView(viewModel: viewModel)
+		}
     }
 }
 
@@ -130,10 +133,10 @@ extension PlantDetailsView {
 	
 	private var careRequirementsCardProperties: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			PropertyLabel(iconName: "sun.max.fill", label: "Sunlight", value: viewModel.plant.sunlightRequirement ?? "-")
+			PropertyLabel(iconName: "sun.max", label: "Sunlight", value: viewModel.plant.sunlightRequirement ?? "-")
 			PropertyLabel(iconName: "thermometer.medium", label: "Temperature", value: viewModel.plant.temperatureRequirement ?? "-")
-			PropertyLabel(iconName: "drop.fill", label: "Water", value: viewModel.plant.waterRequirement ?? "-")
-			PropertyLabel(iconName: "water.waves", label: "Humidity", value: viewModel.plant.humidityRequirement ?? "-")
+			PropertyLabel(iconName: "drop", label: "Water", value: viewModel.plant.waterRequirement ?? "-")
+			PropertyLabel(iconName: "humidity", label: "Humidity", value: viewModel.plant.humidityRequirement ?? "-")
 			PropertyLabel(iconName: "button.angledbottom.horizontal.right", label: "Soil", value: viewModel.plant.soilRequirement ?? "-")
 			PropertyLabel(iconName: "aqi.low", label: "Fertilizer", value: viewModel.plant.fertilizerRequirement ?? "-")
 		}
@@ -155,7 +158,10 @@ extension PlantDetailsView {
 	
 	private var editCareRequirementsButton: some View {
 		Button("Edit") {
+			viewModel.resetCareRequirementsEditedFlag()
+			
 			viewModel.editingCareRequirements = true
+			viewModel.fetchPlantCareRequirements(for: viewModel.plant)
 		}
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(Color.theme.accentGreen)
@@ -195,7 +201,11 @@ extension PlantDetailsView {
 	
 	private var editAdditionalCareNotesButton: some View {
 		Button("Edit") {
+			viewModel.resetGeneralDetailsEditedFlag()
+			
 			viewModel.editingAdditionalCareNotes = true
+			viewModel.fetchPlantCareRequirements(for: viewModel.plant)
+		
 		}
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(Color.theme.accentGreen)
@@ -260,7 +270,7 @@ extension PlantDetailsView {
 		}
 		
 		var body: some View {
-			HStack(alignment: .center, spacing: 10) {
+			HStack(alignment: .top, spacing: 10) {
 				
 				if let image = iconName {
 					ZStack {
@@ -271,7 +281,7 @@ extension PlantDetailsView {
 						Image(systemName: image)
 							.resizable()
 							.scaledToFit()
-							.frame(width: 24, height: 24)
+							.frame(width: 20, height: 20)
 							.foregroundStyle(Color.theme.textPrimary)
 					}
 				}
