@@ -133,12 +133,12 @@ extension PlantDetailsView {
 	
 	private var careRequirementsCardProperties: some View {
 		VStack(alignment: .leading, spacing: 15) {
-			PropertyLabel(iconName: "sun.max", label: "Sunlight", value: viewModel.plant.sunlightRequirement ?? "-")
-			PropertyLabel(iconName: "thermometer.medium", label: "Temperature", value: viewModel.plant.temperatureRequirement ?? "-")
-			PropertyLabel(iconName: "drop", label: "Water", value: viewModel.plant.waterRequirement ?? "-")
-			PropertyLabel(iconName: "humidity", label: "Humidity", value: viewModel.plant.humidityRequirement ?? "-")
-			PropertyLabel(iconName: "button.angledbottom.horizontal.right", label: "Soil", value: viewModel.plant.soilRequirement ?? "-")
-			PropertyLabel(iconName: "aqi.low", label: "Fertilizer", value: viewModel.plant.fertilizerRequirement ?? "-")
+			PropertyLabel(iconName: "sun.max", label: "Sunlight", value: viewModel.plant.wrappedSunlightRequirement.isEmpty ? "-" : viewModel.plant.wrappedSunlightRequirement)
+			PropertyLabel(iconName: "thermometer.medium", label: "Temperature", value: viewModel.plant.wrappedTemperatureRequirement.isEmpty ? "-" :  viewModel.plant.wrappedTemperatureRequirement)
+			PropertyLabel(iconName: "drop", label: "Water", value: viewModel.plant.wrappedWaterRequirement.isEmpty ? "-" :  viewModel.plant.wrappedWaterRequirement)
+			PropertyLabel(iconName: "humidity", label: "Humidity", value: viewModel.plant.wrappedHumidityRequirement.isEmpty ? "-" :  viewModel.plant.wrappedHumidityRequirement)
+			PropertyLabel(iconName: "button.angledbottom.horizontal.right", label: "Soil", value: viewModel.plant.wrappedSoilRequirement.isEmpty ? "-" :  viewModel.plant.wrappedSoilRequirement)
+			PropertyLabel(iconName: "aqi.low", label: "Fertilizer", value: viewModel.plant.wrappedFertilizerRequirement.isEmpty ? "-" :  viewModel.plant.wrappedFertilizerRequirement)
 		}
 	}
 	
