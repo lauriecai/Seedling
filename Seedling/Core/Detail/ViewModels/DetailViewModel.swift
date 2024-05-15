@@ -36,6 +36,25 @@ class DetailViewModel: ObservableObject {
 	@Published var editingCareRequirements: Bool = false
 	@Published var editingAdditionalCareNotes: Bool = false
 	
+	@Published var plantNameInput: String = ""
+	@Published var plantVarietyInput: String = ""
+	
+	@Published var plantType: PlantType
+	@Published var selectedTypeIndex: Int
+	
+	@Published var sunlightRequirementInput: String = ""
+	@Published var temperatureRequirementInput: String = ""
+	@Published var waterRequirementInput: String = ""
+	@Published var humidityRequirementInput: String = ""
+	@Published var soilRequirementInput: String = ""
+	@Published var fertilizerRequirementInput: String = ""
+	
+	@Published var additionalCareNotes: String = ""
+	
+	@Published var plantGeneralDetailsEdited: Bool = false
+	@Published var plantCareRequirementsEdited: Bool = false
+	@Published var plantAdditionalCareNotesEdited: Bool = false
+	
 	// Detail View Segues
 	@Published var showingAddNoteLoadingView: Bool = false
 	@Published var showingUpdateStageLoadingView: Bool = false
@@ -54,6 +73,12 @@ class DetailViewModel: ObservableObject {
 		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
 		plantStage = savedPlantStage
 		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
+		
+		let savedPlantType = PlantType(rawValue: plant.wrappedType)!
+		plantType = savedPlantType
+		selectedTypeIndex = PlantType.allCases.firstIndex(of: savedPlantType)!
+		
+		fetchPlantGeneralDetails(for: plant)
 	}
 	
 //	MARK: - Post functions
@@ -69,15 +94,15 @@ class DetailViewModel: ObservableObject {
 	
 //	MARK: - Plant functions
 	
-	func updatePlantStage(plant: Plant, newStage: PlantStage) {
-		manager.addStageUpdate(plant: plant, newStage: newStage.rawValue)
-		fetchPosts(for: plant)
-	}
-	
 	func fetchPlantStage(for plant: Plant) {
 		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
 		plantStage = savedPlantStage
 		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
+	}
+	
+	func updatePlantStage(for plant: Plant) {
+		manager.addStageUpdate(plant: plant, newStage: plantStage.rawValue)
+		fetchPosts(for: plant)
 	}
 	
 	func resetStageUpdatedFlag() {
@@ -85,30 +110,49 @@ class DetailViewModel: ObservableObject {
 		showingAddPostOptions = false
 	}
 	
-	func editPlantGeneralDetails(plant: Plant, name: String, variety: String, type: String, stage: String) {
+	func fetchPlantGeneralDetails(for plant: Plant) {
+		plantNameInput = plant.wrappedName
+		plantVarietyInput = plant.wrappedVariety
+	}
+	
+	func editPlantGeneralDetails(for plant: Plant) {
 		manager.editPlantGeneralDetails(
 			for: plant,
-			name: name,
-			variety: variety,
-			type: type,
-			stage: stage
-		)
+			name: plantNameInput,
+			variety: plantVarietyInput,
+			type: plantType.rawValue,
+			stage: plantStage.rawValue)
 	}
 	
-	func editPlantCareRequirements(plant: Plant, sunlightRequirement: String, temperatureRequirement: String, waterRequirement: String, humidityRequirement: String, soilRequirement: String, fertilizerRequirement: String) {
+	func resetGeneralDetailsEditedFlag() {
+		plantGeneralDetailsEdited = false
+	}
+	
+	func editPlantCareRequirements(for plant: Plant) {
 		manager.editPlantCareRequirements(
 			for: plant,
-			sunlightRequirement: sunlightRequirement,
-			temperatureRequirement: temperatureRequirement,
-			waterRequirement: waterRequirement,
-			humidityRequirement: humidityRequirement,
-			soilRequirement: soilRequirement,
-			fertilizerRequirement: fertilizerRequirement
+			sunlightRequirement: sunlightRequirementInput,
+			temperatureRequirement: temperatureRequirementInput,
+			waterRequirement: waterRequirementInput,
+			humidityRequirement: humidityRequirementInput,
+			soilRequirement: soilRequirementInput,
+			fertilizerRequirement: fertilizerRequirementInput
 		)
 	}
 	
-	func editAdditionalCareNotes(plant: Plant, additionalCareNotes: String) {
-		manager.editAdditionalCareNotes(for: plant, additionalCareNotes: additionalCareNotes)
+	func resetCareRequirementsEditedFlag() {
+		plantCareRequirementsEdited = false
+	}
+	
+	func editAdditionalCareNotes(for plant: Plant) {
+		manager.editAdditionalCareNotes(
+			for: plant,
+			additionalCareNotes: additionalCareNotes
+		)
+	}
+	
+	func resetAdditionalCareNotesEditedFlag() {
+		plantAdditionalCareNotesEdited = false
 	}
 	
 //	MARK: - Note functions
