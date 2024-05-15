@@ -49,12 +49,8 @@ struct AddPlantView: View {
 						}
 					}
 				}
-				.onChange(of: viewModel.plantName) {
-					viewModel.plantDetailsEdited = true
-				}
-				.onChange(of: viewModel.plantVariety) {
-					viewModel.plantDetailsEdited = true
-				}
+				.onChange(of: viewModel.plantName) { viewModel.plantDetailsEdited = true }
+				.onChange(of: viewModel.plantVariety) { viewModel.plantDetailsEdited = true }
 				.keyboardType(.default)
 				.autocorrectionDisabled()
 			}
@@ -78,7 +74,7 @@ extension AddPlantView {
 	
 	private var plantStageSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, selectedItem: $viewModel.plantStage, selectedIndex: $viewModel.selectedStageIndex)
+			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, accentTheme: true, selectedItem: $viewModel.plantStage, selectedIndex: $viewModel.selectedStageIndex)
 			
 			selectedPlantStageDefinition
 		}
@@ -92,7 +88,7 @@ extension AddPlantView {
 	
 	private var plantTypeSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, selectedItem: $viewModel.plantType, selectedIndex: $viewModel.selectedTypeIndex)
+			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, accentTheme: true, selectedItem: $viewModel.plantType, selectedIndex: $viewModel.selectedTypeIndex)
 		}
 	}
 	

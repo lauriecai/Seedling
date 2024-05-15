@@ -41,6 +41,8 @@ struct PlantDetailsView: View {
 		.toolbar {
 			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
+		.sheet(isPresented: $viewModel.editingGeneralDetails) { EditGeneralDetailsCardView(viewModel: viewModel)
+		}
     }
 }
 
@@ -61,21 +63,15 @@ extension PlantDetailsView {
 	private var generalDetailsCardHeader: some View {
 		HStack {
 			CardTitle(title: "General")
-			
 			Spacer()
-			
-			if viewModel.editingGeneralDetails {
-				saveGeneralDetailsButton
-			} else {
-				editGeneralDetailsButton
-			}
-		}
+			editGeneralDetailsButton
+		}	
 	}
 	
 	private var generalDetailsCardProperties: some View {
 		VStack(alignment: .leading, spacing: 15) {
 			PropertyLabel(label: "Name", value: viewModel.plant.wrappedName)
-			PropertyLabel(label: "Variety", value: viewModel.plant.wrappedVariety)
+			PropertyLabel(label: "Variety", value: viewModel.plant.wrappedVariety.isEmpty ? "-" : viewModel.plant.wrappedVariety)
 			PropertyLabel(label: "Type", value: viewModel.plant.wrappedType)
 			PropertyLabel(label: "Stage", value: viewModel.plant.wrappedStage)
 		}
@@ -83,7 +79,10 @@ extension PlantDetailsView {
 	
 	private var editGeneralDetailsButton: some View {
 		Button("Edit") {
+			viewModel.resetGeneralDetailsEditedFlag()
+			
 			viewModel.editingGeneralDetails = true
+			viewModel.fetchPlantGeneralDetails(for: viewModel.plant)
 		}
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(Color.theme.accentGreen)

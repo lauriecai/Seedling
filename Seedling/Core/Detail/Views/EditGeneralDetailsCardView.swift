@@ -9,58 +9,38 @@ import SwiftUI
 
 struct EditGeneralDetailsCardView: View {
 	
+	@ObservedObject var viewModel: DetailViewModel
+	
 	@Environment(\.dismiss) var dismiss
 	
     var body: some View {
-		ZStack {
-			Color.theme.backgroundPrimary
-				.ignoresSafeArea()
-			
-			ScrollView {
-				VStack(alignment: .leading, spacing: 15) {
-					header
-					
-					VStack(alignment: .leading, spacing: 2) {
-						Text("Name")
-							.font(.handjet(.bold, size: 16))
-							.foregroundStyle(Color.theme.textGrey)
-						
-						Text("Eggplant")
-							.font(.handjet(.medium, size: 22))
-							.foregroundStyle(Color.theme.textPrimary)
+		NavigationStack {
+			ZStack {
+				Color.white
+					.ignoresSafeArea()
+				
+				ScrollView {
+					VStack(alignment: .leading, spacing: 15) {
+						header
+						textPropertyInput(propertyName: "Name", propertyValue: $viewModel.plantNameInput)
+						textPropertyInput(propertyName: "Variety", propertyValue: $viewModel.plantVarietyInput)
+						typeSelectionRow
+						stageSelectionList
 					}
-					
-					VStack(alignment: .leading, spacing: 2) {
-						Text("Variety")
-							.font(.handjet(.bold, size: 16))
-							.foregroundStyle(Color.theme.textGrey)
-						
-						Text("Ichiban")
-							.font(.handjet(.medium, size: 22))
-							.foregroundStyle(Color.theme.textPrimary)
-					}
-					
-					Text("Type")
-						.font(.handjet(.bold, size: 16))
-						.foregroundStyle(Color.theme.textGrey)
-					
-					Text("Stage")
-						.font(.handjet(.bold, size: 16))
-						.foregroundStyle(Color.theme.textGrey)
+					.padding(.horizontal)
 				}
-				.padding()
 			}
-		}
-		.navigationTitle("Edit General")
-		.toolbar {
-			ToolbarItem(placement: .topBarLeading) { cancelButton }
-			ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
+			.navigationBarBackButtonHidden(true)
+			.toolbar {
+				ToolbarItem(placement: .topBarLeading) { cancelButton }
+				ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
+			}
+			.onChange(of: viewModel.plantNameInput) { viewModel.plantGeneralDetailsEdited = true }
+			.onChange(of: viewModel.plantVarietyInput) { viewModel.plantGeneralDetailsEdited = true }
+			.onChange(of: viewModel.plantType) { viewModel.plantGeneralDetailsEdited = true }
+			.onChange(of: viewModel.plantStage) { viewModel.plantGeneralDetailsEdited = true }
 		}
     }
-}
-
-#Preview {
-	EditGeneralDetailsCardView()
 }
 
 extension EditGeneralDetailsCardView {
@@ -74,15 +54,72 @@ extension EditGeneralDetailsCardView {
 		}
 	}
 	
+	private var typeSelectionRow: some View {
+		VStack(alignment: .leading, spacing: 5) {
+			Text("Type")
+				.font(.handjet(.bold, size: 16))
+				.foregroundStyle(Color.theme.textGrey)
+			
+			ButtonPillRow(rowLabel: nil, items: PlantType.allCases, accentTheme: false, selectedItem: $viewModel.plantType, selectedIndex: $viewModel.selectedTypeIndex)
+		}
+	}
+	
+	private var stageSelectionList: some View {
+		VStack(alignment: .leading, spacing: 5) {
+			Text("Stage")
+				.font(.handjet(.bold, size: 16))
+				.foregroundStyle(Color.theme.textGrey)
+			
+			CardSelectionList(
+				items: PlantStage.allCases,
+				accentTheme: false,
+				selectedPillLabel: "Selected",
+				selectedItem: $viewModel.plantStage,
+				selectedItemIndex: $viewModel.selectedStageIndex
+			)
+		}
+	}
+	
+	struct textPropertyInput: View {
+		
+		let propertyName: String
+		let propertyValue: Binding<String>
+		
+		var body: some View {
+			VStack(alignment: .leading, spacing: 5) {
+				Text(propertyName)
+					.font(.handjet(.bold, size: 16))
+					.foregroundStyle(Color.theme.textGrey)
+				
+				TextField("", text: propertyValue)
+					.font(.handjet(.medium, size: 22))
+					.padding(.horizontal)
+					.padding(.vertical, 10)
+					.foregroundStyle(Color.theme.textPrimary)
+					.background(Color.theme.backgroundGrey)
+					.clipShape(RoundedRectangle(cornerRadius: 8))
+					.autocorrectionDisabled()
+			}
+		}
+	}
+	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			if viewModel.plantGeneralDetailsEdited {
+				viewModel.editPlantGeneralDetails(for: viewModel.plant)
+			}
+			viewModel.resetGeneralDetailsEditedFlag()
 			dismiss()
 		}
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.plantGeneralDetailsEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.plantGeneralDetailsEdited)
 	}
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
+			viewModel.resetGeneralDetailsEditedFlag()
 			dismiss()
 		}
 		.font(.handjet(.medium, size: 20))

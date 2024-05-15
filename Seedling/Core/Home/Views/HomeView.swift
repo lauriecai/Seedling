@@ -27,9 +27,7 @@ struct HomeView: View {
 		.navigationDestination(isPresented: $viewModel.showingDetailView) {
 			DetailLoadingView(plant: $viewModel.selectedPlant)
 		}
-		.sheet(isPresented: $viewModel.showingAddPlantView) {
-			AddPlantView()
-		}
+		.sheet(isPresented: $viewModel.showingAddPlantView) { AddPlantView() }
 		.confirmationDialog("Plant Options", isPresented: $viewModel.showingActionSheet) {
 			editPlantNameButton
 			deletePlantButton

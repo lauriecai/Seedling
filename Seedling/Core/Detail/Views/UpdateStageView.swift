@@ -36,7 +36,8 @@ struct UpdateStageView: View {
 					updateStagePrompt
 
 					CardSelectionList(
-						items: PlantStage.allCases,
+						items: PlantStage.allCases, 
+						accentTheme: true,
 						selectedPillLabel: "Selected",
 						selectedItem: $viewModel.plantStage,
 						selectedItemIndex: $viewModel.selectedStageIndex

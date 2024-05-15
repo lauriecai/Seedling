@@ -32,10 +32,6 @@ class DetailViewModel: ObservableObject {
 	@Published var plantStageUpdated: Bool = false
 	
 	// Plant Details View
-	@Published var editingGeneralDetails: Bool = false
-	@Published var editingCareRequirements: Bool = false
-	@Published var editingAdditionalCareNotes: Bool = false
-	
 	@Published var plantNameInput: String = ""
 	@Published var plantVarietyInput: String = ""
 	
@@ -66,6 +62,11 @@ class DetailViewModel: ObservableObject {
 	
 	@Published var showEventActionSheet: Bool = false
 	@Published var selectedEvent: Event? = nil
+	
+	// Plant Details Segues
+	@Published var editingGeneralDetails: Bool = false
+	@Published var editingCareRequirements: Bool = false
+	@Published var editingAdditionalCareNotes: Bool = false
 	
 	init(plant: Plant) {
 		self.plant = plant
@@ -100,6 +101,12 @@ class DetailViewModel: ObservableObject {
 		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
 	}
 	
+	func fetchPlantType(for plant: Plant) {
+		let savedPlantType = PlantType(rawValue: plant.wrappedType)!
+		plantType = savedPlantType
+		selectedTypeIndex = PlantType.allCases.firstIndex(of: savedPlantType)!
+	}
+	
 	func updatePlantStage(for plant: Plant) {
 		manager.addStageUpdate(plant: plant, newStage: plantStage.rawValue)
 		fetchPosts(for: plant)
@@ -113,6 +120,8 @@ class DetailViewModel: ObservableObject {
 	func fetchPlantGeneralDetails(for plant: Plant) {
 		plantNameInput = plant.wrappedName
 		plantVarietyInput = plant.wrappedVariety
+		fetchPlantStage(for: plant)
+		fetchPlantType(for: plant)
 	}
 	
 	func editPlantGeneralDetails(for plant: Plant) {
@@ -125,6 +134,7 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func resetGeneralDetailsEditedFlag() {
+		plantNameInput = ""
 		plantGeneralDetailsEdited = false
 	}
 	
