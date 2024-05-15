@@ -12,6 +12,8 @@ struct CardSelectable: View {
 	let title: String
 	let description: String?
 	
+	let accentTheme: Bool
+	
 	let isSelected: Bool
 	let selectedPillLabel: String
 	
@@ -23,7 +25,7 @@ struct CardSelectable: View {
 					.foregroundStyle(Color.theme.textPrimary)
 				
 				if isSelected {
-					TextPill(label: selectedPillLabel, backgroundColor: Color.theme.accentYellow)
+					TextPill(label: selectedPillLabel, backgroundColor: accentTheme ? Color.theme.accentYellow : Color.theme.accentLightGreen)
 				}
 			}
 			
@@ -35,7 +37,7 @@ struct CardSelectable: View {
 		}
 		.padding()
 		.frame(maxWidth: .infinity, alignment: .leading)
-		.background(Color.theme.backgroundAccent)
+		.background(accentTheme ? Color.theme.backgroundAccent : Color.theme.backgroundGrey)
 		.overlay(isSelected ? selectedBorder : nil)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
@@ -46,7 +48,8 @@ struct CardSelectable: View {
 		VStack {
 			CardSelectable(
 				title: "Seed",
-				description: "A small object from which a new plant can grow.",
+				description: "A small object from which a new plant can grow.", 
+				accentTheme: true,
 				isSelected: true,
 				selectedPillLabel: "Selected"
 			)

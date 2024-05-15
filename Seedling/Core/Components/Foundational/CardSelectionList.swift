@@ -10,6 +10,8 @@ import SwiftUI
 struct CardSelectionList<T>: View where T: Hashable & RawRepresentable & Definable, T.RawValue == String {
 	
 	let items: [T]
+	
+	let accentTheme: Bool
 
 	let selectedPillLabel: String
 	@Binding var selectedItem: T
@@ -21,7 +23,8 @@ struct CardSelectionList<T>: View where T: Hashable & RawRepresentable & Definab
 				ForEach(Array(items.enumerated()), id: \.1) { index, item in
 					CardSelectable(
 						title: item.rawValue,
-						description: item.definition,
+						description: item.definition, 
+						accentTheme: accentTheme,
 						isSelected: index == selectedItemIndex,
 						selectedPillLabel: selectedPillLabel
 					)
@@ -39,6 +42,7 @@ struct CardSelectionList<T>: View where T: Hashable & RawRepresentable & Definab
 #Preview {
 	CardSelectionList(
 		items: PlantStage.allCases,
+		accentTheme: true,
 		selectedPillLabel: "Selected",
 		selectedItem: .constant(.seedling),
 		selectedItemIndex: .constant(2)
