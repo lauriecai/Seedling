@@ -13,6 +13,8 @@ struct EditAdditionalCareNotesView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	@FocusState private var keyboardFocused: Bool
+	
     var body: some View {
 		NavigationStack {
 			ZStack {
@@ -22,16 +24,9 @@ struct EditAdditionalCareNotesView: View {
 					VStack(alignment: .leading, spacing: 15) {
 						header
 						
-						TextEditor(text: $viewModel.additionalCareNotesInput)
-							.font(.handjet(.medium, size: 22))
-							.scrollContentBackground(.hidden)
-							.padding(.horizontal, 12)
-							.padding(.vertical, 6)
-							.background(Color.theme.backgroundGrey)
-							.foregroundStyle(Color.theme.textPrimary)
-							.frame(height: 500)
-							.clipShape(RoundedRectangle(cornerRadius: 8))
-							.autocorrectionDisabled()
+						TextEditorInput(inputHeader: nil, inputPlaceholder: "Start writing...", accentTheme: false, text: $viewModel.additionalCareNotesInput)
+							.focused($keyboardFocused)
+							.onAppear { keyboardFocused.toggle() }
 					}
 					.padding(.horizontal)
 				}
@@ -40,6 +35,7 @@ struct EditAdditionalCareNotesView: View {
 				ToolbarItem(placement: .topBarLeading) { cancelButton }
 				ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
 			}
+			.keyboardType(.default)
 			.onChange(of: viewModel.additionalCareNotesInput) {
 				viewModel.plantAdditionalCareNotesEdited = true
 			}

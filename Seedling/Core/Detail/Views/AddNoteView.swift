@@ -75,7 +75,7 @@ extension AddNoteView {
 	}
 	
 	private var noteBodyInput: some View {
-		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", text: $viewModel.noteBodyText)
+		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", accentTheme: true, text: $viewModel.noteBodyText)
 	}
 	
 	private var addNoteButton: some View {
