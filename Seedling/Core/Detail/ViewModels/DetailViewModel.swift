@@ -45,7 +45,7 @@ class DetailViewModel: ObservableObject {
 	@Published var soilRequirementInput: String = ""
 	@Published var fertilizerRequirementInput: String = ""
 	
-	@Published var additionalCareNotes: String = ""
+	@Published var additionalCareNotesInput: String = ""
 	
 	@Published var plantGeneralDetailsEdited: Bool = false
 	@Published var plantCareRequirementsEdited: Bool = false
@@ -133,7 +133,7 @@ class DetailViewModel: ObservableObject {
 			stage: plantStage.rawValue)
 	}
 	
-	func resetGeneralDetailsEditedFlag() {
+	func resetPlantGeneralDetailsEditedFlag() {
 		plantNameInput = ""
 		plantGeneralDetailsEdited = false
 	}
@@ -159,18 +159,21 @@ class DetailViewModel: ObservableObject {
 		)
 	}
 	
-	func resetCareRequirementsEditedFlag() {
+	func resetPlantCareRequirementsEditedFlag() {
 		plantCareRequirementsEdited = false
 	}
 	
-	func editAdditionalCareNotes(for plant: Plant) {
-		manager.editAdditionalCareNotes(
-			for: plant,
-			additionalCareNotes: additionalCareNotes
-		)
+	func fetchPlantAdditionalCareNotes(for plant: Plant) {
+		additionalCareNotesInput = plant.wrappedAdditionalCareNotes
 	}
 	
-	func resetAdditionalCareNotesEditedFlag() {
+	func editPlantAdditionalCareNotes(for plant: Plant) {
+		manager.editAdditionalCareNotes(
+			for: plant,
+			additionalCareNotes: additionalCareNotesInput
+		)
+	}
+	func resetPlantAdditionalCareNotesEditedFlag() {
 		plantAdditionalCareNotesEdited = false
 	}
 	

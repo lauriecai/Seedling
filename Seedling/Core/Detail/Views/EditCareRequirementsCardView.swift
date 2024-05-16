@@ -99,7 +99,7 @@ extension EditCareRequirementsCardView {
 			if viewModel.plantCareRequirementsEdited {
 				viewModel.editPlantCareRequirements(for: viewModel.plant)
 			}
-			viewModel.resetCareRequirementsEditedFlag()
+			viewModel.resetPlantCareRequirementsEditedFlag()
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
@@ -109,7 +109,7 @@ extension EditCareRequirementsCardView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
-			viewModel.resetGeneralDetailsEditedFlag()
+			viewModel.resetPlantGeneralDetailsEditedFlag()
 			dismiss()
 		}
 		.font(.handjet(.medium, size: 20))

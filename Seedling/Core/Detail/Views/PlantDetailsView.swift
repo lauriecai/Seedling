@@ -46,6 +46,9 @@ struct PlantDetailsView: View {
 		.sheet(isPresented: $viewModel.editingCareRequirements) {
 			EditCareRequirementsCardView(viewModel: viewModel)
 		}
+		.sheet(isPresented: $viewModel.editingAdditionalCareNotes) {
+			EditAdditionalCareNotesView(viewModel: viewModel)
+		}
     }
 }
 
@@ -82,7 +85,7 @@ extension PlantDetailsView {
 	
 	private var editGeneralDetailsButton: some View {
 		Button("Edit") {
-			viewModel.resetGeneralDetailsEditedFlag()
+			viewModel.resetPlantGeneralDetailsEditedFlag()
 			
 			viewModel.editingGeneralDetails = true
 			viewModel.fetchPlantGeneralDetails(for: viewModel.plant)
@@ -97,7 +100,7 @@ extension PlantDetailsView {
 			if viewModel.plantGeneralDetailsEdited {
 				viewModel.editPlantGeneralDetails(for: viewModel.plant)
 			}
-			viewModel.resetGeneralDetailsEditedFlag()
+			viewModel.resetPlantGeneralDetailsEditedFlag()
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
@@ -120,24 +123,23 @@ extension PlantDetailsView {
 	private var careRequirementsCardHeader: some View {
 		HStack {
 			CardTitle(title: "Care Requirements")
-			
 			Spacer()
-			
-			if viewModel.editingCareRequirements {
-				saveCareRequirementsButton
-			} else {
-				editCareRequirementsButton
-			}
+			editCareRequirementsButton
 		}
 	}
 	
 	private var careRequirementsCardProperties: some View {
 		VStack(alignment: .leading, spacing: 15) {
 			PropertyLabel(iconName: "sun.max", label: "Sunlight", value: viewModel.plant.wrappedSunlightRequirement.isEmpty ? "-" : viewModel.plant.wrappedSunlightRequirement)
+			Divider()
 			PropertyLabel(iconName: "thermometer.medium", label: "Temperature", value: viewModel.plant.wrappedTemperatureRequirement.isEmpty ? "-" :  viewModel.plant.wrappedTemperatureRequirement)
+			Divider()
 			PropertyLabel(iconName: "drop", label: "Water", value: viewModel.plant.wrappedWaterRequirement.isEmpty ? "-" :  viewModel.plant.wrappedWaterRequirement)
+			Divider()
 			PropertyLabel(iconName: "humidity", label: "Humidity", value: viewModel.plant.wrappedHumidityRequirement.isEmpty ? "-" :  viewModel.plant.wrappedHumidityRequirement)
+			Divider()
 			PropertyLabel(iconName: "button.angledbottom.horizontal.right", label: "Soil", value: viewModel.plant.wrappedSoilRequirement.isEmpty ? "-" :  viewModel.plant.wrappedSoilRequirement)
+			Divider()
 			PropertyLabel(iconName: "aqi.low", label: "Fertilizer", value: viewModel.plant.wrappedFertilizerRequirement.isEmpty ? "-" :  viewModel.plant.wrappedFertilizerRequirement)
 		}
 	}
@@ -148,7 +150,7 @@ extension PlantDetailsView {
 			if viewModel.plantCareRequirementsEdited {
 				viewModel.editPlantCareRequirements(for: viewModel.plant)
 			}
-			viewModel.resetCareRequirementsEditedFlag()
+			viewModel.resetPlantCareRequirementsEditedFlag()
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
@@ -158,7 +160,7 @@ extension PlantDetailsView {
 	
 	private var editCareRequirementsButton: some View {
 		Button("Edit") {
-			viewModel.resetCareRequirementsEditedFlag()
+			viewModel.resetPlantCareRequirementsEditedFlag()
 			
 			viewModel.editingCareRequirements = true
 			viewModel.fetchPlantCareRequirements(for: viewModel.plant)
@@ -182,14 +184,8 @@ extension PlantDetailsView {
 	private var additionalCareNotesCardHeader: some View {
 		HStack {
 			CardTitle(title: "Additional Care Notes")
-			
 			Spacer()
-			
-			if viewModel.editingAdditionalCareNotes {
-				saveAdditionalCareNotesButton
-			} else {
-				editAdditionalCareNotesButton
-			}
+			editAdditionalCareNotesButton
 		}
 	}
 	
@@ -201,11 +197,10 @@ extension PlantDetailsView {
 	
 	private var editAdditionalCareNotesButton: some View {
 		Button("Edit") {
-			viewModel.resetGeneralDetailsEditedFlag()
-			
+			viewModel.resetPlantAdditionalCareNotesEditedFlag()
+
 			viewModel.editingAdditionalCareNotes = true
-			viewModel.fetchPlantCareRequirements(for: viewModel.plant)
-		
+			viewModel.fetchPlantAdditionalCareNotes(for: viewModel.plant)
 		}
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(Color.theme.accentGreen)
@@ -215,9 +210,9 @@ extension PlantDetailsView {
 		Button("Save Changes") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantAdditionalCareNotesEdited {
-				viewModel.editAdditionalCareNotes(for: viewModel.plant)
+				viewModel.editPlantAdditionalCareNotes(for: viewModel.plant)
 			}
-			viewModel.resetAdditionalCareNotesEditedFlag()
+			viewModel.resetPlantAdditionalCareNotesEditedFlag()
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))

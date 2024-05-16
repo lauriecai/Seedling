@@ -62,27 +62,27 @@ extension Plant {
 	}
 	
 	public var wrappedSunlightRequirement: String {
-		sunlightRequirement ?? "-"
+		sunlightRequirement ?? ""
 	}
 	
 	public var wrappedWaterRequirement: String {
-		waterRequirement ?? "-"
+		waterRequirement ?? ""
 	}
 	
 	public var wrappedTemperatureRequirement: String {
-		temperatureRequirement ?? "-"
+		temperatureRequirement ?? ""
 	}
 	
 	public var wrappedHumidityRequirement: String {
-		humidityRequirement ?? "-"
+		humidityRequirement ?? ""
 	}
 	
 	public var wrappedSoilRequirement: String {
-		soilRequirement ?? "-"
+		soilRequirement ?? ""
 	}
 	
 	public var wrappedFertilizerRequirement: String {
-		fertilizerRequirement ?? "-"
+		fertilizerRequirement ?? ""
 	}
 	
 	public var wrappedAdditionalCareNotes: String {
