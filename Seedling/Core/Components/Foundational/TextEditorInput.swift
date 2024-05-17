@@ -34,14 +34,14 @@ struct TextEditorInput: View {
 					.padding(.vertical, 6)
 					.background(accentTheme ? Color.theme.backgroundAccent : Color.theme.backgroundGrey)
 					.foregroundStyle(Color.theme.textPrimary)
-					.frame(height: 200)
+					.frame(minHeight: 200, maxHeight: .infinity)
 					.clipShape(RoundedRectangle(cornerRadius: 8))
 					.focused($inputFocused)
 				
 				if text.isEmpty {
 					Text(inputPlaceholder)
 						.font(.handjet(.medium, size: 22))
-						.foregroundStyle(Color.theme.textSecondary)
+						.foregroundStyle(accentTheme ? Color.theme.textSecondary : Color.theme.textGrey)
 						.frame(maxWidth: .infinity, maxHeight: 200, alignment: .topLeading)
 						.padding(.horizontal)
 						.padding(.vertical, 14)

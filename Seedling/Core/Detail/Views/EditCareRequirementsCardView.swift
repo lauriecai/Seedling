@@ -83,12 +83,11 @@ extension EditCareRequirementsCardView {
 					.font(.handjet(.medium, size: 22))
 					.scrollContentBackground(.hidden)
 					.padding(.horizontal, 12)
-					.padding(.vertical, 6)
+					.padding(.vertical, 4)
+					.frame(minHeight: 100, maxHeight: .infinity)
 					.background(Color.theme.backgroundGrey)
 					.foregroundStyle(Color.theme.textPrimary)
-					.frame(height: 70)
 					.clipShape(RoundedRectangle(cornerRadius: 8))
-					.autocorrectionDisabled()
 			}
 		}
 	}
@@ -113,6 +112,6 @@ extension EditCareRequirementsCardView {
 			dismiss()
 		}
 		.font(.handjet(.medium, size: 20))
-		.foregroundStyle(Color.theme.textSecondary)
+		.foregroundStyle(Color.theme.textGrey)
 	}
 }

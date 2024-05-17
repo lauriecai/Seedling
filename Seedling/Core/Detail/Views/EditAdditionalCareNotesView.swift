@@ -74,6 +74,6 @@ extension EditAdditionalCareNotesView {
 			dismiss()
 		}
 		.font(.handjet(.medium, size: 20))
-		.foregroundStyle(Color.theme.textSecondary)
+		.foregroundStyle(Color.theme.textGrey)
 	}
 }
