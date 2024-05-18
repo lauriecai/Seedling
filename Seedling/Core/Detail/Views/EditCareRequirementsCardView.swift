@@ -29,6 +29,11 @@ struct EditCareRequirementsCardView: View {
 						textPropertyInput(iconName: "aqi.low", propertyName: "Fertilizer", propertyValue: $viewModel.fertilizerRequirementInput)
 					}
 					.padding(.horizontal)
+					.onAppear {
+						DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+							viewModel.activateTextFieldEditModeForAll()
+						}
+					}
 				}
 			}
 			.navigationBarBackButtonHidden(true)
@@ -84,7 +89,7 @@ extension EditCareRequirementsCardView {
 					.scrollContentBackground(.hidden)
 					.padding(.horizontal, 12)
 					.padding(.vertical, 4)
-					.frame(minHeight: 100, maxHeight: .infinity)
+					.frame(minHeight: 50, maxHeight: .infinity)
 					.background(Color.theme.backgroundGrey)
 					.foregroundStyle(Color.theme.textPrimary)
 					.clipShape(RoundedRectangle(cornerRadius: 8))
@@ -98,6 +103,7 @@ extension EditCareRequirementsCardView {
 			if viewModel.plantCareRequirementsEdited {
 				viewModel.editPlantCareRequirements(for: viewModel.plant)
 			}
+			viewModel.removeExtraneousSpaceForAll()
 			viewModel.resetPlantCareRequirementsEditedFlag()
 			dismiss()
 		}
@@ -108,6 +114,7 @@ extension EditCareRequirementsCardView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
+			viewModel.removeExtraneousSpaceForAll()
 			viewModel.resetPlantGeneralDetailsEditedFlag()
 			dismiss()
 		}

@@ -241,4 +241,47 @@ class DetailViewModel: ObservableObject {
 		manager.deleteEvent(event: event)
 		fetchPosts(for: plant)
 	}
+	
+// MARK: - UI functions
+	
+	func activateTextFieldEditModeForAll() {
+		if !sunlightRequirementInput.isEmpty {
+			sunlightRequirementInput = activateTextFieldEditMode(plantProperty: sunlightRequirementInput)
+		}
+		
+		if !temperatureRequirementInput.isEmpty {
+			temperatureRequirementInput = activateTextFieldEditMode(plantProperty: temperatureRequirementInput)
+		}
+		
+		if !waterRequirementInput.isEmpty {
+			waterRequirementInput = activateTextFieldEditMode(plantProperty: waterRequirementInput)
+		}
+		
+		if !humidityRequirementInput.isEmpty {
+			humidityRequirementInput = activateTextFieldEditMode(plantProperty: humidityRequirementInput)
+		}
+		
+		if !soilRequirementInput.isEmpty {
+			soilRequirementInput = activateTextFieldEditMode(plantProperty: soilRequirementInput)
+		}
+		
+		if !fertilizerRequirementInput.isEmpty {
+			fertilizerRequirementInput = activateTextFieldEditMode(plantProperty: fertilizerRequirementInput)
+		}
+	}
+	
+	func removeExtraneousSpaceForAll() {
+		sunlightRequirementInput = sunlightRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
+		temperatureRequirementInput = temperatureRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
+		waterRequirementInput = waterRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
+		humidityRequirementInput = humidityRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
+		soilRequirementInput = soilRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
+		fertilizerRequirementInput = fertilizerRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
+	}
+	
+	func activateTextFieldEditMode(plantProperty: String) -> String {
+		return plantProperty + " "
+	}
 }
+
+	
