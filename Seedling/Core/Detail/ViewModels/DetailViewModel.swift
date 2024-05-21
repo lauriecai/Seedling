@@ -271,16 +271,25 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func removeExtraneousSpaceForAll() {
-		sunlightRequirementInput = sunlightRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
-		temperatureRequirementInput = temperatureRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
-		waterRequirementInput = waterRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
-		humidityRequirementInput = humidityRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
-		soilRequirementInput = soilRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
-		fertilizerRequirementInput = fertilizerRequirementInput.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
+		sunlightRequirementInput = removeExtraneousSpace(plantProperty: sunlightRequirementInput)
+		
+		temperatureRequirementInput = removeExtraneousSpace(plantProperty: temperatureRequirementInput)
+		
+		waterRequirementInput = removeExtraneousSpace(plantProperty: waterRequirementInput)
+		
+		humidityRequirementInput = removeExtraneousSpace(plantProperty: humidityRequirementInput)
+		
+		soilRequirementInput = removeExtraneousSpace(plantProperty: soilRequirementInput)
+		
+		fertilizerRequirementInput = removeExtraneousSpace(plantProperty: fertilizerRequirementInput)
 	}
 	
 	func activateTextFieldEditMode(plantProperty: String) -> String {
 		return plantProperty + " "
+	}
+	
+	func removeExtraneousSpace(plantProperty: String) -> String {
+		return plantProperty.replacingOccurrences(of: "\\s+$", with: "", options: .regularExpression)
 	}
 }
 

@@ -30,6 +30,10 @@
 		D349D9DF2BE2E4EC0081ABE5 /* UpdateStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D9DE2BE2E4EC0081ABE5 /* UpdateStageView.swift */; };
 		D349D9E12BE2E7A30081ABE5 /* CardSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D9E02BE2E7A30081ABE5 /* CardSelectable.swift */; };
 		D349D9E32BE2EF4D0081ABE5 /* TextPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D9E22BE2EF4D0081ABE5 /* TextPill.swift */; };
+		D35FFAB22BFC2672002D25D8 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FFAAE2BFC2672002D25D8 /* Task+CoreDataClass.swift */; };
+		D35FFAB32BFC2672002D25D8 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FFAAF2BFC2672002D25D8 /* Task+CoreDataProperties.swift */; };
+		D35FFAB42BFC2672002D25D8 /* TaskCategory+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FFAB02BFC2672002D25D8 /* TaskCategory+CoreDataClass.swift */; };
+		D35FFAB52BFC2672002D25D8 /* TaskCategory+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35FFAB12BFC2672002D25D8 /* TaskCategory+CoreDataProperties.swift */; };
 		D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36D58252B156DD100E541E4 /* SeedlingApp.swift */; };
 		D36D582A2B156DD200E541E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D58292B156DD200E541E4 /* Assets.xcassets */; };
 		D36D582D2B156DD200E541E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36D582C2B156DD200E541E4 /* Preview Assets.xcassets */; };
@@ -90,6 +94,10 @@
 		D349D9DE2BE2E4EC0081ABE5 /* UpdateStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStageView.swift; sourceTree = "<group>"; };
 		D349D9E02BE2E7A30081ABE5 /* CardSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectable.swift; sourceTree = "<group>"; };
 		D349D9E22BE2EF4D0081ABE5 /* TextPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPill.swift; sourceTree = "<group>"; };
+		D35FFAAE2BFC2672002D25D8 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D35FFAAF2BFC2672002D25D8 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D35FFAB02BFC2672002D25D8 /* TaskCategory+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D35FFAB12BFC2672002D25D8 /* TaskCategory+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCategory+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D36D58222B156DD100E541E4 /* Seedling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Seedling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36D58252B156DD100E541E4 /* SeedlingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedlingApp.swift; sourceTree = "<group>"; };
 		D36D58292B156DD200E541E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -317,6 +325,10 @@
 				D3EFDE4C2B7EB66B00A6D22C /* Plant+CoreDataProperties.swift */,
 				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
 				D38AB78F2BBF6F95006B015B /* PlantPost.swift */,
+				D35FFAAE2BFC2672002D25D8 /* Task+CoreDataClass.swift */,
+				D35FFAAF2BFC2672002D25D8 /* Task+CoreDataProperties.swift */,
+				D35FFAB02BFC2672002D25D8 /* TaskCategory+CoreDataClass.swift */,
+				D35FFAB12BFC2672002D25D8 /* TaskCategory+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,6 +497,10 @@
 				D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */,
 				D338A1E42B71D83300E3676E /* Date.swift in Sources */,
 				D3EFDE4D2B7EB66B00A6D22C /* Note+CoreDataClass.swift in Sources */,
+				D35FFAB22BFC2672002D25D8 /* Task+CoreDataClass.swift in Sources */,
+				D35FFAB32BFC2672002D25D8 /* Task+CoreDataProperties.swift in Sources */,
+				D35FFAB42BFC2672002D25D8 /* TaskCategory+CoreDataClass.swift in Sources */,
+				D35FFAB52BFC2672002D25D8 /* TaskCategory+CoreDataProperties.swift in Sources */,
 				D3EFDE502B7EB66B00A6D22C /* Plant+CoreDataProperties.swift in Sources */,
 				D3EFDE142B79387B00A6D22C /* DetailViewModel.swift in Sources */,
 				D3CD06452BF5546100E25369 /* EditCareRequirementsCardView.swift in Sources */,
