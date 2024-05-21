@@ -16,7 +16,7 @@ class CoreDataManager {
 	let container: NSPersistentContainer
 	let context: NSManagedObjectContext
 	
-	init() {
+	private init() {
 		container = NSPersistentContainer(name: "Seedling")
 		container.loadPersistentStores { description, error in
 			if let error = error {
@@ -108,7 +108,6 @@ class CoreDataManager {
 	
 	func editAdditionalCareNotes(for plant: Plant, additionalCareNotes: String) {
 		plant.additionalCareNotes = additionalCareNotes
-		
 		save()
 	}
 	
@@ -153,7 +152,7 @@ class CoreDataManager {
 		save()
 	}
 	
-	// MARK: - Event functions
+// 	MARK: - Event functions
 
 	func requestEvents(for plant: Plant? = nil) -> NSFetchRequest<Event> {
 		let request = NSFetchRequest<Event>(entityName: "Event")
@@ -190,6 +189,32 @@ class CoreDataManager {
 	
 	func deleteEvent(event: Event) {
 		context.delete(event)
+		save()
+	}
+	
+// 	MARK: - Task functions
+	
+	func requestTaskCategories() -> NSFetchRequest<TaskCategory> {
+		let request = NSFetchRequest<TaskCategory>(entityName: "TaskCategory")
+		request.sortDescriptors = [sortByName]
+		
+		return request
+	}
+	
+	func addTaskCategory(name: String) {
+		let newCategory = TaskCategory(context: context)
+		newCategory.name = name
+		
+		save()
+	}
+	
+	func updateTaskCategory(taskCategory: TaskCategory, name: String) {
+		taskCategory.name = name
+		save()
+	}
+	
+	func deleteTaskCategory(taskCategory: TaskCategory) {
+		context.delete(taskCategory)
 		save()
 	}
 }
