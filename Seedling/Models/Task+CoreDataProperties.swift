@@ -20,6 +20,7 @@ extension Task {
     @NSManaged public var reminderDate: Date?
     @NSManaged public var reminderTime: Date?
     @NSManaged public var isCompleted: Bool
+    @NSManaged public var id: UUID?
     @NSManaged public var category: TaskCategory?
 
 }

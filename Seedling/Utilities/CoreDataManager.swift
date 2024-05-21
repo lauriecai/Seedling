@@ -192,7 +192,7 @@ class CoreDataManager {
 		save()
 	}
 	
-// 	MARK: - Task functions
+// 	MARK: - Task Category functions
 	
 	func requestTaskCategories() -> NSFetchRequest<TaskCategory> {
 		let request = NSFetchRequest<TaskCategory>(entityName: "TaskCategory")
@@ -203,6 +203,7 @@ class CoreDataManager {
 	
 	func addTaskCategory(name: String) {
 		let newCategory = TaskCategory(context: context)
+		newCategory.id = UUID()
 		newCategory.name = name
 		
 		save()
@@ -216,5 +217,20 @@ class CoreDataManager {
 	func deleteTaskCategory(taskCategory: TaskCategory) {
 		context.delete(taskCategory)
 		save()
+	}
+	
+//	MARK: - Task functions
+	
+	func requestTasks() -> NSFetchRequest<Task> {
+		let request = NSFetchRequest<Task>(entityName: "Task")
+		request.sortDescriptors = [sortByNewest]
+		
+		return request
+	}
+	
+	func addTask(category: TaskCategory, title: String, isCompleted: Bool, reminderDate: Date, reminderTime: Date) {
+		let newTask = Task(context: context)
+		newTask.id = UUID()
+		newTask.category = category
 	}
 }

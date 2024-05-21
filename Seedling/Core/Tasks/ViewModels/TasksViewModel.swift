@@ -14,7 +14,10 @@ class TaskViewModel: ObservableObject {
 	
 	@Published var taskCategories: [TaskCategory] = []
 	
-//	MARK: - Task functions
+	// Segues
+	@Published var showingAddTaskView: Bool = false
+	
+//	MARK: - Task Category functions
 	
 	func fetchTaskCategories() {
 		let request = manager.requestTaskCategories()
