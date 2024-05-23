@@ -66,8 +66,8 @@ extension AddTaskView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
-			print("Cancelled!")
 			dismiss()
+			viewModel.resetTaskTitleInput()
 		}
 		.font(.handjet(.medium, size: 20))
 		.foregroundStyle(Color.theme.textSecondary)

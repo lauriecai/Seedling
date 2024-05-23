@@ -65,11 +65,18 @@ class TasksViewModel: ObservableObject {
 	
 	func addTask(category: TaskCategory?, title: String) {
 		manager.addTask(category: category, title: title)
+		resetTaskTitleInput()
 		fetchTasks()
 	}
 	
 	func deleteTask(task: Task) {
 		manager.deleteTask(task: task)
 		fetchTasks()
+	}
+	
+	func resetTaskTitleInput() {
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+			self.taskTitleInput = ""
+		}
 	}
 }
