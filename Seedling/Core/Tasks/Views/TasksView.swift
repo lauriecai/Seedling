@@ -49,7 +49,7 @@ extension TasksView {
 	
 	private var tasksList: some View {
 		VStack(alignment: .leading, spacing: 12) {
-			ForEach(viewModel.tasks.dropLast()) { task in
+			ForEach(viewModel.tasks, id: \.customHash) { task in
 				TaskRowView(
 					task: task,
 					showActionSheet: $viewModel.showingActionSheet,
@@ -57,17 +57,10 @@ extension TasksView {
 				)
 				.onTapGesture { toggleTaskCompletion(task: task) }
 				
-				Divider()
-					.padding(.leading, 20)
-			}
-			
-			if let lastTask = viewModel.tasks.last {
-				TaskRowView(
-					task: lastTask,
-					showActionSheet: $viewModel.showingActionSheet,
-					showActionForTask: $viewModel.selectedTask
-				)
-					.onTapGesture { toggleTaskCompletion(task: lastTask) }
+				if task != viewModel.tasks.last {
+					Divider()
+						.padding(.leading, 20)
+				}
 			}
 		}
 	}

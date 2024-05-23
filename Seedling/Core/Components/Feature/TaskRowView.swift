@@ -15,17 +15,9 @@ struct TaskRowView: View {
 	@Binding var showActionForTask: Task?
 	
     var body: some View {
-		HStack(alignment: .top, spacing: 12) {
-			if task.isCompleted { checkedBox } else { uncheckedBox }
-			
-			Text(task.wrappedTitle)
-				.font(.handjet(.bold, size: 20))
-				.foregroundStyle(Color.theme.textPrimary)
-				.strikethrough(task.isCompleted ? true : false)
-				.opacity(task.isCompleted ? 0.40 : 1.0)
-			
+		HStack(alignment: .top) {
+			taskItem
 			Spacer()
-			
 			taskActions
 		}
 		.background(Color.theme.backgroundPrimary)
@@ -34,6 +26,18 @@ struct TaskRowView: View {
 }
 
 extension TaskRowView {
+	
+	private var taskItem: some View {
+		HStack(alignment: .top, spacing: 12) {
+			if task.isCompleted { checkedBox } else { uncheckedBox }
+			
+			Text(task.wrappedTitle)
+				.font(.handjet(.bold, size: 20))
+				.foregroundStyle(Color.theme.textPrimary)
+				.strikethrough(task.isCompleted ? true : false)
+				.opacity(task.isCompleted ? 0.40 : 1.0)
+		}
+	}
 	
 	private var uncheckedBox: some View {
 		RoundedRectangle(cornerRadius: 4)
