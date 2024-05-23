@@ -35,6 +35,9 @@ struct TasksView: View {
 		.sheet(isPresented: $viewModel.showingAddTaskView) {
 			AddTaskView(viewModel: viewModel)
 		}
+		.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
+			deleteTaskButton
+		}
     }
 }
 
@@ -45,25 +48,26 @@ struct TasksView: View {
 extension TasksView {
 	
 	private var tasksList: some View {
-		VStack(alignment: .leading, spacing: 10) {
+		VStack(alignment: .leading, spacing: 12) {
 			ForEach(viewModel.tasks.dropLast()) { task in
-				TaskRowView(taskTitle: task.wrappedTitle, isComplete: task.isCompleted)
-					.onTapGesture {
-						UIImpactFeedbackGenerator(style: .light).impactOccurred()
-						task.isCompleted.toggle()
-						viewModel.fetchTasks()
-					}
+				TaskRowView(
+					task: task,
+					showActionSheet: $viewModel.showingActionSheet,
+					showActionForTask: $viewModel.selectedTask
+				)
+				.onTapGesture { toggleTaskCompletion(task: task) }
+				
 				Divider()
 					.padding(.leading, 20)
 			}
 			
 			if let lastTask = viewModel.tasks.last {
-				TaskRowView(taskTitle: lastTask.wrappedTitle, isComplete: lastTask.isCompleted)
-					.onTapGesture {
-						UIImpactFeedbackGenerator(style: .light).impactOccurred()
-						lastTask.isCompleted.toggle()
-						viewModel.fetchTasks()
-					}
+				TaskRowView(
+					task: lastTask,
+					showActionSheet: $viewModel.showingActionSheet,
+					showActionForTask: $viewModel.selectedTask
+				)
+					.onTapGesture { toggleTaskCompletion(task: lastTask) }
 			}
 		}
 	}
@@ -77,5 +81,21 @@ extension TasksView {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddTaskView.toggle()
 			}
+	}
+	
+	private var deleteTaskButton: some View {
+		Button("Delete Task", role: .destructive) {
+			if let selectedTask = viewModel.selectedTask {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
+					viewModel.deleteTask(task: selectedTask)
+				}
+			}
+		}
+	}
+	
+	private func toggleTaskCompletion(task: Task) {
+		UIImpactFeedbackGenerator(style: .light).impactOccurred()
+		task.isCompleted.toggle()
+		viewModel.fetchTasks()
 	}
 }

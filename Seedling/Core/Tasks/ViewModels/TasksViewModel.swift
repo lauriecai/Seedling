@@ -21,6 +21,9 @@ class TasksViewModel: ObservableObject {
 	// Segues
 	@Published var showingAddTaskView: Bool = false
 	
+	@Published var selectedTask: Task? = nil
+	@Published var showingActionSheet: Bool = false
+	
 //	MARK: - Task Category functions
 	
 	func fetchTaskCategories() {
@@ -62,6 +65,11 @@ class TasksViewModel: ObservableObject {
 	
 	func addTask(category: TaskCategory?, title: String) {
 		manager.addTask(category: category, title: title)
+		fetchTasks()
+	}
+	
+	func deleteTask(task: Task) {
+		manager.deleteTask(task: task)
 		fetchTasks()
 	}
 }

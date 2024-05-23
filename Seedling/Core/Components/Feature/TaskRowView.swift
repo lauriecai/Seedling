@@ -9,40 +9,33 @@ import SwiftUI
 
 struct TaskRowView: View {
 	
-	let taskTitle: String
-	let isComplete: Bool
+	let task: Task
+
+	@Binding var showActionSheet: Bool
+	@Binding var showActionForTask: Task?
 	
     var body: some View {
-		HStack(spacing: 12) {
-			if isComplete { checkedBox } else { checkbox }
+		HStack(alignment: .top, spacing: 12) {
+			if task.isCompleted { checkedBox } else { uncheckedBox }
 			
-			Text(taskTitle)
+			Text(task.wrappedTitle)
 				.font(.handjet(.bold, size: 20))
-				.strikethrough(isComplete ? true : false)
-				.opacity(isComplete ? 0.40 : 1.0)
+				.foregroundStyle(Color.theme.textPrimary)
+				.strikethrough(task.isCompleted ? true : false)
+				.opacity(task.isCompleted ? 0.40 : 1.0)
 			
 			Spacer()
 			
-			MenuKebab()
-				.frame(maxHeight: .infinity)
-				.rotationEffect(.degrees(-90))
+			taskActions
 		}
+		.background(Color.theme.backgroundPrimary)
 		.padding(.horizontal, 20)
     }
 }
 
-#Preview {
-	ZStack {
-		Color.theme.backgroundPrimary
-			.ignoresSafeArea()
-		
-		TaskRowView(taskTitle: "Fertilize tomatoes", isComplete: true)
-	}
-}
-
 extension TaskRowView {
 	
-	private var checkbox: some View {
+	private var uncheckedBox: some View {
 		RoundedRectangle(cornerRadius: 4)
 			.frame(width: 25, height: 25)
 			.foregroundStyle(Color.theme.backgroundAccent)
@@ -59,5 +52,16 @@ extension TaskRowView {
 				.foregroundStyle(Color.theme.textPrimary)
 		}
 		.opacity(0.40)
+	}
+	
+	private var taskActions: some View {
+		Button {
+			showActionSheet = true
+			showActionForTask = task
+		} label: {
+			MenuKebab()
+				.frame(maxHeight: .infinity)
+				.rotationEffect(.degrees(-90))
+		}
 	}
 }

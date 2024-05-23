@@ -237,4 +237,9 @@ class CoreDataManager {
 		
 		save()
 	}
+	
+	func deleteTask(task: Task) {
+		context.delete(task)
+		save()
+	}
 }
