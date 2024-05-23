@@ -33,6 +33,15 @@ extension Task {
 	public var wrappedTimestamp: Date {
 		timestamp ?? Date()
 	}
+	
+	public var customHash: Int {
+		var hasher = Hasher()
+		hasher.combine(self.id)
+		hasher.combine(self.title)
+		hasher.combine(self.isCompleted)
+		
+		return hasher.finalize()
+	}
 }
 
 extension Task : Identifiable {
