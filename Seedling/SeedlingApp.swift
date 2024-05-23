@@ -33,7 +33,7 @@ struct SeedlingApp: App {
 
 struct ContentView: View {
 	
-	@State private var selectedItem: Int = 0 // First tab selected by default
+	@State private var selectedItem: Int = 0
 	
 	var body: some View {
 		ZStack(alignment: .bottom) {
@@ -41,7 +41,7 @@ struct ContentView: View {
 				HomeView()
 					.tag(0)
 				
-				Text("Tasks")
+				TasksView()
 					.tag(1)
 			}
 			

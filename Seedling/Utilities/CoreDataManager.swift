@@ -228,9 +228,13 @@ class CoreDataManager {
 		return request
 	}
 	
-	func addTask(category: TaskCategory, title: String, isCompleted: Bool, reminderDate: Date, reminderTime: Date) {
+	func addTask(category: TaskCategory?, title: String, isCompleted: Bool = false) {
 		let newTask = Task(context: context)
 		newTask.id = UUID()
 		newTask.category = category
+		newTask.title = title
+		newTask.timestamp = Date()
+		
+		save()
 	}
 }

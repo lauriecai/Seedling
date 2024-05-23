@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  Seedling
 //
-//  Created by Laurie Cai on 5/20/24.
+//  Created by Laurie Cai on 5/21/24.
 //
 //
 
@@ -16,12 +16,11 @@ extension Task {
         return NSFetchRequest<Task>(entityName: "Task")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var reminderDate: Date?
-    @NSManaged public var reminderTime: Date?
-    @NSManaged public var isCompleted: Bool
     @NSManaged public var id: UUID?
+    @NSManaged public var isCompleted: Bool
+    @NSManaged public var title: String?
     @NSManaged public var category: TaskCategory?
+	@NSManaged public var timestamp: Date?
 
 }
 

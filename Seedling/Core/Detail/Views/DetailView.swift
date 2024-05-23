@@ -60,13 +60,6 @@ struct DetailView: View {
 		.sheet(isPresented: $viewModel.showingUpdateStageLoadingView) {
 			UpdateStageLoadingView(viewModel: viewModel)
 		}
-//		.confirmationDialog("Photo Options", isPresented: $viewModel.showingPhotoSelectionActionSheet) {
-//			takePhotoButton
-//			selectFromLibraryButton
-//		}
-//		.sheet(isPresented: $viewModel.showingPhotoPicker) {
-//			PhotoPicker(image: $viewModel.selectedImage, isShown: $viewModel.showingPhotoPicker, sourceType: viewModel.photoSourceType)
-//		}
     }
 }
 

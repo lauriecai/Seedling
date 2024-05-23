@@ -2,7 +2,7 @@
 //  TaskCategory+CoreDataProperties.swift
 //  Seedling
 //
-//  Created by Laurie Cai on 5/20/24.
+//  Created by Laurie Cai on 5/21/24.
 //
 //
 
@@ -16,8 +16,8 @@ extension TaskCategory {
         return NSFetchRequest<TaskCategory>(entityName: "TaskCategory")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var id: UUID?
+    @NSManaged public var name: String?
     @NSManaged public var tasks: NSSet?
 
 }
