@@ -223,7 +223,7 @@ class CoreDataManager {
 	
 	func requestTasks() -> NSFetchRequest<Task> {
 		let request = NSFetchRequest<Task>(entityName: "Task")
-		request.sortDescriptors = [sortByNewest]
+		request.sortDescriptors = [sortByOldest]
 		
 		return request
 	}

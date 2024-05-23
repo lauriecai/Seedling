@@ -8,7 +8,6 @@
 import CoreData
 import Foundation
 
-@MainActor
 class TasksViewModel: ObservableObject {
 	
 	let manager = CoreDataManager.shared

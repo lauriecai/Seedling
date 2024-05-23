@@ -16,11 +16,11 @@ extension Task {
         return NSFetchRequest<Task>(entityName: "Task")
     }
 
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: UUID
     @NSManaged public var isCompleted: Bool
-    @NSManaged public var title: String?
+    @NSManaged public var title: String
     @NSManaged public var category: TaskCategory?
-	@NSManaged public var timestamp: Date?
+	@NSManaged public var timestamp: Date
 
 }
 

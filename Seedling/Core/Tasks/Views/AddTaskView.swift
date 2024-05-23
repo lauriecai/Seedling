@@ -22,7 +22,7 @@ struct AddTaskView: View {
 				ScrollView(showsIndicators: false) {
 					VStack(alignment: .leading, spacing: 15) {
 						TextEditorInput(
-							inputHeader: "Task",
+							inputHeader: "Task Description",
 							inputPlaceholder: "e.g. Fertilize tomatoes",
 							accentTheme: true,
 							text: $viewModel.taskTitleInput)

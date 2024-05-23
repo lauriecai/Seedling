@@ -18,16 +18,14 @@ struct TasksView: View {
 				.ignoresSafeArea()
 			
 			ScrollView(showsIndicators: false) {
-				VStack(alignment: .leading, spacing: 10) {
+				VStack(alignment: .leading, spacing: 20) {
 					Text("Tasks")
 						.font(.handjet(.extraBold, size: 32))
 						.foregroundStyle(Color.theme.textPrimary)
 						.frame(maxWidth: .infinity, alignment: .leading)
 						.padding(.horizontal)
 					
-					ForEach(viewModel.tasks) { task in
-						Text(task.title ?? "No title womp womp")
-					}
+					tasksList
 				}
 			}
 			
@@ -46,7 +44,20 @@ struct TasksView: View {
 
 extension TasksView {
 	
-	@MainActor
+	private var tasksList: some View {
+		VStack(alignment: .leading, spacing: 10) {
+			ForEach(viewModel.tasks.dropLast()) { task in
+				TaskRowView(taskTitle: task.title, isComplete: task.isCompleted)
+				Divider()
+					.padding(.leading, 20)
+			}
+			
+			if let lastTask = viewModel.tasks.last {
+				TaskRowView(taskTitle: lastTask.title, isComplete: lastTask.isCompleted)
+			}
+		}
+	}
+	
 	private var addTaskButton: some View {
 		ButtonCircle(iconName: "icon-plus")
 			.frame(width: 65, height: 65)
