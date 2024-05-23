@@ -17,6 +17,22 @@ struct CardSelectable: View {
 	let isSelected: Bool
 	let selectedPillLabel: String
 	
+	init(title: String, description: String?, accentTheme: Bool, isSelected: Bool, selectedPillLabel: String) {
+		self.title = title
+		self.description = description
+		self.accentTheme = accentTheme
+		self.isSelected = isSelected
+		self.selectedPillLabel = selectedPillLabel
+	}
+	
+	init(title: String, accentTheme: Bool, isSelected: Bool) {
+		self.title = title
+		self.accentTheme = accentTheme
+		self.isSelected = isSelected
+		self.description = nil
+		self.selectedPillLabel = "Selected"
+	}
+	
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
 			HStack(spacing: 8) {

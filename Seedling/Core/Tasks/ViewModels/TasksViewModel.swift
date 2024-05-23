@@ -16,13 +16,16 @@ class TasksViewModel: ObservableObject {
 	@Published var tasks: [Task] = []
 
 	@Published var taskTitleInput: String = ""
-	@Published var taskCategory: TaskCategory? = nil
+	@Published var taskCategoryInput: TaskCategory? = nil
 	
 	// Segues
 	@Published var showingAddTaskView: Bool = false
 	
 	@Published var selectedTask: Task? = nil
 	@Published var showingActionSheet: Bool = false
+	
+	@Published var showingTaskCategorySelectionView: Bool = false
+	@Published var showingTaskCategoryCreationView: Bool = false
 	
 //	MARK: - Task Category functions
 	

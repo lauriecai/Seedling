@@ -20,6 +20,13 @@ extension TaskCategory {
     @NSManaged public var name: String?
     @NSManaged public var tasks: NSSet?
 
+	public var wrappedID: UUID {
+		id ?? UUID()
+	}
+	
+	public var wrappedName: String {
+		name ?? ""
+	}
 }
 
 // MARK: Generated accessors for tasks
