@@ -13,6 +13,8 @@ struct AddTaskView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	@FocusState private var keyboardFocused: Bool
+	
     var body: some View {
 		NavigationStack {
 			ZStack {
@@ -25,7 +27,10 @@ struct AddTaskView: View {
 							inputHeader: "Task Description",
 							inputPlaceholder: "e.g. Fertilize tomatoes",
 							accentTheme: true,
-							text: $viewModel.taskTitleInput)
+							text: $viewModel.taskTitleInput
+						)
+						.focused($keyboardFocused)
+						.onAppear { keyboardFocused.toggle() }
 					}
 					.padding()
 				}
@@ -37,6 +42,7 @@ struct AddTaskView: View {
 				ToolbarItem(placement: .topBarLeading) { cancelButton }
 				ToolbarItem(placement: .topBarTrailing) { addTaskButton }
 			}
+			.keyboardType(.default)
 		}
     }
 }
