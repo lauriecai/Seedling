@@ -47,13 +47,23 @@ extension TasksView {
 	private var tasksList: some View {
 		VStack(alignment: .leading, spacing: 10) {
 			ForEach(viewModel.tasks.dropLast()) { task in
-				TaskRowView(taskTitle: task.title, isComplete: task.isCompleted)
+				TaskRowView(taskTitle: task.wrappedTitle, isComplete: task.isCompleted)
+					.onTapGesture {
+						UIImpactFeedbackGenerator(style: .light).impactOccurred()
+						task.isCompleted.toggle()
+						viewModel.fetchTasks()
+					}
 				Divider()
 					.padding(.leading, 20)
 			}
 			
 			if let lastTask = viewModel.tasks.last {
-				TaskRowView(taskTitle: lastTask.title, isComplete: lastTask.isCompleted)
+				TaskRowView(taskTitle: lastTask.wrappedTitle, isComplete: lastTask.isCompleted)
+					.onTapGesture {
+						UIImpactFeedbackGenerator(style: .light).impactOccurred()
+						lastTask.isCompleted.toggle()
+						viewModel.fetchTasks()
+					}
 			}
 		}
 	}
