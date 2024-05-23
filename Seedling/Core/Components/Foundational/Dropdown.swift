@@ -31,7 +31,7 @@ struct Dropdown: View {
 			} label: {
 				HStack {
 					Text(items[selectedIndex])
-						.font(.handjet(.medium, size: 22))
+						.font(.handjet(.medium, size: 20))
 						.foregroundStyle(Color.theme.textPrimary)
 					
 					Spacer()

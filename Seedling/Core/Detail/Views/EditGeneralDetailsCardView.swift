@@ -91,7 +91,7 @@ extension EditGeneralDetailsCardView {
 					.foregroundStyle(Color.theme.textGrey)
 				
 				TextField("", text: propertyValue)
-					.font(.handjet(.medium, size: 22))
+					.font(.handjet(.medium, size: 20))
 					.padding(.horizontal)
 					.padding(.vertical, 10)
 					.foregroundStyle(Color.theme.textPrimary)

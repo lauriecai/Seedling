@@ -31,6 +31,26 @@ struct AddTaskView: View {
 						)
 						.focused($keyboardFocused)
 						.onAppear { keyboardFocused.toggle() }
+						
+						HStack {
+							Text("Category")
+								.font(.handjet(.bold, size: 20))
+								.foregroundStyle(Color.theme.textPrimary)
+							
+							Spacer()
+							
+							HStack(spacing: 15) {
+								Text("None")
+									.font(.handjet(.medium, size: 20))
+								
+								Text(">")
+									.font(.handjet(.bold, size: 22))
+							}
+							.foregroundStyle(Color.theme.textSecondary)
+						}
+						.padding()
+						.background(Color.theme.backgroundAccent)
+						.clipShape(RoundedRectangle(cornerRadius: 8))
 					}
 					.padding()
 				}

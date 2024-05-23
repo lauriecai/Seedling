@@ -32,7 +32,7 @@ extension TaskRowView {
 			if task.isCompleted { checkedBox } else { uncheckedBox }
 			
 			Text(task.wrappedTitle)
-				.font(.handjet(.bold, size: 20))
+				.font(.handjet(.medium, size: 20))
 				.foregroundStyle(Color.theme.textPrimary)
 				.strikethrough(task.isCompleted ? true : false)
 				.opacity(task.isCompleted ? 0.40 : 1.0)

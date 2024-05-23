@@ -30,7 +30,7 @@ struct TextInput: View {
 			}
 			
 			TextField("", text: $text, prompt: Text(inputPlaceholder).foregroundStyle(Color.theme.textSecondary))
-					.font(.handjet(.medium, size: 22))
+					.font(.handjet(.medium, size: 20))
 					.padding(.horizontal)
 					.padding(.vertical, 10)
 					.foregroundStyle(Color.theme.textPrimary)

@@ -28,7 +28,7 @@ struct TextEditorInput: View {
 			
 			ZStack {
 				TextEditor(text: $text)
-					.font(.handjet(.medium, size: 22))
+					.font(.handjet(.medium, size: 20))
 					.scrollContentBackground(.hidden)
 					.padding(.horizontal, 12)
 					.padding(.vertical, 6)
@@ -40,7 +40,7 @@ struct TextEditorInput: View {
 				
 				if text.isEmpty {
 					Text(inputPlaceholder)
-						.font(.handjet(.medium, size: 22))
+						.font(.handjet(.medium, size: 20))
 						.foregroundStyle(accentTheme ? Color.theme.textSecondary : Color.theme.textGrey)
 						.frame(maxWidth: .infinity, maxHeight: 200, alignment: .topLeading)
 						.padding(.horizontal)

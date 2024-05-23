@@ -10,7 +10,6 @@ import SwiftUI
 struct NoteCardView: View {
 	
 	let note: Note
-	let showPlantTag: Bool
 	
 	@Binding var showActionSheet: Bool
 	@Binding var showActionsForNote: Note?
@@ -18,7 +17,6 @@ struct NoteCardView: View {
     var body: some View {
 		HStack(alignment: .top) {
 			VStack(alignment: .leading, spacing: 10) {
-				if showPlantTag { plantTag }
 				
 				if !note.wrappedTitle.isEmpty { noteTitle }
 				if !note.wrappedBody.isEmpty { noteDescription }
@@ -38,19 +36,9 @@ struct NoteCardView: View {
 
 extension NoteCardView {
 	
-	private var plantTag: some View {
-		Text(note.plant?.wrappedFullNameLabel ?? "")
-			.font(.handjet(.bold, size: 18))
-			.foregroundStyle(Color.theme.textPrimary)
-			.padding(.horizontal, 8)
-			.padding(.vertical, 2)
-			.background(Color.theme.backgroundAccent)
-			.clipShape(RoundedRectangle(cornerRadius: 4))
-	}
-	
 	private var noteTitle: some View {
 		Text(note.wrappedTitle)
-			.font(.handjet(.bold, size: 24))
+			.font(.handjet(.bold, size: 22))
 			.foregroundStyle(Color.theme.textPrimary)
 	}
 	

@@ -114,7 +114,7 @@ extension DetailView {
 	}
 	
 	private func noteCard(for note: Note) -> NoteCardView {
-		NoteCardView(note: note, showPlantTag: false, showActionSheet: $viewModel.showNoteActionSheet, showActionsForNote: $viewModel.selectedNote)
+		NoteCardView(note: note, showActionSheet: $viewModel.showNoteActionSheet, showActionsForNote: $viewModel.selectedNote)
 	}
 	
 	private var editNoteButton: some View {
@@ -154,7 +154,6 @@ extension DetailView {
 	private var addPostOptionsButtons: some View {
 		VStack(alignment: .trailing, spacing: 12) {
 			addNoteButton
-//			addPhotoButton
 			updateStageButton
 		}
 	}
@@ -166,14 +165,6 @@ extension DetailView {
 				viewModel.showingAddNoteLoadingView.toggle()
 			}
 	}
-	
-//	private var addPhotoButton: some View {
-//		ButtonRounded(iconName: "photo.fill", text: "Add Photo")
-//			.onTapGesture {
-//				UIImpactFeedbackGenerator(style: .light).impactOccurred()
-//				viewModel.showingPhotoSelectionActionSheet.toggle()
-//			}
-//	}
 	
 	private var updateStageButton: some View {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
@@ -193,20 +184,6 @@ extension DetailView {
 			}
 			.rotationEffect(viewModel.showingAddPostOptions ? .degrees(45) : .degrees(0))
 	}
-	
-//	private var takePhotoButton: some View {
-//		Button("Take Photo") {
-//			viewModel.showingPhotoPicker = true
-//			viewModel.photoSourceType = .camera
-//		}
-//	}
-//	
-//	private var selectFromLibraryButton: some View {
-//		Button("Select from Library") {
-//			viewModel.showingPhotoPicker = true
-//			viewModel.photoSourceType = .photoLibrary
-//		}
-//	}
 	
 	private var darkOverlay: some View {
 		Color.black.opacity(0.30)

@@ -85,7 +85,7 @@ extension EditCareRequirementsCardView {
 				.padding(.vertical, 5)
 				
 				TextEditor(text: propertyValue)
-					.font(.handjet(.medium, size: 22))
+					.font(.handjet(.medium, size: 20))
 					.scrollContentBackground(.hidden)
 					.padding(.horizontal, 12)
 					.padding(.vertical, 4)

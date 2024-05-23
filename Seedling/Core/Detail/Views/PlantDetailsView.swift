@@ -191,7 +191,7 @@ extension PlantDetailsView {
 	
 	private var additionalCareNotes: some View {
 		Text(viewModel.plant.additionalCareNotes ?? "-")
-			.font(.handjet(.medium, size: 22))
+			.font(.handjet(.medium, size: 20))
 			.foregroundStyle(Color.theme.textPrimary)
 	}
 	
@@ -242,7 +242,7 @@ extension PlantDetailsView {
 		
 		var body: some View {
 			Text(title)
-				.font(.handjet(.extraBold, size: 24))
+				.font(.handjet(.extraBold, size: 22))
 				.foregroundStyle(Color.theme.textPrimary)
 		}
 	}
@@ -287,7 +287,7 @@ extension PlantDetailsView {
 						.foregroundStyle(Color.theme.textGrey)
 					
 					Text(value)
-						.font(.handjet(.medium, size: 22))
+						.font(.handjet(.medium, size: 20))
 						.foregroundStyle(Color.theme.textPrimary)
 				}
 			}
