@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  Seedling
 //
-//  Created by Laurie Cai on 5/22/24.
+//  Created by Laurie Cai on 5/23/24.
 //
 //
 
@@ -21,8 +21,8 @@ extension Task {
     @NSManaged public var title: String?
     @NSManaged public var timestamp: Date?
     @NSManaged public var category: TaskCategory?
-
-	public var wrappedId: UUID {
+	
+	public var wrappedID: UUID {
 		id ?? UUID()
 	}
 	
@@ -42,6 +42,7 @@ extension Task {
 		
 		return hasher.finalize()
 	}
+
 }
 
 extension Task : Identifiable {

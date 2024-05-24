@@ -23,7 +23,9 @@ class CoreDataManager {
 				print("-----\nError loading Core Data. \(error)")
 			}
 		}
+		
 		context = container.viewContext
+		context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 	}
 	
 // 	MARK: - Sort variables

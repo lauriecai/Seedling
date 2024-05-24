@@ -2,7 +2,7 @@
 //  TaskCategory+CoreDataProperties.swift
 //  Seedling
 //
-//  Created by Laurie Cai on 5/22/24.
+//  Created by Laurie Cai on 5/23/24.
 //
 //
 
@@ -27,6 +27,8 @@ extension TaskCategory {
 	public var wrappedName: String {
 		name ?? ""
 	}
+	
+	
 }
 
 // MARK: Generated accessors for tasks
