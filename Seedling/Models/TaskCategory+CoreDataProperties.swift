@@ -27,6 +27,20 @@ extension TaskCategory {
 	public var wrappedName: String {
 		name ?? ""
 	}
+	
+	public var tasksList: [Task] {
+		let set = tasks as? Set<Task> ?? []
+		return set.sorted { $0.wrappedTimestamp < $1.wrappedTimestamp }
+	}
+	
+	public var customHash: Int {
+		var hasher = Hasher()
+		hasher.combine(self.id)
+		hasher.combine(self.name)
+		hasher.combine(self.tasks)
+		
+		return hasher.finalize()
+	}
 }
 
 // MARK: Generated accessors for tasks

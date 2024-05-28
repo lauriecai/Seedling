@@ -230,10 +230,11 @@ class CoreDataManager {
 		return request
 	}
 	
-	func addTask(category: TaskCategory?, title: String, isCompleted: Bool = false) {
+	func addTask(categoryName: String, title: String, isCompleted: Bool = false) {
 		let newTask = Task(context: context)
 		newTask.id = UUID()
-		newTask.category = category
+		newTask.category = TaskCategory(context: context)
+		newTask.category?.name = categoryName
 		newTask.title = title
 		newTask.timestamp = Date()
 		

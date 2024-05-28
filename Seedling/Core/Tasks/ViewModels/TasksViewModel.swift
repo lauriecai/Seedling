@@ -20,6 +20,10 @@ class TasksViewModel: ObservableObject {
 	@Published var taskTitleInput: String = ""
 	@Published var taskCategoryInput: String = ""
 	
+	// Category Selection View
+	@Published var selectedCategory: TaskCategory? = nil
+	@Published var selectedCategoryIndex: Int? = nil
+	
 	// Segues
 	@Published var showingAddTaskView: Bool = false
 	@Published var selectedAddTaskViewIndex: Int = 0
@@ -66,8 +70,8 @@ class TasksViewModel: ObservableObject {
 		}
 	}
 	
-	func addTask(category: TaskCategory?, title: String) {
-		manager.addTask(category: category, title: title)
+	func addTask(categoryName: String, title: String) {
+		manager.addTask(categoryName: categoryName, title: title, isCompleted: false)
 		resetTaskInputsAndFlags()
 		fetchTasks()
 	}

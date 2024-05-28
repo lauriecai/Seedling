@@ -23,15 +23,15 @@ struct TasksView: View {
 						.font(.handjet(.extraBold, size: 32))
 						.foregroundStyle(Color.theme.textPrimary)
 						.frame(maxWidth: .infinity, alignment: .leading)
-						.padding(.horizontal)
 					
 					tasksList
 				}
+				.padding(.horizontal)
 			}
 			
 			addTaskButton
 		}
-		.onAppear { viewModel.fetchTasks() }
+		.onAppear { viewModel.fetchTaskCategories() }
 		.sheet(isPresented: $viewModel.showingAddTaskView) {
 			AddTaskView(viewModel: viewModel)
 		}
@@ -49,17 +49,12 @@ extension TasksView {
 	
 	private var tasksList: some View {
 		VStack(alignment: .leading, spacing: 12) {
-			ForEach(viewModel.tasks, id: \.customHash) { task in
-				TaskRowView(
-					task: task,
-					showActionSheet: $viewModel.showingActionSheet,
-					showActionForTask: $viewModel.selectedTask
-				)
-				.onTapGesture { toggleTaskCompletion(task: task) }
-				
-				if task != viewModel.tasks.last {
-					Divider()
-						.padding(.leading, 20)
+			ForEach(viewModel.taskCategories, id: \.customHash) { category in
+				if !category.tasksList.isEmpty {
+					taskGroupView(
+						category: category,
+						showingActionSheet: $viewModel.showingActionSheet,
+						selectedTask: $viewModel.selectedTask)
 				}
 			}
 		}
@@ -90,5 +85,28 @@ extension TasksView {
 		UIImpactFeedbackGenerator(style: .light).impactOccurred()
 		task.isCompleted.toggle()
 		viewModel.fetchTasks()
+	}
+	
+	struct taskGroupView: View {
+		
+		let category: TaskCategory
+		
+		@Binding var showingActionSheet: Bool
+		@Binding var selectedTask: Task?
+		
+		var body: some View {
+			VStack(alignment: .leading, spacing: 20) {
+				Text(category.wrappedName)
+					.font(.handjet(.extraBold, size: 26))
+				
+				ForEach(category.tasksList, id: \.customHash) { task in
+					TaskRowView(
+						task: task,
+						showActionSheet: $showingActionSheet,
+						showActionForTask: $selectedTask
+					)
+				}
+			}
+		}
 	}
 }

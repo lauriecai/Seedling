@@ -116,7 +116,7 @@ extension AddTaskView {
 				
 			// add task into that category
 			withAnimation(.spring()) {
-				viewModel.addTask(category: nil, title: viewModel.taskTitleInput)
+				viewModel.addTask(categoryName: viewModel.taskCategoryInput, title: viewModel.taskTitleInput)
 			}
 			
 			dismiss()

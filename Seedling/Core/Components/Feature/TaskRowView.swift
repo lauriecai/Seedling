@@ -21,7 +21,6 @@ struct TaskRowView: View {
 			taskActions
 		}
 		.background(Color.theme.backgroundPrimary)
-		.padding(.horizontal, 20)
     }
 }
 
