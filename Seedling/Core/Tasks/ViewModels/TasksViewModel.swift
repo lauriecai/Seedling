@@ -12,20 +12,20 @@ class TasksViewModel: ObservableObject {
 	
 	let manager = CoreDataManager.shared
 	
+	// Tasks View
 	@Published var taskCategories: [TaskCategory] = []
 	@Published var tasks: [Task] = []
 
+	// Add Task View
 	@Published var taskTitleInput: String = ""
-	@Published var taskCategoryInput: TaskCategory? = nil
+	@Published var taskCategoryInput: String = ""
 	
 	// Segues
 	@Published var showingAddTaskView: Bool = false
+	@Published var selectedAddTaskViewIndex: Int = 0
 	
 	@Published var selectedTask: Task? = nil
 	@Published var showingActionSheet: Bool = false
-	
-	@Published var showingTaskCategorySelectionView: Bool = false
-	@Published var showingTaskCategoryCreationView: Bool = false
 	
 //	MARK: - Task Category functions
 	
@@ -68,7 +68,7 @@ class TasksViewModel: ObservableObject {
 	
 	func addTask(category: TaskCategory?, title: String) {
 		manager.addTask(category: category, title: title)
-		resetTaskTitleInput()
+		resetTaskInputsAndFlags()
 		fetchTasks()
 	}
 	
@@ -77,9 +77,13 @@ class TasksViewModel: ObservableObject {
 		fetchTasks()
 	}
 	
-	func resetTaskTitleInput() {
+	func resetTaskInputsAndFlags() {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 			self.taskTitleInput = ""
+			self.taskCategoryInput = ""
+			
+			self.showingAddTaskView = false
+			self.selectedAddTaskViewIndex = 0
 		}
 	}
 }

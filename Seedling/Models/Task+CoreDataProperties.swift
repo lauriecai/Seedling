@@ -42,7 +42,6 @@ extension Task {
 		
 		return hasher.finalize()
 	}
-
 }
 
 extension Task : Identifiable {

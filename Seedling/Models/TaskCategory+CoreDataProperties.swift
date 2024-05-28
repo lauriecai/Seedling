@@ -27,8 +27,6 @@ extension TaskCategory {
 	public var wrappedName: String {
 		name ?? ""
 	}
-	
-	
 }
 
 // MARK: Generated accessors for tasks

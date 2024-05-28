@@ -17,7 +17,7 @@ struct SeedlingApp: App {
 	init() {
 		UINavigationBar.appearance().titleTextAttributes = [
 			.foregroundColor: UIColor(Color.theme.textPrimary),
-			.font: UIFont(name: "Handjet-Bold", size: 24)!
+			.font: UIFont(name: "Handjet-ExtraBold", size: 24)!
 		]
 	}
 	
