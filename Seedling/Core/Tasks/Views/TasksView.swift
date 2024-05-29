@@ -48,7 +48,7 @@ struct TasksView: View {
 extension TasksView {
 	
 	private var tasksList: some View {
-		VStack(alignment: .leading, spacing: 12) {
+		VStack(alignment: .leading, spacing: 20) {
 			ForEach(viewModel.taskCategories, id: \.customHash) { category in
 				if !category.tasksList.isEmpty {
 					TaskGroupView(

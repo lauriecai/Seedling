@@ -16,9 +16,11 @@ struct TaskGroupView: View {
 	@Binding var selectedTask: Task?
 	
 	var body: some View {
-		VStack(alignment: .leading, spacing: 20) {
+		VStack(alignment: .leading, spacing: 15) {
+			if category.wrappedName != "None" {
 				Text(category.wrappedName)
-					.font(.handjet(.extraBold, size: 26))
+					.font(.handjet(.extraBold, size: 24))
+			}
 			
 			VStack(alignment: .leading, spacing: 10) {
 				ForEach(category.tasksList, id: \.customHash) { task in
@@ -29,11 +31,8 @@ struct TaskGroupView: View {
 					)
 					.onTapGesture {
 						UIImpactFeedbackGenerator(style: .light).impactOccurred()
-						print("tapped - \(task.wrappedTitle)")
-						print("isCompleted - \(task.isCompleted)")
 						task.isCompleted.toggle()
 						viewModel.fetchTaskCategories()
-						print("after toggle - \(task.isCompleted)\n-----")
 					}
 					
 					if task != category.tasksList.last {
