@@ -20,6 +20,7 @@ struct TaskGroupView: View {
 			if category.wrappedName != "None" {
 				Text(category.wrappedName)
 					.font(.handjet(.extraBold, size: 24))
+					.foregroundStyle(Color.theme.textPrimary)
 			}
 			
 			VStack(alignment: .leading, spacing: 10) {
