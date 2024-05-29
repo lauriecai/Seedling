@@ -92,7 +92,7 @@ extension AddTaskView {
 				Spacer()
 				
 				HStack(spacing: 15) {
-					Text("None")
+					Text(viewModel.taskCategoryInput)
 						.font(.handjet(.medium, size: 20))
 					
 					Text(">")
@@ -164,6 +164,7 @@ extension AddTaskView {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			withAnimation(.spring()) {
+				viewModel.eraseCategoryNameInput()
 				viewModel.selectedAddTaskViewIndex = 2
 			}
 		}
