@@ -21,7 +21,7 @@ class TasksViewModel: ObservableObject {
 	
 	// Category Selection View
 	@Published var selectedCategory: TaskCategory? = nil
-	@Published var selectedCategoryIndex: Int? = nil
+	@Published var selectedCategoryIndex: Int = 0
 	
 	// Segues
 	@Published var showingAddTaskView: Bool = false
@@ -35,6 +35,8 @@ class TasksViewModel: ObservableObject {
 			manager.addTaskCategory(name: "None")
 			fetchTaskCategories()
 		}
+		
+		selectedCategory = taskCategories.first(where: { $0.name == "None" })
 	}
 	
 	//	MARK: - Task Category functions

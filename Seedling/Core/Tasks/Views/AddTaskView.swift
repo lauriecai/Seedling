@@ -149,9 +149,17 @@ extension AddTaskView {
 				.foregroundStyle(Color.theme.textPrimary)
 				.frame(maxWidth: .infinity, alignment: .leading)
 			
-			ForEach(viewModel.taskCategories) { category in
-				CardSelectable(title: category.wrappedName, accentTheme: true, isSelected: false)
-			}
+//			ForEach(viewModel.taskCategories) { category in
+//				CardSelectable(title: category.wrappedName, accentTheme: true, isSelected: false)
+//			}
+			
+			CategorySelectionList(
+				viewModel: viewModel,
+				categories: viewModel.taskCategories,
+				accentTheme: true,
+				selectedPillLabel: "Selected",
+				selectedCategory: $viewModel.selectedCategory,
+				selectedCategoryIndex: $viewModel.selectedCategoryIndex)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.onAppear {
