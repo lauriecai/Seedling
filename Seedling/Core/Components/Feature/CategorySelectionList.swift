@@ -31,10 +31,12 @@ struct CategorySelectionList: View {
 						selectedPillLabel: selectedPillLabel
 					)
 					.onTapGesture {
-						selectedCategory = category
-						selectedCategoryIndex = index
-						viewModel.taskCategoryInput = category.wrappedName
-						viewModel.selectedAddTaskViewIndex = 0
+						withAnimation(.spring()) {
+							selectedCategory = category
+							selectedCategoryIndex = index
+							viewModel.taskCategoryInput = category.wrappedName
+							viewModel.selectedAddTaskViewIndex = 0
+						}
 					}
 				}
 			}

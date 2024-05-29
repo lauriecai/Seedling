@@ -34,6 +34,10 @@ struct TasksView: View {
 		.onAppear { viewModel.fetchTaskCategories() }
 		.sheet(isPresented: $viewModel.showingAddTaskView) {
 			AddTaskView(viewModel: viewModel)
+				.presentationDetents([.medium, .large])
+				.onDisappear {
+					viewModel.resetTaskInputsAndFlags()
+				}
 		}
 		.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
 			deleteTaskButton
