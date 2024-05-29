@@ -130,16 +130,6 @@ extension AddTaskView {
 		.foregroundStyle(Color.theme.textSecondary)
 	}
 	
-	struct SelectedCategory: View {
-		
-		let categoryName: String
-		
-		var body: some View {
-			Text(categoryName)
-				.font(.handjet(.medium, size: 20))
-		}
-	}
-	
 //	MARK: - Category Selection View
 	
 	private var categorySelectionView: some View {
@@ -148,10 +138,6 @@ extension AddTaskView {
 				.font(.handjet(.extraBold, size: 22))
 				.foregroundStyle(Color.theme.textPrimary)
 				.frame(maxWidth: .infinity, alignment: .leading)
-			
-//			ForEach(viewModel.taskCategories) { category in
-//				CardSelectable(title: category.wrappedName, accentTheme: true, isSelected: false)
-//			}
 			
 			CategorySelectionList(
 				viewModel: viewModel,
@@ -172,7 +158,7 @@ extension AddTaskView {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			withAnimation(.spring()) {
-				viewModel.eraseCategoryNameInput()
+				viewModel.eraseCategoryNameInputAndSelectedIndex()
 				viewModel.selectedAddTaskViewIndex = 2
 			}
 		}
