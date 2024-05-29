@@ -14,11 +14,10 @@ class TasksViewModel: ObservableObject {
 	
 	// Tasks View
 	@Published var taskCategories: [TaskCategory] = []
-	@Published var tasks: [Task] = []
 
 	// Add Task View
 	@Published var taskTitleInput: String = ""
-	@Published var taskCategoryInput: String = ""
+	@Published var taskCategoryInput: String = "None"
 	
 	// Category Selection View
 	@Published var selectedCategory: TaskCategory? = nil
@@ -60,25 +59,15 @@ class TasksViewModel: ObservableObject {
 	
 //	MARK: - Task functions
 	
-	func fetchTasks() {
-		let request = manager.requestTasks()
-		
-		do {
-			tasks = try manager.context.fetch(request)
-		} catch let error {
-			print("Error fetching tasks from Core Data. \(error)")
-		}
-	}
-	
 	func addTask(categoryName: String, title: String) {
 		manager.addTask(categoryName: categoryName, title: title, isCompleted: false)
 		resetTaskInputsAndFlags()
-		fetchTasks()
+		fetchTaskCategories()
 	}
 	
 	func deleteTask(task: Task) {
 		manager.deleteTask(task: task)
-		fetchTasks()
+		fetchTaskCategories()
 	}
 	
 	func resetTaskInputsAndFlags() {

@@ -110,11 +110,6 @@ extension AddTaskView {
 		Button("Add Task") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
-			// create a category using user's selection or newly entered text
-			
-			// assign that category to view model taskCategoryInput
-				
-			// add task into that category
 			withAnimation(.spring()) {
 				viewModel.addTask(categoryName: viewModel.taskCategoryInput, title: viewModel.taskTitleInput)
 			}
@@ -135,7 +130,7 @@ extension AddTaskView {
 		.foregroundStyle(Color.theme.textSecondary)
 	}
 	
-	struct selectedCategory: View {
+	struct SelectedCategory: View {
 		
 		let categoryName: String
 		

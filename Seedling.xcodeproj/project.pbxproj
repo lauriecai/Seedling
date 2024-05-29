@@ -44,6 +44,7 @@
 		D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78D2BBF2605006B015B /* MenuKebab.swift */; };
 		D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78F2BBF6F95006B015B /* PlantPost.swift */; };
 		D39187CC2BF5248100A7B375 /* EditGeneralDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */; };
+		D39643EB2C069CD500E9267F /* TaskGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39643EA2C069CD500E9267F /* TaskGroupView.swift */; };
 		D3B4116E2B9778C500CD1F41 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */; };
 		D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */; };
 		D3B635832BA0EB7600CE3BE1 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */; };
@@ -112,6 +113,7 @@
 		D38AB78D2BBF2605006B015B /* MenuKebab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuKebab.swift; sourceTree = "<group>"; };
 		D38AB78F2BBF6F95006B015B /* PlantPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPost.swift; sourceTree = "<group>"; };
 		D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGeneralDetailsCardView.swift; sourceTree = "<group>"; };
+		D39643EA2C069CD500E9267F /* TaskGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupView.swift; sourceTree = "<group>"; };
 		D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		D3B4117A2B979FCD00CD1F41 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				D3385B722B16F0420055234B /* PlantCardView.swift */,
 				D30CE7C32BA4DD9A00B28F67 /* EventCardView.swift */,
 				D37706B62BFEC37B005179E3 /* TaskRowView.swift */,
+				D39643EA2C069CD500E9267F /* TaskGroupView.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */,
 				D30CE7BC2BA4D2EE00B28F67 /* Event+CoreDataClass.swift in Sources */,
 				D30CE7BD2BA4D2EE00B28F67 /* Event+CoreDataProperties.swift in Sources */,
+				D39643EB2C069CD500E9267F /* TaskGroupView.swift in Sources */,
 				D349D9E32BE2EF4D0081ABE5 /* TextPill.swift in Sources */,
 				D3B4117B2B979FCD00CD1F41 /* TasksViewModel.swift in Sources */,
 				D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */,

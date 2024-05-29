@@ -35,9 +35,13 @@ extension TaskCategory {
 	
 	public var customHash: Int {
 		var hasher = Hasher()
-		hasher.combine(self.id)
-		hasher.combine(self.name)
-		hasher.combine(self.tasks)
+//		hasher.combine(self.wrappedID)
+//		hasher.combine(self.wrappedName)
+		
+		for task in tasksList {
+			hasher.combine(task.wrappedTitle)
+			hasher.combine(task.isCompleted)
+		}
 		
 		return hasher.finalize()
 	}

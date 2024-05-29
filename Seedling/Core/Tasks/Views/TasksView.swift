@@ -51,10 +51,12 @@ extension TasksView {
 		VStack(alignment: .leading, spacing: 12) {
 			ForEach(viewModel.taskCategories, id: \.customHash) { category in
 				if !category.tasksList.isEmpty {
-					taskGroupView(
+					TaskGroupView(
 						category: category,
+						viewModel: viewModel,
 						showingActionSheet: $viewModel.showingActionSheet,
-						selectedTask: $viewModel.selectedTask)
+						selectedTask: $viewModel.selectedTask
+					)
 				}
 			}
 		}
@@ -76,35 +78,6 @@ extension TasksView {
 			if let selectedTask = viewModel.selectedTask {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteTask(task: selectedTask)
-				}
-			}
-		}
-	}
-	
-	private func toggleTaskCompletion(task: Task) {
-		UIImpactFeedbackGenerator(style: .light).impactOccurred()
-		task.isCompleted.toggle()
-		viewModel.fetchTasks()
-	}
-	
-	struct taskGroupView: View {
-		
-		let category: TaskCategory
-		
-		@Binding var showingActionSheet: Bool
-		@Binding var selectedTask: Task?
-		
-		var body: some View {
-			VStack(alignment: .leading, spacing: 20) {
-				Text(category.wrappedName)
-					.font(.handjet(.extraBold, size: 26))
-				
-				ForEach(category.tasksList, id: \.customHash) { task in
-					TaskRowView(
-						task: task,
-						showActionSheet: $showingActionSheet,
-						showActionForTask: $selectedTask
-					)
 				}
 			}
 		}

@@ -36,8 +36,8 @@ extension Task {
 	
 	public var customHash: Int {
 		var hasher = Hasher()
-		hasher.combine(self.id)
-		hasher.combine(self.title)
+		hasher.combine(self.wrappedID)
+		hasher.combine(self.wrappedTitle)
 		hasher.combine(self.isCompleted)
 		
 		return hasher.finalize()
