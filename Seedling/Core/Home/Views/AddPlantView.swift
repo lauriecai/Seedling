@@ -34,7 +34,7 @@ struct AddPlantView: View {
 							plantTypeSelection
 						}
 					}
-					.padding()
+					.padding(.horizontal)
 				}
 				.navigationTitle(viewModel.editingExistingPlant ? "Edit Plant" : "New Plant")
 				.navigationBarTitleDisplayMode(.inline)

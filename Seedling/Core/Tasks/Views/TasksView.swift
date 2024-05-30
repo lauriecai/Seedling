@@ -17,27 +17,17 @@ struct TasksView: View {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
 			
-			ScrollView(showsIndicators: false) {
-				VStack(alignment: .leading, spacing: 20) {
-					Text("Tasks")
-						.font(.handjet(.extraBold, size: 32))
-						.foregroundStyle(Color.theme.textPrimary)
-						.frame(maxWidth: .infinity, alignment: .leading)
-					
-					tasksList
-				}
-				.padding(.horizontal)
+			VStack(alignment: .leading, spacing: 20) {
+				tasksHeader
+				tasksList
 			}
+			.padding(.horizontal)
 			
 			addTaskButton
 		}
 		.onAppear { viewModel.fetchTaskCategories() }
 		.sheet(isPresented: $viewModel.showingAddTaskView) {
 			AddTaskView(viewModel: viewModel)
-				.presentationDetents([.medium, .large])
-				.onDisappear {
-					viewModel.resetTaskInputsAndFlags()
-				}
 		}
 		.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
 			deleteTaskButton
@@ -51,18 +41,28 @@ struct TasksView: View {
 
 extension TasksView {
 	
+	private var tasksHeader: some View {
+		Text("Tasks")
+			.font(.handjet(.extraBold, size: 32))
+			.foregroundStyle(Color.theme.textPrimary)
+			.frame(maxWidth: .infinity, alignment: .leading)
+	}
+	
 	private var tasksList: some View {
-		VStack(alignment: .leading, spacing: 20) {
-			ForEach(viewModel.taskCategories, id: \.customHash) { category in
-				if !category.tasksList.isEmpty {
-					TaskGroupView(
-						category: category,
-						viewModel: viewModel,
-						showingActionSheet: $viewModel.showingActionSheet,
-						selectedTask: $viewModel.selectedTask
-					)
+		ScrollView(showsIndicators: false) {
+			VStack(alignment: .leading, spacing: 25) {
+				ForEach(viewModel.taskCategories, id: \.customHash) { category in
+					if !category.tasksList.isEmpty {
+						TaskGroupView(
+							category: category,
+							viewModel: viewModel,
+							showingActionSheet: $viewModel.showingActionSheet,
+							selectedTask: $viewModel.selectedTask
+						)
+					}
 				}
 			}
+			.padding(.bottom, 100)
 		}
 	}
 	

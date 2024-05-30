@@ -35,7 +35,7 @@ struct CategorySelectionList: View {
 							selectedCategory = category
 							selectedCategoryIndex = index
 							viewModel.taskCategoryInput = category.wrappedName
-							viewModel.selectedAddTaskViewIndex = 0
+							viewModel.showingAddTaskView.toggle()
 						}
 					}
 				}

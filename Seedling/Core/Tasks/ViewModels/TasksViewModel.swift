@@ -15,7 +15,7 @@ class TasksViewModel: ObservableObject {
 	// Tasks View
 	@Published var taskCategories: [TaskCategory] = []
 	
-	// Add Task View
+	// Add Task View / Category Creation View
 	@Published var taskTitleInput: String = ""
 	@Published var taskCategoryInput: String = "None"
 	
@@ -25,7 +25,8 @@ class TasksViewModel: ObservableObject {
 	
 	// Segues
 	@Published var showingAddTaskView: Bool = false
-	@Published var selectedAddTaskViewIndex: Int = 0
+	@Published var showingCategorySelectionView: Bool = false
+	@Published var showingCategoryCreationView: Bool = false
 	
 	@Published var selectedTask: Task? = nil
 	@Published var showingActionSheet: Bool = false
@@ -78,7 +79,7 @@ class TasksViewModel: ObservableObject {
 	func addTask(categoryName: String, title: String) {
 		manager.addTask(categoryName: categoryName, title: title, isCompleted: false)
 		resetTaskInputsAndFlags()
-		eraseCategoryNameInputAndSelectedIndex()
+		eraseCategoryNameInput()
 		fetchTaskCategories()
 	}
 	
@@ -91,14 +92,10 @@ class TasksViewModel: ObservableObject {
 		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 			self.taskTitleInput = ""
 			self.taskCategoryInput = "None"
-			
-			self.showingAddTaskView = false
-			self.selectedAddTaskViewIndex = 0
 		}
 	}
 	
-	func eraseCategoryNameInputAndSelectedIndex() {
+	func eraseCategoryNameInput() {
 		self.taskCategoryInput = ""
-		self.selectedCategoryIndex = 0
 	}
 }

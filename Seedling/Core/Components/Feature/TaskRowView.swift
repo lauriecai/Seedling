@@ -33,6 +33,7 @@ extension TaskRowView {
 			Text(task.wrappedTitle)
 				.font(.handjet(.medium, size: 20))
 				.foregroundStyle(Color.theme.textPrimary)
+				.padding(.top, 1)
 				.strikethrough(task.isCompleted ? true : false)
 				.opacity(task.isCompleted ? 0.40 : 1.0)
 		}
