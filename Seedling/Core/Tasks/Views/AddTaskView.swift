@@ -88,7 +88,7 @@ extension AddTaskView {
 		Button("Add Task") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
-			viewModel.addTask(categoryName: viewModel.taskCategoryInput, title: viewModel.taskTitleInput)
+			viewModel.addTask(categoryName: viewModel.selectedCategory?.wrappedName ?? "", title: viewModel.taskTitleInput)
 			
 			dismiss()
 		}
