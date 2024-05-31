@@ -13,28 +13,35 @@ struct CategoryCreationView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	@FocusState private var keyboardFocused: Bool
+	
     var body: some View {
-		ZStack {
-			Color.theme.backgroundPrimary
-				.ignoresSafeArea()
-			
-			ScrollView(showsIndicators: false) {
-				VStack(spacing: 15) {
-					TextInput(
-						inputHeader: "Category Name",
-						inputPlaceholder: "e.g. Wishlist",
-						headerDescription: nil,
-						text: $viewModel.taskCategoryInput
-					)
+		NavigationStack {
+			ZStack {
+				Color.theme.backgroundPrimary
+					.ignoresSafeArea()
+				
+				ScrollView(showsIndicators: false) {
+					VStack(spacing: 15) {
+						TextInput(
+							inputHeader: "Category Name",
+							inputPlaceholder: "e.g. Wishlist",
+							headerDescription: nil,
+							text: $viewModel.taskCategoryInput
+						)
+						.focused($keyboardFocused)
+						.onAppear { keyboardFocused.toggle() }
+					}
+					.padding(.horizontal)
 				}
-				.frame(maxWidth: .infinity, maxHeight: .infinity)
-			}
-			.navigationTitle("New Category")
-			.navigationBarTitleDisplayMode(.inline)
-			.navigationBarBackButtonHidden(true)
-			.toolbar {
-				ToolbarItem(placement: .topBarLeading) { backButton }
-				ToolbarItem(placement: .topBarTrailing) { createButton }
+				.navigationTitle("New Category")
+				.navigationBarTitleDisplayMode(.inline)
+				.navigationBarBackButtonHidden(true)
+				.toolbar {
+					ToolbarItem(placement: .topBarLeading) { backButton }
+					ToolbarItem(placement: .topBarTrailing) { createButton }
+				}
+				.onAppear { viewModel.eraseCategoryNameInput() }
 			}
 		}
     }
@@ -48,13 +55,9 @@ extension CategoryCreationView {
 	
 	private var createButton: some View {
 		Button("Create") {
-			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			
 			viewModel.addTaskCategory(name: viewModel.taskCategoryInput)
-			
-			withAnimation(.spring()) {
-				viewModel.showingCategoryCreationView.toggle()
-			}
+			viewModel.eraseCategoryNameInput()
+			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(viewModel.taskCategoryInput.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
@@ -63,6 +66,7 @@ extension CategoryCreationView {
 	
 	private var backButton: some View {
 		Button {
+			viewModel.resetSelectedCategory()
 			dismiss()
 		} label: {
 			HStack(spacing: 5) {

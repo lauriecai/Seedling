@@ -13,6 +13,8 @@ struct AddTaskView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	@FocusState private var keyboardFocused: Bool
+	
     var body: some View {
 		NavigationStack {
 			ZStack {
@@ -22,9 +24,12 @@ struct AddTaskView: View {
 				ScrollView(showsIndicators: false) {
 					VStack(alignment: .leading, spacing: 15) {
 						taskTitleInput
+							.focused($keyboardFocused)
+							.onAppear { keyboardFocused.toggle() }
+						
 						categorySelectionButton
 					}
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
+					.padding(.horizontal)
 				}
 			}
 			.navigationTitle("New Task")
@@ -56,11 +61,7 @@ extension AddTaskView {
 	}
 	
 	private var categorySelectionButton: some View {
-		Button {
-			withAnimation(.spring()) {
-				viewModel.showingCategorySelectionView.toggle()
-			}
-		} label: {
+		NavigationLink(destination: CategorySelectionView(viewModel: viewModel)) {
 			HStack {
 				Text("Category")
 					.font(.handjet(.bold, size: 20))
@@ -69,7 +70,7 @@ extension AddTaskView {
 				Spacer()
 				
 				HStack(spacing: 15) {
-					Text(viewModel.taskCategoryInput)
+					Text(viewModel.selectedCategory?.wrappedName ?? "")
 						.font(.handjet(.medium, size: 20))
 					
 					Text(">")
@@ -87,9 +88,7 @@ extension AddTaskView {
 		Button("Add Task") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
-			withAnimation(.spring()) {
-				viewModel.addTask(categoryName: viewModel.taskCategoryInput, title: viewModel.taskTitleInput)
-			}
+			viewModel.addTask(categoryName: viewModel.taskCategoryInput, title: viewModel.taskTitleInput)
 			
 			dismiss()
 		}
@@ -101,7 +100,7 @@ extension AddTaskView {
 	private var cancelButton: some View {
 		Button("Cancel") {
 			dismiss()
-			viewModel.resetTaskInputsAndFlags()
+			viewModel.resetTaskTitleAndCategoryNameInput()
 		}
 		.font(.handjet(.medium, size: 20))
 		.foregroundStyle(Color.theme.textSecondary)

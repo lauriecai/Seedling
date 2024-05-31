@@ -14,37 +14,40 @@ struct CategorySelectionView: View {
 	@Environment(\.dismiss) var dismiss
 	
     var body: some View {
-		ZStack {
-			Color.theme.backgroundPrimary
-				.ignoresSafeArea()
-			
-			ScrollView(showsIndicators: false) {
-				VStack(spacing: 10) {
-					Text("Select a category:")
-						.font(.handjet(.extraBold, size: 22))
-						.foregroundStyle(Color.theme.textPrimary)
-						.frame(maxWidth: .infinity, alignment: .leading)
-					
-					CategorySelectionList(
-						viewModel: viewModel,
-						categories: viewModel.taskCategories,
-						accentTheme: true,
-						selectedPillLabel: "Selected",
-						selectedCategory: $viewModel.selectedCategory,
-						selectedCategoryIndex: $viewModel.selectedCategoryIndex)
+		NavigationStack {
+			ZStack {
+				Color.theme.backgroundPrimary
+					.ignoresSafeArea()
+				
+				ScrollView(showsIndicators: false) {
+					VStack(spacing: 10) {
+						Text("Select a category:")
+							.font(.handjet(.extraBold, size: 22))
+							.foregroundStyle(Color.theme.textPrimary)
+							.frame(maxWidth: .infinity, alignment: .leading)
+						
+						CategorySelectionList(
+							viewModel: viewModel,
+							categories: viewModel.taskCategories,
+							accentTheme: true,
+							selectedPillLabel: "Selected",
+							selectedCategory: $viewModel.selectedCategory,
+							selectedCategoryIndex: $viewModel.selectedCategoryIndex
+						)
+					}
+					.padding(.horizontal)
 				}
-				.padding(.horizontal)
 			}
-		}
-		.navigationTitle("Category")
-		.navigationBarTitleDisplayMode(.inline)
-		.navigationBarBackButtonHidden(true)
-		.toolbar {
-			ToolbarItem(placement: .topBarLeading) { backButton }
-			ToolbarItem(placement: .topBarTrailing) { newCategoryButton }
-		}
-		.onAppear {
-			viewModel.fetchTaskCategories()
+			.navigationTitle("Category")
+			.navigationBarTitleDisplayMode(.inline)
+			.navigationBarBackButtonHidden(true)
+			.toolbar {
+				ToolbarItem(placement: .topBarLeading) { backButton }
+				ToolbarItem(placement: .topBarTrailing) { newCategoryButton }
+			}
+			.onAppear {
+				viewModel.fetchTaskCategories()
+			}
 		}
     }
 }
@@ -56,16 +59,11 @@ struct CategorySelectionView: View {
 extension CategorySelectionView {
 	
 	private var newCategoryButton: some View {
-		Button("New Category") {
-			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			
-			withAnimation(.spring()) {
-				viewModel.eraseCategoryNameInput()
-				viewModel.showingCategoryCreationView.toggle()
-			}
+		NavigationLink(destination: CategoryCreationView(viewModel: viewModel)) {
+			Text("New Category")
+				.font(.handjet(.extraBold, size: 20))
+				.foregroundStyle(Color.theme.accentGreen)
 		}
-		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(Color.theme.accentGreen)
 	}
 	
 	private var backButton: some View {

@@ -11,6 +11,8 @@ struct CategorySelectionList: View {
 	
 	let viewModel: TasksViewModel
 	
+	@Environment(\.dismiss) var dismiss
+	
 	let categories: [TaskCategory]
 	
 	let accentTheme: Bool
@@ -35,7 +37,9 @@ struct CategorySelectionList: View {
 							selectedCategory = category
 							selectedCategoryIndex = index
 							viewModel.taskCategoryInput = category.wrappedName
-							viewModel.showingAddTaskView.toggle()
+							DispatchQueue.main.asyncAfter(deadline: .now() + 0.20) {
+								dismiss()
+							}
 						}
 					}
 				}

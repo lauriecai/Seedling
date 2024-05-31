@@ -27,7 +27,9 @@ struct TasksView: View {
 		}
 		.onAppear { viewModel.fetchTaskCategories() }
 		.sheet(isPresented: $viewModel.showingAddTaskView) {
-			AddTaskView(viewModel: viewModel)
+			NavigationView {
+				AddTaskView(viewModel: viewModel)
+			}
 		}
 		.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
 			deleteTaskButton
@@ -75,6 +77,7 @@ extension TasksView {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddTaskView.toggle()
 			}
+		
 	}
 	
 	private var deleteTaskButton: some View {
