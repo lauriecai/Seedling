@@ -22,6 +22,10 @@ class TasksViewModel: ObservableObject {
 	@Published var selectedCategory: TaskCategory? = nil
 	@Published var selectedCategoryIndex: Int = 0
 	
+	@Published var showingActionSheet: Bool = false
+	
+	@Published var showingActionSheetForCategory: TaskCategory? = nil
+	
 	// Category Creation View
 	@Published var taskCategoryInput: String = ""
 	
@@ -29,7 +33,6 @@ class TasksViewModel: ObservableObject {
 	@Published var showingAddTaskView: Bool = false
 	
 	@Published var selectedTask: Task? = nil
-	@Published var showingActionSheet: Bool = false
 	
 	init() {
 		if taskCategories.isEmpty {

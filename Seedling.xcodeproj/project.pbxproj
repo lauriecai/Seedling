@@ -58,7 +58,6 @@
 		D3CBB1722BED5F260092096B /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBB1702BED5F260092096B /* Photo+CoreDataProperties.swift */; };
 		D3CD06452BF5546100E25369 /* EditCareRequirementsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD06442BF5546100E25369 /* EditCareRequirementsCardView.swift */; };
 		D3D87F6F2C06E9C300AF90A3 /* StageSelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D87F6E2C06E9C300AF90A3 /* StageSelectionList.swift */; };
-		D3D87F712C06E9E800AF90A3 /* CategorySelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D87F702C06E9E800AF90A3 /* CategorySelectionList.swift */; };
 		D3EA61C12B8FEA69002676F4 /* TextEditorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */; };
 		D3EFDE092B76B70C00A6D22C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */; };
 		D3EFDE0B2B77E74D00A6D22C /* ButtonCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE0A2B77E74D00A6D22C /* ButtonCircle.swift */; };
@@ -73,6 +72,7 @@
 		D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE512B82973F00A6D22C /* AddNoteView.swift */; };
 		D3EFDE542B8298D900A6D22C /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE532B8298D900A6D22C /* NoteCardView.swift */; };
 		D3F00EC12BF575EC006C7A5C /* EditAdditionalCareNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F00EC02BF575EC006C7A5C /* EditAdditionalCareNotesView.swift */; };
+		D3FCA4DA2C0CEE1700DC2213 /* CategorySelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,7 +129,6 @@
 		D3CBB1702BED5F260092096B /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3CD06442BF5546100E25369 /* EditCareRequirementsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCareRequirementsCardView.swift; sourceTree = "<group>"; };
 		D3D87F6E2C06E9C300AF90A3 /* StageSelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectionList.swift; sourceTree = "<group>"; };
-		D3D87F702C06E9E800AF90A3 /* CategorySelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionList.swift; sourceTree = "<group>"; };
 		D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorInput.swift; sourceTree = "<group>"; };
 		D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		D3EFDE0A2B77E74D00A6D22C /* ButtonCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCircle.swift; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 		D3EFDE512B82973F00A6D22C /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
 		D3EFDE532B8298D900A6D22C /* NoteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCardView.swift; sourceTree = "<group>"; };
 		D3F00EC02BF575EC006C7A5C /* EditAdditionalCareNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAdditionalCareNotesView.swift; sourceTree = "<group>"; };
+		D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,7 +166,6 @@
 				D37706B62BFEC37B005179E3 /* TaskRowView.swift */,
 				D39643EA2C069CD500E9267F /* TaskGroupView.swift */,
 				D3D87F6E2C06E9C300AF90A3 /* StageSelectionList.swift */,
-				D3D87F702C06E9E800AF90A3 /* CategorySelectionList.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -179,6 +178,7 @@
 				D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */,
 				D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */,
 				D349D9E02BE2E7A30081ABE5 /* CardSelectable.swift */,
+				D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */,
 				D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */,
 				D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */,
 				D338A1DF2B71B98400E3676E /* NavigationTab.swift */,
@@ -504,7 +504,6 @@
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
 				D3564EAB2C0852BA0045BDBC /* CategoryCreationView.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
-				D3D87F712C06E9E800AF90A3 /* CategorySelectionList.swift in Sources */,
 				D3BBD8B42B6C106E0061FE92 /* CoreDataManager.swift in Sources */,
 				D31FBCFC2B8D205300C10F9D /* ButtonPillRow.swift in Sources */,
 				D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */,
@@ -512,6 +511,7 @@
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3D87F6F2C06E9C300AF90A3 /* StageSelectionList.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
+				D3FCA4DA2C0CEE1700DC2213 /* CategorySelectionCard.swift in Sources */,
 				D3CBB16A2BED46A90092096B /* PhotoPickerCoordinator.swift in Sources */,
 				D30CE7C42BA4DD9A00B28F67 /* EventCardView.swift in Sources */,
 				D31FBCF42B86B8C900C10F9D /* UINavigationController.swift in Sources */,

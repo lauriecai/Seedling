@@ -25,8 +25,7 @@ struct StageSelectionList<T>: View where T: Hashable & RawRepresentable & Defina
 						title: item.rawValue,
 						description: item.definition,
 						accentTheme: accentTheme,
-						isSelected: index == selectedItemIndex,
-						selectedPillLabel: selectedPillLabel
+						isSelected: index == selectedItemIndex
 					)
 					.onTapGesture {
 						selectedItem = item

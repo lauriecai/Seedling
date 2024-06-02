@@ -15,23 +15,6 @@ struct CardSelectable: View {
 	let accentTheme: Bool
 	
 	let isSelected: Bool
-	let selectedPillLabel: String
-	
-	init(title: String, description: String?, accentTheme: Bool, isSelected: Bool, selectedPillLabel: String) {
-		self.title = title
-		self.description = description
-		self.accentTheme = accentTheme
-		self.isSelected = isSelected
-		self.selectedPillLabel = selectedPillLabel
-	}
-	
-	init(title: String, accentTheme: Bool, isSelected: Bool) {
-		self.title = title
-		self.accentTheme = accentTheme
-		self.isSelected = isSelected
-		self.description = nil
-		self.selectedPillLabel = "Selected"
-	}
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 5) {
@@ -41,7 +24,7 @@ struct CardSelectable: View {
 					.foregroundStyle(Color.theme.textPrimary)
 				
 				if isSelected {
-					TextPill(label: selectedPillLabel, backgroundColor: accentTheme ? Color.theme.accentYellow : Color.theme.accentLightGreen)
+					TextPill(label: "Selected", backgroundColor: accentTheme ? Color.theme.accentYellow : Color.theme.accentLightGreen)
 				}
 			}
 			
@@ -66,8 +49,7 @@ struct CardSelectable: View {
 				title: "Seed",
 				description: "A small object from which a new plant can grow.", 
 				accentTheme: true,
-				isSelected: true,
-				selectedPillLabel: "Selected"
+				isSelected: true
 			)
 		}
 	}
