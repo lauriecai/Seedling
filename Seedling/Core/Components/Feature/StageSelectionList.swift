@@ -30,7 +30,6 @@ struct StageSelectionList<T>: View where T: Hashable & RawRepresentable & Defina
 					.onTapGesture {
 						selectedItem = item
 						selectedItemIndex = index
-						print("Card tapped!")
 					}
 				}
 			}

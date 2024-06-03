@@ -37,7 +37,6 @@ struct CategorySelectionView: View {
 				ToolbarItem(placement: .topBarTrailing) { newCategoryButton }
 			}
 			.confirmationDialog("Category Options", isPresented: $showingActionSheet) {
-				editCategoryButton
 				deleteCategoryButton
 			} message: {
 				Text("What do you want to do with this category?")
@@ -66,14 +65,6 @@ extension CategorySelectionView {
 		ScrollView(showsIndicators: false) {
 			VStack(alignment: .leading, spacing: 10) {
 				ForEach(Array(viewModel.taskCategories.enumerated()), id: \.1) { index, category in
-//					CardSelectable(
-//						title: category.wrappedName,
-//						accentTheme: true,
-//						isSelected: index == viewModel.selectedCategoryIndex,
-//						isActionable: category.wrappedName == "None" ? false : true,
-//						showActionSheet: $showingActionSheet,
-//						showActionSheetForCategory:
-//					)
 					CategorySelectionCard(
 						category: category,
 						isSelected: index == viewModel.selectedCategoryIndex,
@@ -86,7 +77,6 @@ extension CategorySelectionView {
 							viewModel.taskCategoryInput = category.wrappedName
 							dismiss()
 						}
-						print("Card tapped")
 					}
 				}
 			}
@@ -98,12 +88,6 @@ extension CategorySelectionView {
 			Text("New Category")
 				.font(.handjet(.extraBold, size: 20))
 				.foregroundStyle(Color.theme.accentGreen)
-		}
-	}
-	
-	private var editCategoryButton: some View {
-		Button("Edit Category") {
-			print("Edit tapped")
 		}
 	}
 	

@@ -23,6 +23,12 @@ struct CategorySelectionCard: View {
 					.font(.handjet(.bold, size: 20))
 					.foregroundStyle(Color.theme.textPrimary)
 				
+				if !category.tasksList.isEmpty {
+					Text("\(category.tasksList.count) \(taskString)")
+						.font(.handjet(.bold, size: 18))
+						.foregroundStyle(Color.theme.textSecondary)
+				}
+				
 				if isSelected {
 					TextPill(label: "Selected", backgroundColor: Color.theme.accentYellow)
 				}
@@ -54,6 +60,10 @@ extension CategorySelectionCard {
 	private var selectedBorder: some View {
 		RoundedRectangle(cornerRadius: 8)
 			.stroke(Color.theme.textPrimary, lineWidth: 8)
+	}
+	
+	private var taskString: String {
+		category.tasksList.count >= 2 ? "tasks" : "task"
 	}
 }
 //
