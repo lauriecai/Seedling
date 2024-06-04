@@ -72,6 +72,7 @@
 		D3F00EC12BF575EC006C7A5C /* EditAdditionalCareNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F00EC02BF575EC006C7A5C /* EditAdditionalCareNotesView.swift */; };
 		D3FCA4DA2C0CEE1700DC2213 /* CategorySelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */; };
 		D3FCA4DC2C0F91D400DC2213 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4DB2C0F91D400DC2213 /* TasksViewModel.swift */; };
+		D3FCA4DE2C0FB12F00DC2213 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4DD2C0FB12F00DC2213 /* UINavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +143,7 @@
 		D3F00EC02BF575EC006C7A5C /* EditAdditionalCareNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAdditionalCareNotesView.swift; sourceTree = "<group>"; };
 		D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionCard.swift; sourceTree = "<group>"; };
 		D3FCA4DB2C0F91D400DC2213 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		D3FCA4DD2C0FB12F00DC2213 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				D3385B422B164C330055234B /* Color.swift */,
 				D338A1E32B71D83300E3676E /* Date.swift */,
 				D3385B6A2B16DEC80055234B /* Font.swift */,
+				D3FCA4DD2C0FB12F00DC2213 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 				D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */,
 				D3B635832BA0EB7600CE3BE1 /* Dropdown.swift in Sources */,
 				D3EA61C12B8FEA69002676F4 /* TextEditorInput.swift in Sources */,
+				D3FCA4DE2C0FB12F00DC2213 /* UINavigationController.swift in Sources */,
 				D3564EA92C0852AB0045BDBC /* CategorySelectionView.swift in Sources */,
 				D3EFDE122B79387100A6D22C /* DetailView.swift in Sources */,
 				D37706B72BFEC37B005179E3 /* TaskRowView.swift in Sources */,
