@@ -18,6 +18,10 @@ class TasksViewModel: ObservableObject {
 	// Add Task View
 	@Published var taskTitleInput: String = ""
 	
+	@Published var editingExistingTask: Bool = false
+	@Published var taskDetailsEdited: Bool = false
+	
+	
 	// Category Selection View
 	@Published var selectedCategory: TaskCategory? = nil
 	@Published var selectedCategoryIndex: Int = 0
@@ -88,6 +92,16 @@ class TasksViewModel: ObservableObject {
 		fetchTaskCategories()
 	}
 	
+	func updateTask(task: Task, title: String, categoryName: String) {
+		manager.updateTask(task: task, title: title, categoryName: categoryName)
+		fetchTaskCategories()
+	}
+	
+	func fetchExistingTaskDetails(for task: Task) {
+		taskTitleInput = task.wrappedTitle
+		selectedCategory = task.category
+	}
+	
 	func deleteTask(task: Task) {
 		manager.deleteTask(task: task)
 		fetchTaskCategories()
@@ -97,6 +111,10 @@ class TasksViewModel: ObservableObject {
 		self.taskTitleInput = ""
 		self.resetSelectedCategory()
 		self.eraseCategoryNameInput()
+	}
+	
+	func resetTaskDetailsChangedFlag() {
+		taskDetailsEdited = false
 	}
 	
 	func resetSelectedCategory() {

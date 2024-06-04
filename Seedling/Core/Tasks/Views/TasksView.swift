@@ -32,6 +32,7 @@ struct TasksView: View {
 				}
 			}
 			.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
+				editTaskButton
 				deleteTaskButton
 			}
 		}
@@ -78,7 +79,18 @@ extension TasksView {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddTaskView.toggle()
 			}
-		
+	}
+	
+	private var editTaskButton: some View {
+		Button("Edit Task") {
+			viewModel.resetTaskDetailsChangedFlag()
+			
+			if let selectedTask = viewModel.selectedTask {
+				viewModel.editingExistingTask = true
+				viewModel.showingAddTaskView = true
+				viewModel.fetchExistingTaskDetails(for: selectedTask)
+			}
+		}
 	}
 	
 	private var deleteTaskButton: some View {

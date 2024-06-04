@@ -37,7 +37,13 @@ struct AddTaskView: View {
 			.navigationBarBackButtonHidden(true)
 			.toolbar {
 				ToolbarItem(placement: .topBarLeading) { cancelButton }
-				ToolbarItem(placement: .topBarTrailing) { addTaskButton }
+				ToolbarItem(placement: .topBarTrailing) {
+					if viewModel.editingExistingTask {
+						saveChangesButton
+					} else {
+						addTaskButton
+					}
+				}
 			}
 		}
     }
@@ -88,13 +94,29 @@ extension AddTaskView {
 		Button("Add Task") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
-			viewModel.addTask(categoryName: viewModel.selectedCategory?.wrappedName ?? "", title: viewModel.taskTitleInput)
+			viewModel.addTask(
+				categoryName: viewModel.selectedCategory?.wrappedName ?? "",
+				title: viewModel.taskTitleInput)
 			
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(viewModel.taskTitleInput.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
 		.disabled(viewModel.taskTitleInput.isEmpty)
+	}
+	
+	private var saveChangesButton: some View {
+		Button("Save Changes") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			if let selectedTask = viewModel.selectedTask {
+				viewModel.updateTask(
+					task: selectedTask,
+					title: viewModel.taskTitleInput,
+					categoryName: viewModel.selectedCategory?.wrappedName ?? "")
+			}
+			dismiss()
+		}
+		
 	}
 	
 	private var cancelButton: some View {

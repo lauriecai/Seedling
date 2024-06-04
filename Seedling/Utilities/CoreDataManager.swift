@@ -241,6 +241,14 @@ class CoreDataManager {
 		save()
 	}
 	
+	func updateTask(task: Task, title: String, categoryName: String) {
+		task.title = title
+		task.category = TaskCategory(context: context)
+		task.category?.name = categoryName
+		
+		save()
+	}
+	
 	func deleteTask(task: Task) {
 		context.delete(task)
 		save()
