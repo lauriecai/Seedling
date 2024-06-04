@@ -87,7 +87,7 @@ class TasksViewModel: ObservableObject {
 	
 	func addTask(categoryName: String, title: String) {
 		manager.addTask(categoryName: categoryName, title: title, isCompleted: false)
-		resetTaskTitleAndCategoryNameInput()
+		resetTaskTitleAndCategoryNameInputsAndFlags()
 		eraseCategoryNameInput()
 		fetchTaskCategories()
 	}
@@ -107,10 +107,12 @@ class TasksViewModel: ObservableObject {
 		fetchTaskCategories()
 	}
 	
-	func resetTaskTitleAndCategoryNameInput() {
+	func resetTaskTitleAndCategoryNameInputsAndFlags() {
 		self.taskTitleInput = ""
 		self.resetSelectedCategory()
 		self.eraseCategoryNameInput()
+		
+		self.editingExistingTask = false
 	}
 	
 	func resetTaskDetailsChangedFlag() {

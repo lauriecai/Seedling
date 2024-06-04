@@ -32,7 +32,7 @@ struct AddTaskView: View {
 					.padding(.horizontal)
 				}
 			}
-			.navigationTitle("New Task")
+			.navigationTitle(viewModel.editingExistingTask ? "Edit Task" : "New Task")
 			.navigationBarTitleDisplayMode(.inline)
 			.navigationBarBackButtonHidden(true)
 			.toolbar {
@@ -110,11 +110,15 @@ extension AddTaskView {
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			
 			if let selectedTask = viewModel.selectedTask {
 				viewModel.updateTask(
 					task: selectedTask,
 					title: viewModel.taskTitleInput,
-					categoryName: viewModel.selectedCategory?.wrappedName ?? "")
+					categoryName: viewModel.selectedCategory?.wrappedName ?? ""
+				)
+				
+				viewModel.resetTaskTitleAndCategoryNameInputsAndFlags()
 			}
 			dismiss()
 		}
@@ -126,7 +130,7 @@ extension AddTaskView {
 	private var cancelButton: some View {
 		Button("Cancel") {
 			dismiss()
-			viewModel.resetTaskTitleAndCategoryNameInput()
+			viewModel.resetTaskTitleAndCategoryNameInputsAndFlags()
 		}
 		.font(.handjet(.medium, size: 20))
 		.foregroundStyle(Color.theme.textSecondary)

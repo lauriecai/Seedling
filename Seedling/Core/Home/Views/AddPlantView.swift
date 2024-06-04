@@ -111,12 +111,15 @@ extension AddPlantView {
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			
 			if let selectedPlant = viewModel.selectedPlant {
 				viewModel.updatePlantNameAndVariety(
 					for: selectedPlant,
 					name: viewModel.plantName,
 					variety: viewModel.plantVariety
 				)
+				
+				viewModel.resetAddPlantFormInputsAndFlags()
 			}
 			dismiss()
 		}
