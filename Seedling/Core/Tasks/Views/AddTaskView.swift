@@ -45,6 +45,8 @@ struct AddTaskView: View {
 					}
 				}
 			}
+			.onChange(of: viewModel.taskTitleInput) { viewModel.taskDetailsEdited = true }
+			.onChange(of: viewModel.selectedCategory) { viewModel.taskDetailsEdited = true }
 		}
     }
 }
@@ -116,7 +118,9 @@ extension AddTaskView {
 			}
 			dismiss()
 		}
-		
+		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.taskDetailsEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.taskDetailsEdited)
 	}
 	
 	private var cancelButton: some View {
