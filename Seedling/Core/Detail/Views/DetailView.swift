@@ -166,7 +166,7 @@ extension DetailView {
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
-					viewModel.showingAddPostOptions = true
+					viewModel.showingAddPostOptions.toggle()
 				}
 			}
 			.rotationEffect(viewModel.showingAddPostOptions ? .degrees(45) : .degrees(0))
