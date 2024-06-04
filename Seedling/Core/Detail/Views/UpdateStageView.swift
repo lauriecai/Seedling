@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-struct UpdateStageLoadingView: View {
-	
-	let viewModel: DetailViewModel
-	
-	var body: some View {
-		UpdateStageView(viewModel: viewModel)
-	}
-}
-
 struct UpdateStageView: View {
 	
 	@ObservedObject var viewModel: DetailViewModel
@@ -27,34 +18,32 @@ struct UpdateStageView: View {
 	}
 	
     var body: some View {
-		NavigationStack {
-			ZStack {
-				Color.theme.backgroundPrimary
-					.ignoresSafeArea()
-				
-				VStack {
-					updateStagePrompt
+		ZStack {
+			Color.theme.backgroundPrimary
+				.ignoresSafeArea()
+			
+			VStack {
+				updateStagePrompt
 
-					StageSelectionList(
-						items: PlantStage.allCases, 
-						accentTheme: true,
-						selectedPillLabel: "Selected",
-						selectedItem: $viewModel.plantStage,
-						selectedItemIndex: $viewModel.selectedStageIndex
-					)
-				}
-				.padding()
+				StageSelectionList(
+					items: PlantStage.allCases,
+					accentTheme: true,
+					selectedPillLabel: "Selected",
+					selectedItem: $viewModel.plantStage,
+					selectedItemIndex: $viewModel.selectedStageIndex
+				)
 			}
-			.navigationTitle("Update Stage")
-			.navigationBarTitleDisplayMode(.inline)
-			.navigationBarBackButtonHidden(true)
-			.onAppear { viewModel.fetchPlantStage(for: viewModel.plant) }
-			.toolbar {
-				ToolbarItem(placement: .topBarLeading) { cancelButton }
-				ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
-			}
-			.onChange(of: viewModel.plantStage) { viewModel.plantStageUpdated = true }
+			.padding()
 		}
+		.navigationTitle("Update Stage")
+		.navigationBarTitleDisplayMode(.inline)
+		.navigationBarBackButtonHidden(true)
+		.onAppear { viewModel.fetchPlantStage(for: viewModel.plant) }
+		.toolbar {
+			ToolbarItem(placement: .topBarLeading) { cancelButton }
+			ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
+		}
+		.onChange(of: viewModel.plantStage) { viewModel.plantStageUpdated = true }
     }
 }
 

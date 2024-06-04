@@ -2,7 +2,7 @@
 //  TasksViewModel.swift
 //  Seedling
 //
-//  Created by Laurie Cai on 3/5/24.
+//  Created by Laurie Cai on 6/4/24.
 //
 
 import CoreData
@@ -94,11 +94,9 @@ class TasksViewModel: ObservableObject {
 	}
 	
 	func resetTaskTitleAndCategoryNameInput() {
-		DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-			self.taskTitleInput = ""
-			self.resetSelectedCategory()
-			self.eraseCategoryNameInput()
-		}
+		self.taskTitleInput = ""
+		self.resetSelectedCategory()
+		self.eraseCategoryNameInput()
 	}
 	
 	func resetSelectedCategory() {
@@ -110,4 +108,3 @@ class TasksViewModel: ObservableObject {
 		self.taskCategoryInput = ""
 	}
 }
-

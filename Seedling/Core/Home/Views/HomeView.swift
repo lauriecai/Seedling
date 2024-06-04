@@ -11,31 +11,33 @@ struct HomeView: View {
 	
 	@EnvironmentObject private var viewModel: HomeViewModel
 	
-    var body: some View {
-		ZStack(alignment: .bottomTrailing) {
-			Color.theme.backgroundPrimary
-				.ignoresSafeArea()
-			
-			VStack(alignment: .leading, spacing: 15) {
-				dateHeader
-				plantsList
+	var body: some View {
+		NavigationStack {
+			ZStack(alignment: .bottomTrailing) {
+				Color.theme.backgroundPrimary
+					.ignoresSafeArea()
+				
+				VStack(alignment: .leading, spacing: 15) {
+					dateHeader
+					plantsList
+				}
+				.padding(.horizontal)
+				
+				addPlantButton
 			}
-			.padding(.horizontal)
-			
-			addPlantButton
-		}
-		.navigationDestination(isPresented: $viewModel.showingDetailView) {
-			DetailLoadingView(plant: $viewModel.selectedPlant)
-		}
-		.sheet(isPresented: $viewModel.showingAddPlantView) { AddPlantView() }
-		.confirmationDialog("Plant Options", isPresented: $viewModel.showingActionSheet) {
-			editPlantNameButton
-			deletePlantButton
-		} message: {
-			Text("What do you want to do with this plant?")
-		}
-		.onAppear {
-			viewModel.fetchPlants()
+			.navigationDestination(for: Plant.self) { plant in
+				DetailView(plant: plant)
+			}
+			.sheet(isPresented: $viewModel.showingAddPlantView) { AddPlantView() }
+			.confirmationDialog("Plant Options", isPresented: $viewModel.showingActionSheet) {
+				editPlantNameButton
+				deletePlantButton
+			} message: {
+				Text("What do you want to do with this plant?")
+			}
+			.onAppear {
+				viewModel.fetchPlants()
+			}
 		}
     }
 }
@@ -60,14 +62,12 @@ extension HomeView {
 		ScrollView(showsIndicators: false) {
 			VStack {
 				ForEach(viewModel.plants, id: \.self.customHash) { plant in
-					PlantCardView(
-						plant: plant,
-						showActionSheet: $viewModel.showingActionSheet,
-						showActionForPlant: $viewModel.selectedPlant
-					)
-					.onTapGesture {
-						UIImpactFeedbackGenerator(style: .light).impactOccurred()
-						segue(plant: plant)
+					NavigationLink(value: plant) {
+						PlantCardView(
+							plant: plant,
+							showActionSheet: $viewModel.showingActionSheet,
+							showActionForPlant: $viewModel.selectedPlant
+						)
 					}
 				}
 			}
@@ -106,15 +106,5 @@ extension HomeView {
 				}
 			}
 		}
-	}
-}
-
-// MARK: - Functions
-
-extension HomeView {
-	
-	private func segue(plant: Plant) {
-		viewModel.selectedPlant = plant
-		viewModel.showingDetailView.toggle()
 	}
 }

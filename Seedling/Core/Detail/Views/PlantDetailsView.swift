@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-struct PlantDetailsLoadingView: View {
-	
-	let viewModel: DetailViewModel
-	
-	var body: some View {
-		PlantDetailsView(viewModel: viewModel)
-	}
-}
-
 struct PlantDetailsView: View {
 	
 	@ObservedObject var viewModel: DetailViewModel

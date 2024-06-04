@@ -7,19 +7,6 @@
 
 import SwiftUI
 
-struct DetailLoadingView: View {
-	
-	@Binding var plant: Plant?
-	
-	var body: some View {
-		ZStack {
-			if let plant = plant {
-				DetailView(plant: plant)
-			}
-		}
-	}
-}
-
 struct DetailView: View {
 	
 	@StateObject private var viewModel: DetailViewModel
@@ -52,13 +39,13 @@ struct DetailView: View {
 			viewModel.showingAddPostOptions = false
 		}
 		.navigationDestination(isPresented: $viewModel.showingAddNoteLoadingView) {
-			AddNoteLoadingView(viewModel: viewModel)
+			AddNoteView(viewModel: viewModel)
 		}
 		.navigationDestination(isPresented: $viewModel.showingPlantDetailsLoadingView) {
-			PlantDetailsLoadingView(viewModel: viewModel)
+			PlantDetailsView(viewModel: viewModel)
 		}
 		.sheet(isPresented: $viewModel.showingUpdateStageLoadingView) {
-			UpdateStageLoadingView(viewModel: viewModel)
+			UpdateStageView(viewModel: viewModel)
 		}
     }
 }
@@ -162,7 +149,7 @@ extension DetailView {
 		ButtonRounded(iconName: "pencil", text: "Add Note")
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
-				viewModel.showingAddNoteLoadingView.toggle()
+				viewModel.showingAddNoteLoadingView = true
 			}
 	}
 	
@@ -170,7 +157,7 @@ extension DetailView {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
-				viewModel.showingUpdateStageLoadingView.toggle()
+				viewModel.showingUpdateStageLoadingView = true
 			}
 	}
 	
@@ -179,7 +166,7 @@ extension DetailView {
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
-					viewModel.showingAddPostOptions.toggle()
+					viewModel.showingAddPostOptions = true
 				}
 			}
 			.rotationEffect(viewModel.showingAddPostOptions ? .degrees(45) : .degrees(0))

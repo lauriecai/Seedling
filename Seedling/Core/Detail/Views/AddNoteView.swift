@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-struct AddNoteLoadingView: View {
-	
-	let viewModel: DetailViewModel
-	
-	var body: some View {
-		AddNoteView(viewModel: viewModel)
-	}
-}
-
 struct AddNoteView: View {
 	
 	@ObservedObject var viewModel: DetailViewModel
@@ -25,39 +16,37 @@ struct AddNoteView: View {
 	@FocusState private var keyboardFocused: Bool
 	
     var body: some View {
-		NavigationStack {
-			ZStack {
-				Color.theme.backgroundPrimary
-					.ignoresSafeArea()
-				
-				ScrollView(showsIndicators: false) {
-					VStack(spacing: 15) {
-						notePrompt
-						noteTitleInput
-							.focused($keyboardFocused)
-							.onAppear { keyboardFocused.toggle() }
-						noteBodyInput
-					}
-					.padding()
+		ZStack {
+			Color.theme.backgroundPrimary
+				.ignoresSafeArea()
+			
+			ScrollView(showsIndicators: false) {
+				VStack(spacing: 15) {
+					notePrompt
+					noteTitleInput
+						.focused($keyboardFocused)
+						.onAppear { keyboardFocused.toggle() }
+					noteBodyInput
 				}
+				.padding()
 			}
-			.navigationTitle(viewModel.editingExistingNote ? "Edit Note" : "New Note")
-			.navigationBarTitleDisplayMode(.inline)
-			.navigationBarBackButtonHidden(true)
-			.toolbar {
-				ToolbarItem(placement: .topBarLeading) { backButton }
-				ToolbarItem(placement: .topBarTrailing) {
-					if viewModel.editingExistingNote {
-						saveChangesButton
-					} else {
-						addNoteButton
-					}
-				}
-			}
-			.keyboardType(.default)
-			.onChange(of: viewModel.noteTitle) { viewModel.noteEdited = true }
-			.onChange(of: viewModel.noteBodyText) { viewModel.noteEdited = true }
 		}
+		.navigationTitle(viewModel.editingExistingNote ? "Edit Note" : "New Note")
+		.navigationBarTitleDisplayMode(.inline)
+		.navigationBarBackButtonHidden(true)
+		.toolbar {
+			ToolbarItem(placement: .topBarLeading) { backButton }
+			ToolbarItem(placement: .topBarTrailing) {
+				if viewModel.editingExistingNote {
+					saveChangesButton
+				} else {
+					addNoteButton
+				}
+			}
+		}
+		.keyboardType(.default)
+		.onChange(of: viewModel.noteTitle) { viewModel.noteEdited = true }
+		.onChange(of: viewModel.noteBodyText) { viewModel.noteEdited = true }
     }
 }
 

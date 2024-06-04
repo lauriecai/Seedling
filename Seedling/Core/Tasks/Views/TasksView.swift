@@ -12,27 +12,28 @@ struct TasksView: View {
 	@StateObject private var viewModel = TasksViewModel()
 	
     var body: some View {
-		ZStack(alignment: .bottomTrailing) {
-			
-			Color.theme.backgroundPrimary
-				.ignoresSafeArea()
-			
-			VStack(alignment: .leading, spacing: 20) {
-				tasksHeader
-				tasksList
+		NavigationStack {
+			ZStack(alignment: .bottomTrailing) {
+				Color.theme.backgroundPrimary
+					.ignoresSafeArea()
+				
+				VStack(alignment: .leading, spacing: 20) {
+					tasksHeader
+					tasksList
+				}
+				.padding(.horizontal)
+				
+				addTaskButton
 			}
-			.padding(.horizontal)
-			
-			addTaskButton
-		}
-		.onAppear { viewModel.fetchTaskCategories() }
-		.sheet(isPresented: $viewModel.showingAddTaskView) {
-			NavigationView {
-				AddTaskView(viewModel: viewModel)
+			.onAppear { viewModel.fetchTaskCategories() }
+			.sheet(isPresented: $viewModel.showingAddTaskView) {
+				NavigationView {
+					AddTaskView(viewModel: viewModel)
+				}
 			}
-		}
-		.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
-			deleteTaskButton
+			.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
+				deleteTaskButton
+			}
 		}
     }
 }
