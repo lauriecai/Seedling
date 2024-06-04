@@ -34,6 +34,8 @@ struct TasksView: View {
 			.confirmationDialog("Task Options", isPresented: $viewModel.showingActionSheet) {
 				editTaskButton
 				deleteTaskButton
+			} message: {
+				Text("What do you want to do with this task?")
 			}
 		}
     }
