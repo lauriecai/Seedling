@@ -135,7 +135,7 @@ extension DetailView {
 			addPostButton
 		}
 		.padding(.horizontal, 20)
-		.padding(.bottom, 20)
+		.padding(.bottom, 25)
 	}
 	
 	private var addPostOptionsButtons: some View {

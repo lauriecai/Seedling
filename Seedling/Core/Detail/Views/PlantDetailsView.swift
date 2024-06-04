@@ -25,6 +25,7 @@ struct PlantDetailsView: View {
 					additionalCareNotesCard
 				}
 				.padding(.horizontal)
+				.padding(.bottom, 50)
 			}
 		}
 		.navigationTitle("Plant Details")

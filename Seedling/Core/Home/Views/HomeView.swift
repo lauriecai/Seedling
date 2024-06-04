@@ -19,7 +19,12 @@ struct HomeView: View {
 				
 				VStack(alignment: .leading, spacing: 15) {
 					dateHeader
-					plantsList
+					
+					if viewModel.plants.isEmpty {
+						nullState
+					} else {
+						plantsList
+					}
 				}
 				.padding(.horizontal)
 				
@@ -56,6 +61,21 @@ extension HomeView {
 			.font(.handjet(.extraBold, size: 32))
 			.foregroundStyle(Color.theme.textPrimary)
 			.frame(maxWidth: .infinity, alignment: .leading)
+	}
+	
+	private var nullState: some View {
+		VStack(alignment: .center, spacing: 10) {
+			Spacer()
+			Text("Welcome to the garden!")
+				.font(.handjet(.extraBold, size: 22))
+				.foregroundStyle(Color.theme.textPrimary)
+			Text("Manage your plants and keep track of their growth.\nGet started by adding your first plant.")
+				.font(.handjet(.medium, size: 20))
+				.foregroundStyle(Color.theme.textPrimary)
+			Spacer()
+		}
+		.multilineTextAlignment(.center)
+		.lineSpacing(5)
 	}
 	
 	private var plantsList: some View {
