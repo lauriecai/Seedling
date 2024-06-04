@@ -75,7 +75,10 @@ extension CategorySelectionView {
 							viewModel.selectedCategory = category
 							viewModel.selectedCategoryIndex = index
 							viewModel.taskCategoryInput = category.wrappedName
-							dismiss()
+							
+							DispatchQueue.main.asyncAfter(deadline: .now() + 0.50) {
+								dismiss()
+							}
 						}
 					}
 				}
