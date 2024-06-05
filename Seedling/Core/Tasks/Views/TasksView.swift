@@ -20,7 +20,7 @@ struct TasksView: View {
 				VStack(alignment: .leading, spacing: 20) {
 					tasksHeader
 					
-					if viewModel.taskCategoryInput.isEmpty {
+					if viewModel.taskCategories.isEmpty {
 						nullState
 					} else {
 						tasksList
@@ -62,14 +62,16 @@ extension TasksView {
 	private var nullState: some View {
 		VStack(alignment: .center, spacing: 10) {
 			Spacer()
-			Text("Keep track of your to-do items")
+			Text("Keep track of your tasks")
 				.font(.handjet(.extraBold, size: 22))
 				.foregroundStyle(Color.theme.textPrimary)
-			Text("Gardening can get busy. Have lots of things to do? Add them here!")
+			Text("Add one to get started!")
 				.font(.handjet(.medium, size: 20))
 				.foregroundStyle(Color.theme.textPrimary)
+				.padding(.bottom, 40)
 			Spacer()
 		}
+		.frame(maxWidth: .infinity, alignment: .center)
 		.multilineTextAlignment(.center)
 		.lineSpacing(5)
 	}

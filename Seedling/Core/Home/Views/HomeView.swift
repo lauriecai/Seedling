@@ -66,14 +66,16 @@ extension HomeView {
 	private var nullState: some View {
 		VStack(alignment: .center, spacing: 10) {
 			Spacer()
-			Text("Welcome to the garden!")
+			Text("Welcome to the garden")
 				.font(.handjet(.extraBold, size: 22))
 				.foregroundStyle(Color.theme.textPrimary)
-			Text("Manage your plants and keep track of their growth.\nGet started by adding your first plant.")
+			Text("Let's add your first plant!")
 				.font(.handjet(.medium, size: 20))
 				.foregroundStyle(Color.theme.textPrimary)
+				.padding(.bottom, 40)
 			Spacer()
 		}
+		.frame(maxWidth: .infinity, alignment: .center)
 		.multilineTextAlignment(.center)
 		.lineSpacing(5)
 	}
