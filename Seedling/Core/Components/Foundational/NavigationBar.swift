@@ -7,49 +7,75 @@
 
 import SwiftUI
 
+enum NavigationItem: CaseIterable {
+	case garden, tasks
+	
+	var tabItem: TabItem {
+		switch self {
+		case .garden:
+			return TabItem(iconName: "icon-garden", title: "Garden")
+		case .tasks:
+			return TabItem(iconName: "icon-tasks", title: "Tasks")
+		}
+	}
+}
+
 struct NavigationBar: View {
 	
-	@Binding var selectedIndex: Int
+	let tabs: [TabItem]
+	@Binding var selection: TabItem
 	
-    var body: some View {
-		HStack(spacing: 140) {
-			ForEach(NavigationItems.allCases, id: \.self) { item in
-				Button {
-					selectedIndex = item.rawValue
-					UIImpactFeedbackGenerator(style: .light).impactOccurred()
-				} label: {
-					NavigationTab(tabLabel: item.label, tabIconName: item.iconName, isSelected: selectedIndex == item.rawValue)
+	var body: some View {
+		VStack {
+			Spacer()
+			HStack(spacing: 140) {
+				ForEach(tabs, id: \.self) { tab in
+					tabView(tab: tab)
+						.onTapGesture {
+							UIImpactFeedbackGenerator(style: .light).impactOccurred()
+							switchToTab(tab: tab)
+						}
 				}
 			}
+			.frame(maxWidth: .infinity)
+			.background(Color.theme.backgroundDark.ignoresSafeArea(edges: .bottom))
 		}
-		.frame(maxWidth: .infinity)
-		.background(Color.theme.backgroundDark)
-    }
+	}
 }
 
 #Preview {
-	NavigationBar(selectedIndex: .constant(1))
+	NavigationBar(
+		tabs: [
+			NavigationItem.garden.tabItem,
+			NavigationItem.tasks.tabItem
+],
+		selection: .constant(NavigationItem.garden.tabItem)
+	)
 }
 
-enum NavigationItems: Int, CaseIterable {
-	case garden = 0
-	case tasks = 1
+extension NavigationBar {
 	
-	var label: String {
-		switch self {
-		case .garden: 
-			return "Garden"
-		case .tasks: 
-			return "Tasks"
+	private func tabView(tab: TabItem) -> some View {
+		VStack(spacing: 2) {
+			Image(tab.iconName)
+				.resizable()
+				.aspectRatio(contentMode: .fit)
+				.colorMultiply(selection == tab ? Color.theme.accentLightGreen : Color.theme.textLight)
+				.frame(width: 28, height: 28)
+			
+			Text(tab.title)
+				.font(.handjet(.medium, size: 16))
+				.foregroundStyle(selection == tab ? Color.theme.accentLightGreen : Color.theme.textLight)
 		}
+		.padding(.vertical, 10)
 	}
 	
-	var iconName: String {
-		switch self {
-		case .garden:
-			return "icon-garden"
-		case .tasks:
-			return "icon-tasks"
-		}
+	private func switchToTab(tab: TabItem) {
+		selection = tab
 	}
+}
+
+struct TabItem: Hashable {
+	let iconName: String
+	let title: String
 }

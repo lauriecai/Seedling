@@ -30,8 +30,8 @@ struct HomeView: View {
 				
 				addPlantButton
 			}
-			.navigationDestination(for: Plant.self) { plant in
-				DetailView(plant: plant)
+			.onAppear {
+				viewModel.fetchPlants()
 			}
 			.sheet(isPresented: $viewModel.showingAddPlantView) { AddPlantView() }
 			.confirmationDialog("Plant Options", isPresented: $viewModel.showingActionSheet) {
@@ -40,8 +40,8 @@ struct HomeView: View {
 			} message: {
 				Text("What do you want to do with this plant?")
 			}
-			.onAppear {
-				viewModel.fetchPlants()
+			.navigationDestination(for: Plant.self) { plant in
+				DetailView(plant: plant)
 			}
 		}
     }
@@ -93,7 +93,7 @@ extension HomeView {
 					}
 				}
 			}
-			.padding(.bottom, 100)
+			.padding(.bottom, 140)
 		}
 	}
 	
@@ -101,7 +101,7 @@ extension HomeView {
 		ButtonCircle(iconName: "icon-plus")
 			.frame(width: 65, height: 65)
 			.padding(.trailing, 20)
-			.padding(.bottom, 25)
+			.padding(.bottom, 85)
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddPlantView.toggle()

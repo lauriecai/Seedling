@@ -31,10 +31,11 @@ struct TextEditorInput: View {
 					.font(.handjet(.medium, size: 20))
 					.scrollContentBackground(.hidden)
 					.padding(.horizontal, 12)
-					.padding(.vertical, 6)
+					.padding(.top, 6)
+					.padding(.bottom, 12)
 					.background(accentTheme ? Color.theme.backgroundAccent : Color.theme.backgroundGrey)
 					.foregroundStyle(Color.theme.textPrimary)
-					.frame(minHeight: 200, maxHeight: .infinity)
+					.frame(height: 200)
 					.clipShape(RoundedRectangle(cornerRadius: 8))
 					.focused($inputFocused)
 				

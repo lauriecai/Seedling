@@ -98,7 +98,7 @@ extension TasksView {
 		ButtonCircle(iconName: "icon-plus")
 			.frame(width: 65, height: 65)
 			.padding(.trailing, 20)
-			.padding(.bottom, 25)
+			.padding(.bottom, 85)
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddTaskView.toggle()

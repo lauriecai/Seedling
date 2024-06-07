@@ -28,14 +28,14 @@ struct AddNoteView: View {
 						.onAppear { keyboardFocused.toggle() }
 					noteBodyInput
 				}
-				.padding()
+				.padding(.horizontal)
 			}
 		}
 		.navigationTitle(viewModel.editingExistingNote ? "Edit Note" : "New Note")
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
 		.toolbar {
-			ToolbarItem(placement: .topBarLeading) { backButton }
+			ToolbarItem(placement: .topBarLeading) { cancelButton }
 			ToolbarItem(placement: .topBarTrailing) {
 				if viewModel.editingExistingNote {
 					saveChangesButton
@@ -73,7 +73,7 @@ extension AddNoteView {
 			if !viewModel.noteBodyText.isEmpty || !viewModel.noteTitle.isEmpty {
 				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitle, body: viewModel.noteBodyText)
 			}
-			
+			viewModel.showingAddPostOptions = false
 			viewModel.resetAddNoteFormInputs()
 			dismiss()
 		}
@@ -92,6 +92,7 @@ extension AddNoteView {
 					body: viewModel.noteBodyText
 				)
 			}
+			viewModel.showingAddPostOptions = false
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
@@ -99,18 +100,15 @@ extension AddNoteView {
 		.disabled(!viewModel.noteEdited)
 	}
 	
-	private var backButton: some View {
+	private var cancelButton: some View {
 		Button {
+			viewModel.showingAddPostOptions = false
 			dismiss()
 		} label: {
-			HStack(spacing: 5) {
-				Image(systemName: "chevron.left")
-					.font(.handjet(.medium, size: 18))
-				Text("Back")
-					.font(.handjet(.medium, size: 20))
-			}
-			.foregroundStyle(Color.theme.textSecondary)
+			Text("Cancel")
+				.font(.handjet(.medium, size: 20))
 		}
+		.foregroundStyle(Color.theme.textSecondary)
 	}
 }
 

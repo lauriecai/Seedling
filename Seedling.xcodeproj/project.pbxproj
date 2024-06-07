@@ -22,7 +22,6 @@
 		D3385B6B2B16DEC80055234B /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B6A2B16DEC80055234B /* Font.swift */; };
 		D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B6C2B16EB1F0055234B /* HomeView.swift */; };
 		D3385B732B16F0420055234B /* PlantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B722B16F0420055234B /* PlantCardView.swift */; };
-		D338A1E02B71B98400E3676E /* NavigationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338A1DF2B71B98400E3676E /* NavigationTab.swift */; };
 		D338A1E42B71D83300E3676E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338A1E32B71D83300E3676E /* Date.swift */; };
 		D33D61F72BAB65FE00C15B7D /* ButtonRounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33D61F62BAB65FE00C15B7D /* ButtonRounded.swift */; };
 		D349D9DF2BE2E4EC0081ABE5 /* UpdateStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349D9DE2BE2E4EC0081ABE5 /* UpdateStageView.swift */; };
@@ -73,6 +72,7 @@
 		D3FCA4DA2C0CEE1700DC2213 /* CategorySelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */; };
 		D3FCA4DC2C0F91D400DC2213 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4DB2C0F91D400DC2213 /* TasksViewModel.swift */; };
 		D3FCA4DE2C0FB12F00DC2213 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4DD2C0FB12F00DC2213 /* UINavigationController.swift */; };
+		D3FCA4E42C1252EB00DC2213 /* TabItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FCA4E32C1252EB00DC2213 /* TabItemsPreferenceKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +92,6 @@
 		D3385B6A2B16DEC80055234B /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		D3385B6C2B16EB1F0055234B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D3385B722B16F0420055234B /* PlantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCardView.swift; sourceTree = "<group>"; };
-		D338A1DF2B71B98400E3676E /* NavigationTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTab.swift; sourceTree = "<group>"; };
 		D338A1E32B71D83300E3676E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		D33D61F62BAB65FE00C15B7D /* ButtonRounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRounded.swift; sourceTree = "<group>"; };
 		D349D9DE2BE2E4EC0081ABE5 /* UpdateStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStageView.swift; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 		D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySelectionCard.swift; sourceTree = "<group>"; };
 		D3FCA4DB2C0F91D400DC2213 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
 		D3FCA4DD2C0FB12F00DC2213 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		D3FCA4E32C1252EB00DC2213 /* TabItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemsPreferenceKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +181,6 @@
 				D3FCA4D92C0CEE1700DC2213 /* CategorySelectionCard.swift */,
 				D3B635822BA0EB7600CE3BE1 /* Dropdown.swift */,
 				D3B4116D2B9778C500CD1F41 /* NavigationBar.swift */,
-				D338A1DF2B71B98400E3676E /* NavigationTab.swift */,
 				D31FBCF52B8D199200C10F9D /* TextInput.swift */,
 				D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */,
 				D38AB78D2BBF2605006B015B /* MenuKebab.swift */,
@@ -281,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				D36D58252B156DD100E541E4 /* SeedlingApp.swift */,
+				D3FCA4E32C1252EB00DC2213 /* TabItemsPreferenceKey.swift */,
 				D3BBD8B22B6C0FCA0061FE92 /* Utilities */,
 				D3385B442B164C3D0055234B /* Extensions */,
 				D3BBD89F2B6836520061FE92 /* Models */,
@@ -502,6 +502,7 @@
 				D37706CA2C00301D005179E3 /* TaskCategory+CoreDataClass.swift in Sources */,
 				D37706CB2C00301D005179E3 /* TaskCategory+CoreDataProperties.swift in Sources */,
 				D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */,
+				D3FCA4E42C1252EB00DC2213 /* TabItemsPreferenceKey.swift in Sources */,
 				D3385B6D2B16EB1F0055234B /* HomeView.swift in Sources */,
 				D3564EAB2C0852BA0045BDBC /* CategoryCreationView.swift in Sources */,
 				D36D58262B156DD100E541E4 /* SeedlingApp.swift in Sources */,
@@ -531,7 +532,6 @@
 				D3CBB1642BECAD280092096B /* PlantDetailsView.swift in Sources */,
 				D35FFAC92BFD5585002D25D8 /* TasksView.swift in Sources */,
 				D3CBB1682BED455E0092096B /* PhotoPicker.swift in Sources */,
-				D338A1E02B71B98400E3676E /* NavigationTab.swift in Sources */,
 				D3B4116E2B9778C500CD1F41 /* NavigationBar.swift in Sources */,
 				D3FCA4DC2C0F91D400DC2213 /* TasksViewModel.swift in Sources */,
 				D3EFDE4F2B7EB66B00A6D22C /* Plant+CoreDataClass.swift in Sources */,
@@ -599,7 +599,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -656,7 +656,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -687,7 +687,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -727,7 +727,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -31,19 +31,41 @@ struct SeedlingApp: App {
 
 struct ContentView: View {
 	
-	@State private var selectedItem: Int = 0
+	@State private var tabSelection: TabItem = TabItem(iconName: "icon-garden", title: "Garden")
 	
 	var body: some View {
-		ZStack(alignment: .bottom) {
-			TabView(selection: $selectedItem) {
-				HomeView()
-					.tag(0)
-				
-				TasksView()
-					.tag(1)
-			}
+		NavigationContainer(selection: $tabSelection) {
+			HomeView()
+				.tabItem(tab: TabItem(iconName: "icon-garden", title: "Garden"), selection: $tabSelection)
 			
-			NavigationBar(selectedIndex: $selectedItem)
+			TasksView()
+				.tabItem(tab: TabItem(iconName: "icon-tasks", title: "Tasks"), selection: $tabSelection)
+		}
+	}
+}
+
+struct NavigationContainer<Content: View>: View {
+	
+	@Binding var selection: TabItem
+	let content: Content
+	
+	@State private var tabs: [TabItem] = []
+	
+	init(selection: Binding<TabItem>, @ViewBuilder content: () -> Content) {
+		self._selection = selection
+		self.content = content()
+	}
+	
+	var body: some View {
+		VStack(spacing: 0) {
+			ZStack {
+				content
+				
+				NavigationBar(tabs: tabs, selection: $selection)
+			}
+		}
+		.onPreferenceChange(TabItemsPreferenceKey.self) { value in
+			self.tabs = value
 		}
 	}
 }

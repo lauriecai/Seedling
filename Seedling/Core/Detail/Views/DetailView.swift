@@ -23,7 +23,7 @@ struct DetailView: View {
 				.ignoresSafeArea()
 			
 			postsList
-
+			
 			if viewModel.showingAddPostOptions { darkOverlay }
 			
 			addPostActionGroup
@@ -38,14 +38,18 @@ struct DetailView: View {
 			viewModel.fetchPosts(for: viewModel.plant)
 			viewModel.showingAddPostOptions = false
 		}
-		.navigationDestination(isPresented: $viewModel.showingAddNoteLoadingView) {
-			AddNoteView(viewModel: viewModel)
+		.sheet(isPresented: $viewModel.showingAddNoteView) {
+			NavigationView {
+				AddNoteView(viewModel: viewModel)
+			}
 		}
-		.navigationDestination(isPresented: $viewModel.showingPlantDetailsLoadingView) {
+		.sheet(isPresented: $viewModel.showingUpdateStageView) {
+			NavigationView {
+				UpdateStageView(viewModel: viewModel)
+			}
+		}
+		.navigationDestination(isPresented: $viewModel.showingPlantDetailsView) {
 			PlantDetailsView(viewModel: viewModel)
-		}
-		.sheet(isPresented: $viewModel.showingUpdateStageLoadingView) {
-			UpdateStageView(viewModel: viewModel)
 		}
     }
 }
@@ -77,6 +81,7 @@ extension DetailView {
 				}
 			}
 			.padding(.horizontal)
+			.padding(.bottom, 160)
 		}
 	}
 	
@@ -110,7 +115,7 @@ extension DetailView {
 			
 			if let selectedNote = viewModel.selectedNote {
 				viewModel.editingExistingNote = true
-				viewModel.showingAddNoteLoadingView = true
+				viewModel.showingAddNoteView = true
 				viewModel.fetchExistingNoteTitleAndBody(for: selectedNote)
 			}
 		}
@@ -135,7 +140,7 @@ extension DetailView {
 			addPostButton
 		}
 		.padding(.horizontal, 20)
-		.padding(.bottom, 25)
+		.padding(.bottom, 85)
 	}
 	
 	private var addPostOptionsButtons: some View {
@@ -149,7 +154,7 @@ extension DetailView {
 		ButtonRounded(iconName: "pencil", text: "Add Note")
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
-				viewModel.showingAddNoteLoadingView = true
+				viewModel.showingAddNoteView.toggle()
 			}
 	}
 	
@@ -157,7 +162,7 @@ extension DetailView {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
-				viewModel.showingUpdateStageLoadingView = true
+				viewModel.showingUpdateStageView = true
 			}
 	}
 	
@@ -197,7 +202,7 @@ extension DetailView {
 	private var detailsButton: some View {
 		Button {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			viewModel.showingPlantDetailsLoadingView.toggle()
+			viewModel.showingPlantDetailsView.toggle()
 		} label: {
 			Text("Details")
 				.font(.handjet(.extraBold, size: 20))
