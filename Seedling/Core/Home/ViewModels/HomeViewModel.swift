@@ -71,6 +71,11 @@ class HomeViewModel: ObservableObject {
 	func resetAddPlantFormInputsAndFlags() {
 		resetNameAndVarietyTextFields()
 		editingExistingPlant = false
+		plantStage = .seed
+		selectedStageIndex = 0
+		
+		plantType = .vegetable
+		selectedTypeIndex = 0
 	}
 	
 	func resetPlantDetailsChangedFlag() {
