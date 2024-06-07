@@ -280,7 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				D36D58252B156DD100E541E4 /* SeedlingApp.swift */,
-				D3FCA4E32C1252EB00DC2213 /* TabItemsPreferenceKey.swift */,
 				D3BBD8B22B6C0FCA0061FE92 /* Utilities */,
 				D3385B442B164C3D0055234B /* Extensions */,
 				D3BBD89F2B6836520061FE92 /* Models */,
@@ -356,6 +355,7 @@
 			children = (
 				D3BBD8B32B6C106E0061FE92 /* CoreDataManager.swift */,
 				D3CBB1692BED46A90092096B /* PhotoPickerCoordinator.swift */,
+				D3FCA4E32C1252EB00DC2213 /* TabItemsPreferenceKey.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

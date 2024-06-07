@@ -37,7 +37,10 @@ struct EditGeneralDetailsCardView: View {
 			.onChange(of: viewModel.plantNameInput) { viewModel.plantGeneralDetailsEdited = true }
 			.onChange(of: viewModel.plantVarietyInput) { viewModel.plantGeneralDetailsEdited = true }
 			.onChange(of: viewModel.plantType) { viewModel.plantGeneralDetailsEdited = true }
-			.onChange(of: viewModel.plantStage) { viewModel.plantGeneralDetailsEdited = true }
+			.onChange(of: viewModel.plantStage) {
+				viewModel.plantGeneralDetailsEdited = true
+				viewModel.plantStageUpdated = true
+			}
 		}
     }
 }
@@ -105,9 +108,15 @@ extension EditGeneralDetailsCardView {
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			
 			if viewModel.plantGeneralDetailsEdited {
 				viewModel.editPlantGeneralDetails(for: viewModel.plant)
 			}
+			
+			if viewModel.plantStageUpdated {
+				viewModel.updatePlantStage(for: viewModel.plant)
+			}
+			
 			viewModel.resetPlantGeneralDetailsEditedFlag()
 			dismiss()
 		}

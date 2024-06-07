@@ -33,7 +33,8 @@ struct PlantDetailsView: View {
 		.toolbar {
 			ToolbarItem(placement: .topBarLeading) { backButton }
 		}
-		.sheet(isPresented: $viewModel.editingGeneralDetails) { EditGeneralDetailsCardView(viewModel: viewModel)
+		.sheet(isPresented: $viewModel.editingGeneralDetails) { 
+			EditGeneralDetailsCardView(viewModel: viewModel)
 		}
 		.sheet(isPresented: $viewModel.editingCareRequirements) {
 			EditCareRequirementsCardView(viewModel: viewModel)
