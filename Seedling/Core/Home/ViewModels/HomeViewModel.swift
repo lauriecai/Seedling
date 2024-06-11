@@ -16,13 +16,13 @@ class HomeViewModel: ObservableObject {
 	@Published var plants: [Plant] = []
 	
 	// Add Plant View
-	@Published var plantName: String = ""
-	@Published var plantVariety: String = ""
+	@Published var plantNameInput: String = ""
+	@Published var plantVarietyInput: String = ""
 	
-	@Published var plantStage: PlantStage = .seed
+	@Published var selectedStage: PlantStage = .seed
 	@Published var selectedStageIndex: Int = 0
 	
-	@Published var plantType: PlantType = .vegetable
+	@Published var selectedType: PlantType = .vegetable
 	@Published var selectedTypeIndex: Int = 0
 	
 	@Published var editingExistingPlant: Bool = false
@@ -64,17 +64,17 @@ class HomeViewModel: ObservableObject {
 	}
 	
 	func fetchExistingPlantNameAndVariety(for plant: Plant) {
-		plantName = plant.wrappedName
-		plantVariety = plant.wrappedVariety
+		plantNameInput = plant.wrappedName
+		plantVarietyInput = plant.wrappedVariety
 	}
 	
 	func resetAddPlantFormInputsAndFlags() {
 		resetNameAndVarietyTextFields()
 		editingExistingPlant = false
-		plantStage = .seed
+		selectedStage = .seed
 		selectedStageIndex = 0
 		
-		plantType = .vegetable
+		selectedType = .vegetable
 		selectedTypeIndex = 0
 	}
 	
@@ -83,7 +83,7 @@ class HomeViewModel: ObservableObject {
 	}
 	
 	private func resetNameAndVarietyTextFields() {
-		plantName = ""
-		plantVariety = ""
+		plantNameInput = ""
+		plantVarietyInput = ""
 	}
 }

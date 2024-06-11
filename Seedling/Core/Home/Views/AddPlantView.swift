@@ -49,8 +49,8 @@ struct AddPlantView: View {
 						}
 					}
 				}
-				.onChange(of: viewModel.plantName) { viewModel.plantDetailsEdited = true }
-				.onChange(of: viewModel.plantVariety) { viewModel.plantDetailsEdited = true }
+				.onChange(of: viewModel.plantNameInput) { viewModel.plantDetailsEdited = true }
+				.onChange(of: viewModel.plantVarietyInput) { viewModel.plantDetailsEdited = true }
 				.keyboardType(.default)
 				.autocorrectionDisabled()
 			}
@@ -65,30 +65,30 @@ struct AddPlantView: View {
 extension AddPlantView {
 	
 	private var plantTextInput: some View {
-		TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", headerDescription: nil, text: $viewModel.plantName)
+		TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", headerDescription: nil, text: $viewModel.plantNameInput)
 	}
 	
 	private var plantVarietyInput: some View {
-		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: $viewModel.plantVariety)
+		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: $viewModel.plantVarietyInput)
 	}
 	
 	private var plantStageSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, accentTheme: true, selectedItem: $viewModel.plantStage, selectedIndex: $viewModel.selectedStageIndex)
+			ButtonPillRow(rowLabel: "Stage", items: PlantStage.allCases, accentTheme: true, selectedItem: $viewModel.selectedStage, selectedIndex: $viewModel.selectedStageIndex)
 			
 			selectedPlantStageDefinition
 		}
 	}
 	
 	private var selectedPlantStageDefinition: some View {
-		Text(viewModel.plantStage.definition)
+		Text(viewModel.selectedStage.definition)
 			.font(.handjet(.medium, size: 18))
 			.foregroundStyle(Color.theme.textSecondary)
 	}
 	
 	private var plantTypeSelection: some View {
 		VStack(alignment: .leading, spacing: 10) {
-			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, accentTheme: true, selectedItem: $viewModel.plantType, selectedIndex: $viewModel.selectedTypeIndex)
+			ButtonPillRow(rowLabel: "Type", items: PlantType.allCases, accentTheme: true, selectedItem: $viewModel.selectedType, selectedIndex: $viewModel.selectedTypeIndex)
 		}
 	}
 	
@@ -96,16 +96,16 @@ extension AddPlantView {
 		Button("Add Plant") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.addPlant(
-				name: viewModel.plantName,
-				variety: viewModel.plantVariety,
-				stage: viewModel.plantStage.rawValue,
-				type: viewModel.plantType.rawValue
+				name: viewModel.plantNameInput,
+				variety: viewModel.plantVarietyInput,
+				stage: viewModel.selectedStage.rawValue,
+				type: viewModel.selectedType.rawValue
 			)
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(viewModel.plantName.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
-		.disabled(viewModel.plantName.isEmpty)
+		.foregroundStyle(viewModel.plantNameInput.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(viewModel.plantNameInput.isEmpty)
 	}
 	
 	private var saveChangesButton: some View {
@@ -115,8 +115,8 @@ extension AddPlantView {
 			if let selectedPlant = viewModel.selectedPlant {
 				viewModel.updatePlantNameAndVariety(
 					for: selectedPlant,
-					name: viewModel.plantName,
-					variety: viewModel.plantVariety
+					name: viewModel.plantNameInput,
+					variety: viewModel.plantVarietyInput
 				)
 				
 				viewModel.resetAddPlantFormInputsAndFlags()
