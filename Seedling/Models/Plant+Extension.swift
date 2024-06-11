@@ -1,33 +1,13 @@
 //
-//  Plant+CoreDataProperties.swift
+//  Plant+Extension.swift
 //  Seedling
 //
-//  Created by Laurie Cai on 2/15/24.
-//
+//  Created by Laurie Cai on 6/11/24.
 //
 
 import Foundation
-import CoreData
 
 extension Plant {
-
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Plant> {
-        return NSFetchRequest<Plant>(entityName: "Plant")
-    }
-
-    @NSManaged public var id: UUID?
-    @NSManaged public var name: String?
-	@NSManaged public var variety: String?
-	@NSManaged public var type: String?
-	@NSManaged public var stage: String?
-	
-	@NSManaged public var sunlightRequirement: String?
-	@NSManaged public var waterRequirement: String?
-	@NSManaged public var temperatureRequirement: String?
-	@NSManaged public var humidityRequirement: String?
-	@NSManaged public var soilRequirement: String?
-	@NSManaged public var fertilizerRequirement: String?
-	@NSManaged public var additionalCareNotes: String?
 	
 	public var wrappedName: String {
 		name ?? ""
@@ -98,25 +78,4 @@ extension Plant {
 		
 		return hasher.finalize()
 	}
-}
-
-// MARK: Generated accessors for notes
-extension Plant {
-
-    @objc(addNotesObject:)
-    @NSManaged public func addToNotes(_ value: Note)
-
-    @objc(removeNotesObject:)
-    @NSManaged public func removeFromNotes(_ value: Note)
-
-    @objc(addNotes:)
-    @NSManaged public func addToNotes(_ values: NSSet)
-
-    @objc(removeNotes:)
-    @NSManaged public func removeFromNotes(_ values: NSSet)
-
-}
-
-extension Plant : Identifiable {
-
 }
