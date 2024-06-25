@@ -9,10 +9,6 @@ import Foundation
 
 extension TaskCategory {
 	
-	public var wrappedID: UUID {
-		id ?? UUID()
-	}
-	
 	public var wrappedName: String {
 		name ?? ""
 	}

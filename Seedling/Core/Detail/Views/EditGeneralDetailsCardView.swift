@@ -36,8 +36,8 @@ struct EditGeneralDetailsCardView: View {
 			}
 			.onChange(of: viewModel.plantNameInput) { viewModel.plantGeneralDetailsEdited = true }
 			.onChange(of: viewModel.plantVarietyInput) { viewModel.plantGeneralDetailsEdited = true }
-			.onChange(of: viewModel.plantType) { viewModel.plantGeneralDetailsEdited = true }
-			.onChange(of: viewModel.plantStage) {
+			.onChange(of: viewModel.selectedType) { viewModel.plantGeneralDetailsEdited = true }
+			.onChange(of: viewModel.selectedStage) {
 				viewModel.plantGeneralDetailsEdited = true
 				viewModel.plantStageUpdated = true
 			}
@@ -62,7 +62,7 @@ extension EditGeneralDetailsCardView {
 				.font(.handjet(.bold, size: 16))
 				.foregroundStyle(Color.theme.textGrey)
 			
-			ButtonPillRow(rowLabel: nil, items: PlantType.allCases, accentTheme: false, selectedItem: $viewModel.plantType, selectedIndex: $viewModel.selectedTypeIndex)
+			ButtonPillRow(rowLabel: nil, items: PlantType.allCases, accentTheme: false, selectedItem: $viewModel.selectedType, selectedIndex: $viewModel.selectedTypeIndex)
 		}
 	}
 	
@@ -76,7 +76,7 @@ extension EditGeneralDetailsCardView {
 				items: PlantStage.allCases,
 				accentTheme: false,
 				selectedPillLabel: "Selected",
-				selectedItem: $viewModel.plantStage,
+				selectedItem: $viewModel.selectedStage,
 				selectedItemIndex: $viewModel.selectedStageIndex
 			)
 		}

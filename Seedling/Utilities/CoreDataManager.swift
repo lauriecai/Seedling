@@ -18,8 +18,8 @@ class CoreDataManager {
 	
 	private init() {
 		container = NSPersistentContainer(name: "Seedling")
-		container.loadPersistentStores { description, error in
-			if let error = error {
+		container.loadPersistentStores { _, error in
+			if let error {
 				print("-----\nError loading Core Data. \(error)")
 			}
 		}
@@ -63,7 +63,6 @@ class CoreDataManager {
 	
 	func addPlant(name: String, variety: String, stage: String, type: String) {
 		let newPlant = Plant(context: context)
-		newPlant.id = UUID()
 		newPlant.name = name
 		newPlant.variety = variety
 		newPlant.stage = stage
@@ -134,7 +133,6 @@ class CoreDataManager {
 	func addNote(for plant: Plant, title: String, body: String) {
 		let newNote = Note(context: context)
 		newNote.plant = plant
-		newNote.id = UUID()
 		newNote.timestamp = Date()
 		newNote.title = title
 		newNote.body = body
@@ -170,7 +168,6 @@ class CoreDataManager {
 	private func createPlantAddedEvent(for plant: Plant) {
 		let newEvent = Event(context: context)
 		newEvent.plant = plant
-		newEvent.id = UUID()
 		newEvent.timestamp = Date()
 		newEvent.title = "Added to the garden!"
 		
@@ -180,7 +177,6 @@ class CoreDataManager {
 	private func createPlantUpdatedEvent(for plant: Plant, newStage: String) {
 		let newEvent = Event(context: context)
 		newEvent.plant = plant
-		newEvent.id = UUID()
 		newEvent.timestamp = Date()
 		
 		let newStage = PlantStage(rawValue: newStage)!
@@ -205,7 +201,6 @@ class CoreDataManager {
 	
 	func addTaskCategory(name: String) {
 		let newCategory = TaskCategory(context: context)
-		newCategory.id = UUID()
 		newCategory.name = name
 		
 		save()
@@ -232,7 +227,6 @@ class CoreDataManager {
 	
 	func addTask(categoryName: String, title: String, isCompleted: Bool = false) {
 		let newTask = Task(context: context)
-		newTask.id = UUID()
 		newTask.category = TaskCategory(context: context)
 		newTask.category?.name = categoryName
 		newTask.title = title

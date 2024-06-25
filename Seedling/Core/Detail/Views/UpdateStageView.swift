@@ -29,7 +29,7 @@ struct UpdateStageView: View {
 					items: PlantStage.allCases,
 					accentTheme: true,
 					selectedPillLabel: "Selected",
-					selectedItem: $viewModel.plantStage,
+					selectedItem: $viewModel.selectedStage,
 					selectedItemIndex: $viewModel.selectedStageIndex
 				)
 			}
@@ -43,7 +43,7 @@ struct UpdateStageView: View {
 			ToolbarItem(placement: .topBarLeading) { cancelButton }
 			ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
 		}
-		.onChange(of: viewModel.plantStage) { viewModel.plantStageUpdated = true }
+		.onChange(of: viewModel.selectedStage) { viewModel.plantStageUpdated = true }
     }
 }
 

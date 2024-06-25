@@ -7,18 +7,9 @@
 
 import Foundation
 
-struct PlantPost: Identifiable, Hashable {
+struct PlantPost: Hashable {
 	
 	let type: CoreDataEntityType
-	
-	var id: UUID {
-		switch type {
-		case .event(let event):
-			event.wrappedId
-		case .note(let note):
-			note.wrappedId
-		}
-	}
 	
 	var timestamp: Date {
 		switch type {

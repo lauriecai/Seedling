@@ -45,8 +45,8 @@ struct AddNoteView: View {
 			}
 		}
 		.keyboardType(.default)
-		.onChange(of: viewModel.noteTitle) { viewModel.noteEdited = true }
-		.onChange(of: viewModel.noteBodyText) { viewModel.noteEdited = true }
+		.onChange(of: viewModel.noteTitleInput) { viewModel.noteEdited = true }
+		.onChange(of: viewModel.noteBodyInput) { viewModel.noteEdited = true }
     }
 }
 
@@ -60,26 +60,26 @@ extension AddNoteView {
 	}
 	
 	private var noteTitleInput: some View {
-		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: "Optional", text: $viewModel.noteTitle)
+		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: "Optional", text: $viewModel.noteTitleInput)
 	}
 	
 	private var noteBodyInput: some View {
-		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", accentTheme: true, text: $viewModel.noteBodyText)
+		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", accentTheme: true, text: $viewModel.noteBodyInput)
 	}
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			if !viewModel.noteBodyText.isEmpty || !viewModel.noteTitle.isEmpty {
-				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitle, body: viewModel.noteBodyText)
+			if !viewModel.noteBodyInput.isEmpty || !viewModel.noteTitleInput.isEmpty {
+				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitleInput, body: viewModel.noteBodyInput)
 			}
 			viewModel.showingAddPostOptions = false
 			viewModel.resetAddNoteFormInputs()
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
-		.foregroundStyle(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
-		.disabled(viewModel.noteTitle.isEmpty && viewModel.noteBodyText.isEmpty)
+		.foregroundStyle(viewModel.noteTitleInput.isEmpty && viewModel.noteBodyInput.isEmpty ? Color.theme.textSecondary.opacity(0.5) : Color.theme.accentGreen)
+		.disabled(viewModel.noteTitleInput.isEmpty && viewModel.noteBodyInput.isEmpty)
 	}
 	
 	private var saveChangesButton: some View {
@@ -88,8 +88,8 @@ extension AddNoteView {
 			if let selectedNote = viewModel.selectedNote {
 				viewModel.updateNoteTitleAndBody(
 					for: selectedNote,
-					title: viewModel.noteTitle,
-					body: viewModel.noteBodyText
+					title: viewModel.noteTitleInput,
+					body: viewModel.noteBodyInput
 				)
 			}
 			viewModel.showingAddPostOptions = false

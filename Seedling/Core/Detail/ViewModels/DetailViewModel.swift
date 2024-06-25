@@ -19,14 +19,14 @@ class DetailViewModel: ObservableObject {
 	@Published var showingAddPostOptions: Bool = false
 	
 	// Add Note View
-	@Published var noteTitle: String = ""
-	@Published var noteBodyText: String = ""
+	@Published var noteTitleInput: String = ""
+	@Published var noteBodyInput: String = ""
 	
 	@Published var editingExistingNote: Bool = false
 	@Published var noteEdited: Bool = false
 	
 	// Update Stage View
-	@Published var plantStage: PlantStage
+	@Published var selectedStage: PlantStage
 	@Published var selectedStageIndex: Int
 	@Published var plantStageUpdated: Bool = false
 	
@@ -34,7 +34,7 @@ class DetailViewModel: ObservableObject {
 	@Published var plantNameInput: String = ""
 	@Published var plantVarietyInput: String = ""
 	
-	@Published var plantType: PlantType
+	@Published var selectedType: PlantType
 	@Published var selectedTypeIndex: Int
 	
 	@Published var sunlightRequirementInput: String = ""
@@ -71,11 +71,11 @@ class DetailViewModel: ObservableObject {
 		self.plant = plant
 		
 		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
-		plantStage = savedPlantStage
+		selectedStage = savedPlantStage
 		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
 		
 		let savedPlantType = PlantType(rawValue: plant.wrappedType)!
-		plantType = savedPlantType
+		selectedType = savedPlantType
 		selectedTypeIndex = PlantType.allCases.firstIndex(of: savedPlantType)!
 		
 		fetchPlantGeneralDetails(for: plant)
@@ -96,18 +96,18 @@ class DetailViewModel: ObservableObject {
 	
 	func fetchPlantStage(for plant: Plant) {
 		let savedPlantStage = PlantStage(rawValue: plant.wrappedStage)!
-		plantStage = savedPlantStage
+		selectedStage = savedPlantStage
 		selectedStageIndex = PlantStage.allCases.firstIndex(of: savedPlantStage)!
 	}
 	
 	func fetchPlantType(for plant: Plant) {
 		let savedPlantType = PlantType(rawValue: plant.wrappedType)!
-		plantType = savedPlantType
+		selectedType = savedPlantType
 		selectedTypeIndex = PlantType.allCases.firstIndex(of: savedPlantType)!
 	}
 	
 	func updatePlantStage(for plant: Plant) {
-		manager.addStageUpdate(plant: plant, newStage: plantStage.rawValue)
+		manager.addStageUpdate(plant: plant, newStage: selectedStage.rawValue)
 		fetchPosts(for: plant)
 	}
 	
@@ -128,8 +128,8 @@ class DetailViewModel: ObservableObject {
 			for: plant,
 			name: plantNameInput,
 			variety: plantVarietyInput,
-			type: plantType.rawValue,
-			stage: plantStage.rawValue)
+			type: selectedType.rawValue,
+			stage: selectedStage.rawValue)
 	}
 	
 	func resetPlantGeneralDetailsEditedFlag() {
@@ -205,8 +205,8 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func fetchExistingNoteTitleAndBody(for note: Note) {
-		noteTitle = note.wrappedTitle
-		noteBodyText = note.wrappedBody
+		noteTitleInput = note.wrappedTitle
+		noteBodyInput = note.wrappedBody
 	}
 	
 	func resetAddNoteFormInputs() {
@@ -219,8 +219,8 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	private func resetTitleAndBodyTextFields() {
-		noteTitle = ""
-		noteBodyText = ""
+		noteTitleInput = ""
+		noteBodyInput = ""
 	}
 	
 //	MARK: - Event functions

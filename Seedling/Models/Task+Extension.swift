@@ -9,10 +9,6 @@ import Foundation
 
 extension Task {
 	
-	public var wrappedID: UUID {
-		id ?? UUID()
-	}
-	
 	public var wrappedTitle: String {
 		title ?? ""
 	}
@@ -23,7 +19,6 @@ extension Task {
 	
 	public var customHash: Int {
 		var hasher = Hasher()
-		hasher.combine(self.wrappedID)
 		hasher.combine(self.wrappedTitle)
 		hasher.combine(self.isCompleted)
 		

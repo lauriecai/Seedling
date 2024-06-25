@@ -9,10 +9,6 @@ import Foundation
 
 extension Event {
 	
-	public var wrappedId: UUID {
-		id ?? UUID()
-	}
-	
 	public var wrappedTitle: String {
 		title ?? ""
 	}
