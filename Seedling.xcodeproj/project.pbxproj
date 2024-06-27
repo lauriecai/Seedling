@@ -35,6 +35,7 @@
 		D37706B72BFEC37B005179E3 /* TaskRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37706B62BFEC37B005179E3 /* TaskRowView.swift */; };
 		D37A30CD2C2B828500633D83 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30CC2C2B828500633D83 /* FileManager.swift */; };
 		D37A30CF2C2B8B1200633D83 /* ImagePickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */; };
+		D37A30D22C2DFD7F00633D83 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D12C2DFD7F00633D83 /* PhotoService.swift */; };
 		D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78D2BBF2605006B015B /* MenuKebab.swift */; };
 		D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78F2BBF6F95006B015B /* PlantPost.swift */; };
 		D39187CC2BF5248100A7B375 /* EditGeneralDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */; };
@@ -99,6 +100,7 @@
 		D37706B62BFEC37B005179E3 /* TaskRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRowView.swift; sourceTree = "<group>"; };
 		D37A30CC2C2B828500633D83 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerService.swift; sourceTree = "<group>"; };
+		D37A30D12C2DFD7F00633D83 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		D38AB78D2BBF2605006B015B /* MenuKebab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuKebab.swift; sourceTree = "<group>"; };
 		D38AB78F2BBF6F95006B015B /* PlantPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPost.swift; sourceTree = "<group>"; };
 		D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGeneralDetailsCardView.swift; sourceTree = "<group>"; };
@@ -249,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				D3EFDE352B7D34F600A6D22C /* README.md */,
-				D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */,
 				D36D58242B156DD100E541E4 /* Seedling */,
 				D36D58232B156DD100E541E4 /* Products */,
 			);
@@ -291,6 +292,8 @@
 		D37A30D02C2B8B1600633D83 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */,
+				D37A30D12C2DFD7F00633D83 /* PhotoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				D3D87F6F2C06E9C300AF90A3 /* StageSelectionList.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
 				D3FCA4DA2C0CEE1700DC2213 /* CategorySelectionCard.swift in Sources */,
+				D37A30D22C2DFD7F00633D83 /* PhotoService.swift in Sources */,
 				D30CE7C42BA4DD9A00B28F67 /* EventCardView.swift in Sources */,
 				D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */,
 				D39643EB2C069CD500E9267F /* TaskGroupView.swift in Sources */,
