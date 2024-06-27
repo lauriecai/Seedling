@@ -9,10 +9,10 @@ import SwiftUI
 
 struct TaskRowView: View {
 	
-	let task: Task
+	let task: TaskItem
 
 	@Binding var showActionSheet: Bool
-	@Binding var showActionForTask: Task?
+	@Binding var showActionForTask: TaskItem?
 	
     var body: some View {
 		HStack(alignment: .top) {

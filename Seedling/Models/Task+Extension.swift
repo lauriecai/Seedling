@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Task {
+extension TaskItem {
 	
 	public var wrappedTitle: String {
 		title ?? ""

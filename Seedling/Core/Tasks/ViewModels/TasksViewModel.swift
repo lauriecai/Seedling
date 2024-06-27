@@ -36,7 +36,7 @@ class TasksViewModel: ObservableObject {
 	// Segues
 	@Published var showingAddTaskView: Bool = false
 	
-	@Published var selectedTask: Task? = nil
+	@Published var selectedTask: TaskItem? = nil
 	
 	init() {
 		if taskCategories.isEmpty {
@@ -92,17 +92,17 @@ class TasksViewModel: ObservableObject {
 		fetchTaskCategories()
 	}
 	
-	func updateTask(task: Task, title: String, categoryName: String) {
+	func updateTask(task: TaskItem, title: String, categoryName: String) {
 		manager.updateTask(task: task, title: title, categoryName: categoryName)
 		fetchTaskCategories()
 	}
 	
-	func fetchExistingTaskDetails(for task: Task) {
+	func fetchExistingTaskDetails(for task: TaskItem) {
 		taskTitleInput = task.wrappedTitle
 		selectedCategory = task.category
 	}
 	
-	func deleteTask(task: Task) {
+	func deleteTask(task: TaskItem) {
 		manager.deleteTask(task: task)
 		fetchTaskCategories()
 	}

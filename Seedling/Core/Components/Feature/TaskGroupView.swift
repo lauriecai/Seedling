@@ -13,7 +13,7 @@ struct TaskGroupView: View {
 	let viewModel: TasksViewModel
 	
 	@Binding var showingActionSheet: Bool
-	@Binding var selectedTask: Task?
+	@Binding var selectedTask: TaskItem?
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 15) {

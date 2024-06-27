@@ -13,8 +13,8 @@ extension TaskCategory {
 		name ?? ""
 	}
 	
-	public var tasksList: [Task] {
-		let set = tasks as? Set<Task> ?? []
+	public var tasksList: [TaskItem] {
+		let set = tasks as? Set<TaskItem> ?? []
 		return set.sorted { $0.wrappedTimestamp < $1.wrappedTimestamp }
 	}
 	

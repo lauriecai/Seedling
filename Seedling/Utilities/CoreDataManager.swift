@@ -16,7 +16,7 @@ class CoreDataManager {
 	let container: NSPersistentContainer
 	let context: NSManagedObjectContext
 	
-	private init() {
+	init() {
 		container = NSPersistentContainer(name: "Seedling")
 		container.loadPersistentStores { _, error in
 			if let error {
@@ -218,15 +218,15 @@ class CoreDataManager {
 	
 //	MARK: - Task functions
 	
-	func requestTasks() -> NSFetchRequest<Task> {
-		let request = NSFetchRequest<Task>(entityName: "Task")
+	func requestTasks() -> NSFetchRequest<TaskItem> {
+		let request = NSFetchRequest<TaskItem>(entityName: "TaskItem")
 		request.sortDescriptors = [sortByOldest]
 		
 		return request
 	}
 	
 	func addTask(categoryName: String, title: String, isCompleted: Bool = false) {
-		let newTask = Task(context: context)
+		let newTask = TaskItem(context: context)
 		newTask.category = TaskCategory(context: context)
 		newTask.category?.name = categoryName
 		newTask.title = title
@@ -235,7 +235,7 @@ class CoreDataManager {
 		save()
 	}
 	
-	func updateTask(task: Task, title: String, categoryName: String) {
+	func updateTask(task: TaskItem, title: String, categoryName: String) {
 		task.title = title
 		task.category = TaskCategory(context: context)
 		task.category?.name = categoryName
@@ -243,7 +243,7 @@ class CoreDataManager {
 		save()
 	}
 	
-	func deleteTask(task: Task) {
+	func deleteTask(task: TaskItem) {
 		context.delete(task)
 		save()
 	}
