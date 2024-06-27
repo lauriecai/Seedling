@@ -36,6 +36,7 @@
 		D37A30CD2C2B828500633D83 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30CC2C2B828500633D83 /* FileManager.swift */; };
 		D37A30CF2C2B8B1200633D83 /* ImagePickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */; };
 		D37A30D22C2DFD7F00633D83 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D12C2DFD7F00633D83 /* PhotoService.swift */; };
+		D37A30D42C2E058000633D83 /* Photo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D32C2E058000633D83 /* Photo+Extension.swift */; };
 		D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78D2BBF2605006B015B /* MenuKebab.swift */; };
 		D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78F2BBF6F95006B015B /* PlantPost.swift */; };
 		D39187CC2BF5248100A7B375 /* EditGeneralDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */; };
@@ -101,6 +102,7 @@
 		D37A30CC2C2B828500633D83 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerService.swift; sourceTree = "<group>"; };
 		D37A30D12C2DFD7F00633D83 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		D37A30D32C2E058000633D83 /* Photo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extension.swift"; sourceTree = "<group>"; };
 		D38AB78D2BBF2605006B015B /* MenuKebab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuKebab.swift; sourceTree = "<group>"; };
 		D38AB78F2BBF6F95006B015B /* PlantPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPost.swift; sourceTree = "<group>"; };
 		D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGeneralDetailsCardView.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				D3A54D942C18CC8D00D9DE3C /* Plant+Extension.swift */,
 				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
 				D38AB78F2BBF6F95006B015B /* PlantPost.swift */,
+				D37A30D32C2E058000633D83 /* Photo+Extension.swift */,
 				D3A54D962C18CCDF00D9DE3C /* Task+Extension.swift */,
 				D3A54D982C18CD1000D9DE3C /* TaskCategory+Extension.swift */,
 			);
@@ -501,6 +504,7 @@
 				D3A54D972C18CCDF00D9DE3C /* Task+Extension.swift in Sources */,
 				D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */,
 				D3EFDE542B8298D900A6D22C /* NoteCardView.swift in Sources */,
+				D37A30D42C2E058000633D83 /* Photo+Extension.swift in Sources */,
 				D3385B432B164C330055234B /* Color.swift in Sources */,
 				D3D87F6F2C06E9C300AF90A3 /* StageSelectionList.swift in Sources */,
 				D3EFDE522B82973F00A6D22C /* AddNoteView.swift in Sources */,
