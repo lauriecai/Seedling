@@ -15,24 +15,24 @@ import SwiftUI
 @MainActor
 class ImagePickerService: ObservableObject {
 	
-	@Published var selectedImage: PhotosPickerItem? {
+	@Published var selectedPhotosPickerItem: PhotosPickerItem? {
 		didSet {
-			Task { try await convertPhotosPickerItem(from: selectedImage) }
+			Task { try await convertPhotosPickerItem(from: selectedPhotosPickerItem) }
 		}
 	}
 	
-	@Published var displayImage: UIImage?
+	@Published var selectedImage: UIImage?
 	
 	let coreDataManager = CoreDataManager.shared
 	
 //	MARK: - Methods
 	
-	func convertPhotosPickerItem(from imageSelection: PhotosPickerItem?) async throws {
+	func convertPhotosPickerItem(from photosPickerItem: PhotosPickerItem?) async throws {
 		do {
-			guard let data = try await imageSelection?.loadTransferable(type: Data.self),
+			guard let data = try await photosPickerItem?.loadTransferable(type: Data.self),
 				  let convertedImage = UIImage(data: data) else { return }
 			
-			displayImage = convertedImage
+			selectedImage = convertedImage
 		} catch {
 			print("Error converting selected image: \(error.localizedDescription)")
 		}
