@@ -17,6 +17,8 @@ struct PlantPost: Hashable {
 			event.wrappedTimestamp
 		case .note(let note):
 			note.wrappedTimestamp
+		case .photo(let photo):
+			photo.wrappedTimestamp
 		}
 	}
 	
@@ -25,9 +27,15 @@ struct PlantPost: Hashable {
 		case .event(let event):
 			hasher.combine(event.title)
 			hasher.combine(event.wrappedTimestamp)
+		
 		case .note(let note):
 			hasher.combine(note.wrappedTitle)
 			hasher.combine(note.wrappedBody)
+			hasher.combine(note.wrappedTimestamp)
+		
+		case .photo(let photo):
+			hasher.combine(photo.wrappedCaption)
+			hasher.combine(photo.wrappedTimestamp)
 		}
 	}
 	
@@ -39,4 +47,5 @@ struct PlantPost: Hashable {
 enum CoreDataEntityType {
 	case event(Event)
 	case note(Note)
+	case photo(Photo)
 }
