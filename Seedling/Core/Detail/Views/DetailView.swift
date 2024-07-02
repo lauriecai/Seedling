@@ -78,6 +78,8 @@ extension DetailView {
 						} message: {
 							Text("What do you want to do with this note?")
 						}
+				case .photo(let photo):
+					Text("photoCard(for: photo) placeholder")
 				}
 			}
 			.padding(.horizontal)

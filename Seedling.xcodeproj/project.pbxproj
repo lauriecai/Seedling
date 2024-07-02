@@ -37,6 +37,7 @@
 		D37A30CF2C2B8B1200633D83 /* ImagePickerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */; };
 		D37A30D22C2DFD7F00633D83 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D12C2DFD7F00633D83 /* PhotoService.swift */; };
 		D37A30D42C2E058000633D83 /* Photo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D32C2E058000633D83 /* Photo+Extension.swift */; };
+		D37A30D72C34A66A00633D83 /* PhotoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D62C34A66A00633D83 /* PhotoCardView.swift */; };
 		D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78D2BBF2605006B015B /* MenuKebab.swift */; };
 		D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78F2BBF6F95006B015B /* PlantPost.swift */; };
 		D39187CC2BF5248100A7B375 /* EditGeneralDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */; };
@@ -103,6 +104,7 @@
 		D37A30CE2C2B8B1200633D83 /* ImagePickerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerService.swift; sourceTree = "<group>"; };
 		D37A30D12C2DFD7F00633D83 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		D37A30D32C2E058000633D83 /* Photo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extension.swift"; sourceTree = "<group>"; };
+		D37A30D62C34A66A00633D83 /* PhotoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCardView.swift; sourceTree = "<group>"; };
 		D38AB78D2BBF2605006B015B /* MenuKebab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuKebab.swift; sourceTree = "<group>"; };
 		D38AB78F2BBF6F95006B015B /* PlantPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPost.swift; sourceTree = "<group>"; };
 		D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGeneralDetailsCardView.swift; sourceTree = "<group>"; };
@@ -150,9 +152,10 @@
 		D30CE7C12BA4DAB600B28F67 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				D30CE7C32BA4DD9A00B28F67 /* EventCardView.swift */,
 				D3EFDE532B8298D900A6D22C /* NoteCardView.swift */,
 				D3385B722B16F0420055234B /* PlantCardView.swift */,
-				D30CE7C32BA4DD9A00B28F67 /* EventCardView.swift */,
+				D37A30D62C34A66A00633D83 /* PhotoCardView.swift */,
 				D37706B62BFEC37B005179E3 /* TaskRowView.swift */,
 				D39643EA2C069CD500E9267F /* TaskGroupView.swift */,
 				D3D87F6E2C06E9C300AF90A3 /* StageSelectionList.swift */,
@@ -300,6 +303,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		D37A30D52C3475B200633D83 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D3A54D922C18CC4500D9DE3C /* Event+Extension.swift */,
+				D3A54D902C18CBDB00D9DE3C /* Note+Extension.swift */,
+				D3A54D942C18CC8D00D9DE3C /* Plant+Extension.swift */,
+				D37A30D32C2E058000633D83 /* Photo+Extension.swift */,
+				D3A54D962C18CCDF00D9DE3C /* Task+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D3B411702B979DD200CD1F41 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,13 +347,9 @@
 			isa = PBXGroup;
 			children = (
 				D3BBD89C2B68362C0061FE92 /* Seedling.xcdatamodeld */,
-				D3A54D922C18CC4500D9DE3C /* Event+Extension.swift */,
-				D3A54D902C18CBDB00D9DE3C /* Note+Extension.swift */,
-				D3A54D942C18CC8D00D9DE3C /* Plant+Extension.swift */,
+				D37A30D52C3475B200633D83 /* Extensions */,
 				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
 				D38AB78F2BBF6F95006B015B /* PlantPost.swift */,
-				D37A30D32C2E058000633D83 /* Photo+Extension.swift */,
-				D3A54D962C18CCDF00D9DE3C /* Task+Extension.swift */,
 				D3A54D982C18CD1000D9DE3C /* TaskCategory+Extension.swift */,
 			);
 			path = Models;
@@ -521,6 +532,7 @@
 				D3EFDE142B79387B00A6D22C /* DetailViewModel.swift in Sources */,
 				D3CD06452BF5546100E25369 /* EditCareRequirementsCardView.swift in Sources */,
 				D33D61F72BAB65FE00C15B7D /* ButtonRounded.swift in Sources */,
+				D37A30D72C34A66A00633D83 /* PhotoCardView.swift in Sources */,
 				D349D9E12BE2E7A30081ABE5 /* CardSelectable.swift in Sources */,
 				D3CBB1642BECAD280092096B /* PlantDetailsView.swift in Sources */,
 				D35FFAC92BFD5585002D25D8 /* TasksView.swift in Sources */,
