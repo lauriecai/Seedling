@@ -38,6 +38,8 @@
 		D37A30D22C2DFD7F00633D83 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D12C2DFD7F00633D83 /* PhotoService.swift */; };
 		D37A30D42C2E058000633D83 /* Photo+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D32C2E058000633D83 /* Photo+Extension.swift */; };
 		D37A30D72C34A66A00633D83 /* PhotoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D62C34A66A00633D83 /* PhotoCardView.swift */; };
+		D37A30E42C34CD5800633D83 /* EditPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30E32C34CD5800633D83 /* EditPhotoViewModel.swift */; };
+		D37A30E62C34CD6100633D83 /* EditPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30E52C34CD6100633D83 /* EditPhotoView.swift */; };
 		D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78D2BBF2605006B015B /* MenuKebab.swift */; };
 		D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78F2BBF6F95006B015B /* PlantPost.swift */; };
 		D39187CC2BF5248100A7B375 /* EditGeneralDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */; };
@@ -105,6 +107,8 @@
 		D37A30D12C2DFD7F00633D83 /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		D37A30D32C2E058000633D83 /* Photo+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+Extension.swift"; sourceTree = "<group>"; };
 		D37A30D62C34A66A00633D83 /* PhotoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCardView.swift; sourceTree = "<group>"; };
+		D37A30E32C34CD5800633D83 /* EditPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoViewModel.swift; sourceTree = "<group>"; };
+		D37A30E52C34CD6100633D83 /* EditPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoView.swift; sourceTree = "<group>"; };
 		D38AB78D2BBF2605006B015B /* MenuKebab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuKebab.swift; sourceTree = "<group>"; };
 		D38AB78F2BBF6F95006B015B /* PlantPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPost.swift; sourceTree = "<group>"; };
 		D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGeneralDetailsCardView.swift; sourceTree = "<group>"; };
@@ -211,6 +215,7 @@
 				D3EFDE152B793ABB00A6D22C /* Launch */,
 				D3385B6F2B16EB2B0055234B /* Home */,
 				D3EFDE0E2B7937F800A6D22C /* Detail */,
+				D37A30E02C34CCE500633D83 /* Edit */,
 				D3B411702B979DD200CD1F41 /* Tasks */,
 				D338A1DE2B71B95600E3676E /* Components */,
 			);
@@ -313,6 +318,31 @@
 				D3A54D962C18CCDF00D9DE3C /* Task+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D37A30E02C34CCE500633D83 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				D37A30E22C34CD4B00633D83 /* ViewModels */,
+				D37A30E12C34CD4400633D83 /* Views */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		D37A30E12C34CD4400633D83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D37A30E52C34CD6100633D83 /* EditPhotoView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D37A30E22C34CD4B00633D83 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D37A30E32C34CD5800633D83 /* EditPhotoViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D3B411702B979DD200CD1F41 /* Tasks */ = {
@@ -528,6 +558,7 @@
 				D37A30CD2C2B828500633D83 /* FileManager.swift in Sources */,
 				D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */,
 				D3A54D992C18CD1000D9DE3C /* TaskCategory+Extension.swift in Sources */,
+				D37A30E62C34CD6100633D83 /* EditPhotoView.swift in Sources */,
 				D338A1E42B71D83300E3676E /* Date.swift in Sources */,
 				D3EFDE142B79387B00A6D22C /* DetailViewModel.swift in Sources */,
 				D3CD06452BF5546100E25369 /* EditCareRequirementsCardView.swift in Sources */,
@@ -536,6 +567,7 @@
 				D349D9E12BE2E7A30081ABE5 /* CardSelectable.swift in Sources */,
 				D3CBB1642BECAD280092096B /* PlantDetailsView.swift in Sources */,
 				D35FFAC92BFD5585002D25D8 /* TasksView.swift in Sources */,
+				D37A30E42C34CD5800633D83 /* EditPhotoViewModel.swift in Sources */,
 				D3B4116E2B9778C500CD1F41 /* NavigationBar.swift in Sources */,
 				D3FCA4DC2C0F91D400DC2213 /* TasksViewModel.swift in Sources */,
 				D31FBCF62B8D199200C10F9D /* TextInput.swift in Sources */,
