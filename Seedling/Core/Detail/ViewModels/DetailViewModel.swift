@@ -52,6 +52,7 @@ class DetailViewModel: ObservableObject {
 	
 	// Detail View Segues
 	@Published var showingAddNoteView: Bool = false
+	@Published var showingAddPhotoView: Bool = false
 	@Published var showingUpdateStageView: Bool = false
 	@Published var showingPlantDetailsView: Bool = false
 	

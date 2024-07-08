@@ -148,6 +148,7 @@ extension DetailView {
 	private var addPostOptionsButtons: some View {
 		VStack(alignment: .trailing, spacing: 12) {
 			addNoteButton
+			addPhotoButton
 			updateStageButton
 		}
 	}
@@ -157,6 +158,15 @@ extension DetailView {
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddNoteView.toggle()
+			}
+	}
+	
+	private var addPhotoButton: some View {
+		ButtonRounded(iconName: "photo", text: "Add Photo")
+			.onTapGesture {
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+				print("Button tapped! Cue AddPhotoView")
+				viewModel.showingAddPhotoView.toggle()
 			}
 	}
 	
