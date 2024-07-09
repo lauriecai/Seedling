@@ -247,4 +247,11 @@ class CoreDataManager {
 		context.delete(task)
 		save()
 	}
+	
+//	MARK: - Photo functions
+	
+	func deletePhoto(photo: Photo) {
+		context.delete(photo)
+		save()
+	}
 }
