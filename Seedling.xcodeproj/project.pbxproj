@@ -40,6 +40,7 @@
 		D37A30D72C34A66A00633D83 /* PhotoCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30D62C34A66A00633D83 /* PhotoCardView.swift */; };
 		D37A30E42C34CD5800633D83 /* EditPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30E32C34CD5800633D83 /* EditPhotoViewModel.swift */; };
 		D37A30E62C34CD6100633D83 /* EditPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30E52C34CD6100633D83 /* EditPhotoView.swift */; };
+		D37A30E82C3DA11700633D83 /* EditPhotoMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A30E72C3DA11700633D83 /* EditPhotoMode.swift */; };
 		D38AB78E2BBF2605006B015B /* MenuKebab.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78D2BBF2605006B015B /* MenuKebab.swift */; };
 		D38AB7902BBF6F95006B015B /* PlantPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38AB78F2BBF6F95006B015B /* PlantPost.swift */; };
 		D39187CC2BF5248100A7B375 /* EditGeneralDetailsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */; };
@@ -109,6 +110,7 @@
 		D37A30D62C34A66A00633D83 /* PhotoCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCardView.swift; sourceTree = "<group>"; };
 		D37A30E32C34CD5800633D83 /* EditPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoViewModel.swift; sourceTree = "<group>"; };
 		D37A30E52C34CD6100633D83 /* EditPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoView.swift; sourceTree = "<group>"; };
+		D37A30E72C3DA11700633D83 /* EditPhotoMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoMode.swift; sourceTree = "<group>"; };
 		D38AB78D2BBF2605006B015B /* MenuKebab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuKebab.swift; sourceTree = "<group>"; };
 		D38AB78F2BBF6F95006B015B /* PlantPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPost.swift; sourceTree = "<group>"; };
 		D39187CB2BF5248100A7B375 /* EditGeneralDetailsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGeneralDetailsCardView.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 				D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */,
 				D38AB78F2BBF6F95006B015B /* PlantPost.swift */,
 				D3A54D982C18CD1000D9DE3C /* TaskCategory+Extension.swift */,
+				D37A30E72C3DA11700633D83 /* EditPhotoMode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				D3EFDE092B76B70C00A6D22C /* AddPlantView.swift in Sources */,
 				D3BBD89E2B68362C0061FE92 /* Seedling.xcdatamodeld in Sources */,
 				D3A54D952C18CC8D00D9DE3C /* Plant+Extension.swift in Sources */,
+				D37A30E82C3DA11700633D83 /* EditPhotoMode.swift in Sources */,
 				D3B635832BA0EB7600CE3BE1 /* Dropdown.swift in Sources */,
 				D3EA61C12B8FEA69002676F4 /* TextEditorInput.swift in Sources */,
 				D3FCA4DE2C0FB12F00DC2213 /* UINavigationController.swift in Sources */,

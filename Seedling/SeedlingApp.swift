@@ -11,6 +11,7 @@ import SwiftUI
 struct SeedlingApp: App {
 	
 	@StateObject private var viewModel = HomeViewModel()
+	@StateObject private var imagePickerService = ImagePickerService()
 	
 	@State private var showLaunchView: Bool = true
 	
@@ -25,6 +26,7 @@ struct SeedlingApp: App {
 		WindowGroup {
 			ContentView()
 				.environmentObject(viewModel)
+				.environmentObject(imagePickerService)
 		}
     }
 }

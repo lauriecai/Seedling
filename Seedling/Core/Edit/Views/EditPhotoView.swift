@@ -11,7 +11,8 @@ import SwiftUI
 struct EditPhotoView: View {
 	
 	@ObservedObject var viewModel: EditPhotoViewModel
-	@ObservedObject var imagePickerService: ImagePickerService
+	
+	@EnvironmentObject var imagePickerService: ImagePickerService
 	
 	@Environment(\.dismiss) var dismiss
 	
