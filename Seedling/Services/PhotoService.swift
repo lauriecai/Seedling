@@ -32,6 +32,7 @@ class PhotoService {
 		let newPhoto = Photo(context: coreDataManager.context)
 		newPhoto.imageUrlString = UUID().uuidString
 		newPhoto.timestamp = Date()
+		newPhoto.caption = ""
 		
 		return newPhoto
 	}

@@ -6,3 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
+
+enum EditPhotoMode: Identifiable, View {
+	case create(UIImage)
+	case edit(Photo)
+	
+	var id: String {
+		switch self {
+		case .create: return "create"
+		case .edit: return "edit"
+		}
+	}
+	
+	var body: some View {
+		
+	}
+}
