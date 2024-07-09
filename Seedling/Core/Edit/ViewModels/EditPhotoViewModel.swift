@@ -27,10 +27,10 @@ class EditPhotoViewModel: ObservableObject {
 		self.image = newImage
 	}
 	
-	init(existingImage: Photo) {
-		self.image = existingImage.uiImage
-		self.caption = existingImage.wrappedCaption
-		self.imageUrlString = existingImage.wrappedImageUrlString
+	init(existingPhoto: Photo) {
+		self.image = existingPhoto.uiImage
+		self.caption = existingPhoto.wrappedCaption
+		self.imageUrlString = existingPhoto.wrappedImageUrlString
 	}
 	
 //	MARK: - Methods
