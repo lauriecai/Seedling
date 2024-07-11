@@ -91,6 +91,11 @@ extension HomeView {
 							showActionForPlant: $viewModel.selectedPlant
 						)
 					}
+					.simultaneousGesture(
+						TapGesture().onEnded {
+							UIImpactFeedbackGenerator(style: .light).impactOccurred()
+						}
+					)
 				}
 			}
 			.padding(.bottom, 140)
