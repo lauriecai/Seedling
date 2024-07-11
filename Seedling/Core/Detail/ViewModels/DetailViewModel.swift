@@ -68,6 +68,9 @@ class DetailViewModel: ObservableObject {
 	@Published var editingCareRequirements: Bool = false
 	@Published var editingAdditionalCareNotes: Bool = false
 	
+	// PhotosPicker Segues
+	@Published var showingPhotosPicker: Bool = false
+	
 	init(plant: Plant) {
 		self.plant = plant
 		
