@@ -76,5 +76,5 @@ struct EditPhotoView: View {
 }
 
 #Preview {
-	EditPhotoView(viewModel: EditPhotoViewModel(newImage: UIImage(systemName: "photo")!), imagePickerService: ImagePickerService())
+	EditPhotoView(viewModel: EditPhotoViewModel(newImage: UIImage(systemName: "photo")!))
 }

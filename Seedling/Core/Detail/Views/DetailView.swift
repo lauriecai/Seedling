@@ -5,19 +5,26 @@
 //  Created by Laurie Cai on 2/11/24.
 //
 
+import PhotosUI
 import SwiftUI
 
 struct DetailView: View {
 	
 	@StateObject private var viewModel: DetailViewModel
 	
+	@State private var editPhotoMode: EditPhotoMode?
+	
+	@EnvironmentObject var imagePickerService: ImagePickerService
+	
 	@Environment(\.dismiss) var dismiss
 	
+//	MARK: - Init
 	init(plant: Plant) {
 		_viewModel = StateObject(wrappedValue: DetailViewModel(plant: plant))
 	}
 	
-    var body: some View {
+//	MARK: - View
+	var body: some View {
 		ZStack(alignment: .bottomTrailing) {
 			Color.theme.backgroundPrimary
 				.ignoresSafeArea()
@@ -46,6 +53,12 @@ struct DetailView: View {
 		.sheet(isPresented: $viewModel.showingUpdateStageView) {
 			NavigationView {
 				UpdateStageView(viewModel: viewModel)
+			}
+		}
+		.sheet(item: $editPhotoMode) { $0 }
+		.onChange(of: imagePickerService.selectedImage) { oldImage, newImage in
+			if let newImage {
+				editPhotoMode = .create(newImage)
 			}
 		}
 		.navigationDestination(isPresented: $viewModel.showingPlantDetailsView) {
@@ -162,11 +175,10 @@ extension DetailView {
 	}
 	
 	private var addPhotoButton: some View {
-		ButtonRounded(iconName: "photo", text: "Add Photo")
-			.onTapGesture {
-				UIImpactFeedbackGenerator(style: .light).impactOccurred()
-				print("Button tapped! Cue AddPhotoView")
-				viewModel.showingAddPhotoView.toggle()
+		PhotosPicker(
+			selection: $imagePickerService.selectedPhotosPickerItem,
+			matching: .images) {
+				ButtonRounded(iconName: "photo", text: "Add Photo")
 			}
 	}
 	
