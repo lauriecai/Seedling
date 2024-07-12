@@ -10,6 +10,8 @@ import SwiftUI
 struct TextEditorInput: View {
 	
 	let inputHeader: String?
+	let headerDescription: String?
+	
 	let inputPlaceholder: String
 	
 	let accentTheme: Bool
@@ -21,9 +23,17 @@ struct TextEditorInput: View {
 	var body: some View {
 		VStack(alignment: .leading, spacing: 8) {
 			if let header = inputHeader {
-				Text(header)
-					.font(.handjet(.bold, size: 20))
-					.foregroundStyle(Color.theme.textPrimary)
+				HStack {
+					Text(header)
+						.font(.handjet(.bold, size: 20))
+						.foregroundStyle(Color.theme.textPrimary)
+					
+					if let description = headerDescription {
+						Text("(\(description))")
+							.font(.handjet(.regular, size: 18))
+							.foregroundStyle(Color.theme.textSecondary)
+					}
+				}
 			}
 			
 			ZStack {
@@ -56,5 +66,5 @@ struct TextEditorInput: View {
 }
 
 #Preview {
-	TextEditorInput(inputHeader: "How's your plant doing?", inputPlaceholder: "Start writing...", accentTheme: true, text: .constant(""))
+	TextEditorInput(inputHeader: "How's your plant doing?", headerDescription: nil, inputPlaceholder: "Start writing...", accentTheme: true, text: .constant(""))
 }

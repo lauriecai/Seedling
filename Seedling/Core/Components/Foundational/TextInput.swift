@@ -10,8 +10,9 @@ import SwiftUI
 struct TextInput: View {
 	
 	let inputHeader: String
-	let inputPlaceholder: String
 	let headerDescription: String?
+	
+	let inputPlaceholder: String
 	
 	@Binding var text: String
 	
@@ -46,6 +47,6 @@ struct TextInput: View {
 		Color.theme.backgroundPrimary
 			.ignoresSafeArea()
 		
-		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: .constant(""))
+		TextInput(inputHeader: "Variety", headerDescription: "Optional", inputPlaceholder: "e.g. Beefsteak, Roma", text: .constant(""))
 	}
 }

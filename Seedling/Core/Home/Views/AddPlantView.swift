@@ -65,11 +65,11 @@ struct AddPlantView: View {
 extension AddPlantView {
 	
 	private var plantTextInput: some View {
-		TextInput(inputHeader: "Name", inputPlaceholder: "e.g. Tomato", headerDescription: nil, text: $viewModel.plantNameInput)
+		TextInput(inputHeader: "Name", headerDescription: nil, inputPlaceholder: "e.g. Tomato", text: $viewModel.plantNameInput)
 	}
 	
 	private var plantVarietyInput: some View {
-		TextInput(inputHeader: "Variety", inputPlaceholder: "e.g. Beefsteak, Roma", headerDescription: "Optional", text: $viewModel.plantVarietyInput)
+		TextInput(inputHeader: "Variety", headerDescription: "Optional", inputPlaceholder: "e.g. Beefsteak, Roma", text: $viewModel.plantVarietyInput)
 	}
 	
 	private var plantStageSelection: some View {

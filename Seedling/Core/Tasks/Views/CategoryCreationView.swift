@@ -25,8 +25,8 @@ struct CategoryCreationView: View {
 					VStack(spacing: 15) {
 						TextInput(
 							inputHeader: "Category Name",
+							headerDescription: nil, 
 							inputPlaceholder: "e.g. Wishlist",
-							headerDescription: nil,
 							text: $viewModel.taskCategoryInput
 						)
 						.focused($keyboardFocused)

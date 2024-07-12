@@ -176,11 +176,6 @@ extension DetailView {
 	}
 	
 	private var addPhotoButton: some View {
-//		PhotosPicker(
-//			selection: $imagePickerService.selectedPhotosPickerItem,
-//			matching: .images) {
-//				ButtonRounded(iconName: "photo", text: "Add Photo")
-//			}
 		ButtonRounded(iconName: "photo", text: "Add Photo")
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()

@@ -62,6 +62,7 @@ extension AddTaskView {
 	private var taskTitleInput: some View {
 		TextEditorInput(
 			inputHeader: "Task Description",
+			headerDescription: nil,
 			inputPlaceholder: "e.g. Fertilize tomatoes",
 			accentTheme: true,
 			text: $viewModel.taskTitleInput

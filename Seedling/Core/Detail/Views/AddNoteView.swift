@@ -60,11 +60,11 @@ extension AddNoteView {
 	}
 	
 	private var noteTitleInput: some View {
-		TextInput(inputHeader: "Title", inputPlaceholder: "e.g. It sprouted!", headerDescription: "Optional", text: $viewModel.noteTitleInput)
+		TextInput(inputHeader: "Title", headerDescription: "Optional", inputPlaceholder: "e.g. It sprouted!", text: $viewModel.noteTitleInput)
 	}
 	
 	private var noteBodyInput: some View {
-		TextEditorInput(inputHeader: "Description", inputPlaceholder: "Start writing...", accentTheme: true, text: $viewModel.noteBodyInput)
+		TextEditorInput(inputHeader: "Description", headerDescription: nil, inputPlaceholder: "Start writing...", accentTheme: true, text: $viewModel.noteBodyInput)
 	}
 	
 	private var addNoteButton: some View {

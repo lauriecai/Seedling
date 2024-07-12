@@ -717,6 +717,8 @@
 				INFOPLIST_FILE = Seedling/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Seedling;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Seedling requires access to camera to take photos for posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Seedling requires access to photo library to select photos for posts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -757,6 +759,8 @@
 				INFOPLIST_FILE = Seedling/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Seedling;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Seedling requires access to camera to take photos for posts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Seedling requires access to photo library to select photos for posts.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
