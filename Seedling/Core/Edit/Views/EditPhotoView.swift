@@ -29,7 +29,7 @@ struct EditPhotoView: View {
 					Image(uiImage: viewModel.image)
 						.resizable()
 						.scaledToFit()
-						.frame(height: 300)
+						.frame(maxHeight: 300)
 						.clipShape(RoundedRectangle(cornerRadius: 8))
 					
 					noteBodyInput
