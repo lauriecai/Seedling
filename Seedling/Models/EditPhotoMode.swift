@@ -22,9 +22,13 @@ enum EditPhotoMode: Identifiable, View {
 	var body: some View {
 		switch self {
 		case .create(let selectedImage):
-			EditPhotoView(viewModel: EditPhotoViewModel(newImage: selectedImage))
+			NavigationView {
+				EditPhotoView(viewModel: EditPhotoViewModel(newImage: selectedImage))
+			}
 		case .edit(let savedPhoto):
-			EditPhotoView(viewModel: EditPhotoViewModel(existingPhoto: savedPhoto))
+			NavigationView {
+				EditPhotoView(viewModel: EditPhotoViewModel(existingPhoto: savedPhoto))
+			}
 		}
 	}
 }
