@@ -180,6 +180,7 @@ extension DetailView {
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingPhotosPicker.toggle()
+				viewModel.showingAddPostOptions.toggle()
 			}
 	}
 	
