@@ -179,6 +179,7 @@ extension DetailView {
 		ButtonRounded(iconName: "photo", text: "Add Photo")
 			.onTapGesture {
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+				imagePickerService.selectedPhotosPickerItem = nil
 				viewModel.showingPhotosPicker.toggle()
 				viewModel.showingAddPostOptions.toggle()
 			}
