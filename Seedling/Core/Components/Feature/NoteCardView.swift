@@ -15,14 +15,12 @@ struct NoteCardView: View {
 	@Binding var showActionsForNote: Note?
 	
     var body: some View {
-		HStack(alignment: .top) {
-			VStack(alignment: .leading, spacing: 10) {
-				
-				if !note.wrappedTitle.isEmpty { noteTitle }
-				if !note.wrappedBody.isEmpty { noteDescription }
-				
-				timestampAndActionsFooter
-			}
+		VStack(alignment: .leading, spacing: 10) {
+			
+			if !note.wrappedTitle.isEmpty { noteTitle }
+			if !note.wrappedBody.isEmpty { noteDescription }
+			
+			timestampAndActionsFooter
 		}
 		.padding()
 		.background(Color.theme.backgroundLight)
