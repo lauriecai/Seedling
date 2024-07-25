@@ -21,11 +21,7 @@ struct NoteCardView: View {
 				if !note.wrappedTitle.isEmpty { noteTitle }
 				if !note.wrappedBody.isEmpty { noteDescription }
 				
-				HStack {
-					timestamp
-					Spacer()
-					noteActions
-				}
+				timestampAndActionsFooter
 			}
 		}
 		.padding()
@@ -46,6 +42,14 @@ extension NoteCardView {
 		Text(note.wrappedBody)
 			.font(.handjet(.medium, size: 20))
 			.foregroundStyle(Color.theme.textPrimary)
+	}
+	
+	private var timestampAndActionsFooter: some View {
+		HStack {
+			timestamp
+			Spacer()
+			noteActions
+		}
 	}
 	
 	private var timestamp: some View {
