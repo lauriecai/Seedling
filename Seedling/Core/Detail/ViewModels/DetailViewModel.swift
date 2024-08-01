@@ -56,12 +56,15 @@ class DetailViewModel: ObservableObject {
 	@Published var showingUpdateStageView: Bool = false
 	@Published var showingPlantDetailsView: Bool = false
 	
-	// Add Note View Segues
+	// Add Post View Segues
 	@Published var showNoteActionSheet: Bool = false
 	@Published var selectedNote: Note? = nil
 	
 	@Published var showEventActionSheet: Bool = false
 	@Published var selectedEvent: Event? = nil
+	
+	@Published var showPhotoActionSheet: Bool = false
+	@Published var selectedPhoto: Photo? = nil
 	
 	// Plant Details Segues
 	@Published var editingGeneralDetails: Bool = false
