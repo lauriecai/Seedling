@@ -93,7 +93,7 @@ extension DetailView {
 							Text("What do you want to do with this note?")
 						}
 				case .photo(let photo):
-					Text("photoCard(for: photo) placeholder")
+					photoCard(for: photo)
 				}
 			}
 			.padding(.horizontal)
@@ -145,6 +145,10 @@ extension DetailView {
 				}
 			}
 		}
+	}
+	
+	private func photoCard(for photo: Photo) -> PhotoCardView {
+		PhotoCardView(photo: photo, showActionSheet: $viewModel.showPhotoActionSheet, showActionsForPhoto: $viewModel.selectedPhoto)
 	}
 	
 	private var addPostActionGroup: some View {
