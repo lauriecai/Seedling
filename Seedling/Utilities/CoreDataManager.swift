@@ -30,15 +30,15 @@ class CoreDataManager {
 	
 // 	MARK: - Sort variables
 
-	private var sortByNewest: NSSortDescriptor {
+	var sortByNewest: NSSortDescriptor {
 		NSSortDescriptor(key: "timestamp", ascending: false)
 	}
 
-	private var sortByOldest: NSSortDescriptor {
+	var sortByOldest: NSSortDescriptor {
 		NSSortDescriptor(key: "timestamp", ascending: true)
 	}
 
-	private var sortByName: NSSortDescriptor {
+	var sortByName: NSSortDescriptor {
 		NSSortDescriptor(key: "name", ascending: true)
 	}
 	
@@ -249,6 +249,10 @@ class CoreDataManager {
 	}
 	
 //	MARK: - Photo functions
+	
+//	func requestPhotos() -> NSFetchRequest<Photo> {
+//		
+//	}
 	
 	func deletePhoto(photo: Photo) {
 		context.delete(photo)
