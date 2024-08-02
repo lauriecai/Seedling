@@ -17,8 +17,8 @@ class PhotoService {
 	
 //	MARK: - Public Methods
 	
-	func fetchPhotos() -> [Photo] {
-		let request = createPhotoRequest()
+	func fetchPhotos(for plant: Plant) -> [Photo]? {
+		let request = requestPhotos(for: plant)
 		
 		do {
 			return try coreDataManager.context.fetch(request)
@@ -39,8 +39,9 @@ class PhotoService {
 	
 //	MARK: - Private Methods
 	
-	private func createPhotoRequest() -> NSFetchRequest<Photo> {
+	private func requestPhotos(for plant: Plant? = nil) -> NSFetchRequest<Photo> {
 		let request = NSFetchRequest<Photo>(entityName: "Photo")
+		request.sortDescriptors = [coreDataManager.sortByNewest]
 		
 		return request
 	}
