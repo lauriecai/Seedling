@@ -66,7 +66,8 @@ extension EditPhotoView {
 	private var addPhotoButton: some View {
 		Button("Add Photo") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			print("add functionality - add, reset") // tbd
+			viewModel.createPhoto()
+			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
 		.foregroundStyle(Color.theme.accentGreen)
