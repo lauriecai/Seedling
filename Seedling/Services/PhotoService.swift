@@ -15,7 +15,7 @@ class PhotoService {
 	
 	private let coreDataManager = CoreDataManager.shared
 	
-//	MARK: - Methods
+//	MARK: - Public Methods
 	
 	func fetchPhotos() -> [Photo] {
 		let request = createPhotoRequest()
@@ -36,6 +36,8 @@ class PhotoService {
 		
 		return newPhoto
 	}
+	
+//	MARK: - Private Methods
 	
 	private func createPhotoRequest() -> NSFetchRequest<Photo> {
 		let request = NSFetchRequest<Photo>(entityName: "Photo")
