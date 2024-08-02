@@ -28,13 +28,13 @@ class PhotoService {
 		}
 	}
 	
-	func createPhoto(caption: String) -> Photo {
+	func createPhoto(caption: String) {
 		let newPhoto = Photo(context: coreDataManager.context)
 		newPhoto.imageUrlString = UUID().uuidString
 		newPhoto.timestamp = Date()
 		newPhoto.caption = ""
 		
-		return newPhoto
+		coreDataManager.save()
 	}
 	
 //	MARK: - Private Methods
