@@ -74,6 +74,9 @@ class DetailViewModel: ObservableObject {
 	// PhotosPicker Segues
 	@Published var showingPhotosPicker: Bool = false
 	
+	// Services
+	private let photoService = PhotoService()
+	
 	init(plant: Plant) {
 		self.plant = plant
 		
@@ -93,10 +96,14 @@ class DetailViewModel: ObservableObject {
 	func fetchPosts(for plant: Plant) {
 		let notes = fetchNotes(for: plant) ?? []
 		let events = fetchEvents(for: plant) ?? []
+		let photos = photoService.fetchPhotos(for: plant) ?? []
 
-		let notesAndEventsAsPosts = notes.map { PlantPost(type: .note($0)) } + events.map { PlantPost(type: .event($0)) }
+		let posts = notes.map { PlantPost(type: .note($0)) } + 
+					events.map { PlantPost(type: .event($0)) } +
+					photos.map { PlantPost(type: .photo($0)) }
 	
-		posts = notesAndEventsAsPosts.sorted { $0.timestamp > $1.timestamp }
+		self.posts = posts.sorted { $0.timestamp > $1.timestamp }
+		print("Posts successfully fetched")
 	}
 	
 //	MARK: - Plant functions
