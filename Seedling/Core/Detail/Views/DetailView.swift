@@ -56,10 +56,14 @@ struct DetailView: View {
 			}
 		}
 		.photosPicker(isPresented: $viewModel.showingPhotosPicker, selection: $imagePickerService.selectedPhotosPickerItem)
-		.sheet(item: $editPhotoMode) { $0 }
-		.onChange(of: imagePickerService.selectedImage) { oldImage, newImage in
+		.onChange(of: imagePickerService.selectedImage) { _, newImage in
 			if let newImage {
 				editPhotoMode = .create(newImage)
+			}
+		}
+		.sheet(item: $editPhotoMode) {
+			$0.onDisappear {
+				viewModel.fetchPosts(for: viewModel.plant)
 			}
 		}
 		.navigationDestination(isPresented: $viewModel.showingPlantDetailsView) {
