@@ -33,7 +33,7 @@ class EditPhotoViewModel: ObservableObject {
 		self.imageUrlString = existingPhoto.wrappedImageUrlString
 	}
 	
-//	MARK: - Methods
+//	MARK: - Public Methods
 	
 	func createPhoto() {
 		let newPhoto = photoService.createPhoto(caption: caption)
@@ -42,32 +42,34 @@ class EditPhotoViewModel: ObservableObject {
 		fileManager.saveImage(id: newPhoto.wrappedImageUrlString, image: image)
 	}
 	
-	func saveChanges() {
-		guard let imageUrlString,
-			  let savedPhoto = findExistingPhoto() else { return }
-		
-		savedPhoto.caption = caption
-		
-		coreDataManager.save()
-		fileManager.saveImage(id: imageUrlString, image: image)
-	}
+//	func saveChanges(for plant: Plant) {
+//		guard let imageUrlString,
+//			  let savedPhoto = findExistingPhoto(for: plant) else { return }
+//		
+//		savedPhoto.caption = caption
+//		
+//		coreDataManager.save()
+//		fileManager.saveImage(id: imageUrlString, image: image)
+//	}
+//	
+//	func deletePhoto() {
+//		guard let imageUrlString,
+//			  let savedPhoto = findExistingPhoto(for: plant) else { return }
+//		
+//		fileManager.deleteImage(id: imageUrlString)
+//		coreDataManager.deletePhoto(photo: savedPhoto)
+//	}
 	
-	func deletePhoto() {
-		guard let imageUrlString,
-			  let savedPhoto = findExistingPhoto() else { return }
-		
-		fileManager.deleteImage(id: imageUrlString)
-		coreDataManager.deletePhoto(photo: savedPhoto)
-	}
+//	MARK: - Private Methods
 	
-	private func fetchPhotos() -> [Photo] {
-		photoService.fetchPhotos()
-	}
-	
-	private func findExistingPhoto() -> Photo? {
-		let allPhotos = fetchPhotos()
-		
-		if let existingPhoto = allPhotos.first(where: { $0.imageUrlString == imageUrlString }) 
-		{ return existingPhoto } else { return nil }
-	}
+//	private func fetchPhotos(for plant: Plant) -> [Photo]? {
+//		photoService.fetchPhotos(for: plant)
+//	}
+//	
+//	private func findExistingPhoto(for plant: Plant) -> Photo? {
+//		let allPhotos = fetchPhotos(for: plant)
+//		
+//		if let existingPhoto = allPhotos?.first(where: { $0.imageUrlString == imageUrlString })
+//		{ return existingPhoto } else { return nil }
+//	}
 }
