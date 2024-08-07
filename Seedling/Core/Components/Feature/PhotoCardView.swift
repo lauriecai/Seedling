@@ -16,8 +16,17 @@ struct PhotoCardView: View {
 	
     var body: some View {
 		VStack(alignment: .leading, spacing: 10) {
+			Image(uiImage: photo.uiImage)
+				.resizable()
+				.scaledToFit()
+			
 			if !photo.wrappedCaption.isEmpty { photoCaption }
+			
+			timestampAndActionsFooter
 		}
+		.padding()
+		.background(Color.theme.backgroundLight)
+		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
