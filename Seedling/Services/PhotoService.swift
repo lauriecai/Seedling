@@ -21,7 +21,6 @@ class PhotoService {
 		let request = requestPhotos(for: plant)
 		
 		do {
-			print("Successfully fetched [Photo] from Core Data")
 			return try coreDataManager.context.fetch(request)
 		} catch {
 			print("Error fetching images. \(error.localizedDescription)")

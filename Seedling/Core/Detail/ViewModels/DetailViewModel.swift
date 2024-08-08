@@ -103,7 +103,6 @@ class DetailViewModel: ObservableObject {
 					photos.map { PlantPost(type: .photo($0)) }
 	
 		self.posts = posts.sorted { $0.timestamp > $1.timestamp }
-		print("Posts successfully fetched")
 	}
 	
 //	MARK: - Plant functions

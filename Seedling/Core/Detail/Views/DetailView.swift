@@ -83,22 +83,29 @@ extension DetailView {
 					switch post.type {
 					case .event(let event):
 						eventCard(for: event)
-							.confirmationDialog("Stage Update Options", isPresented: $viewModel.showEventActionSheet) {
+							.confirmationDialog("Post Options", isPresented: $viewModel.showEventActionSheet) {
 								editEventButton
 								deleteEventButton
 							} message: {
-								Text("What do you want to do with this stage update?")
+								Text("What do you want to do with this post?")
 							}
 					case .note(let note):
 						noteCard(for: note)
-							.confirmationDialog("Note Options", isPresented: $viewModel.showNoteActionSheet) {
+							.confirmationDialog("Post Options", isPresented: $viewModel.showNoteActionSheet) {
 								editNoteButton
 								deleteNoteButton
 							} message: {
-								Text("What do you want to do with this note?")
+								Text("What do you want to do with this post?")
 							}
 					case .photo(let photo):
 						photoCard(for: photo)
+							.confirmationDialog("Post Options", isPresented: $viewModel.showPhotoActionSheet) {
+								editPhotoButton
+								editCaptionButton
+								deletePhotoButton
+							} message: {
+								Text("What do you want to do with this post?")
+							}
 					}
 				}
 			}
@@ -119,7 +126,7 @@ extension DetailView {
 	}
 	
 	private var deleteEventButton: some View {
-		Button("Delete Stage Update", role: .destructive) {
+		Button("Delete Post", role: .destructive) {
 			if let selectedEvent = viewModel.selectedEvent {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteEvent(event: selectedEvent)
@@ -145,7 +152,7 @@ extension DetailView {
 	}
 	
 	private var deleteNoteButton: some View {
-		Button("Delete note", role: .destructive) {
+		Button("Delete Post", role: .destructive) {
 			if let selectedNote = viewModel.selectedNote {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteNote(note: selectedNote)
