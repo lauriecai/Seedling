@@ -10,6 +10,7 @@ import SwiftUI
 
 class EditPhotoViewModel: ObservableObject {
 	
+	@Published var plant: Plant
 	@Published var image: UIImage
 	@Published var caption: String = ""
 	
@@ -23,11 +24,13 @@ class EditPhotoViewModel: ObservableObject {
 	
 //	MARK: - Init
 	
-	init(newImage: UIImage) {
+	init(plant: Plant, newImage: UIImage) {
+		self.plant = plant
 		self.image = newImage
 	}
 	
-	init(existingPhoto: Photo) {
+	init(plant: Plant, existingPhoto: Photo) {
+		self.plant = plant
 		self.image = existingPhoto.uiImage
 		self.caption = existingPhoto.wrappedCaption
 		self.imageUrlString = existingPhoto.wrappedImageUrlString
@@ -35,8 +38,8 @@ class EditPhotoViewModel: ObservableObject {
 	
 //	MARK: - Public Methods
 	
-	func createPhoto() {
-		let newPhoto = photoService.createPhoto(caption: caption)
+	func createPhoto(for plant: Plant) {
+		let newPhoto = photoService.createPhoto(for: plant, caption: caption)
 		
 		coreDataManager.save()
 		fileManager.saveImage(id: newPhoto.wrappedImageUrlString, image: image)

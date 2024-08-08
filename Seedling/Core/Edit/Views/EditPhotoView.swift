@@ -53,10 +53,6 @@ struct EditPhotoView: View {
     }
 }
 
-#Preview {
-	EditPhotoView(viewModel: EditPhotoViewModel(newImage: UIImage(systemName: "photo")!))
-}
-
 extension EditPhotoView {
 	
 	private var noteBodyInput: some View {
@@ -66,7 +62,7 @@ extension EditPhotoView {
 	private var addPhotoButton: some View {
 		Button("Add Photo") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			viewModel.createPhoto()
+			viewModel.createPhoto(for: viewModel.plant)
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))

@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 enum EditPhotoMode: Identifiable, View {
-	case create(UIImage)
-	case edit(Photo)
+	case create(Plant, UIImage)
+	case edit(Plant, Photo)
 	
 	var id: String {
 		switch self {
@@ -21,13 +21,13 @@ enum EditPhotoMode: Identifiable, View {
 	
 	var body: some View {
 		switch self {
-		case .create(let selectedImage):
+		case .create(let plant, let selectedImage):
 			NavigationView {
-				EditPhotoView(viewModel: EditPhotoViewModel(newImage: selectedImage))
+				EditPhotoView(viewModel: EditPhotoViewModel(plant: plant, newImage: selectedImage))
 			}
-		case .edit(let savedPhoto):
+		case .edit(let plant, let savedPhoto):
 			NavigationView {
-				EditPhotoView(viewModel: EditPhotoViewModel(existingPhoto: savedPhoto))
+				EditPhotoView(viewModel: EditPhotoViewModel(plant: plant, existingPhoto: savedPhoto))
 			}
 		}
 	}

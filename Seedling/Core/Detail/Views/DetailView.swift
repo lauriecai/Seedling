@@ -58,7 +58,7 @@ struct DetailView: View {
 		.photosPicker(isPresented: $viewModel.showingPhotosPicker, selection: $imagePickerService.selectedPhotosPickerItem)
 		.onChange(of: imagePickerService.selectedImage) { _, newImage in
 			if let newImage {
-				editPhotoMode = .create(newImage)
+				editPhotoMode = .create(viewModel.plant, newImage)
 			}
 		}
 		.sheet(item: $editPhotoMode) {

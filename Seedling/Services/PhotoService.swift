@@ -21,6 +21,7 @@ class PhotoService {
 		let request = requestPhotos(for: plant)
 		
 		do {
+			print("Successfully fetched [Photo] from Core Data")
 			return try coreDataManager.context.fetch(request)
 		} catch {
 			print("Error fetching images. \(error.localizedDescription)")
@@ -28,8 +29,9 @@ class PhotoService {
 		}
 	}
 	
-	func createPhoto(caption: String) -> Photo {
+	func createPhoto(for plant: Plant, caption: String) -> Photo {
 		let newPhoto = Photo(context: coreDataManager.context)
+		newPhoto.plant = plant
 		newPhoto.imageUrlString = UUID().uuidString
 		newPhoto.timestamp = Date()
 		newPhoto.caption = caption
@@ -39,9 +41,11 @@ class PhotoService {
 	
 //	MARK: - Private Methods
 	
-	private func requestPhotos(for plant: Plant? = nil) -> NSFetchRequest<Photo> {
+	private func requestPhotos(for plant: Plant) -> NSFetchRequest<Photo> {
 		let request = NSFetchRequest<Photo>(entityName: "Photo")
+		
 		request.sortDescriptors = [coreDataManager.sortByNewest]
+		request.predicate = NSPredicate(format: "plant == %@", plant)
 		
 		return request
 	}
