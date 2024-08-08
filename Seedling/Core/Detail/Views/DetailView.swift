@@ -78,28 +78,31 @@ extension DetailView {
 	
 	private var postsList: some View {
 		ScrollView(showsIndicators: false) {
-			ForEach(viewModel.posts, id: \.self.hashValue) { post in
-				switch post.type {
-				case .event(let event):
-					eventCard(for: event)
-						.confirmationDialog("Stage Update Options", isPresented: $viewModel.showEventActionSheet) {
-							editEventButton
-							deleteEventButton
-						} message: {
-							Text("What do you want to do with this stage update?")
-						}
-				case .note(let note):
-					noteCard(for: note)
-						.confirmationDialog("Note Options", isPresented: $viewModel.showNoteActionSheet) {
-							editNoteButton
-							deleteNoteButton
-						} message: {
-							Text("What do you want to do with this note?")
-						}
-				case .photo(let photo):
-					photoCard(for: photo)
+			VStack(alignment: .leading, spacing: 15) {
+				ForEach(viewModel.posts, id: \.self.hashValue) { post in
+					switch post.type {
+					case .event(let event):
+						eventCard(for: event)
+							.confirmationDialog("Stage Update Options", isPresented: $viewModel.showEventActionSheet) {
+								editEventButton
+								deleteEventButton
+							} message: {
+								Text("What do you want to do with this stage update?")
+							}
+					case .note(let note):
+						noteCard(for: note)
+							.confirmationDialog("Note Options", isPresented: $viewModel.showNoteActionSheet) {
+								editNoteButton
+								deleteNoteButton
+							} message: {
+								Text("What do you want to do with this note?")
+							}
+					case .photo(let photo):
+						photoCard(for: photo)
+					}
 				}
 			}
+			.padding(.top, 7)
 			.padding(.horizontal)
 			.padding(.bottom, 160)
 		}
