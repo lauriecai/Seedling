@@ -250,10 +250,6 @@ class CoreDataManager {
 	
 //	MARK: - Photo functions
 	
-//	func requestPhotos() -> NSFetchRequest<Photo> {
-//		
-//	}
-	
 	func deletePhoto(photo: Photo) {
 		context.delete(photo)
 		save()

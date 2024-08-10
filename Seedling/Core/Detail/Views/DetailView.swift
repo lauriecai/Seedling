@@ -99,9 +99,8 @@ extension DetailView {
 					case .photo(let photo):
 						photoCard(for: photo)
 							.confirmationDialog("Post Options", isPresented: $viewModel.showPhotoActionSheet) {
-								editPhotoButton
-								editCaptionButton
-								deletePhotoButton
+								 editCaptionButton
+								 deletePhotoButton
 							} message: {
 								Text("What do you want to do with this post?")
 							}
@@ -120,23 +119,25 @@ extension DetailView {
 	
 	private var deleteEventButton: some View {
 		Button("Delete Post", role: .destructive) {
-			// tbd
+			if let selectedEvent = viewModel.selectedEvent {
+				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
+					viewModel.deleteEvent(event: selectedEvent)
+				}
+			}
 		}
 	}
 	
-	private var editPhotoButton: some View {
-		Button("Edit Photo") {
-			
+	private var editCaptionButton: some View {
+		Button("Edit Caption") {
+			if let selectedPhoto = viewModel.selectedPhoto {
+				editPhotoMode = .edit(viewModel.plant, selectedPhoto)
+			}
 		}
 	}
 	
 	private var deletePhotoButton: some View {
 		Button("Delete Post", role: .destructive) {
-			if let selectedPhoto = viewModel.selectedEvent {
-				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
-					viewModel.deleteEvent(event: selectedEvent)
-				}
-			}
+			// tbd
 		}
 	}
 	

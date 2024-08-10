@@ -69,6 +69,15 @@ extension EditPhotoView {
 		.foregroundStyle(Color.theme.accentGreen)
 	}
 	
+	private var saveChangesButton: some View {
+		Button("Save Changes") {
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			
+			dismiss()
+		}
+		.font(.handjet(.extraBold, size: 20))
+	}
+	
 	private var cancelButton: some View {
 		Button {
 			dismiss()
