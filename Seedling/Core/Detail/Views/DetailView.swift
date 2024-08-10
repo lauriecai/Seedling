@@ -78,7 +78,7 @@ extension DetailView {
 	
 	private var postsList: some View {
 		ScrollView(showsIndicators: false) {
-			VStack(alignment: .leading, spacing: 15) {
+			VStack(alignment: .leading, spacing: 10) {
 				ForEach(viewModel.posts, id: \.self.hashValue) { post in
 					switch post.type {
 					case .event(let event):
