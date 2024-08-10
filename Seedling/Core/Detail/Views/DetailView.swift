@@ -84,7 +84,6 @@ extension DetailView {
 					case .event(let event):
 						eventCard(for: event)
 							.confirmationDialog("Post Options", isPresented: $viewModel.showEventActionSheet) {
-								editEventButton
 								deleteEventButton
 							} message: {
 								Text("What do you want to do with this post?")
@@ -119,15 +118,21 @@ extension DetailView {
 		EventCardView(event: event, showActionSheet: $viewModel.showEventActionSheet, showActionsForEvent: $viewModel.selectedEvent)
 	}
 	
-	private var editEventButton: some View {
-		Button("Edit Stage Update") {
-			print("Add note view edit event triggered!")
+	private var deleteEventButton: some View {
+		Button("Delete Post", role: .destructive) {
+			// tbd
 		}
 	}
 	
-	private var deleteEventButton: some View {
+	private var editPhotoButton: some View {
+		Button("Edit Photo") {
+			
+		}
+	}
+	
+	private var deletePhotoButton: some View {
 		Button("Delete Post", role: .destructive) {
-			if let selectedEvent = viewModel.selectedEvent {
+			if let selectedPhoto = viewModel.selectedEvent {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteEvent(event: selectedEvent)
 				}
