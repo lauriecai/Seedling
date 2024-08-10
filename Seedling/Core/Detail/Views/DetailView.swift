@@ -137,7 +137,7 @@ extension DetailView {
 	
 	private var deletePhotoButton: some View {
 		Button("Delete Post", role: .destructive) {
-			// tbd
+			viewModel.deletePhoto()
 		}
 	}
 	

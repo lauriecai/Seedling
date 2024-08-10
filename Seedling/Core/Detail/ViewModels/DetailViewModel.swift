@@ -10,7 +10,8 @@ import Foundation
 
 class DetailViewModel: ObservableObject {
 	
-	let manager = CoreDataManager.shared
+	let coreDataManager = CoreDataManager.shared
+	let fileManager = FileManager()
 	
 	// Detail View
 	@Published var plant: Plant
@@ -120,7 +121,7 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func updatePlantStage(for plant: Plant) {
-		manager.addStageUpdate(plant: plant, newStage: selectedStage.rawValue)
+		coreDataManager.addStageUpdate(plant: plant, newStage: selectedStage.rawValue)
 		fetchPosts(for: plant)
 	}
 	
@@ -137,7 +138,7 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func editPlantGeneralDetails(for plant: Plant) {
-		manager.editPlantGeneralDetails(
+		coreDataManager.editPlantGeneralDetails(
 			for: plant,
 			name: plantNameInput,
 			variety: plantVarietyInput,
@@ -160,7 +161,7 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func editPlantCareRequirements(for plant: Plant) {
-		manager.editPlantCareRequirements(
+		coreDataManager.editPlantCareRequirements(
 			for: plant,
 			sunlightRequirement: sunlightRequirementInput,
 			temperatureRequirement: temperatureRequirementInput,
@@ -180,7 +181,7 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func editPlantAdditionalCareNotes(for plant: Plant) {
-		manager.editAdditionalCareNotes(
+		coreDataManager.editAdditionalCareNotes(
 			for: plant,
 			additionalCareNotes: additionalCareNotesInput
 		)
@@ -192,10 +193,10 @@ class DetailViewModel: ObservableObject {
 //	MARK: - Note functions
 	
 	private func fetchNotes(for plant: Plant) -> [Note]? {
-		let request = manager.requestNotes(for: plant)
+		let request = coreDataManager.requestNotes(for: plant)
 		
 		do {
-			return try manager.context.fetch(request)
+			return try coreDataManager.context.fetch(request)
 		} catch let error {
 			print("Error fetching notes from Core Data. \(error)")
 			return nil
@@ -203,17 +204,17 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func addNote(for plant: Plant, title: String, body: String) {
-		manager.addNote(for: plant, title: title, body: body)
+		coreDataManager.addNote(for: plant, title: title, body: body)
 		fetchPosts(for: plant)
 	}
 	
 	func deleteNote(note: Note) {
-		manager.deleteNote(note: note)
+		coreDataManager.deleteNote(note: note)
 		fetchPosts(for: plant)
 	}
 	
 	func updateNoteTitleAndBody(for note: Note, title: String, body: String) {
-		manager.updateNoteTitleAndBody(for: note, title: title, body: body)
+		coreDataManager.updateNoteTitleAndBody(for: note, title: title, body: body)
 		fetchPosts(for: plant)
 	}
 	
@@ -239,10 +240,10 @@ class DetailViewModel: ObservableObject {
 //	MARK: - Event functions
 	
 	private func fetchEvents(for plant: Plant) -> [Event]? {
-		let request = manager.requestEvents(for: plant)
+		let request = coreDataManager.requestEvents(for: plant)
 		
 		do {
-			return try manager.context.fetch(request)
+			return try coreDataManager.context.fetch(request)
 		} catch let error {
 			print("Error fetching events from Core Data. \(error)")
 			return nil
@@ -250,11 +251,35 @@ class DetailViewModel: ObservableObject {
 	}
 	
 	func deleteEvent(event: Event) {
-		manager.deleteEvent(event: event)
+		coreDataManager.deleteEvent(event: event)
 		fetchPosts(for: plant)
 	}
 	
-// MARK: - UI functions
+//  MARK: - Photo functions
+	
+	func deletePhoto() {
+		guard let imageUrlString = selectedPhoto?.imageUrlString,
+			  let savedPhoto = findExistingPhoto(for: plant) else { return }
+		
+		fileManager.deleteImage(id: imageUrlString)
+		coreDataManager.deletePhoto(photo: savedPhoto)
+		fetchPosts(for: plant)
+	}
+	
+	private func findExistingPhoto(for plant: Plant) -> Photo? {
+		guard let selectedPhoto = selectedPhoto else { return nil }
+		
+		let allPhotos = fetchPhotos(for: plant)
+		
+		if let existingPhoto = allPhotos?.first(where: { $0.imageUrlString == selectedPhoto.imageUrlString })
+		{ return existingPhoto } else { return nil }
+	}
+	
+	private func fetchPhotos(for plant: Plant) -> [Photo]? {
+		photoService.fetchPhotos(for: plant)
+	}
+	
+//  MARK: - UI functions
 	
 	func activateTextFieldEditModeForAll() {
 		if !sunlightRequirementInput.isEmpty {

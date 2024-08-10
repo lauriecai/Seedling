@@ -67,14 +67,14 @@ class EditPhotoViewModel: ObservableObject {
 	
 //	MARK: - Private Methods
 	
-	private func fetchPhotos(for plant: Plant) -> [Photo]? {
-		photoService.fetchPhotos(for: plant)
-	}
-	
 	private func findExistingPhoto(for plant: Plant) -> Photo? {
 		let allPhotos = fetchPhotos(for: plant)
 		
 		if let existingPhoto = allPhotos?.first(where: { $0.imageUrlString == imageUrlString })
 		{ return existingPhoto } else { return nil }
+	}
+	
+	private func fetchPhotos(for plant: Plant) -> [Photo]? {
+		photoService.fetchPhotos(for: plant)
 	}
 }
