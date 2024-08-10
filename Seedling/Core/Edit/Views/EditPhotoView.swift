@@ -31,8 +31,8 @@ struct EditPhotoView: View {
 					Image(uiImage: viewModel.image)
 						.resizable()
 						.scaledToFit()
-						.frame(maxHeight: 300)
 						.clipShape(RoundedRectangle(cornerRadius: 8))
+						.frame(maxHeight: 300)
 					
 					noteBodyInput
 						.focused($keyboardFocused)
