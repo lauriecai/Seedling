@@ -56,6 +56,7 @@ struct EditPhotoView: View {
 		.onChange(of: imagePickerService.selectedImage) { _, newImage in
 			if let newImage { viewModel.image = newImage }
 		}
+		.onChange(of: viewModel.caption) { viewModel.captionEdited = true }
     }
 }
 
@@ -82,6 +83,8 @@ extension EditPhotoView {
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
+		.foregroundStyle(viewModel.captionEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
+		.disabled(!viewModel.captionEdited)
 	}
 	
 	private var cancelButton: some View {

@@ -14,6 +14,8 @@ class EditPhotoViewModel: ObservableObject {
 	@Published var image: UIImage
 	@Published var caption: String = ""
 	
+	@Published var captionEdited: Bool = false
+	
 	var imageUrlString: String?
 	var editingExistingImage: Bool { imageUrlString != nil }
 	
