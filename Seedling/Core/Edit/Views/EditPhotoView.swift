@@ -16,6 +16,8 @@ struct EditPhotoView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	@FocusState private var keyboardFocused: Bool
+	
 	let coreDataManager = CoreDataManager.shared
 	let fileManager = FileManager()
 	
@@ -33,6 +35,8 @@ struct EditPhotoView: View {
 						.clipShape(RoundedRectangle(cornerRadius: 8))
 					
 					noteBodyInput
+						.focused($keyboardFocused)
+						.onAppear { keyboardFocused.toggle() }
 					
 					Spacer()
 				}

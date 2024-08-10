@@ -31,7 +31,7 @@
         <attribute name="waterRequirement" optional="YES" attributeType="String"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="plant" inverseEntity="Event"/>
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="plant" inverseEntity="Note"/>
-        <relationship name="photos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="plant" inverseEntity="Photo"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Photo" inverseName="plant" inverseEntity="Photo"/>
     </entity>
     <entity name="TaskCategory" representedClassName="TaskCategory" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
