@@ -39,12 +39,18 @@ struct EditPhotoView: View {
 				.padding(.horizontal)
 			}
 		}
-		.navigationTitle(viewModel.editingExistingImage ? "Edit Photo" : "New Photo")
+		.navigationTitle(viewModel.editingExistingImage ? "Edit Caption" : "New Photo")
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
 		.toolbar {
 			ToolbarItem(placement: .topBarLeading) { cancelButton }
-			ToolbarItem(placement: .topBarTrailing) { addPhotoButton }
+			ToolbarItem(placement: .topBarTrailing) {
+				if viewModel.editingExistingImage {
+					saveChangesButton
+				} else {
+					addPhotoButton
+				}
+			}
 		}
 		.keyboardType(.default)
 		.onChange(of: imagePickerService.selectedImage) { _, newImage in
@@ -72,7 +78,7 @@ extension EditPhotoView {
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			
+			viewModel.saveChanges(for: viewModel.plant)
 			dismiss()
 		}
 		.font(.handjet(.extraBold, size: 20))
