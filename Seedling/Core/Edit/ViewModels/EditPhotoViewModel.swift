@@ -57,14 +57,6 @@ class EditPhotoViewModel: ObservableObject {
 		fileManager.saveImage(id: imageUrlString, image: image)
 	}
 	
-	func deletePhoto() {
-		guard let imageUrlString,
-			  let savedPhoto = findExistingPhoto(for: plant) else { return }
-		
-		fileManager.deleteImage(id: imageUrlString)
-		coreDataManager.deletePhoto(photo: savedPhoto)
-	}
-	
 //	MARK: - Private Methods
 	
 	private func findExistingPhoto(for plant: Plant) -> Photo? {
