@@ -14,10 +14,10 @@
 # Seedling
 
 ## Summary
-Seedling is a journaling platform that enables users to capture significant moments of their gardening journey. Many gardening products revolve around the workflow aspects of gardening such as tracking specific plant needs with reminders to complete certain tasks. Seedling was created to capture the history of your garden in story form through a timeline of thoughts, photos, and events.
+Seedling is a simple journaling app that lets you capture your gardening journey in story form through a timeline of thoughts, photos, and milestones.
 
 ## About the developer
-Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a product designer based in California transitioning into software engineering. 
+Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a product designer based in California. 
 
 ## Technologies
 * SwiftUI
@@ -25,8 +25,7 @@ Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a p
 * MVVM architecture
 
 ## Features
-<img src="images/ui/home-view.png" width="50%">
-<img src="images/ui/detail-view.png" width="50%">
-<img src="images/ui/add-plant-view.png" width="50%">
-<img src="images/ui/update-stage-view.png" width="50%">
-<img src="images/ui/post-types.png" width="50%">
+<img src="images/ui/seedling-plants.png" width="50%">
+<img src="images/ui/seedling-journal.png" width="50%">
+<img src="images/ui/seedling-care-requirements.png" width="50%">
+<img src="images/ui/seedling-tasks.png" width="50%">
