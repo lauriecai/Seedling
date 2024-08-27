@@ -14,7 +14,7 @@
 # Seedling
 
 ## Summary
-Seedling is a simple journaling app that lets you capture your gardening journey in story form through a timeline of thoughts, photos, and milestones.
+Seedling is a simple journaling app that helps you document the growth of your plants in story form through a timeline of notes, photos, and milestones.
 
 ## About the developer
 Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a product designer based in California. 
@@ -27,5 +27,6 @@ Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a p
 ## Features
 <img src="images/ui/seedling-plants.png" width="50%">
 <img src="images/ui/seedling-journal.png" width="50%">
+<img src="images/ui/seedling-stage-selection.png" width="50%">
 <img src="images/ui/seedling-care-requirements.png" width="50%">
 <img src="images/ui/seedling-tasks.png" width="50%">
