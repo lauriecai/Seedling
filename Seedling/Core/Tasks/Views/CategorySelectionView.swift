@@ -29,6 +29,9 @@ struct CategorySelectionView: View {
 					.padding(.horizontal)
 				}
 			}
+			.onAppear {
+				CrashManager.shared.addLog(message: "CategorySelectionView appeared.")
+			}
 			.navigationTitle("Category")
 			.navigationBarTitleDisplayMode(.inline)
 			.navigationBarBackButtonHidden(true)
@@ -71,6 +74,7 @@ extension CategorySelectionView {
 						showActionSheet: $showingActionSheet,
 						showActionForCategory: $viewModel.showingActionSheetForCategory)
 					.onTapGesture {
+						CrashManager.shared.addLog(message: "CategorySelectionCard tapped.")
 						withAnimation(.spring()) {
 							viewModel.selectedCategory = category
 							viewModel.selectedCategoryIndex = index
@@ -96,6 +100,7 @@ extension CategorySelectionView {
 	
 	private var deleteCategoryButton: some View {
 		Button("Delete Category", role: .destructive) {
+			CrashManager.shared.addLog(message: "deleteCategoryButton tapped.")
 			guard let selectedCategory = viewModel.showingActionSheetForCategory else {
 				print("no selected category set")
 				return
@@ -108,6 +113,7 @@ extension CategorySelectionView {
 	
 	private var backButton: some View {
 		Button {
+			CrashManager.shared.addLog(message: "backButton tapped.")
 			dismiss()
 		} label: {
 			HStack(spacing: 5) {
