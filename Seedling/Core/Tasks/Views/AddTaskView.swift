@@ -32,6 +32,9 @@ struct AddTaskView: View {
 					.padding(.horizontal)
 				}
 			}
+			.onAppear {
+				CrashManager.shared.addLog(message: "AddTaskView appeared.")
+			}
 			.navigationTitle(viewModel.editingExistingTask ? "Edit Task" : "New Task")
 			.navigationBarTitleDisplayMode(.inline)
 			.navigationBarBackButtonHidden(true)
@@ -95,6 +98,7 @@ extension AddTaskView {
 	
 	private var addTaskButton: some View {
 		Button("Add Task") {
+			CrashManager.shared.addLog(message: "addTaskButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			viewModel.addTask(
@@ -110,6 +114,7 @@ extension AddTaskView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			if let selectedTask = viewModel.selectedTask {
@@ -130,6 +135,7 @@ extension AddTaskView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
+			CrashManager.shared.addLog(message: "cancelButton tapped.")
 			dismiss()
 			viewModel.resetTaskTitleAndCategoryNameInputsAndFlags()
 		}
