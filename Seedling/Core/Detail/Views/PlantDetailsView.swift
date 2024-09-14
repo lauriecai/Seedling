@@ -104,8 +104,6 @@ extension PlantDetailsView {
 		.disabled(!viewModel.plantGeneralDetailsEdited)
 	}
 	
-	// Care Requirements card
-	
 	private var careRequirementsCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
 			careRequirementsCardHeader
@@ -167,8 +165,6 @@ extension PlantDetailsView {
 		.foregroundStyle(Color.theme.accentGreen)
 	}
 	
-	// Additional Care Notes card
-	
 	private var additionalCareNotesCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
 			additionalCareNotesCardHeader
@@ -219,8 +215,6 @@ extension PlantDetailsView {
 		.foregroundStyle(viewModel.plantAdditionalCareNotesEdited ? Color.theme.accentGreen : Color.theme.textSecondary.opacity(0.5))
 		.disabled(!viewModel.plantAdditionalCareNotesEdited)
 	}
-	
-	// Other
 	
 	private var backButton: some View {
 		Button {

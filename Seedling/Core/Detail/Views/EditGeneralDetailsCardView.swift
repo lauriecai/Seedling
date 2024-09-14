@@ -29,6 +29,9 @@ struct EditGeneralDetailsCardView: View {
 					.padding(.horizontal)
 				}
 			}
+			.onAppear {
+				CrashManager.shared.addLog(message: "EditGeneralDetailsCardView appeared.")
+			}
 			.navigationBarBackButtonHidden(true)
 			.toolbar {
 				ToolbarItem(placement: .topBarLeading) { cancelButton }
@@ -107,6 +110,7 @@ extension EditGeneralDetailsCardView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			if viewModel.plantGeneralDetailsEdited {
@@ -127,6 +131,7 @@ extension EditGeneralDetailsCardView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
+			CrashManager.shared.addLog(message: "cancelButton tapped.")
 			viewModel.resetPlantGeneralDetailsEditedFlag()
 			dismiss()
 		}
