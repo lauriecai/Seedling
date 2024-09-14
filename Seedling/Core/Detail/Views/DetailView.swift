@@ -42,6 +42,7 @@ struct DetailView: View {
 			ToolbarItem(placement: .topBarTrailing) { detailsButton }
 		}
 		.onAppear {
+			CrashManager.shared.addLog(message: "DetailView appeared.")
 			viewModel.fetchPosts(for: viewModel.plant)
 			viewModel.showingAddPostOptions = false
 		}
@@ -119,6 +120,7 @@ extension DetailView {
 	
 	private var deleteEventButton: some View {
 		Button("Delete Post", role: .destructive) {
+			CrashManager.shared.addLog(message: "deleteEventButton tapped.")
 			if let selectedEvent = viewModel.selectedEvent {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteEvent(event: selectedEvent)
@@ -129,6 +131,7 @@ extension DetailView {
 	
 	private var editCaptionButton: some View {
 		Button("Edit Caption") {
+			CrashManager.shared.addLog(message: "editCaptionButton tapped.")
 			if let selectedPhoto = viewModel.selectedPhoto {
 				editPhotoMode = .edit(viewModel.plant, selectedPhoto)
 			}
@@ -137,6 +140,7 @@ extension DetailView {
 	
 	private var deletePhotoButton: some View {
 		Button("Delete Post", role: .destructive) {
+			CrashManager.shared.addLog(message: "deletePhotoButton tapped.")
 			withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 				viewModel.deletePhoto()
 			}
@@ -149,6 +153,7 @@ extension DetailView {
 	
 	private var editNoteButton: some View {
 		Button("Edit note") {
+			CrashManager.shared.addLog(message: "editNoteButton tapped.")
 			viewModel.resetNoteEditedFlag()
 			
 			if let selectedNote = viewModel.selectedNote {
@@ -161,6 +166,7 @@ extension DetailView {
 	
 	private var deleteNoteButton: some View {
 		Button("Delete Post", role: .destructive) {
+			CrashManager.shared.addLog(message: "deleteNoteButton tapped.")
 			if let selectedNote = viewModel.selectedNote {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteNote(note: selectedNote)
@@ -196,6 +202,7 @@ extension DetailView {
 	private var addNoteButton: some View {
 		ButtonRounded(iconName: "pencil", text: "Add Note")
 			.onTapGesture {
+				CrashManager.shared.addLog(message: "addNoteButton tapped.")
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddNoteView.toggle()
 			}
@@ -204,6 +211,7 @@ extension DetailView {
 	private var addPhotoButton: some View {
 		ButtonRounded(iconName: "photo", text: "Add Photo")
 			.onTapGesture {
+				CrashManager.shared.addLog(message: "addPhotoButton tapped.")
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				imagePickerService.selectedPhotosPickerItem = nil
 				viewModel.showingPhotosPicker.toggle()
@@ -214,6 +222,7 @@ extension DetailView {
 	private var updateStageButton: some View {
 		ButtonRounded(iconName: "sparkles", text: "Update Stage")
 			.onTapGesture {
+				CrashManager.shared.addLog(message: "updateStageButton tapped.")
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingUpdateStageView = true
 			}
@@ -222,6 +231,7 @@ extension DetailView {
 	private var addPostButton: some View {
 		ButtonCircle(iconName: "icon-plus")
 			.onTapGesture {
+				CrashManager.shared.addLog(message: "addPostButton tapped.")
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.showingAddPostOptions.toggle()
@@ -240,6 +250,7 @@ extension DetailView {
 	
 	private var backButton: some View {
 		Button {
+			CrashManager.shared.addLog(message: "backButton tapped.")
 			dismiss()
 		} label: {
 			HStack(spacing: 5) {
@@ -254,6 +265,7 @@ extension DetailView {
 	
 	private var detailsButton: some View {
 		Button {
+			CrashManager.shared.addLog(message: "detailsButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.showingPlantDetailsView.toggle()
 		} label: {
