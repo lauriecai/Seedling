@@ -36,6 +36,9 @@ struct AddPlantView: View {
 					}
 					.padding(.horizontal)
 				}
+				.onAppear {
+					CrashManager.shared.addLog(message: "AddPlantView appeared.")
+				}
 				.navigationTitle(viewModel.editingExistingPlant ? "Edit Plant" : "New Plant")
 				.navigationBarTitleDisplayMode(.inline)
 				.navigationBarBackButtonHidden(true)
@@ -94,6 +97,7 @@ extension AddPlantView {
 	
 	private var addPlantButton: some View {
 		Button("Add Plant") {
+			CrashManager.shared.addLog(message: "addPlantButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.addPlant(
 				name: viewModel.plantNameInput,
@@ -110,6 +114,7 @@ extension AddPlantView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			if let selectedPlant = viewModel.selectedPlant {
@@ -130,6 +135,7 @@ extension AddPlantView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
+			CrashManager.shared.addLog(message: "cancelButton tapped.")
 			viewModel.resetAddPlantFormInputsAndFlags()
 			dismiss()
 		}
