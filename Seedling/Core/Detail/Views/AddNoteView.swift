@@ -31,6 +31,9 @@ struct AddNoteView: View {
 				.padding(.horizontal)
 			}
 		}
+		.onAppear {
+			CrashManager.shared.addLog(message: "AddNoteView appeared.")
+		}
 		.navigationTitle(viewModel.editingExistingNote ? "Edit Note" : "New Note")
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
@@ -69,6 +72,7 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
+			CrashManager.shared.addLog(message: "addNoteButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if !viewModel.noteBodyInput.isEmpty || !viewModel.noteTitleInput.isEmpty {
 				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitleInput, body: viewModel.noteBodyInput)
@@ -84,6 +88,7 @@ extension AddNoteView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if let selectedNote = viewModel.selectedNote {
 				viewModel.updateNoteTitleAndBody(
@@ -102,6 +107,7 @@ extension AddNoteView {
 	
 	private var cancelButton: some View {
 		Button {
+			CrashManager.shared.addLog(message: "cancelButton tapped.")
 			viewModel.showingAddPostOptions = false
 			dismiss()
 		} label: {
