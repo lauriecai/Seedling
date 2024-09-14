@@ -43,6 +43,9 @@ struct EditPhotoView: View {
 				.padding(.horizontal)
 			}
 		}
+		.onAppear {
+			CrashManager.shared.addLog(message: "EditPhotoView appeared.")
+		}
 		.navigationTitle(viewModel.editingExistingImage ? "Edit Caption" : "New Photo")
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
@@ -72,6 +75,7 @@ extension EditPhotoView {
 	
 	private var addPhotoButton: some View {
 		Button("Add Photo") {
+			CrashManager.shared.addLog(message: "addPhotoButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.createPhoto(for: viewModel.plant)
 			dismiss()
@@ -82,6 +86,7 @@ extension EditPhotoView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.saveChanges(for: viewModel.plant)
 			dismiss()
@@ -93,6 +98,7 @@ extension EditPhotoView {
 	
 	private var cancelButton: some View {
 		Button {
+			CrashManager.shared.addLog(message: "cancelButton tapped.")
 			dismiss()
 		} label: {
 			Text("Cancel")
