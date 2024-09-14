@@ -60,6 +60,7 @@ extension PhotoCardView {
 	
 	private var photoActions: some View {
 		Button {
+			CrashManager.shared.addLog(message: "photoActions tapped.")
 			showActionSheet = true
 			showActionsForPhoto = photo
 		} label: {

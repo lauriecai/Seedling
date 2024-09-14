@@ -44,6 +44,7 @@ extension PlantCardView {
 	
 	private var plantActions: some View {
 		Button {
+			CrashManager.shared.addLog(message: "plantActions tapped.")
 			showActionSheet = true
 			showActionForPlant = plant
 		} label: {

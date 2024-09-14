@@ -60,6 +60,7 @@ extension TaskRowView {
 	
 	private var taskActions: some View {
 		Button {
+			CrashManager.shared.addLog(message: "taskActions tapped.")
 			showActionSheet = true
 			showActionForTask = task
 		} label: {

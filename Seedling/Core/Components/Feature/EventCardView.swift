@@ -54,6 +54,7 @@ extension EventCardView {
 	
 	private var eventActions: some View {
 		Button {
+			CrashManager.shared.addLog(message: "eventActions tapped.")
 			showActionSheet = true
 			showActionsForEvent = event
 		} label: {

@@ -62,6 +62,7 @@ extension NoteCardView {
 	
 	private var noteActions: some View {
 		Button {
+			CrashManager.shared.addLog(message: "noteActions tapped.")
 			showActionSheet = true
 			showActionsForNote = note
 		} label: {
