@@ -31,6 +31,9 @@ struct EditAdditionalCareNotesView: View {
 					.padding(.horizontal)
 				}
 			}
+			.onAppear {
+				CrashManager.shared.addLog(message: "EditAdditionalCareNotesCardView appeared.")
+			}
 			.toolbar {
 				ToolbarItem(placement: .topBarLeading) { cancelButton }
 				ToolbarItem(placement: .topBarTrailing) { saveChangesButton }
@@ -56,6 +59,7 @@ extension EditAdditionalCareNotesView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantAdditionalCareNotesEdited {
 				viewModel.editPlantAdditionalCareNotes(for: viewModel.plant)
@@ -70,6 +74,7 @@ extension EditAdditionalCareNotesView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
+			CrashManager.shared.addLog(message: "cancelButton tapped.")
 			viewModel.resetPlantAdditionalCareNotesEditedFlag()
 			dismiss()
 		}
