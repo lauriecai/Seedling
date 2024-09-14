@@ -41,7 +41,10 @@ struct CategoryCreationView: View {
 					ToolbarItem(placement: .topBarLeading) { backButton }
 					ToolbarItem(placement: .topBarTrailing) { createButton }
 				}
-				.onAppear { viewModel.eraseCategoryNameInput() }
+				.onAppear {
+					CrashManager.shared.addLog(message: "CategoryCreationView appeared.")
+					viewModel.eraseCategoryNameInput()
+				}
 			}
 		}
     }
@@ -55,6 +58,7 @@ extension CategoryCreationView {
 	
 	private var createButton: some View {
 		Button("Create") {
+			CrashManager.shared.addLog(message: "createButton tapped.")
 			viewModel.addTaskCategory(name: viewModel.taskCategoryInput)
 			viewModel.eraseCategoryNameInput()
 			dismiss()
@@ -66,6 +70,7 @@ extension CategoryCreationView {
 	
 	private var backButton: some View {
 		Button {
+			CrashManager.shared.addLog(message: "backButton tapped.")
 			viewModel.resetSelectedCategory()
 			dismiss()
 		} label: {
