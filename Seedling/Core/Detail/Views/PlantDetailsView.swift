@@ -28,6 +28,9 @@ struct PlantDetailsView: View {
 				.padding(.bottom, 110)
 			}
 		}
+		.onAppear {
+			CrashManager.shared.addLog(message: "PlantDetailsView appeared.")
+		}
 		.navigationTitle("Plant Details")
 		.navigationBarBackButtonHidden(true)
 		.toolbar {
@@ -46,8 +49,6 @@ struct PlantDetailsView: View {
 }
 
 extension PlantDetailsView {
-	
-	// General Details card
 	
 	private var generalDetailsCard: some View {
 		VStack(alignment: .leading, spacing: 15) {
@@ -78,6 +79,7 @@ extension PlantDetailsView {
 	
 	private var editGeneralDetailsButton: some View {
 		Button("Edit") {
+			CrashManager.shared.addLog(message: "editGeneralDetailsButton tapped.")
 			viewModel.resetPlantGeneralDetailsEditedFlag()
 			
 			viewModel.editingGeneralDetails = true
@@ -89,6 +91,7 @@ extension PlantDetailsView {
 	
 	private var saveGeneralDetailsButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveGeneralDetailsButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantGeneralDetailsEdited {
 				viewModel.editPlantGeneralDetails(for: viewModel.plant)
@@ -139,6 +142,7 @@ extension PlantDetailsView {
 	
 	private var saveCareRequirementsButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveCareRequirementsButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantCareRequirementsEdited {
 				viewModel.editPlantCareRequirements(for: viewModel.plant)
@@ -153,6 +157,7 @@ extension PlantDetailsView {
 	
 	private var editCareRequirementsButton: some View {
 		Button("Edit") {
+			CrashManager.shared.addLog(message: "editCareRequirementsButton tapped.")
 			viewModel.resetPlantCareRequirementsEditedFlag()
 			
 			viewModel.editingCareRequirements = true
@@ -190,6 +195,7 @@ extension PlantDetailsView {
 	
 	private var editAdditionalCareNotesButton: some View {
 		Button("Edit") {
+			CrashManager.shared.addLog(message: "editAdditionalCareNotesButton tapped.")
 			viewModel.resetPlantAdditionalCareNotesEditedFlag()
 
 			viewModel.editingAdditionalCareNotes = true
@@ -201,6 +207,7 @@ extension PlantDetailsView {
 	
 	private var saveAdditionalCareNotesButton: some View {
 		Button("Save Changes") {
+			CrashManager.shared.addLog(message: "saveAdditionalCareNotesButton tapped.")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantAdditionalCareNotesEdited {
 				viewModel.editPlantAdditionalCareNotes(for: viewModel.plant)
@@ -217,6 +224,7 @@ extension PlantDetailsView {
 	
 	private var backButton: some View {
 		Button {
+			CrashManager.shared.addLog(message: "backButton tapped.")
 			dismiss()
 		} label: {
 			HStack(spacing: 5) {
