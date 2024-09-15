@@ -29,7 +29,7 @@ struct PlantDetailsView: View {
 			}
 		}
 		.onAppear {
-			CrashManager.shared.addLog(message: "PlantDetailsView appeared.")
+			FirebaseEventManager.shared.logEvent(name: "PlantDetailsView_appeared")
 		}
 		.navigationTitle("Plant Details")
 		.navigationBarBackButtonHidden(true)
@@ -79,7 +79,7 @@ extension PlantDetailsView {
 	
 	private var editGeneralDetailsButton: some View {
 		Button("Edit") {
-			CrashManager.shared.addLog(message: "editGeneralDetailsButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "editGeneralDetailsButton_tapped")
 			viewModel.resetPlantGeneralDetailsEditedFlag()
 			
 			viewModel.editingGeneralDetails = true
@@ -91,7 +91,7 @@ extension PlantDetailsView {
 	
 	private var saveGeneralDetailsButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveGeneralDetailsButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveGeneralDetailsButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantGeneralDetailsEdited {
 				viewModel.editPlantGeneralDetails(for: viewModel.plant)
@@ -140,7 +140,7 @@ extension PlantDetailsView {
 	
 	private var saveCareRequirementsButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveCareRequirementsButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveCareRequirementsButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantCareRequirementsEdited {
 				viewModel.editPlantCareRequirements(for: viewModel.plant)
@@ -155,7 +155,7 @@ extension PlantDetailsView {
 	
 	private var editCareRequirementsButton: some View {
 		Button("Edit") {
-			CrashManager.shared.addLog(message: "editCareRequirementsButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "editCareRequirementsButton_tapped")
 			viewModel.resetPlantCareRequirementsEditedFlag()
 			
 			viewModel.editingCareRequirements = true
@@ -191,7 +191,7 @@ extension PlantDetailsView {
 	
 	private var editAdditionalCareNotesButton: some View {
 		Button("Edit") {
-			CrashManager.shared.addLog(message: "editAdditionalCareNotesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "editAdditionalCareNotesButton_tapped")
 			viewModel.resetPlantAdditionalCareNotesEditedFlag()
 
 			viewModel.editingAdditionalCareNotes = true
@@ -203,7 +203,7 @@ extension PlantDetailsView {
 	
 	private var saveAdditionalCareNotesButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveAdditionalCareNotesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveAdditionalCareNotesButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantAdditionalCareNotesEdited {
 				viewModel.editPlantAdditionalCareNotes(for: viewModel.plant)
@@ -218,7 +218,7 @@ extension PlantDetailsView {
 	
 	private var backButton: some View {
 		Button {
-			CrashManager.shared.addLog(message: "backButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "backButton_tapped")
 			dismiss()
 		} label: {
 			HStack(spacing: 5) {

@@ -32,7 +32,7 @@ struct AddNoteView: View {
 			}
 		}
 		.onAppear {
-			CrashManager.shared.addLog(message: "AddNoteView appeared.")
+			FirebaseEventManager.shared.logEvent(name: "AddNoteView_appeared")
 		}
 		.navigationTitle(viewModel.editingExistingNote ? "Edit Note" : "New Note")
 		.navigationBarTitleDisplayMode(.inline)
@@ -72,7 +72,7 @@ extension AddNoteView {
 	
 	private var addNoteButton: some View {
 		Button("Add Note") {
-			CrashManager.shared.addLog(message: "addNoteButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "addNoteButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if !viewModel.noteBodyInput.isEmpty || !viewModel.noteTitleInput.isEmpty {
 				viewModel.addNote(for: viewModel.plant, title: viewModel.noteTitleInput, body: viewModel.noteBodyInput)
@@ -88,7 +88,7 @@ extension AddNoteView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveChangesButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if let selectedNote = viewModel.selectedNote {
 				viewModel.updateNoteTitleAndBody(
@@ -107,7 +107,7 @@ extension AddNoteView {
 	
 	private var cancelButton: some View {
 		Button {
-			CrashManager.shared.addLog(message: "cancelButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "cancelButton_tapped")
 			viewModel.showingAddPostOptions = false
 			dismiss()
 		} label: {

@@ -39,7 +39,7 @@ struct UpdateStageView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
 		.onAppear {
-			CrashManager.shared.addLog(message: "UpdateStageView appeared.")
+			FirebaseEventManager.shared.logEvent(name: "UpdateStageView_appeared")
 			viewModel.fetchPlantStage(for: viewModel.plant)
 		}
 		.toolbar {
@@ -61,7 +61,7 @@ extension UpdateStageView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveChangesButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			if viewModel.plantStageUpdated {
 				viewModel.updatePlantStage(for: viewModel.plant)
@@ -76,7 +76,7 @@ extension UpdateStageView {
 	
 	private var cancelButton: some View {
 		Button {
-			CrashManager.shared.addLog(message: "cancelButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "cancelButton_tapped")
 			viewModel.resetStageUpdatedFlag()
 			dismiss()
 		} label: {

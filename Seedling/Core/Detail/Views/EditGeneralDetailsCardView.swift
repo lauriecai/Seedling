@@ -30,7 +30,7 @@ struct EditGeneralDetailsCardView: View {
 				}
 			}
 			.onAppear {
-				CrashManager.shared.addLog(message: "EditGeneralDetailsCardView appeared.")
+				FirebaseEventManager.shared.logEvent(name: "EditGeneralDetailsCardView_appeared")
 			}
 			.navigationBarBackButtonHidden(true)
 			.toolbar {
@@ -110,7 +110,7 @@ extension EditGeneralDetailsCardView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveChangesButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			if viewModel.plantGeneralDetailsEdited {
@@ -131,7 +131,7 @@ extension EditGeneralDetailsCardView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
-			CrashManager.shared.addLog(message: "cancelButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "cancelButton_tapped")
 			viewModel.resetPlantGeneralDetailsEditedFlag()
 			dismiss()
 		}
