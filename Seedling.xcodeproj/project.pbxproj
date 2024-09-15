@@ -61,8 +61,10 @@
 		D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */; };
 		D3C2C6192C95F2F100531C16 /* CrashManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2C6182C95F2F100531C16 /* CrashManager.swift */; };
 		D3C2C61F2C97493C00531C16 /* PerformanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2C61E2C97493C00531C16 /* PerformanceManager.swift */; };
+		D3C2C6212C97570B00531C16 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2C6202C97570B00531C16 /* AnalyticsManager.swift */; };
 		D3CBB1642BECAD280092096B /* PlantDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CBB1632BECAD280092096B /* PlantDetailsView.swift */; };
 		D3CD06452BF5546100E25369 /* EditCareRequirementsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CD06442BF5546100E25369 /* EditCareRequirementsCardView.swift */; };
+		D3D6C0142C97626C00071810 /* FirebaseEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D6C0132C97626C00071810 /* FirebaseEventManager.swift */; };
 		D3D87F6F2C06E9C300AF90A3 /* StageSelectionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D87F6E2C06E9C300AF90A3 /* StageSelectionList.swift */; };
 		D3EA61C12B8FEA69002676F4 /* TextEditorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */; };
 		D3EFDE092B76B70C00A6D22C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */; };
@@ -134,8 +136,10 @@
 		D3BBD8B52B6C140D0061FE92 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D3C2C6182C95F2F100531C16 /* CrashManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashManager.swift; sourceTree = "<group>"; };
 		D3C2C61E2C97493C00531C16 /* PerformanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceManager.swift; sourceTree = "<group>"; };
+		D3C2C6202C97570B00531C16 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		D3CBB1632BECAD280092096B /* PlantDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsView.swift; sourceTree = "<group>"; };
 		D3CD06442BF5546100E25369 /* EditCareRequirementsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCareRequirementsCardView.swift; sourceTree = "<group>"; };
+		D3D6C0132C97626C00071810 /* FirebaseEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEventManager.swift; sourceTree = "<group>"; };
 		D3D87F6E2C06E9C300AF90A3 /* StageSelectionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageSelectionList.swift; sourceTree = "<group>"; };
 		D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorInput.swift; sourceTree = "<group>"; };
 		D3EFDE082B76B70C00A6D22C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
@@ -424,6 +428,8 @@
 			children = (
 				D3C2C6182C95F2F100531C16 /* CrashManager.swift */,
 				D3C2C61E2C97493C00531C16 /* PerformanceManager.swift */,
+				D3C2C6202C97570B00531C16 /* AnalyticsManager.swift */,
+				D3D6C0132C97626C00071810 /* FirebaseEventManager.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -598,7 +604,9 @@
 				D3FCA4DE2C0FB12F00DC2213 /* UINavigationController.swift in Sources */,
 				D3564EA92C0852AB0045BDBC /* CategorySelectionView.swift in Sources */,
 				D3EFDE122B79387100A6D22C /* DetailView.swift in Sources */,
+				D3D6C0142C97626C00071810 /* FirebaseEventManager.swift in Sources */,
 				D37706B72BFEC37B005179E3 /* TaskRowView.swift in Sources */,
+				D3C2C6212C97570B00531C16 /* AnalyticsManager.swift in Sources */,
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
 				D3385B732B16F0420055234B /* PlantCardView.swift in Sources */,
 				D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */,
