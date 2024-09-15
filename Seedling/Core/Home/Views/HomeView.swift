@@ -31,7 +31,7 @@ struct HomeView: View {
 				addPlantButton
 			}
 			.onAppear {
-				CrashManager.shared.addLog(message: "HomeView appeared.")
+				FirebaseEventManager.shared.logEvent(name: "HomeView_appeared")
 				viewModel.fetchPlants()
 			}
 			.sheet(isPresented: $viewModel.showingAddPlantView) { AddPlantView() }
@@ -94,7 +94,7 @@ extension HomeView {
 					}
 					.simultaneousGesture(
 						TapGesture().onEnded {
-							CrashManager.shared.addLog(message: "PlantCardView tapped.")
+							FirebaseEventManager.shared.logEvent(name: "PlantCardView_tapped")
 							UIImpactFeedbackGenerator(style: .light).impactOccurred()
 						}
 					)
@@ -110,7 +110,7 @@ extension HomeView {
 			.padding(.trailing, 20)
 			.padding(.bottom, 85)
 			.onTapGesture {
-				CrashManager.shared.addLog(message: "addPlantButton tapped.")
+				FirebaseEventManager.shared.logEvent(name: "addPlantButton_tapped")
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddPlantView.toggle()
 			}
@@ -118,7 +118,7 @@ extension HomeView {
 	
 	private var editPlantNameButton: some View {
 		Button("Edit Name and Variety") {
-			CrashManager.shared.addLog(message: "editPlantNameButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "editPlantNameButton_tapped")
 			viewModel.resetPlantDetailsChangedFlag()
 			
 			if let selectedPlant = viewModel.selectedPlant {
@@ -131,7 +131,7 @@ extension HomeView {
 	
 	private var deletePlantButton: some View {
 		Button("Delete Plant", role: .destructive) {
-			CrashManager.shared.addLog(message: "deletePlantButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "deletePlantButton_tapped")
 			if let selectedPlant = viewModel.selectedPlant {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deletePlant(plant: selectedPlant)
