@@ -37,7 +37,7 @@ struct AddPlantView: View {
 					.padding(.horizontal)
 				}
 				.onAppear {
-					CrashManager.shared.addLog(message: "AddPlantView appeared.")
+					FirebaseEventManager.shared.logEvent(name: "AddPlantView_appeared")
 				}
 				.navigationTitle(viewModel.editingExistingPlant ? "Edit Plant" : "New Plant")
 				.navigationBarTitleDisplayMode(.inline)
@@ -97,7 +97,7 @@ extension AddPlantView {
 	
 	private var addPlantButton: some View {
 		Button("Add Plant") {
-			CrashManager.shared.addLog(message: "addPlantButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "addPlantButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.addPlant(
 				name: viewModel.plantNameInput,
@@ -114,7 +114,7 @@ extension AddPlantView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveChangesButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			if let selectedPlant = viewModel.selectedPlant {
@@ -135,7 +135,7 @@ extension AddPlantView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
-			CrashManager.shared.addLog(message: "cancelButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "cancelButton_tapped")
 			viewModel.resetAddPlantFormInputsAndFlags()
 			dismiss()
 		}
