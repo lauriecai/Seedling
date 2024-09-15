@@ -44,7 +44,7 @@ struct EditPhotoView: View {
 			}
 		}
 		.onAppear {
-			CrashManager.shared.addLog(message: "EditPhotoView appeared.")
+			FirebaseEventManager.shared.logEvent(name: "EditPhotoView_appeared")
 		}
 		.navigationTitle(viewModel.editingExistingImage ? "Edit Caption" : "New Photo")
 		.navigationBarTitleDisplayMode(.inline)
@@ -75,7 +75,7 @@ extension EditPhotoView {
 	
 	private var addPhotoButton: some View {
 		Button("Add Photo") {
-			CrashManager.shared.addLog(message: "addPhotoButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "addPhotoButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.createPhoto(for: viewModel.plant)
 			dismiss()
@@ -86,7 +86,7 @@ extension EditPhotoView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveChangesButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			viewModel.saveChanges(for: viewModel.plant)
 			dismiss()
@@ -98,7 +98,7 @@ extension EditPhotoView {
 	
 	private var cancelButton: some View {
 		Button {
-			CrashManager.shared.addLog(message: "cancelButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "cancelButton_tapped")
 			dismiss()
 		} label: {
 			Text("Cancel")

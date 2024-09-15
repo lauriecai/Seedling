@@ -30,7 +30,7 @@ struct CategorySelectionView: View {
 				}
 			}
 			.onAppear {
-				CrashManager.shared.addLog(message: "CategorySelectionView appeared.")
+				FirebaseEventManager.shared.logEvent(name: "CategorySelectionView_appeared")
 			}
 			.navigationTitle("Category")
 			.navigationBarTitleDisplayMode(.inline)
@@ -74,7 +74,7 @@ extension CategorySelectionView {
 						showActionSheet: $showingActionSheet,
 						showActionForCategory: $viewModel.showingActionSheetForCategory)
 					.onTapGesture {
-						CrashManager.shared.addLog(message: "CategorySelectionCard tapped.")
+						FirebaseEventManager.shared.logEvent(name: "CategorySelectionCard_tapped")
 						withAnimation(.spring()) {
 							viewModel.selectedCategory = category
 							viewModel.selectedCategoryIndex = index
@@ -100,7 +100,7 @@ extension CategorySelectionView {
 	
 	private var deleteCategoryButton: some View {
 		Button("Delete Category", role: .destructive) {
-			CrashManager.shared.addLog(message: "deleteCategoryButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "deleteCategoryButton_tapped")
 			guard let selectedCategory = viewModel.showingActionSheetForCategory else {
 				print("no selected category set")
 				return
@@ -113,7 +113,7 @@ extension CategorySelectionView {
 	
 	private var backButton: some View {
 		Button {
-			CrashManager.shared.addLog(message: "backButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "backButton_tapped")
 			dismiss()
 		} label: {
 			HStack(spacing: 5) {

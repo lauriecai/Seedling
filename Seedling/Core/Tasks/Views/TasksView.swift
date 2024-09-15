@@ -31,7 +31,7 @@ struct TasksView: View {
 				addTaskButton
 			}
 			.onAppear {
-				CrashManager.shared.addLog(message: "TasksView appeared.")
+				FirebaseEventManager.shared.logEvent(name: "TasksView_appeared")
 				viewModel.fetchTaskCategories()
 			}
 			.sheet(isPresented: $viewModel.showingAddTaskView) {
@@ -103,7 +103,7 @@ extension TasksView {
 			.padding(.trailing, 20)
 			.padding(.bottom, 85)
 			.onTapGesture {
-				CrashManager.shared.addLog(message: "addTaskButton tapped.")
+				FirebaseEventManager.shared.logEvent(name: "addTaskButton_tapped")
 				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				viewModel.showingAddTaskView.toggle()
 			}
@@ -111,7 +111,7 @@ extension TasksView {
 	
 	private var editTaskButton: some View {
 		Button("Edit Task") {
-			CrashManager.shared.addLog(message: "editTaskButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "editTaskButton_tapped")
 			viewModel.resetTaskDetailsChangedFlag()
 			
 			if let selectedTask = viewModel.selectedTask {
@@ -124,7 +124,7 @@ extension TasksView {
 	
 	private var deleteTaskButton: some View {
 		Button("Delete Task", role: .destructive) {
-			CrashManager.shared.addLog(message: "deleteTaskButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "deleteTaskButton_tapped")
 			if let selectedTask = viewModel.selectedTask {
 				withAnimation(Animation.bouncy(duration: 0.25, extraBounce: 0.10)) {
 					viewModel.deleteTask(task: selectedTask)

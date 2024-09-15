@@ -42,7 +42,7 @@ struct CategoryCreationView: View {
 					ToolbarItem(placement: .topBarTrailing) { createButton }
 				}
 				.onAppear {
-					CrashManager.shared.addLog(message: "CategoryCreationView appeared.")
+					FirebaseEventManager.shared.logEvent(name: "CategoryCreationView_appeared")
 					viewModel.eraseCategoryNameInput()
 				}
 			}
@@ -58,7 +58,7 @@ extension CategoryCreationView {
 	
 	private var createButton: some View {
 		Button("Create") {
-			CrashManager.shared.addLog(message: "createButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "createButton_tapped")
 			viewModel.addTaskCategory(name: viewModel.taskCategoryInput)
 			viewModel.eraseCategoryNameInput()
 			dismiss()
@@ -70,7 +70,7 @@ extension CategoryCreationView {
 	
 	private var backButton: some View {
 		Button {
-			CrashManager.shared.addLog(message: "backButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "backButton_tapped")
 			viewModel.resetSelectedCategory()
 			dismiss()
 		} label: {

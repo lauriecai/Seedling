@@ -33,7 +33,7 @@ struct AddTaskView: View {
 				}
 			}
 			.onAppear {
-				CrashManager.shared.addLog(message: "AddTaskView appeared.")
+				FirebaseEventManager.shared.logEvent(name: "AddTaskView_appeared")
 			}
 			.navigationTitle(viewModel.editingExistingTask ? "Edit Task" : "New Task")
 			.navigationBarTitleDisplayMode(.inline)
@@ -98,7 +98,7 @@ extension AddTaskView {
 	
 	private var addTaskButton: some View {
 		Button("Add Task") {
-			CrashManager.shared.addLog(message: "addTaskButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "addTaskButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			viewModel.addTask(
@@ -114,7 +114,7 @@ extension AddTaskView {
 	
 	private var saveChangesButton: some View {
 		Button("Save Changes") {
-			CrashManager.shared.addLog(message: "saveChangesButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "saveChangesButton_tapped")
 			UIImpactFeedbackGenerator(style: .light).impactOccurred()
 			
 			if let selectedTask = viewModel.selectedTask {
@@ -135,7 +135,7 @@ extension AddTaskView {
 	
 	private var cancelButton: some View {
 		Button("Cancel") {
-			CrashManager.shared.addLog(message: "cancelButton tapped.")
+			FirebaseEventManager.shared.logEvent(name: "cancelButton_tapped")
 			dismiss()
 			viewModel.resetTaskTitleAndCategoryNameInputsAndFlags()
 		}
