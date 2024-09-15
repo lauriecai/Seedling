@@ -38,16 +38,16 @@ class HomeViewModel: ObservableObject {
 //	MARK: - Plant functions
 	
 	func fetchPlants() {
-		PerformanceManager.shared.startTrace(name: "home_vm_fetch_plants_duration")
+		PerformanceManager.shared.startTrace(name: "home_vm_fetch_plants")
 		let request = manager.requestPlants()
 		
 		defer {
-			PerformanceManager.shared.stopTrace(name: "home_vm_fetch_plants_duration")
+			PerformanceManager.shared.stopTrace(name: "home_vm_fetch_plants")
 		}
 		
 		do {
 			plants = try manager.context.fetch(request)
-			PerformanceManager.shared.setValue(name: "home_vm_fetch_plants_duration", value: plants.count, metric: "number_of_plants")
+			PerformanceManager.shared.setValue(name: "home_vm_fetch_plants", value: plants.count, metric: "number_of_plants")
 		} catch let error {
 			print("Error fetching plants from Core Data. \(error)")
 		}
