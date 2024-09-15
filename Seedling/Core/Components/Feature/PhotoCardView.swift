@@ -60,7 +60,7 @@ extension PhotoCardView {
 	
 	private var photoActions: some View {
 		Button {
-			CrashManager.shared.addLog(message: "photoActions tapped.")
+			FirebaseEventManager.shared.logEvent(name: "photoActions_tapped")
 			showActionSheet = true
 			showActionsForPhoto = photo
 		} label: {

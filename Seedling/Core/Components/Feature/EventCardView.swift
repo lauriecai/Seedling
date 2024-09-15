@@ -54,7 +54,7 @@ extension EventCardView {
 	
 	private var eventActions: some View {
 		Button {
-			CrashManager.shared.addLog(message: "eventActions tapped.")
+			FirebaseEventManager.shared.logEvent(name: "eventActions_tapped")
 			showActionSheet = true
 			showActionsForEvent = event
 		} label: {

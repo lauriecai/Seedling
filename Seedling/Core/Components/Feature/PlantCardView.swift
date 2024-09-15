@@ -44,7 +44,7 @@ extension PlantCardView {
 	
 	private var plantActions: some View {
 		Button {
-			CrashManager.shared.addLog(message: "plantActions tapped.")
+			FirebaseEventManager.shared.logEvent(name: "plantActions_tapped")
 			showActionSheet = true
 			showActionForPlant = plant
 		} label: {

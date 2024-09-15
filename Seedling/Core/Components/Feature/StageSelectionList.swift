@@ -28,7 +28,7 @@ struct StageSelectionList<T>: View where T: Hashable & RawRepresentable & Defina
 						isSelected: index == selectedItemIndex
 					)
 					.onTapGesture {
-						CrashManager.shared.addLog(message: "CardSelectable tapped.")
+						FirebaseEventManager.shared.logEvent(name: "CardSelectable_tapped")
 						selectedItem = item
 						selectedItemIndex = index
 					}
