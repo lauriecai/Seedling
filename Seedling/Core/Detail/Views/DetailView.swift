@@ -36,6 +36,7 @@ struct DetailView: View {
 			addPostActionGroup
 		}
 		.navigationTitle(viewModel.plant.wrappedFullNameLabel)
+		.navigationBarTitleDisplayMode(.inline)
 		.navigationBarBackButtonHidden(true)
 		.toolbar {
 			ToolbarItem(placement: .topBarLeading) { backButton }
