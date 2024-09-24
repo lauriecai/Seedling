@@ -16,5 +16,7 @@ struct MenuKebab: View {
 }
 
 #Preview {
-    MenuKebab()
+	HStack(spacing: 20) {
+		MenuKebab()
+	}
 }

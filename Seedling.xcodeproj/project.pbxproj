@@ -16,6 +16,7 @@
 		D31FBCF82B8D1CC500C10F9D /* PlantEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */; };
 		D31FBCFA2B8D1F4D00C10F9D /* ButtonPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */; };
 		D31FBCFC2B8D205300C10F9D /* ButtonPillRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */; };
+		D3243A052CA35519004873C0 /* ChevronRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3243A042CA35519004873C0 /* ChevronRight.swift */; };
 		D3385B432B164C330055234B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3385B422B164C330055234B /* Color.swift */; };
 		D3385B5C2B165E9D0055234B /* Handjet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B582B165E9D0055234B /* Handjet-Regular.ttf */; };
 		D3385B5D2B165E9D0055234B /* Handjet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3385B592B165E9D0055234B /* Handjet-Bold.ttf */; };
@@ -89,6 +90,7 @@
 		D31FBCF72B8D1CC500C10F9D /* PlantEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantEnums.swift; sourceTree = "<group>"; };
 		D31FBCF92B8D1F4D00C10F9D /* ButtonPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPill.swift; sourceTree = "<group>"; };
 		D31FBCFB2B8D205300C10F9D /* ButtonPillRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPillRow.swift; sourceTree = "<group>"; };
+		D3243A042CA35519004873C0 /* ChevronRight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChevronRight.swift; sourceTree = "<group>"; };
 		D3385B422B164C330055234B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D3385B582B165E9D0055234B /* Handjet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Regular.ttf"; sourceTree = "<group>"; };
 		D3385B592B165E9D0055234B /* Handjet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Handjet-Bold.ttf"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				D31FBCF52B8D199200C10F9D /* TextInput.swift */,
 				D3EA61C02B8FEA69002676F4 /* TextEditorInput.swift */,
 				D38AB78D2BBF2605006B015B /* MenuKebab.swift */,
+				D3243A042CA35519004873C0 /* ChevronRight.swift */,
 				D349D9E22BE2EF4D0081ABE5 /* TextPill.swift */,
 			);
 			path = Foundational;
@@ -609,6 +612,7 @@
 				D3C2C6212C97570B00531C16 /* AnalyticsManager.swift in Sources */,
 				D3385B6B2B16DEC80055234B /* Font.swift in Sources */,
 				D3385B732B16F0420055234B /* PlantCardView.swift in Sources */,
+				D3243A052CA35519004873C0 /* ChevronRight.swift in Sources */,
 				D3BBD8B62B6C140D0061FE92 /* HomeViewModel.swift in Sources */,
 				D35FFAB72BFC3421002D25D8 /* AddTaskView.swift in Sources */,
 				D349D9DF2BE2E4EC0081ABE5 /* UpdateStageView.swift in Sources */,
@@ -810,7 +814,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = lauriecai.Seedling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -854,7 +858,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = lauriecai.Seedling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -17,6 +17,7 @@ struct PlantCardView: View {
     var body: some View {
 		HStack(alignment: .center) {
 			plantNameAndStage
+			Spacer()
 			plantActions
 		}
 		.padding()
@@ -31,8 +32,10 @@ extension PlantCardView {
 			Text(plant.wrappedVariety.isEmpty ? plant.wrappedName : "\(plant.wrappedName): \(plant.wrappedVariety)")
 				.font(.handjet(.bold, size: 24))
 				.foregroundStyle(Color.theme.textPrimary)
+				.lineLimit(1)
+				.truncationMode(.tail)
 			
-			HStack {
+			HStack(alignment: .center) {
 				Text(plant.wrappedStage)
 					.font(.handjet(.regular, size: 20))
 					.foregroundStyle(Color.theme.textPrimary)
@@ -43,6 +46,13 @@ extension PlantCardView {
 	}
 	
 	private var plantActions: some View {
+		HStack(alignment: .center, spacing: 20) {
+			ChevronRight()
+			moreOptions
+		}
+	}
+	
+	private var moreOptions: some View {
 		Button {
 			FirebaseEventManager.shared.logEvent(name: "plantActions_tapped")
 			showActionSheet = true
