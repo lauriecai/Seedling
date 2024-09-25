@@ -84,6 +84,6 @@ extension PlantCardView {
 	private var shadow: some View {
 		Rectangle()
 			.frame(height: 8)
-			.foregroundStyle(Color.theme.textSecondary).opacity(0.50)
+			.foregroundStyle(Color.theme.textSecondary).opacity(0.40)
 	}
 }
