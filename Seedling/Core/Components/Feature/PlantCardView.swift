@@ -38,7 +38,7 @@ extension PlantCardView {
 	}
 	
 	private var plantNameAndStage: some View {
-		VStack(alignment: .leading, spacing: 2) {
+		VStack(alignment: .leading, spacing: 4) {
 			Text(plant.wrappedVariety.isEmpty ? plant.wrappedName : "\(plant.wrappedName): \(plant.wrappedVariety)")
 				.font(.handjet(.bold, size: 24))
 				.foregroundStyle(Color.theme.textPrimary)
@@ -60,6 +60,7 @@ extension PlantCardView {
 			ChevronRight()
 			moreOptions
 		}
+		.padding(.leading, 8)
 	}
 	
 	private var moreOptions: some View {
@@ -77,7 +78,7 @@ extension PlantCardView {
 	private var lightReflection: some View {
 		Rectangle()
 			.frame(height: 8)
-			.foregroundStyle(Color.white).opacity(0.5)
+			.foregroundStyle(Color.white).opacity(0.40)
 	}
 	
 	private var shadow: some View {

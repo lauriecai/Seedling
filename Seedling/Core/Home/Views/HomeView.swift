@@ -83,7 +83,7 @@ extension HomeView {
 	
 	private var plantsList: some View {
 		ScrollView(showsIndicators: false) {
-			VStack {
+			VStack(spacing: 8) {
 				ForEach(viewModel.plants, id: \.self.customHash) { plant in
 					NavigationLink(value: plant) {
 						PlantCardView(
