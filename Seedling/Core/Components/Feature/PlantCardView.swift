@@ -15,18 +15,28 @@ struct PlantCardView: View {
 	@Binding var showActionForPlant: Plant?
 	
     var body: some View {
-		HStack(alignment: .center) {
-			plantNameAndStage
-			Spacer()
-			plantActions
+		VStack(spacing: 0) {
+			lightReflection
+			plantContent
+			shadow
 		}
-		.padding()
-		.background(Color.theme.backgroundAccent)
 		.clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
 extension PlantCardView {
+	
+	private var plantContent: some View {
+		HStack(alignment: .center) {
+			plantNameAndStage
+			Spacer()
+			plantActions
+		}
+		.padding(.horizontal)
+		.padding(.vertical, 10)
+		.background(Color.theme.backgroundSecondary)
+	}
+	
 	private var plantNameAndStage: some View {
 		VStack(alignment: .leading, spacing: 2) {
 			Text(plant.wrappedVariety.isEmpty ? plant.wrappedName : "\(plant.wrappedName): \(plant.wrappedVariety)")
@@ -62,5 +72,17 @@ extension PlantCardView {
 				.frame(maxHeight: .infinity)
 				.rotationEffect(.degrees(-90))
 		}
+	}
+	
+	private var lightReflection: some View {
+		Rectangle()
+			.frame(height: 8)
+			.foregroundStyle(Color.white).opacity(0.5)
+	}
+	
+	private var shadow: some View {
+		Rectangle()
+			.frame(height: 8)
+			.foregroundStyle(Color.theme.textSecondary).opacity(0.50)
 	}
 }
