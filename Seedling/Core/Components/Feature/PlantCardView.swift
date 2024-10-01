@@ -55,7 +55,7 @@ extension PlantCardView {
 	}
 	
 	private var plantActions: some View {
-		HStack(alignment: .center, spacing: 20) {
+		HStack(alignment: .center, spacing: 30) {
 			ChevronRight()
 			moreOptions
 		}
