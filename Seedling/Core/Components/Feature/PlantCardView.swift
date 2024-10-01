@@ -16,7 +16,6 @@ struct PlantCardView: View {
 	
     var body: some View {
 		VStack(spacing: 0) {
-			lightReflection
 			plantContent
 			shadow
 		}
@@ -73,12 +72,6 @@ extension PlantCardView {
 				.frame(maxHeight: .infinity)
 				.rotationEffect(.degrees(-90))
 		}
-	}
-	
-	private var lightReflection: some View {
-		Rectangle()
-			.frame(height: 8)
-			.foregroundStyle(Color.white).opacity(0.40)
 	}
 	
 	private var shadow: some View {
