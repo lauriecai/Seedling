@@ -27,4 +27,4 @@ Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a p
 ## Features
 <img src="images/ui-marketing/seedling-plant-journal.png">
 <img src="images/ui-marketing/seedling-care-requirements.png" width="60%">
-<img src="images/ui-marketing/seedling-garden-tasks.png" width="50%">
+<img src="images/ui-marketing/seedling-garden-tasks.png" width="40%">
