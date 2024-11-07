@@ -25,6 +25,8 @@ Seedling was created by [Laurie Cai](https://www.linkedin.com/in/lauriecai), a p
 * MVVM architecture
 
 ## Features
-<img src="images/ui-marketing/seedling-plant-journal.png">
-<img src="images/ui-marketing/seedling-care-requirements.png" width="60%">
-<img src="images/ui-marketing/seedling-garden-tasks.png" width="40%">
+<img src="images/ui/01-plant-list.png">
+<img src="images/ui/02-plant-journal.png">
+<img src="images/ui/03-care-requirements.png">
+<img src="images/ui/04-garden-tasks.png">
+<img src="images/ui/05-stage-updates.png">
